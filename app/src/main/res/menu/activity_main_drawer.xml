@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+<group android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/nav_main_menu"
+        android:icon="@mipmap/strona_glowna"
+        android:title="Strona główna" />
+
+    <item android:enabled="true"
+        android:title="Ogólne"
+        android:visible="true"
+        app:showAsAction="withText">
+        <menu>
+            <item
+                android:id="@+id/nav_o_fundacji"
+                android:icon="@mipmap/o_fundacji"
+                android:title="O Fundacji" />
+
+            <item
+                android:id="@+id/nav_nasz_patron"
+                android:icon="@mipmap/nasz_patron"
+                android:title="Nasz Patron" />
+
+
+            <item
+                android:id="@+id/nav_dla_darczyncy"
+                android:icon="@mipmap/dla_darczyncy"
+                android:title="Dla Darczyńcy" />
+            <item
+                android:id="@+id/nav_materialy_prasowe"
+                android:icon="@mipmap/materialy_prasowe"
+                android:title="Materiały prasowe" />
+
+            <item
+                android:id="@+id/nav_kontakt"
+                android:icon="@mipmap/kontakt"
+                android:title="Kontakt" />
+
+        </menu>
+    </item>
+
+    <item
+        android:enabled="true"
+        android:title="Dla zalogowanych"
+        android:visible="true"
+        app:showAsAction="withText">
+
+        <menu>
+
+
+            <item
+                android:id="@+id/nav_formacja"
+                android:icon="@mipmap/formacja"
+                android:title="Formacja" />
+
+            <item
+                android:id="@+id/nav_ogl_ogolne"
+                android:icon="@mipmap/ogloszenia_ogolne"
+                android:title="Ogłoszenia ogólne" />
+
+            <item
+                android:id="@+id/nav_ogl_wspolnotowe"
+                android:icon="@mipmap/ogloszenia_wspolnotowe"
+                android:title="Ogłoszenia wspólnotowe" />
+
+            <item
+                android:id="@+id/nav_kom_for"
+                android:icon="@mipmap/komunikator_forum"
+                android:title="Komunikator/Forum" />
+
+            <item
+                android:id="@+id/nav_materialy"
+                android:icon="@mipmap/materialy"
+                android:title="Materiały" />
+
+            <item
+                android:id="@+id/nav_poczta"
+                android:icon="@mipmap/poczta"
+                android:title="Poczta" />
+        </menu>
+    </item>
+</group>
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+    String ktoryElement = "";
+
+    switch (item.getItemId()) {
+
+    case R.id.nav_dla_darczyncy:
+        ktoryElement = "pierwszy";
+        break;
+    case R.id.nav_foramcja:
+        ktoryElement = "drugi";
+        break;
+    case R.id.nav_komfor:
+        ktoryElement = "trzeci";
+        break;
+    case R.id.nav_kontakt:
+        ktoryElement = "czwarty";
+        break;
+    case R.id.nav_materialy:
+        ktoryElement = "piaty";
+        break;
+    case R.id.nav_materialy_prasowe:
+        ktoryElement = "szosty";
+        break;
+    case R.id.nav_nasz_patron:
+        ktoryElement = "siodmy";
+        break;
+    case R.id.nav_o_fundacji:
+        ktoryElement = "osmy";
+        break;
+    case R.id.nav_ogl_ogolne:
+        ktoryElement = "dziewiaty";
+        break;
+    case R.id.nav_ogl_wspolnotowe:
+        ktoryElement = "dziesiaty";
+        break;
+    case R.id.nav_poczta:
+        ktoryElement = "jedenasty";
+        break;
+    default:
+        ktoryElement = "żaden";
+
+    }
+
+    Toast.makeText(getApplicationContext(), "Element: " + ktoryElement,
+    Toast.LENGTH_LONG).show();
+
+    return true;
+    }
+</menu>

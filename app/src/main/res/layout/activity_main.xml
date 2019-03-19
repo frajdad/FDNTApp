@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+    String ktoryElement = "";
+
+    switch (item.getItemId()) {
+
+    case R.id.nav_dla_darczyncy:
+    ktoryElement = "pierwszy";
+    break;
+    case R.id.nav_foramcja:
+    ktoryElement = "drugi";
+    break;
+    case R.id.nav_komfor:
+    ktoryElement = "trzeci";
+    break;
+    case R.id.nav_kontakt:
+    ktoryElement = "czwarty";
+    break;
+    case R.id.nav_materialy:
+    ktoryElement = "piaty";
+    break;
+    case R.id.nav_materialy_prasowe:
+    ktoryElement = "szosty";
+    break;
+    case R.id.nav_nasz_patron:
+    ktoryElement = "siodmy";
+    break;
+    case R.id.nav_o_fundacji:
+    ktoryElement = "osmy";
+    break;
+    case R.id.nav_ogl_ogolne:
+    ktoryElement = "dziewiaty";
+    break;
+    case R.id.nav_ogl_wspolnotowe:
+    ktoryElement = "dziesiaty";
+    break;
+    case R.id.nav_poczta:
+    ktoryElement = "jedenasty";
+    break;
+    default:
+    ktoryElement = "żaden";
+
+    }
+
+    Toast.makeText(getApplicationContext(), "Element: " + ktoryElement,
+    Toast.LENGTH_LONG).show();
+
+    return true;
+    }
+
+</android.support.v4.widget.DrawerLayout>
