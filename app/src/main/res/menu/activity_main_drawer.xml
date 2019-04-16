@@ -10,7 +10,17 @@
         android:icon="@mipmap/strona_glowna"
         android:title="Strona główna" />
 
-    <item android:enabled="true"
+    <item
+        android:id="@+id/nav_login"
+        android:title="Zaloguj się" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Wyloguj się" />
+
+
+    <item
+        android:id="@+id/opcje_ogolne"
+        android:enabled="true"
         android:title="Ogólne"
         android:visible="true"
         app:showAsAction="withText">
@@ -18,8 +28,9 @@
             <item
                 android:id="@+id/nav_o_fundacji"
                 android:icon="@mipmap/o_fundacji"
-                android:title="O Fundacji" />
+                android:title="O Fundacji"
 
+                tools:onClick="oFundacji" />
             <item
                 android:id="@+id/nav_nasz_patron"
                 android:icon="@mipmap/nasz_patron"
@@ -44,6 +55,8 @@
     </item>
 
     <item
+        android:id="@+id/opcje_dla_zalogowanych"
+        android:checkable="true"
         android:enabled="true"
         android:title="Dla zalogowanych"
         android:visible="true"
@@ -92,41 +105,47 @@
 
     switch (item.getItemId()) {
 
+    case R.id.nav_login:
+    ktoryElement = "login";
+    break;
+    case R.id.nav_logout:
+    ktoryElement = "logout";
+    break;
     case R.id.nav_dla_darczyncy:
-        ktoryElement = "pierwszy";
-        break;
+    ktoryElement = "pierwszy";
+    break;
     case R.id.nav_foramcja:
-        ktoryElement = "drugi";
-        break;
+    ktoryElement = "drugi";
+    break;
     case R.id.nav_komfor:
-        ktoryElement = "trzeci";
-        break;
+    ktoryElement = "trzeci";
+    break;
     case R.id.nav_kontakt:
-        ktoryElement = "czwarty";
-        break;
+    ktoryElement = "czwarty";
+    break;
     case R.id.nav_materialy:
-        ktoryElement = "piaty";
-        break;
+    ktoryElement = "piaty";
+    break;
     case R.id.nav_materialy_prasowe:
-        ktoryElement = "szosty";
-        break;
+    ktoryElement = "szosty";
+    break;
     case R.id.nav_nasz_patron:
-        ktoryElement = "siodmy";
-        break;
+    ktoryElement = "siodmy";
+    break;
     case R.id.nav_o_fundacji:
-        ktoryElement = "osmy";
-        break;
+    ktoryElement = "osmy";
+    break;
     case R.id.nav_ogl_ogolne:
-        ktoryElement = "dziewiaty";
-        break;
+    ktoryElement = "dziewiaty";
+    break;
     case R.id.nav_ogl_wspolnotowe:
-        ktoryElement = "dziesiaty";
-        break;
+    ktoryElement = "dziesiaty";
+    break;
     case R.id.nav_poczta:
-        ktoryElement = "jedenasty";
-        break;
+    ktoryElement = "jedenasty";
+    break;
     default:
-        ktoryElement = "żaden";
+    ktoryElement = "żaden";
 
     }
 
