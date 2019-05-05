@@ -5,16 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".OFundacji"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".OFundacji">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="O Fundacji"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="154dp"
+        android:layout_height="149dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription='"logo fundacji"'
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher" />
+
+    <ScrollView
+        android:layout_width="401dp"
+        android:layout_height="491dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="387dp"
+                android:layout_height="369dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center|top"
+                android:text="Fundacja „Dzieło Nowego Tysiąclecia” została powołana przez Konferencję Episkopatu Polski w 2000 roku jako wyraz wdzięczności dla Ojca Świętego Jana Pawła II za Jego niestrudzoną posługę duchową na rzecz Kościoła i Ojczyzny. Idea utworzenia Fundacji jako organizacji, której działalność ma upamiętniać Pontyfikat Jana Pawła II przez promowanie nauczania Papieża i wspieranie określonych przedsięwzięć społecznych, głównie w dziedzinie edukacji i kultury, narodziła się po pielgrzymce Ojca Świętego do Polski w 1999 r."
+                android:textSize="20sp"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="383dp"
+                android:layout_height="226dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="W ciągu dziewiętnastu lat swojej działalności Fundacja objęła opieką kilka tysięcy młodych ludzi z całej Polski zgodnie z wezwaniem Ojca Świętego do „nowej wyobraźni miłosierdzia”. Około 2000 stypendystów niemalże z każdego zakątka Polski tworzy niezwykły pomnik, budowany przez Polaków wdzięcznych św. Janowi Pawłowi II."
+                android:textSize="20sp"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintVertical_bias="0.0" />
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
