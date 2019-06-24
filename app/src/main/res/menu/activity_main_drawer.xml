@@ -10,13 +10,6 @@
         android:icon="@mipmap/strona_glowna"
         android:title="Strona główna" />
 
-    <item
-        android:id="@+id/nav_login"
-        android:title="Zaloguj się" />
-    <item
-        android:id="@+id/nav_logout"
-        android:title="Wyloguj się" />
-
 
     <item
         android:id="@+id/opcje_ogolne"

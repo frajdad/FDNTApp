@@ -7,7 +7,6 @@
     <string name="nav_header_subtitle">stypendysta@dzielo.pl</string>
     <string name="nav_header_title">Nie zalogowany</string>
     <string name="title_activity_logowanie">Sign in</string>
-    <string name="o_fundacji_gora">O Fundacji</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -25,4 +24,9 @@
     <string name="logowanie_gora">Logowanie</string>
     <string name="zle_dane">Zły login lub hasło!</string>
     <string name="title_activity_kalendarz">Kalendarz</string>
+    <string name="o_fundacji_gora">O Fundacji</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="headre_o_fundacji">O Fundacji</string>
 </resources>
