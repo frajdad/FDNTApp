@@ -19,8 +19,8 @@ public class Logowanie extends AppCompatActivity {
             baza[i] = new Stypendysta();
         }
 
-        baza[0] = new Stypendysta("Łukasz", "Kamiński", "kam@.com", "xd");
-        baza[1] = new Stypendysta("Paweł", "Pieńczuk", "stypendysta@dzielo.pl", "dzielo");
+        baza[0] = new Stypendysta("a", "b","Łukasz", "Kamiński","warszawska");
+        //baza[1] = new Stypendysta("Paweł", "Pieńczuk", "stypendysta@dzielo.pl", "dzielo");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Logowanie extends AppCompatActivity {
                     Dane.zalogowany = baza[i];
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
-                    MainActivity.ta_aktywnosc.finish();
+                    Dane.ta_aktywnosc.finish();
                     finish();
                     return;
                 }

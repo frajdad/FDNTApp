@@ -1,11 +1,11 @@
+
 package com.example.helloworld;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,12 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static MainActivity ta_aktywnosc;
 
     //ładuje ponownie MainActivity
     public void odswiez() {
@@ -28,13 +28,14 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    //to bardzo ważna funkcja!
-    @Override
+    //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
 
-        ta_aktywnosc = this;
+        Dane.ta_aktywnosc = this;
+        new AktualizacjaDanych().aktualizuj();
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(Dane.doWyświetlenia);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,21 +56,18 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
+       //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
 
         if(Dane.czy_zalogowany) {
 
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
-            nav_Menu.findItem(R.id.nav_login).setVisible(false);
-            nav_Menu.findItem(R.id.nav_logout).setVisible(true);
         }
 
         else {
 
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
-            nav_Menu.findItem(R.id.nav_login).setVisible(true);
-            nav_Menu.findItem(R.id.nav_logout).setVisible(false);
+
         }
 
 
@@ -100,18 +98,27 @@ public class MainActivity extends AppCompatActivity
 
             TextView email_text = findViewById(R.id.miejsce_na_email);
             email_text.setText(Dane.email());
-            TextView name_text = findViewById(R.id.miejsce_na_imie);
-            name_text.setText(Dane.imie()+" "+Dane.nazwisko());
+            TextView name_text = findViewById(R.id.miejsce_logowanie);
+            name_text.setText("Wyloguj się");
 
 
         }
         else {
             TextView email_text = findViewById(R.id.miejsce_na_email);
             email_text.setText(" ");
-            TextView name_text = findViewById(R.id.miejsce_na_imie);
-            name_text.setText("Nie zalogowany");
+            TextView name_text = findViewById(R.id.miejsce_logowanie);
+            name_text.setText("Zaloguj się");
         }
 
+        if(Dane.zakładka_ze_zmiennym_tekstem) {
+            TextView name_text = findViewById(R.id.text_materialy_prasowe);
+            String[] napis = Dane.tekstDoWyświetlenia.split("\\\\n");
+            String tekst ="";
+            for(int i=0; i<napis.length; i++) {
+                tekst=tekst+napis[i]+"\n";
+            }
+            name_text.setText(tekst);
+        }
 
         return true;
     }
@@ -145,16 +152,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_main_menu) {
             // Handle the camera action
         }
-        else if (id == R.id.nav_logout) {
-            Dane.czy_zalogowany=false;
-            odswiez();
-
-        }
-        else if (id == R.id.nav_login) {
-            Intent intent = new Intent(this, Logowanie.class);
-            startActivity(intent);
-
-        }
         else if (id == R.id.nav_o_fundacji) {
             Intent intent = new Intent(this, OFundacji.class);
             startActivity(intent);
@@ -170,6 +167,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_materialy_prasowe) {
             Intent intent = new Intent(this, MaterialyPrasowe.class);
             startActivity(intent);
+
         }
         else if (id == R.id.nav_kontakt) {
             Intent intent = new Intent(this, Kontakt.class);
@@ -205,6 +203,19 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    public void logInOut(View view) {
+
+        if(!Dane.czy_zalogowany) {
+            Intent intent = new Intent(this, Logowanie.class);
+            startActivity(intent);
+        }
+        else {
+
+            Dane.czy_zalogowany=false;
+            odswiez();
+        }
     }
 
 

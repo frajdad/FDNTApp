@@ -2,17 +2,20 @@ package com.example.helloworld;
 
 public class Stypendysta {
 
-    public Stypendysta(String imie, String nazwisko, String email, String haslo) {
+    public Stypendysta(String email, String haslo, String imie, String nazwisko, String etykieta) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.email = email;
         this.haslo = haslo;
+        this.etykieta = etykieta;
+
     }
     public Stypendysta() {
         this.imie = " ";
         this.nazwisko = " ";
         this.email = " ";
         this.haslo = " ";
+        this.etykieta = " ";
     }
 
     private String imie;
