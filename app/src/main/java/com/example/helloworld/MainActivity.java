@@ -36,8 +36,11 @@ public class MainActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(Dane.doWyświetlenia);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +219,12 @@ public class MainActivity extends AppCompatActivity
             Dane.czy_zalogowany=false;
             odswiez();
         }
+    }
+
+    public void startUstawienia(View view) {
+
+        Intent intent = new Intent(this, Ustawienia.class);
+        startActivity(intent);
     }
 
 

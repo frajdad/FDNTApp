@@ -2,7 +2,6 @@ package com.example.helloworld;
 
 //chcę tu trzymać jakieś globalne dane, głównie związane z aktualnie zalogowaną osobą
 
-import android.content.Intent;
 
 public class Dane {
 
