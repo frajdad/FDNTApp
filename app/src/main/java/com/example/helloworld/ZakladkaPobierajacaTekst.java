@@ -14,7 +14,7 @@ public class ZakladkaPobierajacaTekst extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         Dane.ta_aktywnosc.finish();
-        Dane.doWyświetlenia = R.layout.activity_materialy_prasowe;
+        Dane.doWyświetlenia = R.layout.activity_zakladka_z_tekstem;
         Dane.zakładka_ze_zmiennym_tekstem = true;
 
         new AktualizacjaDanych().aktualizuj();

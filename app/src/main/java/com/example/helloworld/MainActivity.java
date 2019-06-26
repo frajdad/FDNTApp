@@ -114,9 +114,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         if(Dane.zakładka_ze_zmiennym_tekstem) {
-            TextView name_text = findViewById(R.id.text_materialy_prasowe);
+            TextView name_text = findViewById(R.id.content_zakladka_z_tekstem);
             String[] napis = Dane.tekstDoWyświetlenia.split("\\\\n");
-            String tekst ="";
+            String tekst =" ";
             for(int i=0; i<napis.length; i++) {
                 tekst=tekst+napis[i]+"\n";
             }
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void startUstawienia(View view) {
+    public void startUstawienia(MenuItem item) {
 
         Intent intent = new Intent(this, Ustawienia.class);
         startActivity(intent);

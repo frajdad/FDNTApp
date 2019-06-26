@@ -18,7 +18,7 @@ public class DlaDarczyncy extends ZakladkaPobierajacaTekst {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        tekst = "Do uzupełnienia";
+        tekst = Dane.dla_daroczyncy;
         super.onCreate(savedInstanceState);
     }
 }
