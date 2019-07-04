@@ -13,12 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class DlaDarczyncy extends ZakladkaPobierajacaTekst {
+public class DlaDarczyncy extends ZakladkaWyswietlajaca {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        tekst = Dane.dla_daroczyncy;
+        adres = Dane.dla_daroczyncy;
+        Dane.czy_chcemy_Internet = false;
         super.onCreate(savedInstanceState);
     }
 }

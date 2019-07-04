@@ -3,22 +3,22 @@ package com.example.helloworld;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 
-public class ZakladkaPobierajacaTekst extends AppCompatActivity {
+public class ZakladkaWyswietlajaca extends AppCompatActivity {
 
-    protected String tekst;
+    protected String adres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         Dane.ta_aktywnosc.finish();
-        Dane.doWyświetlenia = R.layout.activity_zakladka_z_tekstem;
-        Dane.zakładka_ze_zmiennym_tekstem = true;
+        Dane.doWyświetlenia = R.layout.activity_main;
 
-        new AktualizacjaDanych().aktualizuj();
-        Dane.tekstDoWyświetlenia = tekst;
+        Dane.zawartoscDoWyświetlenia = adres;
 
         this.finish();
 
@@ -27,6 +27,5 @@ public class ZakladkaPobierajacaTekst extends AppCompatActivity {
 
 
     }
-
 
 }

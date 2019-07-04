@@ -3,12 +3,13 @@ package com.example.helloworld;
 import android.os.Bundle;
 
 
-public class Materialy extends ZakladkaPobierajacaTekst {
+public class Materialy extends ZakladkaWyswietlajaca {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        tekst = Dane.materiały;
+        adres = Dane.materiały;
+        Dane.czy_chcemy_Internet = true;
         super.onCreate(savedInstanceState);
     }
 }

@@ -2,6 +2,7 @@
 package com.example.helloworld;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -32,10 +36,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
 
         Dane.ta_aktywnosc = this;
-        new AktualizacjaDanych().aktualizuj();
 
         super.onCreate(savedInstanceState);
         setContentView(Dane.doWyświetlenia);
+
+        WebView myWebView = (WebView) findViewById(R.id.webview);
+        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.loadUrl(Dane.getZawartoscDoWyświetlenia());
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,8 +53,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Moja akcja", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //gdy naciśnie się przycisk ten po prawej na dole to dzwoni
+                call(view);
             }
         });
 
@@ -72,6 +80,16 @@ public class MainActivity extends AppCompatActivity
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
 
         }
+
+        if(Dane.czy_jest_przycisk) {
+
+            findViewById(R.id.fab).setVisibility(View.VISIBLE);
+            Dane.czy_jest_przycisk = false;
+        }
+        else {
+            findViewById(R.id.fab).setVisibility(View.INVISIBLE);
+        }
+
 
 
 
@@ -113,16 +131,6 @@ public class MainActivity extends AppCompatActivity
             name_text.setText("Zaloguj się");
         }
 
-        if(Dane.zakładka_ze_zmiennym_tekstem) {
-            TextView name_text = findViewById(R.id.content_zakladka_z_tekstem);
-            String[] napis = Dane.tekstDoWyświetlenia.split("\\\\n");
-            String tekst =" ";
-            for(int i=0; i<napis.length; i++) {
-                tekst=tekst+napis[i]+"\n";
-            }
-            name_text.setText(tekst);
-        }
-
         return true;
     }
 
@@ -153,7 +161,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main_menu) {
-            // Handle the camera action
+            Intent intent = new Intent(this, StronaGlowna.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_o_fundacji) {
             Intent intent = new Intent(this, OFundacji.class);
@@ -225,6 +234,21 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent = new Intent(this, Ustawienia.class);
         startActivity(intent);
+    }
+
+    public void call(View view) {
+
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:+48225304828"));
+        startActivity(callIntent);
+    }
+
+    public void email(View view) {
+
+        Intent emailIntent = new Intent(Intent.ACTION_VIEW);
+        emailIntent.setData(Uri.parse("mailto:dzielo@episkopat.pl"));
+        //emailIntent.setType("text/plain");
+        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
 
