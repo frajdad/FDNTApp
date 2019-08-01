@@ -12,6 +12,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Dane {
 
+    public String nazwaWersjiAplikacji() {
+
+        return BuildConfig.VERSION_NAME;
+    }
+    public int numerWersjiAplikacji() {
+
+        return BuildConfig.VERSION_CODE;
+    }
+
     protected static Boolean czy_zalogowany() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null)
             return false;
@@ -19,6 +28,7 @@ public class Dane {
             return true;
     }
     protected static Boolean czy_jest_przycisk = false;
+
 
 
     protected static String zawartoscDoWyświetlenia = Dane.główna;
