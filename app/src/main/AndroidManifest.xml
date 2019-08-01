@@ -76,6 +76,10 @@
             android:label="Nasz Patron"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".Poczta"
+            android:label="Poczta"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

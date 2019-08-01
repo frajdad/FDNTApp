@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "255658901145",
+    "firebase_url": "https://fdntapp-1564519012772.firebaseio.com",
+    "project_id": "fdntapp-1564519012772",
+    "storage_bucket": "fdntapp-1564519012772.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255658901145:android:2afc2cbb2b4b3171",
+        "android_client_info": {
+          "package_name": "com.example.helloworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255658901145-c8k2917rtr23pion0v5r3uf0jsdmc24n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.helloworld",
+            "certificate_hash": "e0aab31caa931c752dc4add73bf908d452ac730b"
+          }
+        },
+        {
+          "client_id": "255658901145-3odohtgp13ib0843lgmsvg1lkna6kr13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbAUi9AyeDls5Kky1DDvPHGEuuUpJMTxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255658901145-od7joso1gndp9adul301irsa0hecnnaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

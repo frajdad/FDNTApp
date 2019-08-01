@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,8 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -31,17 +32,31 @@ public class MainActivity extends AppCompatActivity
         startActivity(getIntent());
     }
 
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
 
         Dane.ta_aktywnosc = this;
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "niewiem");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         super.onCreate(savedInstanceState);
         setContentView(Dane.doWyświetlenia);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.setWebViewClient(new WebViewClient() {
+
+            public void onPageFinished(WebView view, String url) {
+                ZakladkaWyswietlajaca.dodatkoweDziałania(view);
+            }
+        });
         myWebView.loadUrl(Dane.getZawartoscDoWyświetlenia());
 
 
@@ -54,6 +69,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 //gdy naciśnie się przycisk ten po prawej na dole to dzwoni
+                //ale widać go tylko w zakładce kontakt
                 call(view);
             }
         });
@@ -70,7 +86,7 @@ public class MainActivity extends AppCompatActivity
        //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
 
-        if(Dane.czy_zalogowany) {
+        if(Dane.czy_zalogowany()) {
 
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
         }
@@ -115,7 +131,7 @@ public class MainActivity extends AppCompatActivity
 
         //tu robimy cos, żeby było widać odpowiednie napisy na samej górze paska bocznego
         //nie wiem czy to najlepsze miejsce na to, ale działa
-        if(Dane.czy_zalogowany) {
+        if(Dane.czy_zalogowany()) {
 
             TextView email_text = findViewById(R.id.miejsce_na_email);
             email_text.setText(Dane.email());
@@ -219,13 +235,12 @@ public class MainActivity extends AppCompatActivity
 
     public void logInOut(View view) {
 
-        if(!Dane.czy_zalogowany) {
+        if(!Dane.czy_zalogowany()) {
             Intent intent = new Intent(this, Logowanie.class);
             startActivity(intent);
         }
         else {
-
-            Dane.czy_zalogowany=false;
+            FirebaseAuth.getInstance().signOut();
             odswiez();
         }
     }

@@ -7,12 +7,17 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Dane {
 
-
-    protected static Stypendysta zalogowany = new Stypendysta();
-
-    protected static Boolean czy_zalogowany = false;
+    protected static Boolean czy_zalogowany() {
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+            return false;
+        else
+            return true;
+    }
     protected static Boolean czy_jest_przycisk = false;
 
 
@@ -39,10 +44,21 @@ public class Dane {
     protected static int doWyświetlenia = R.layout.activity_main;
 
 
-    public static String imie() {return zalogowany.imie();}
-    public static String nazwisko() {return zalogowany.nazwisko();}
-    public static String email() {return  zalogowany.email();}
-    public static String etykieta() {return zalogowany.etykieta();}
+    protected static String email() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null)
+            return user.getEmail();
+        else
+            return "";
+    }
+    protected static String nazwa() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null)
+            return user.getDisplayName();
+        else
+            return "";
+    }
+    public static String etykieta() {return "Do zmiany";}
 
     //Rzeczy z ustawieniami
     protected static Boolean ciemny_motyw = false;
@@ -53,16 +69,20 @@ public class Dane {
     protected static final String o_fundacji = "file:///android_asset/o_fundacji.html";
     protected static final String nasz_patron = "file:///android_asset/nasz_patron.html";
     protected static final String dla_daroczyncy = "file:///android_asset/dla_daroczyncy.html";
-    protected static final String materialy_prasowe = "file:///android_asset/materialy_prasowe.html";
+    protected static final String materialy_prasowe = "https://dzielo.pl/dla-mediow/do-pobrania/";
     protected static final String kontakt = "file:///android_asset/kontakt.html";
 
     protected static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
     protected static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
     protected static String oglWspólnotowe() {
-        return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
+
+        if(Dane.etykieta().equals("warszawska"))
+            return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
+
+        return "";
     }
     protected static String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
-
+    protected static String poczta = "https://login.poczta.home.pl/";
 
 }
 
