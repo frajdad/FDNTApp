@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
 
+
+
         Dane.ta_aktywnosc = this;
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 

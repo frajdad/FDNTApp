@@ -1,5 +1,6 @@
 package com.example.helloworld;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,11 +14,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Logowanie extends AppCompatActivity {
 
 
+    //To jest obiekt do uwierzytelniania
     private FirebaseAuth mAuth;
+    //To jest obiekt, który pokazjuje kręcące się kóło na czas logowania
+    private ProgressDialog mProgress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,12 @@ public class Logowanie extends AppCompatActivity {
         setContentView(R.layout.activity_logowanie);
 
         mAuth = FirebaseAuth.getInstance();
+
+        mProgress = new ProgressDialog(this);
+        mProgress.setTitle("Logowanie");
+        mProgress.setMessage("Proszę czekać...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
     }
 
     @Override
@@ -39,6 +51,8 @@ public class Logowanie extends AppCompatActivity {
 
     // uruchamia się gdy zostanie przyciśnięty przysisk
     public void zaloguj(View view) {
+
+        mProgress.show();
 
         EditText editTextEmail = (EditText) findViewById(R.id.email);
         String email = editTextEmail.getText().toString();
@@ -61,6 +75,7 @@ public class Logowanie extends AppCompatActivity {
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
+                            mProgress.dismiss();
                             TextView zle_dane = findViewById(R.id.zle_dane);
                             zle_dane.setVisibility(View.VISIBLE);
                         }
@@ -72,10 +87,18 @@ public class Logowanie extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
 
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName("Lukasz")
+                .build();
+
+        user.updateProfile(profileUpdates);
+
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         Dane.ta_aktywnosc.finish();
         finish();
     }
+
 
 }

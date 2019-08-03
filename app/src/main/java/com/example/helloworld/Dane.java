@@ -55,6 +55,7 @@ public class Dane {
 
 
     protected static String email() {
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
             return user.getEmail();
@@ -62,13 +63,21 @@ public class Dane {
             return "";
     }
     protected static String nazwa() {
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
             return user.getDisplayName();
         else
             return "";
     }
-    public static String etykieta() {return "Do zmiany";}
+    //W tej wersji przechowujemy etykietę użytkownika i jego nazwie. Jest to nieco dziwne,
+    //ale na razie nie potrzebujmy nazwy, a jest to oszczędąść pracy programisty,
+    //bo dzięki temu nie bawimy się w dodatkową bazę danych
+    protected static Long etykieta() {
+
+        String etykieta = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        return Long.parseLong(etykieta);
+    }
 
     //Rzeczy z ustawieniami
     protected static Boolean ciemny_motyw = false;
@@ -85,11 +94,7 @@ public class Dane {
     protected static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
     protected static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
     protected static String oglWspólnotowe() {
-
-        if(Dane.etykieta().equals("warszawska"))
             return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
-
-        return "";
     }
     protected static String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
     protected static String poczta = "https://login.poczta.home.pl/";
