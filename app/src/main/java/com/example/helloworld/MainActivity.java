@@ -217,6 +217,11 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_poczta) {
             zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
         }
+        else if (id == R.id.nav_zglos_blad) {
+            Intent intent = new Intent(this, ZglosBlad.class);
+            startActivity(intent);
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -239,6 +244,12 @@ public class MainActivity extends AppCompatActivity
     public void startUstawienia(MenuItem item) {
 
         Intent intent = new Intent(this, Ustawienia.class);
+        startActivity(intent);
+    }
+
+    public void startZglosBlad(View view) {
+
+        Intent intent = new Intent(this, ZglosBlad.class);
         startActivity(intent);
     }
 

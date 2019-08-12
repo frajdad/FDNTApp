@@ -38,6 +38,10 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name=".ZglosBlad"
+            android:label="Zgłoś błąd"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".Logowanie"
             android:label="@string/logowanie_gora"
             android:parentActivityName=".MainActivity">
