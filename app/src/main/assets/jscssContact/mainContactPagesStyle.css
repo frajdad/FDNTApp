@@ -1,0 +1,104 @@
+
+body {
+    color: #222222;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contactTabNav {
+    margin: 0 0;
+    /*margin-top: -2%;*/
+    z-index: 1000;
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FCCF03;
+    font-weight: 500;
+}
+
+.contactTabNav > a {
+    text-decoration: none;
+    font-size: 1.15em;
+    color: #222222;
+}
+
+.currentCard {
+     color: #ffffff !important;
+}
+
+
+.fdntlogo {
+    height: auto;
+    padding: 0;
+    text-align: center;
+}
+.fdntlogo img {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 0;
+	padding-bottom: 0;
+}
+
+.foundationContact {
+    display: flex;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    flex-direction: column;
+    margin-bottom: 0 !important;
+}
+
+.foundationContact img {
+    margin-bottom: 4vw;
+    border-radius: 10px;
+    height: 23vw;
+}
+
+.email {
+    margin-bottom: 0 !important;
+}
+
+.officeContact {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5vw;
+    margin: 0 auto;
+}
+
+.officeContact > div {
+    flex-direction: column;
+}
+
+.left {
+    margin-left: 3vw;
+}
+
+.right {
+    margin-right: 3vw;
+}
+
+.officeContact > div > a > img {
+    width: 40vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 4vw;
+    height: 40vw;
+}
+
+.leadershipContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    padding-top: 5vw;
+    margin: 0 auto;
+}
+
+.leadershipContact > a > img {
+    width: 40vw;
+    margin-bottom: 4vw;
+    height: 40vw;
+}

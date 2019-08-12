@@ -12,14 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Dane {
 
-    public String nazwaWersjiAplikacji() {
 
-        return BuildConfig.VERSION_NAME;
-    }
-    public int numerWersjiAplikacji() {
-
-        return BuildConfig.VERSION_CODE;
-    }
 
     protected static Boolean czy_zalogowany() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null)
@@ -27,10 +20,6 @@ public class Dane {
         else
             return true;
     }
-    protected static Boolean czy_jest_przycisk = false;
-
-
-
     protected static String zawartoscDoWyświetlenia = Dane.główna;
     protected static Boolean czy_chcemy_Internet = true;
     public static String getZawartoscDoWyświetlenia() {
@@ -48,12 +37,9 @@ public class Dane {
     }
 
 
-
     protected static MainActivity ta_aktywnosc;
 
-    protected static int doWyświetlenia = R.layout.activity_main;
-
-
+    //Aktualnie zalogowany użytkownik
     protected static String email() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -84,21 +70,64 @@ public class Dane {
 
 
     //adresy do zakładek
-    protected static final String główna = "https://dzielo.pl/";
-    protected static final String o_fundacji = "file:///android_asset/o_fundacji.html";
-    protected static final String nasz_patron = "file:///android_asset/nasz_patron.html";
-    protected static final String dla_daroczyncy = "file:///android_asset/dla_daroczyncy.html";
-    protected static final String materialy_prasowe = "https://dzielo.pl/dla-mediow/do-pobrania/";
-    protected static final String kontakt = "file:///android_asset/kontakt.html";
+    private static final String główna = "https://dzielo.pl/";
+    private static final String o_fundacji = "file:///android_asset/o_fundacji.html";
+    private static final String nasz_patron = "file:///android_asset/nasz_patron.html";
+    private static final String dla_daroczyncy = "file:///android_asset/dla_daroczyncy.html";
+    private static final String materialy_prasowe = "https://dzielo.pl/dla-mediow/do-pobrania/";
+    private static final String kontakt = "file:///android_asset/kontakt.html";
+    private static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
+    private static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
+    private static final String komunikator = "";
+    private static final String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
+    private static final String poczta = "https://login.poczta.home.pl/";
 
-    protected static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
-    protected static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
-    protected static String oglWspólnotowe() {
-            return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
+    protected static String główna() {
+        return główna;
     }
-    protected static String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
-    protected static String poczta = "https://login.poczta.home.pl/";
+    protected static String o_fundacji() {
+        return o_fundacji;
+    }
+    protected static String nasz_patron() {
+        return nasz_patron;
+    }
+    protected static String dla_daroczyncy() {
+        return dla_daroczyncy;
+    }
+    protected static String materialy_prasowe() {
+        return materialy_prasowe;
+    }
+    protected static String kontakt() {
+        return kontakt;
+    }
+    protected static String formacja() {
+        return formacja;
+    }
+    protected static String ogl_ogolne() {
+        return ogl_ogolne;
+    }
+    protected static String oglWspólnotowe() {
+        return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
+    }
+    protected static String komunikator() {
+        return komunikator;
+    }
+    protected static String materialy() {
+        return materiały;
+    }
+    protected static String poczta() {
+        return poczta;
+    }
 
+    //Wersja aplikacji
+    public String nazwaWersjiAplikacji() {
+
+        return BuildConfig.VERSION_NAME;
+    }
+    public int numerWersjiAplikacji() {
+
+        return BuildConfig.VERSION_CODE;
+    }
 }
 
 

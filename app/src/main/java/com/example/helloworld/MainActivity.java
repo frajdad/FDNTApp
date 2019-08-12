@@ -33,39 +33,29 @@ public class MainActivity extends AppCompatActivity
     }
 
     private FirebaseAnalytics mFirebaseAnalytics;
+    private WebView myWebView;
 
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
 
-
+        super.onCreate(savedInstanceState);
 
         Dane.ta_aktywnosc = this;
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "niewiem");
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        //Wyświetlanie odpowiedniego layoutu
+        setContentView(R.layout.activity_main);
 
-        super.onCreate(savedInstanceState);
-        setContentView(Dane.doWyświetlenia);
-
-        WebView myWebView = (WebView) findViewById(R.id.webview);
+        //Wyświetlanie treści napisanej w html i różne ustawienia Webview
+        myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new WebViewClient() {
-
-            public void onPageFinished(WebView view, String url) {
-                ZakladkaWyswietlajaca.dodatkoweDziałania(view);
-            }
-        });
-        myWebView.loadUrl(Dane.getZawartoscDoWyświetlenia());
+        myWebView.loadUrl(Dane.główna());
 
 
+        //Menu w prawym górnym rogu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //Przycisk w lewym dolnym rogu
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +66,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Pasek poczny z opcjami
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -87,30 +78,23 @@ public class MainActivity extends AppCompatActivity
 
        //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
-
         if(Dane.czy_zalogowany()) {
 
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
         }
-
         else {
 
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
-
-        }
-
-        if(Dane.czy_jest_przycisk) {
-
-            findViewById(R.id.fab).setVisibility(View.VISIBLE);
-            Dane.czy_jest_przycisk = false;
-        }
-        else {
-            findViewById(R.id.fab).setVisibility(View.INVISIBLE);
         }
 
 
-
-
+        //wysyłąnie danych do analizy w Firebase
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "niewiem");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
 
@@ -169,65 +153,70 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private void zmieńZakładkę(String adres, String nagłówek, Boolean przycisk, Boolean internet) {
+
+        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+        myWebView.setWebViewClient(new WebViewClient() {
+
+            public void onPageFinished(WebView view, String url) {
+                //Dodadtowe działania, do zrobienia później
+                findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
+            }
+        });
+        myWebView.loadUrl(adres);
+
+        if(przycisk)
+            findViewById(R.id.fab).setVisibility(View.VISIBLE);
+        else
+            findViewById(R.id.fab).setVisibility(View.INVISIBLE);
+
+
+        setTitle(nagłówek);
+    }
+
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-
-
         int id = item.getItemId();
 
         if (id == R.id.nav_main_menu) {
-            Intent intent = new Intent(this, StronaGlowna.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.główna(), "FDNT", false, true);
         }
         else if (id == R.id.nav_o_fundacji) {
-            Intent intent = new Intent(this, OFundacji.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.o_fundacji(), "O Fundacji", false, false);
         }
         else if (id == R.id.nav_nasz_patron) {
-            Intent intent = new Intent(this, NaszPatron.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron", false, false);
         }
         else if (id == R.id.nav_dla_darczyncy) {
-            Intent intent = new Intent(this, DlaDarczyncy.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Daroczyńcy", false, false);
         }
         else if (id == R.id.nav_materialy_prasowe) {
-            Intent intent = new Intent(this, MaterialyPrasowe.class);
-            startActivity(intent);
-
+            zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe", false, false);
         }
         else if (id == R.id.nav_kontakt) {
-            Intent intent = new Intent(this, Kontakt.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.kontakt(), "Kontakt", true, false);
         }
         else if (id == R.id.nav_formacja) {
-            Intent intent = new Intent(this, Formacja.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.formacja(), "Formacja", false, true);
         }
         else if (id == R.id.nav_ogl_ogolne) {
-            Intent intent = new Intent(this, OglOgolne.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.ogl_ogolne(), "Ogłoszenia ogólne", false, true);
         }
         else if (id == R.id.nav_ogl_wspolnotowe) {
-            Intent intent = new Intent(this, OglWspolnotowe.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.oglWspólnotowe(), "Ogłoszenia Wspólnotowe", false, true);
         }
         else if (id == R.id.nav_kom_for) {
-            Intent intent = new Intent(this, KomFor.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.komunikator(), "Komunikator", false, true);
         }
         else if (id == R.id.nav_materialy) {
-            Intent intent = new Intent(this, Materialy.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.materialy(), "Materiały", false, true);
         }
         else if (id == R.id.nav_poczta) {
-            Intent intent = new Intent(this, Poczta.class);
-            startActivity(intent);
+            zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

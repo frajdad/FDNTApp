@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.helloworld">
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- Pozwolenia dostępu -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -31,6 +31,7 @@
         <activity
             android:name=".Ustawienia"
             android:label="Ustawienia"
+
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -44,50 +45,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity
-            android:name=".StronaGlowna"
-            android:label="Strona Główna"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".OFundacji"
-            android:label="@string/o_fundacji_gora"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".MaterialyPrasowe"
-            android:label="Materiały Prasowe"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Materialy"
-            android:label="Materiały"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Formacja"
-            android:label="Formacja"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".OglOgolne"
-            android:label="Ogłoszenia Ogólne"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".OglWspolnotowe"
-            android:label="Ogłoszenia wspólnotowe"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Kontakt"
-            android:label="Kontakt"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".DlaDarczyncy"
-            android:label="Dla Daroczyńcy"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".NaszPatron"
-            android:label="Nasz Patron"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Poczta"
-            android:label="Poczta"
-            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

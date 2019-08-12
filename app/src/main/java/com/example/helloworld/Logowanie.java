@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class Logowanie extends AppCompatActivity {
 
@@ -46,7 +45,7 @@ public class Logowanie extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null)
-            updateUI(currentUser);
+            resetuj(currentUser);
     }
 
     // uruchamia się gdy zostanie przyciśnięty przysisk
@@ -61,6 +60,7 @@ public class Logowanie extends AppCompatActivity {
 
 
         loguj(email, password);
+
     }
 
     private void loguj(String email, String password) {
@@ -69,34 +69,25 @@ public class Logowanie extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            resetuj(user);
                         } else {
-                            // If sign in fails, display a message to the user.
+
                             mProgress.dismiss();
                             TextView zle_dane = findViewById(R.id.zle_dane);
                             zle_dane.setVisibility(View.VISIBLE);
                         }
 
-                        // ...
                     }
                 });
     }
 
-    private void updateUI(FirebaseUser user) {
-
-        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName("Lukasz")
-                .build();
-
-        user.updateProfile(profileUpdates);
-
+    private void resetuj(FirebaseUser user) {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        Dane.ta_aktywnosc.finish();
+        Dane.ta_aktywnosc.odswiez();
         finish();
     }
 

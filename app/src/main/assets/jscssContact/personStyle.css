@@ -1,0 +1,73 @@
+body {
+    color: #222222;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contactTabNav {
+    margin: 0 0;
+    /*margin-top: -2%;*/
+    z-index: 1000;
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FCCF03;
+    font-weight: 500;
+}
+
+.contactTabNav > a {
+    text-decoration: none;
+    font-size: 1.15rem;
+    color: #222222;
+}
+
+.person-html {
+    padding-top: 5vw;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.person {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    flex-direction: column;
+}
+
+.person > p {
+    text-align: center;
+}
+
+.person > img {
+    width: 60vw;
+    height: 40vw;
+    margin-bottom: 3vw;
+    border: 1px #575555 solid;
+}
+
+.name {
+    background-color: #FCCF03;
+    padding: 2vw 10vw 2vw 10vw; /*1.top, 2,right, 3.bottom, 4.left*/
+    text-align: center;
+    border-radius: 5px;
+    border: 1px #575555 solid;
+}
+
+.personContact > div {
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    flex-direction: row;
+}
+
+.personContact > div > img {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 3vw;
+}
+
+
