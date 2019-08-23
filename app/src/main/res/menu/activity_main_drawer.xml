@@ -7,6 +7,8 @@
 
     <item
         android:id="@+id/nav_main_menu"
+        android:checkable="true"
+        android:checked="true"
         android:icon="@mipmap/strona_glowna"
         android:title="Strona główna" />
 
@@ -20,33 +22,33 @@
         <menu>
             <item
                 android:id="@+id/nav_o_fundacji"
+                android:checkable="true"
                 android:icon="@mipmap/o_fundacji"
-                android:title="O Fundacji"
 
-                tools:onClick="oFundacji" />
+                android:title="O Fundacji" />
             <item
                 android:id="@+id/nav_nasz_patron"
+                android:checkable="true"
                 android:icon="@mipmap/nasz_patron"
                 android:title="Nasz Patron" />
 
 
             <item
                 android:id="@+id/nav_dla_darczyncy"
+                android:checkable="true"
                 android:icon="@mipmap/dla_darczyncy"
                 android:title="Dla Darczyńcy" />
             <item
                 android:id="@+id/nav_materialy_prasowe"
+                android:checkable="true"
                 android:icon="@mipmap/materialy_prasowe"
                 android:title="Materiały prasowe" />
 
             <item
                 android:id="@+id/nav_kontakt"
+                android:checkable="true"
                 android:icon="@mipmap/kontakt"
                 android:title="Kontakt" />
-            <item
-                android:id="@+id/nav_zglos_blad"
-                android:icon="@android:drawable/ic_dialog_alert"
-                android:title="Zgłoś Błąd" />
 
         </menu>
     </item>
@@ -64,31 +66,37 @@
 
             <item
                 android:id="@+id/nav_formacja"
+                android:checkable="true"
                 android:icon="@mipmap/formacja"
                 android:title="Formacja" />
 
             <item
                 android:id="@+id/nav_ogl_ogolne"
+                android:checkable="true"
                 android:icon="@mipmap/ogloszenia_ogolne"
                 android:title="Ogłoszenia ogólne" />
 
             <item
                 android:id="@+id/nav_ogl_wspolnotowe"
+                android:checkable="true"
                 android:icon="@mipmap/ogloszenia_wspolnotowe"
                 android:title="Ogłoszenia wspólnotowe" />
 
             <item
                 android:id="@+id/nav_kom_for"
+                android:checkable="true"
                 android:icon="@mipmap/komunikator_forum"
                 android:title="Komunikator/Forum" />
 
             <item
                 android:id="@+id/nav_materialy"
+                android:checkable="true"
                 android:icon="@mipmap/materialy"
                 android:title="Materiały" />
 
             <item
                 android:id="@+id/nav_poczta"
+                android:checkable="true"
                 android:icon="@mipmap/poczta"
                 android:title="Poczta" />
         </menu>

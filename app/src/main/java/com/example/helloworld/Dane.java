@@ -81,7 +81,6 @@ public class Dane {
     private static final String komunikator = "";
     private static final String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
     private static final String poczta = "https://login.poczta.home.pl/";
-    private static final String zglos_blad = "file:///android_java/ZglosBlad.class";
 
     protected static String główna() {
         return główna;
@@ -108,7 +107,7 @@ public class Dane {
         return ogl_ogolne;
     }
     protected static String oglWspólnotowe() {
-        return "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_wspolnotowe/";
+        return "https://sites.google.com/view/fdnt-strona-testowa";
     }
     protected static String komunikator() {
         return komunikator;
@@ -119,9 +118,7 @@ public class Dane {
     protected static String poczta() {
         return poczta;
     }
-    protected static String zglos_blad() {
-        return zglos_blad;
-    }
+
 
 
     //Wersja aplikacji

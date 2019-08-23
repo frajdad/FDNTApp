@@ -4,13 +4,6 @@ package com.example.helloworld;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +11,14 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private WebView myWebView;
+    private NavigationView navigationView;
 
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         //Wyświetlanie treści napisanej w html i różne ustawienia Webview
         myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.loadUrl(Dane.główna());
+        zmieńZakładkę(Dane.główna(), "FDNT", false, true);
 
 
         //Menu w prawym górnym rogu
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
        //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
@@ -172,6 +174,7 @@ public class MainActivity extends AppCompatActivity
 
 
         setTitle(nagłówek);
+
     }
 
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
@@ -217,10 +220,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.nav_poczta) {
             zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
         }
-        else if (id == R.id.nav_zglos_blad) {
-            Intent intent = new Intent(this, ZglosBlad.class);
-            startActivity(intent);
-        }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -243,15 +243,11 @@ public class MainActivity extends AppCompatActivity
 
     public void startUstawienia(MenuItem item) {
 
-        Intent intent = new Intent(this, Ustawienia.class);
+        Intent intent = new Intent(this, UstawieniaAX.class);
         startActivity(intent);
     }
 
-    public void startZglosBlad(View view) {
 
-        Intent intent = new Intent(this, ZglosBlad.class);
-        startActivity(intent);
-    }
 
     public void call(View view) {
 
