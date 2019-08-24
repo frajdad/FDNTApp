@@ -100,13 +100,17 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
+    //Co się dzieje jak klikamy "wstecz"
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else if (myWebView.canGoBack()) {
+            myWebView.goBack();
+        }
+        else {
             super.onBackPressed();
         }
 
@@ -155,14 +159,21 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
+
     private void zmieńZakładkę(String adres, String nagłówek, Boolean przycisk, Boolean internet) {
 
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+        clear = true;
+
         myWebView.setWebViewClient(new WebViewClient() {
 
             public void onPageFinished(WebView view, String url) {
                 //Dodadtowe działania, do zrobienia później
                 findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
+                if(clear)
+                    myWebView.clearHistory();
+                clear = false;
             }
         });
         myWebView.loadUrl(adres);
@@ -174,7 +185,6 @@ public class MainActivity extends AppCompatActivity
 
 
         setTitle(nagłówek);
-
     }
 
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
