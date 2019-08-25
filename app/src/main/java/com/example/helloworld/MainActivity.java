@@ -1,6 +1,7 @@
 
 package com.example.helloworld;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAnalytics mFirebaseAnalytics;
     private WebView myWebView;
     private NavigationView navigationView;
+    private Context mContext = this;
+    private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
 
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,36 @@ public class MainActivity extends AppCompatActivity
         //Wyświetlanie treści napisanej w html i różne ustawienia Webview
         myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.setWebViewClient(new WebViewClient(){
+
+            public void onPageFinished(WebView view, String url) {
+
+                findViewById(R.id.progressBar).setVisibility(View.INVISIBLE); //chowamy kręcące się kółko
+                if(clear)
+                    myWebView.clearHistory(); //czyścimy historię żeby nie móc się cofać zbyt daleko
+                clear = false;
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+
+                //You can also use 'url.startsWith()'
+                if (url.contains("mailto:")){
+                    sendEmail(url);
+                    return true;
+                }
+                else if (url.contains("tel:")) {
+                    callTo(url);
+                    return true;
+                }
+                else{
+                    // Handle what t do if the link doesn't contain or start with mailto:
+                    view.loadUrl(url); // you want to use this otherwise the links in the webview won't work
+                }
+                return true;
+            }
+        });
+
         zmieńZakładkę(Dane.główna(), "FDNT", false, true);
 
 
@@ -93,9 +126,6 @@ public class MainActivity extends AppCompatActivity
         //wysyłąnie danych do analizy w Firebase
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "1");
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "niewiem");
-        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
@@ -159,23 +189,13 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
+
 
     private void zmieńZakładkę(String adres, String nagłówek, Boolean przycisk, Boolean internet) {
 
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         clear = true;
 
-        myWebView.setWebViewClient(new WebViewClient() {
-
-            public void onPageFinished(WebView view, String url) {
-                //Dodadtowe działania, do zrobienia później
-                findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
-                if(clear)
-                    myWebView.clearHistory();
-                clear = false;
-            }
-        });
         myWebView.loadUrl(adres);
 
         if(przycisk)
@@ -204,7 +224,7 @@ public class MainActivity extends AppCompatActivity
             zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron", false, false);
         }
         else if (id == R.id.nav_dla_darczyncy) {
-            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Daroczyńcy", false, false);
+            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Darczyńcy", false, false);
         }
         else if (id == R.id.nav_materialy_prasowe) {
             zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe", false, false);
@@ -266,13 +286,18 @@ public class MainActivity extends AppCompatActivity
         startActivity(callIntent);
     }
 
-    public void email(View view) {
+    public void callTo(String command) {
+
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse(command));
+        startActivity(callIntent);
+    }
+
+    public void sendEmail(String command) {
 
         Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-        emailIntent.setData(Uri.parse("mailto:dzielo@episkopat.pl"));
+        emailIntent.setData(Uri.parse(command));
         //emailIntent.setType("text/plain");
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
-
-
 }
