@@ -10,6 +10,8 @@ import android.net.NetworkInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import javax.mail.Session;
+
 public class Dane {
 
 
@@ -130,6 +132,10 @@ public class Dane {
 
         return BuildConfig.VERSION_CODE;
     }
+
+    //Sesja email
+    protected static Session session;
+    protected static String emailAddress;
 }
 
 

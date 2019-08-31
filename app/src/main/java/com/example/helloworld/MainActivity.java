@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.helloworld.email.Login;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -248,7 +249,9 @@ public class MainActivity extends AppCompatActivity
             zmieńZakładkę(Dane.materialy(), "Materiały", false, true);
         }
         else if (id == R.id.nav_poczta) {
-            zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
+            //zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
+            Intent intent = new Intent(this, Login.class);
+            startActivity(intent);
         }
 
 
@@ -272,7 +275,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startUstawienia(MenuItem item) {
-
         Intent intent = new Intent(this, UstawieniaAX.class);
         startActivity(intent);
     }
@@ -294,10 +296,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void sendEmail(String command) {
-
         Intent emailIntent = new Intent(Intent.ACTION_VIEW);
         emailIntent.setData(Uri.parse(command));
         //emailIntent.setType("text/plain");
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+
     }
 }

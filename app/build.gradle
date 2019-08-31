@@ -34,4 +34,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation files('libs/jsoup-1.12.1.jar')
+    implementation files('libs\\mail.jar')
+    implementation files('libs\\additionnal.jar')
+    implementation files('libs\\activation.jar')
 }
