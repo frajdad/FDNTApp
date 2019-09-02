@@ -1,7 +1,6 @@
 
 package com.example.helloworld;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,11 +35,12 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAnalytics mFirebaseAnalytics;
     private WebView myWebView;
     private NavigationView navigationView;
-    private Context mContext = this;
+
     private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
 
     //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
 
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         //Wyświetlanie odpowiedniego layoutu
         setContentView(R.layout.activity_main);
+
 
         //Wyświetlanie treści napisanej w html i różne ustawienia Webview
         myWebView = (WebView) findViewById(R.id.webview);
@@ -83,23 +83,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        zmieńZakładkę(Dane.główna(), "FDNT", false, true);
+        zmieńZakładkę(Dane.główna(), "FDNT", false);
+
 
 
         //Menu w prawym górnym rogu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //Przycisk w lewym dolnym rogu
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //gdy naciśnie się przycisk ten po prawej na dole to dzwoni
-                //ale widać go tylko w zakładce kontakt
-                call(view);
-            }
-        });
 
         //Pasek poczny z opcjami
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -122,11 +112,17 @@ public class MainActivity extends AppCompatActivity
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
         }
 
+       //Pobieramy treści związane z tym, jakie zakładki wyświetlić.
+        Dane.wczytajUprawnieniaZalogowanego();
+        dostosujZakładki();
 
         //wysyłąnie danych do analizy w Firebase
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+
+
     }
 
 
@@ -156,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         if(Dane.czy_zalogowany()) {
 
             TextView email_text = findViewById(R.id.miejsce_na_email);
-            email_text.setText(Dane.email());
+            email_text.setText(Dane.emailZalogowanego());
             TextView name_text = findViewById(R.id.miejsce_logowanie);
             name_text.setText("Wyloguj się");
 
@@ -190,18 +186,52 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public void dostosujZakładki() {
 
-    private void zmieńZakładkę(String adres, String nagłówek, Boolean przycisk, Boolean internet) {
+        Long kod = Dane.getUprawnienia();
+        Menu nav_Menu = navigationView.getMenu();
+
+
+        if (kod % 2 == 1) //1
+            nav_Menu.findItem(R.id.nav_formacja).setVisible(true);
+        kod /= 2;
+
+        if (kod % 2 == 1) //2
+            nav_Menu.findItem(R.id.nav_ogl_ogolne).setVisible(true);
+        kod /= 2;
+
+        if (kod % 2 == 1) //3
+            nav_Menu.findItem(R.id.nav_ogl_wspolnotowe).setVisible(true);
+        kod /= 2;
+
+        if (kod % 2 == 1) //4
+            nav_Menu.findItem(R.id.nav_wspol_warszawska).setVisible(true);
+        kod /= 2;
+
+        if (kod % 2 == 1) //5
+            nav_Menu.findItem(R.id.nav_warszawscy_pierwszoroczni).setVisible(true);
+
+        if (kod % 2 == 1) //6
+            nav_Menu.findItem(R.id.nav_kom_for).setVisible(true);
+        kod /= 2;
+
+        if (kod % 2 == 1) //7
+            nav_Menu.findItem(R.id.nav_materialy).setVisible(true);
+        kod /= 2;
+
+        if(kod % 2 == 1) //8
+            nav_Menu.findItem(R.id.nav_poczta).setVisible(true);
+
+
+    }
+
+
+    private void zmieńZakładkę(String adres, String nagłówek, Boolean internet) {
 
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         clear = true;
 
         myWebView.loadUrl(adres);
-
-        if(przycisk)
-            findViewById(R.id.fab).setVisibility(View.VISIBLE);
-        else
-            findViewById(R.id.fab).setVisibility(View.INVISIBLE);
 
 
         setTitle(nagłówek);
@@ -215,40 +245,46 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main_menu) {
-            zmieńZakładkę(Dane.główna(), "FDNT", false, true);
+            zmieńZakładkę(Dane.główna(), "FDNT", false);
         }
         else if (id == R.id.nav_o_fundacji) {
-            zmieńZakładkę(Dane.o_fundacji(), "O Fundacji", false, false);
+            zmieńZakładkę(Dane.o_fundacji(), "O Fundacji", false);
         }
         else if (id == R.id.nav_nasz_patron) {
-            zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron", false, false);
+            zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron", false);
         }
         else if (id == R.id.nav_dla_darczyncy) {
-            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Darczyńcy", false, false);
+            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Darczyńcy", false);
         }
         else if (id == R.id.nav_materialy_prasowe) {
-            zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe", false, false);
+            zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe", false);
         }
         else if (id == R.id.nav_kontakt) {
-            zmieńZakładkę(Dane.kontakt(), "Kontakt", true, false);
+            zmieńZakładkę(Dane.kontakt(), "Kontakt", true);
         }
         else if (id == R.id.nav_formacja) {
-            zmieńZakładkę(Dane.formacja(), "Formacja", false, true);
+            zmieńZakładkę(Dane.formacja(), "Formacja", false);
         }
         else if (id == R.id.nav_ogl_ogolne) {
-            zmieńZakładkę(Dane.ogl_ogolne(), "Ogłoszenia ogólne", false, true);
+            zmieńZakładkę(Dane.ogl_ogolne(), "Ogłoszenia ogólne", false);
         }
         else if (id == R.id.nav_ogl_wspolnotowe) {
-            zmieńZakładkę(Dane.oglWspólnotowe(), "Ogłoszenia Wspólnotowe", false, true);
+            zmieńZakładkę(Dane.oglWspólnotowe(), "Ogłoszenia Wspólnotowe", false);
+        }
+        else if (id == R.id.nav_wspol_warszawska) {
+            zmieńZakładkę(Dane.wsp_warszawska(), "Wspólnota Warszawska", true);
+        }
+        else if (id == R.id.nav_warszawscy_pierwszoroczni) {
+            zmieńZakładkę(Dane.warszawscy_pierwszoroczni(), "Warszawscy Pierwszoroczni", true);
         }
         else if (id == R.id.nav_kom_for) {
-            zmieńZakładkę(Dane.komunikator(), "Komunikator", false, true);
+            zmieńZakładkę(Dane.komunikator(), "Komunikator", false);
         }
         else if (id == R.id.nav_materialy) {
-            zmieńZakładkę(Dane.materialy(), "Materiały", false, true);
+            zmieńZakładkę(Dane.materialy(), "Materiały", false);
         }
         else if (id == R.id.nav_poczta) {
-            zmieńZakładkę(Dane.poczta(), "Poczta", false, true);
+            zmieńZakładkę(Dane.poczta(), "Poczta", false);
         }
 
 
@@ -277,14 +313,6 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-
-
-    public void call(View view) {
-
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse("tel:+48225304828"));
-        startActivity(callIntent);
-    }
 
     public void callTo(String command) {
 

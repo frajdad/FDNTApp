@@ -9,6 +9,12 @@ import android.net.NetworkInfo;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Dane {
 
@@ -40,7 +46,7 @@ public class Dane {
     protected static MainActivity ta_aktywnosc;
 
     //Aktualnie zalogowany użytkownik
-    protected static String email() {
+    protected static String emailZalogowanego() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
@@ -48,22 +54,67 @@ public class Dane {
         else
             return "";
     }
-    protected static String nazwa() {
+    protected static String nazwaZalogowanego() {
+
+         return emailZalogowanego()
+                 .replace(".", "")
+                 .replace("@dzielopl", "");
+    }
+
+    protected static String idZalogowanego() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
-            return user.getDisplayName();
+            return user.getUid();
         else
             return "";
     }
-    //W tej wersji przechowujemy etykietę użytkownika i jego nazwie. Jest to nieco dziwne,
-    //ale na razie nie potrzebujmy nazwy, a jest to oszczędąść pracy programisty,
-    //bo dzięki temu nie bawimy się w dodatkową bazę danych
-    protected static Long etykieta() {
 
-        String etykieta = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-        return Long.parseLong(etykieta);
+    private static Long uprawnienia = null;
+
+    protected static Long getUprawnienia() {
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        Long value;
+
+        try {
+
+            value = Long.parseLong(user.getDisplayName());
+            return value;
+        }
+        catch (NumberFormatException e)
+        {
+            return Long.valueOf(0);
+        }
     }
+
+    protected static void wczytajUprawnieniaZalogowanego() {
+
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference upr = mRef.child("users").child(nazwaZalogowanego());
+
+
+        upr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(dataSnapshot.getValue(String.class))
+                        .build();
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user.updateProfile(profileUpdates);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+    }
+
 
     //Rzeczy z ustawieniami
     protected static Boolean ciemny_motyw = false;
@@ -78,6 +129,8 @@ public class Dane {
     private static final String kontakt = "file:///android_asset/kontakt.html";
     private static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
     private static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
+    private static final String wsp_warszawska = "https://sites.google.com/view/ogloszenia-wspolnotowe";
+    private static final String warszawscy_pierwszoroczni = "https://sites.google.com/view/fdnt-strona-testowa";
     private static final String komunikator = "";
     private static final String materiały = "http://students.mimuw.edu.pl/~lk406698/FDNT/materialy/";
     private static final String poczta = "https://login.poczta.home.pl/";
@@ -107,7 +160,13 @@ public class Dane {
         return ogl_ogolne;
     }
     protected static String oglWspólnotowe() {
-        return "https://sites.google.com/view/fdnt-strona-testowa";
+        return "";
+    }
+    protected static String wsp_warszawska() {
+        return wsp_warszawska;
+    }
+    protected static String warszawscy_pierwszoroczni() {
+        return warszawscy_pierwszoroczni;
     }
     protected static String komunikator() {
         return komunikator;
