@@ -13,11 +13,16 @@ public class Powiadomienia extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        Intent intent = new Intent(this, WyswietlaniePowiadomien.class);
-        intent.putExtra("tresc", remoteMessage.getNotification().getBody());
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("tresc", remoteMessage.getData().toString());
 
         startActivity(intent);
 
+
+    }
+
+    @Override
+    public void onDeletedMessages() {
 
     }
 

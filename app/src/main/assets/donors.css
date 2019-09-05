@@ -1,0 +1,53 @@
+body {
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    color: #222222;
+}
+
+body.dlaDaroczyncy {
+    height: 100vh;
+}
+
+main.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1.5em;
+}
+
+main.menu > header {
+    margin-bottom: 20vw;
+}
+
+
+main.menu:last-child {
+    margin-bottom: 0;
+}
+
+main.menu > header > a {
+    text-decoration: none;
+    color: #000;
+}
+
+header.title {
+    /*margin: 0 0 5vw 0;*/
+    padding: 7vw 0 7vw 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 400;
+    background-color: #222;
+    color: #fff;
+    margin-bottom: 10vw;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10vw;
+    background-color: #222222;
+    margin-bottom: 0;
+}

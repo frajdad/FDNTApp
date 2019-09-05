@@ -19,10 +19,11 @@
 
     <PreferenceCategory app:title="Dostosowywanie">
 
-        <PreferenceScreen
-            android:title="Tu umieścimy ustawienia">
-        </PreferenceScreen>
-
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="powiadomienia_zezwolenie"
+            android:title="Powiadomienia"
+            android:summary="Zezwól na otrzymywanie powiadomień push"/>
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Tworzenie aplikacji">
@@ -65,10 +66,11 @@
 
         <PreferenceScreen
             android:title="Wersja"
-            android:summary="1.0.007">
+            android:summary="1.0.008">
         </PreferenceScreen>
 
 
     </PreferenceCategory>
+
 
 </PreferenceScreen>

@@ -31,7 +31,7 @@ public class ZglosBlad extends AppCompatActivity {
     }
 
     private void sendMail() {
-        String recipientList = "programiscifdnt@dzielo.pl";
+        String recipientList = "kaminski3.141@gmail.com";
         String[] recipients = recipientList.split(",");
 
         String subject = mEditTextSubject.getText().toString();

@@ -1,7 +1,9 @@
 
 package com.example.helloworld;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,10 +14,12 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAnalytics mFirebaseAnalytics;
     private WebView myWebView;
     private NavigationView navigationView;
+    private SharedPreferences preferences;
 
     private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
 
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         Dane.ta_aktywnosc = this;
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Wyświetlanie odpowiedniego layoutu
         setContentView(R.layout.activity_main);
@@ -123,6 +129,49 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+        if (preferences.getBoolean("powiadomienia_zezwolenie", true)){
+            // Your switch is on
+            //wyświetlPowiadomienia();
+        } else {
+            // Your switch is off
+            return;
+        }
+
+
+
+
+    }
+
+    private void wyświetlPowiadomienia() {
+
+
+
+        try {
+
+
+
+            String tekst = "To jest treść powiadomienia. Niestety nadal nie wyświetla się co powinno ale uporczywie nad tym pracujemy.";
+
+
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setPositiveButton(tekst, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+
+
+                AlertDialog dialog = builder.create();
+                builder.show();
+
+
+        }
+        catch (Exception e) {
+
+        }
     }
 
 
@@ -188,41 +237,40 @@ public class MainActivity extends AppCompatActivity
 
     public void dostosujZakładki() {
 
+        Boolean[] dostęp = new Boolean[50];
         Long kod = Dane.getUprawnienia();
         Menu nav_Menu = navigationView.getMenu();
 
+        for(int i = 0; i<50; i++)
+        {
+            dostęp[i] = kod % 2 == 1;
+            kod /= 2;
+        }
 
-        if (kod % 2 == 1) //1
+
+        if (dostęp[1]) //1
             nav_Menu.findItem(R.id.nav_formacja).setVisible(true);
-        kod /= 2;
 
-        if (kod % 2 == 1) //2
+        if (dostęp[2]) //2
             nav_Menu.findItem(R.id.nav_ogl_ogolne).setVisible(true);
-        kod /= 2;
 
-        if (kod % 2 == 1) //3
+        if (dostęp[3]) //3
             nav_Menu.findItem(R.id.nav_ogl_wspolnotowe).setVisible(true);
-        kod /= 2;
 
-        if (kod % 2 == 1) //4
+        if (dostęp[10]) //10
             nav_Menu.findItem(R.id.nav_wspol_warszawska).setVisible(true);
-        kod /= 2;
 
-        if (kod % 2 == 1) //5
+        if (dostęp[11]) //11
             nav_Menu.findItem(R.id.nav_warszawscy_pierwszoroczni).setVisible(true);
 
-        if (kod % 2 == 1) //6
+        if (dostęp[40]) //40
             nav_Menu.findItem(R.id.nav_kom_for).setVisible(true);
-        kod /= 2;
 
-        if (kod % 2 == 1) //7
+        if (dostęp[41]) //41
             nav_Menu.findItem(R.id.nav_materialy).setVisible(true);
-        kod /= 2;
 
-        if(kod % 2 == 1) //8
+        if(dostęp[42]) //42
             nav_Menu.findItem(R.id.nav_poczta).setVisible(true);
-
-
     }
 
 
@@ -232,7 +280,6 @@ public class MainActivity extends AppCompatActivity
         clear = true;
 
         myWebView.loadUrl(adres);
-
 
         setTitle(nagłówek);
     }

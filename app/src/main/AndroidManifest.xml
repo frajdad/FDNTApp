@@ -11,7 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WyswietlaniePowiadomien"></activity>
+        <activity android:name=".WyswietlaniePowiadomien">
+            <intent-filter>
+                <action android:name="com.example.helloworld.WyswietlaniePowiadomien" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Changelog"
             android:label="Changelog"

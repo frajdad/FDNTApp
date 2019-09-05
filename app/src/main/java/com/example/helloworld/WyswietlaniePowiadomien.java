@@ -12,7 +12,7 @@ public class WyswietlaniePowiadomien extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wyswietlanie_powiadomien);
 
-        String tekst = getIntent().getExtras().getParcelable("tresc");
+        String tekst = getIntent().getExtras().getParcelable("tresc").toString();
         wyświetl(tekst);
     }
 

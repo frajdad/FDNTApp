@@ -75,6 +75,8 @@ public class Dane {
     protected static Long getUprawnienia() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null)
+            return Long.valueOf(0);
 
         Long value;
 
@@ -90,6 +92,9 @@ public class Dane {
     }
 
     protected static void wczytajUprawnieniaZalogowanego() {
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+            return;
 
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference upr = mRef.child("users").child(nazwaZalogowanego());
@@ -125,7 +130,7 @@ public class Dane {
     private static final String o_fundacji = "file:///android_asset/o_fundacji.html";
     private static final String nasz_patron = "file:///android_asset/nasz_patron.html";
     private static final String dla_daroczyncy = "file:///android_asset/dla_daroczyncy.html";
-    private static final String materialy_prasowe = "https://dzielo.pl/dla-mediow/do-pobrania/";
+    private static final String materialy_prasowe = "file:///android_asset/materialy_prasowe.html";
     private static final String kontakt = "file:///android_asset/kontakt.html";
     private static final String formacja = "https://pl.wikipedia.org/wiki/II_wojna_karlistowska";
     private static final String ogl_ogolne = "http://students.mimuw.edu.pl/~lk406698/FDNT/ogl_ogolne/";
