@@ -43,6 +43,12 @@
         </Preference>
 
         <PreferenceScreen
+            android:key="reset"
+            android:title="Resetuj hasło"
+            android:summary="Ustaw nowe hasło do aplikacji">
+        </PreferenceScreen>
+
+        <PreferenceScreen
             android:title="O Aplikacji"
             android:summary="Dowiedz się więcej o aplikacji i jej twórcach">
             <intent android:action="com.example.helloworld.ONas"/> <!--Tu odpalamy zakładkę ONas -->

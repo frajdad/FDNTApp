@@ -1,11 +1,11 @@
 
 package com.example.helloworld;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -128,19 +128,6 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
 
-
-
-        if (preferences.getBoolean("powiadomienia_zezwolenie", true)){
-            // Your switch is on
-            //wyświetlPowiadomienia();
-        } else {
-            // Your switch is off
-            return;
-        }
-
-
-
-
     }
 
     private void wyświetlPowiadomienia() {
@@ -150,22 +137,14 @@ public class MainActivity extends AppCompatActivity
         try {
 
 
-
             String tekst = "To jest treść powiadomienia. Niestety nadal nie wyświetla się co powinno ale uporczywie nad tym pracujemy.";
 
 
-
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-                builder.setPositiveButton(tekst, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                    }
-                });
-
+                builder.setMessage(Html.fromHtml("<i>"+tekst+"</i>"));
 
                 AlertDialog dialog = builder.create();
-                builder.show();
+                dialog.show();
 
 
         }

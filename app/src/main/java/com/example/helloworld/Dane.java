@@ -44,6 +44,7 @@ public class Dane {
 
 
     protected static MainActivity ta_aktywnosc;
+    protected static UstawieniaAX aktywnosc_ustawienia;
 
     //Aktualnie zalogowany użytkownik
     protected static String emailZalogowanego() {
@@ -104,12 +105,18 @@ public class Dane {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                        .setDisplayName(dataSnapshot.getValue(String.class))
-                        .build();
-
+                String noweUprawnienia = dataSnapshot.getValue(String.class);
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                user.updateProfile(profileUpdates);
+
+                if(noweUprawnienia != null && !noweUprawnienia.equals(user.getDisplayName())) {
+
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(noweUprawnienia)
+                            .build();
+
+                    user.updateProfile(profileUpdates);
+                    ta_aktywnosc.odswiez();
+                }
             }
 
             @Override
