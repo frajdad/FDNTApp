@@ -128,17 +128,14 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
 
+        wyświetlPowiadomienia();
     }
 
     private void wyświetlPowiadomienia() {
 
-
-
         try {
 
-
-            String tekst = "To jest treść powiadomienia. Niestety nadal nie wyświetla się co powinno ale uporczywie nad tym pracujemy.";
-
+            String tekst = (String) getIntent().getExtras().get("value");
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage(Html.fromHtml("<i>"+tekst+"</i>"));
@@ -148,7 +145,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-        catch (Exception e) {
+        catch (NullPointerException e) {
 
         }
     }
