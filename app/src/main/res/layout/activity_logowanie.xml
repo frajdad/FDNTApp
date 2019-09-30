@@ -78,4 +78,13 @@
         android:textColor="@android:color/holo_red_dark"
         android:textSize="18sp"
         android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/new_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="nowyUżytkownik"
+        android:text="Nie wiesz jakie masz hasło?"
+        android:textColor="#3F51B5"
+        android:textSize="17sp" />
 </LinearLayout>

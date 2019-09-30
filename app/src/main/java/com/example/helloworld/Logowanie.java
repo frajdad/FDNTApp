@@ -1,13 +1,16 @@
 package com.example.helloworld;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,14 +57,19 @@ public class Logowanie extends AppCompatActivity {
 
         mProgress.show();
 
-        EditText editTextEmail = (EditText) findViewById(R.id.email);
-        String email = editTextEmail.getText().toString();
-        EditText editTextPassword = (EditText) findViewById(R.id.password);
-        String password = editTextPassword.getText().toString();
+        try {
+            EditText editTextEmail = (EditText) findViewById(R.id.email);
+            String email = editTextEmail.getText().toString();
+            EditText editTextPassword = (EditText) findViewById(R.id.password);
+            String password = editTextPassword.getText().toString();
 
-
-        loguj(email, password);
-
+            loguj(email, password);
+        }
+        catch (Exception e) {
+            TextView zle_dane = findViewById(R.id.zle_dane);
+            zle_dane.setVisibility(View.VISIBLE);
+            mProgress.dismiss();
+        }
     }
 
     private void loguj(String email, String password) {
@@ -92,5 +100,39 @@ public class Logowanie extends AppCompatActivity {
         finish();
     }
 
+    public void nowyUżytkownik(View view) {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Logowanie.this);
+        alertDialog.setMessage("Aby ustawić hasło do aplikacji wpisz poniżej swój adres mailowy w domenie dzielo.pl " +
+                "i kliknij WYŚLIJ. Na podany adres dostaniesz maila z linkiem do ustawienia hasła. " +
+                "W przypadku niepowodzenia skontaktuj się z administratorami aplikacji.");
+
+        final EditText input = new EditText(Logowanie.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+
+        alertDialog.setNegativeButton("Anuluj",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.setPositiveButton("Wyślij",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String email = input.getText().toString();
+                        FirebaseAuth.getInstance().sendPasswordResetEmail(email);
+                        dialog.cancel();
+
+                    }
+                });
+
+
+        alertDialog.show();
+    }
 
 }

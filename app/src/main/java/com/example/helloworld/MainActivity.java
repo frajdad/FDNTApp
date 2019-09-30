@@ -69,6 +69,11 @@ public class MainActivity extends AppCompatActivity
                 clear = false;
             }
 
+            @SuppressWarnings("deprecation")
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                myWebView.loadUrl("file:///android_asset/offline.html");
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url){
 
@@ -89,7 +94,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        zmieńZakładkę(Dane.główna(), "FDNT", false);
+        zmieńZakładkę(Dane.główna(), "FDNT");
 
 
 
@@ -250,12 +255,13 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void zmieńZakładkę(String adres, String nagłówek, Boolean internet) {
+    private void zmieńZakładkę(String adres, String nagłówek) {
 
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         clear = true;
 
         myWebView.loadUrl(adres);
+
 
         setTitle(nagłówek);
     }
@@ -268,46 +274,46 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main_menu) {
-            zmieńZakładkę(Dane.główna(), "FDNT", false);
+            zmieńZakładkę(Dane.główna(), "FDNT");
         }
         else if (id == R.id.nav_o_fundacji) {
-            zmieńZakładkę(Dane.o_fundacji(), "O Fundacji", false);
+            zmieńZakładkę(Dane.o_fundacji(), "O Fundacji");
         }
         else if (id == R.id.nav_nasz_patron) {
-            zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron", false);
+            zmieńZakładkę(Dane.nasz_patron(), "Nasz Patron");
         }
         else if (id == R.id.nav_dla_darczyncy) {
-            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Darczyńcy", false);
+            zmieńZakładkę(Dane.dla_daroczyncy(), "Dla Darczyńcy");
         }
         else if (id == R.id.nav_materialy_prasowe) {
-            zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe", false);
+            zmieńZakładkę(Dane.materialy_prasowe(), "Materiały Prasowe");
         }
         else if (id == R.id.nav_kontakt) {
-            zmieńZakładkę(Dane.kontakt(), "Kontakt", true);
+            zmieńZakładkę(Dane.kontakt(), "Kontakt");
         }
         else if (id == R.id.nav_formacja) {
-            zmieńZakładkę(Dane.formacja(), "Formacja", false);
+            zmieńZakładkę(Dane.formacja(), "Formacja");
         }
         else if (id == R.id.nav_ogl_ogolne) {
-            zmieńZakładkę(Dane.ogl_ogolne(), "Ogłoszenia ogólne", false);
+            zmieńZakładkę(Dane.ogl_ogolne(), "Ogłoszenia ogólne");
         }
         else if (id == R.id.nav_ogl_wspolnotowe) {
-            zmieńZakładkę(Dane.oglWspólnotowe(), "Ogłoszenia Wspólnotowe", false);
+            zmieńZakładkę(Dane.oglWspólnotowe(), "Ogłoszenia Wspólnotowe");
         }
         else if (id == R.id.nav_wspol_warszawska) {
-            zmieńZakładkę(Dane.wsp_warszawska(), "Wspólnota Warszawska", true);
+            zmieńZakładkę(Dane.wsp_warszawska(), "Wspólnota Warszawska");
         }
         else if (id == R.id.nav_warszawscy_pierwszoroczni) {
-            zmieńZakładkę(Dane.warszawscy_pierwszoroczni(), "Warszawscy Pierwszoroczni", true);
+            zmieńZakładkę(Dane.warszawscy_pierwszoroczni(), "Warszawscy Pierwszoroczni");
         }
         else if (id == R.id.nav_kom_for) {
-            zmieńZakładkę(Dane.komunikator(), "Komunikator", false);
+            zmieńZakładkę(Dane.komunikator(), "Komunikator");
         }
         else if (id == R.id.nav_materialy) {
-            zmieńZakładkę(Dane.materialy(), "Materiały", false);
+            zmieńZakładkę(Dane.materialy(), "Materiały");
         }
         else if (id == R.id.nav_poczta) {
-            zmieńZakładkę(Dane.poczta(), "Poczta", false);
+            zmieńZakładkę(Dane.poczta(), "Poczta");
         }
 
 
@@ -348,7 +354,7 @@ public class MainActivity extends AppCompatActivity
 
         Intent emailIntent = new Intent(Intent.ACTION_VIEW);
         emailIntent.setData(Uri.parse(command));
-        //emailIntent.setType("text/plain");
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
+
 }
