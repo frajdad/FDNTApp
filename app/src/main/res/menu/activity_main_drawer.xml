@@ -114,6 +114,13 @@
                 android:visible="false" />
 
             <item
+                android:id="@+id/nav_skill_trade_club"
+                android:checkable="true"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Skill Trade Club"
+                android:visible="false" />
+
+            <item
                 android:id="@+id/nav_poczta"
                 android:checkable="true"
                 android:icon="@mipmap/poczta"
