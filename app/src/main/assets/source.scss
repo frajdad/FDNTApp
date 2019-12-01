@@ -23,6 +23,16 @@
     font-size: 2.5em;
     position: sticky;
 }
+.title-nav2 {
+    text-align: center;
+    padding: 5vh 0 4vh 0;
+    top: 0;
+    margin: 0;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    font-size: 2.3em;
+    position: sticky;
+}
 
 a {
     text-decoration: none;
@@ -86,7 +96,7 @@ a {
     }
     .management {
         display: flex;
-        margin-left: 8vw;
+        margin-left: 6vw;
         flex-direction: column !important;
         align-items: center;
         img {
@@ -121,8 +131,9 @@ a {
         }
     }
     .jp {
+        margin-top: 2vh;
+        margin-bottom: 2vh;
         display: flex;
-        margin: 0;
         align-content: center;
         flex-direction: column;
         img {
@@ -139,10 +150,22 @@ a {
         article {
             align-self: center;
             width: 80vw;
-            margin: 0 auto;
+            div {
+                margin-bottom: 2vh;
+                margin-top: 2vh;
+                strong {
+                    font-size: 1em;
+                }
+            }
         }
-    } 
+    }
+    .about {
+        margin: 2vh 0 2vh 0;
+        font-size: 1em !important;
+        text-align: center;
+    }
 }
+
 footer {
     @include fot;
 }

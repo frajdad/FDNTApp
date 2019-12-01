@@ -72,7 +72,7 @@
 
         <PreferenceScreen
             android:title="Wersja"
-            android:summary="1.0.012">
+            android:summary="1.0.013">
         </PreferenceScreen>
 
 
