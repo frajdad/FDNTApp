@@ -5,14 +5,6 @@
     font-weight: 400;
 }
 
-@mixin fot {
-    width: 100vw;
-    height: 8vh;
-    bottom: 0 !important;
-    margin-bottom: 0;
-    background-color: rgb(44, 44, 44);
-}
-
 .title-nav {
     text-align: center;
     padding: 5vh 0 4vh 0;
@@ -51,6 +43,7 @@ a {
     }
 }
 .navmenu {
+    position: relative;
     padding: 0;
     margin: 0 auto;
     height: 95vh !important;
@@ -81,20 +74,6 @@ a {
         }
     }
     .contact {
-        display: flex;
-        margin-left: 8vw;
-        flex-direction: row;
-        justify-content: space-between;
-        div {
-            flex-direction: column !important;
-            img {
-                width: 35vw;
-                height:35vw;
-                margin: 1.1vh 0 1.1vh 0;
-            }
-        }
-    }
-    .management {
         display: flex;
         margin-left: 6vw;
         flex-direction: column !important;
@@ -167,6 +146,10 @@ a {
 }
 
 footer {
-    @include fot;
+    width: 100vw;
+    height: 8vh;
+    position: sticky;
+    bottom: 0 !important;
+    margin-bottom: 0;
+    background-color: rgb(44, 44, 44);
 }
-
