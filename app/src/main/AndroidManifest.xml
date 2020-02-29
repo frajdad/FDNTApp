@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="fdnt.app.android">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,10 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WyswietlaniePowiadomien">
+        <activity
+            android:name=".Poczta"
+            android:label="@string/title_activity_poczta"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
-                <action android:name="com.example.helloworld.WyswietlaniePowiadomien" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="fdnt.app.android.Poczta" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -22,7 +33,7 @@
             android:label="Changelog"
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
-                <action android:name="com.example.helloworld.Changelog" />
+                <action android:name="fdnt.app.android.Changelog" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -32,7 +43,7 @@
             android:label="O Aplikacji"
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
-                <action android:name="com.example.helloworld.ONas" />
+                <action android:name="fdnt.app.android.ONas" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -50,7 +61,7 @@
             android:label="Zgłoś błąd"
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
-                <action android:name="com.example.helloworld.ZglosBlad" />
+                <action android:name="fdnt.app.android.ZglosBlad" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -82,15 +93,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
 </manifest>

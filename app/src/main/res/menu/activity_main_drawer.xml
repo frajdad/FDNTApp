@@ -64,68 +64,6 @@
         <menu>
 
 
-            <item
-                android:id="@+id/nav_formacja"
-                android:checkable="true"
-                android:icon="@mipmap/formacja"
-                android:title="Formacja"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_ogl_ogolne"
-                android:checkable="true"
-                android:icon="@mipmap/ogloszenia_ogolne"
-                android:title="Ogłoszenia ogólne"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_ogl_wspolnotowe"
-                android:checkable="true"
-                android:icon="@mipmap/ogloszenia_wspolnotowe"
-                android:title="Ogłoszenia wspólnotowe"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_wspol_warszawska"
-                android:checkable="true"
-                android:icon="@mipmap/ogloszenia_wspolnotowe"
-                android:title="Wspólnota Warszawska"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_warszawscy_pierwszoroczni"
-                android:checkable="true"
-                android:icon="@mipmap/ogloszenia_wspolnotowe"
-                android:title="Warszawscy Pierwszoroczni"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_kom_for"
-                android:checkable="true"
-                android:icon="@mipmap/komunikator_forum"
-                android:title="Komunikator/Forum"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_materialy"
-                android:checkable="true"
-                android:icon="@mipmap/materialy"
-                android:title="Materiały"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_skill_trade_club"
-                android:checkable="true"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Skill Trade Club"
-                android:visible="false" />
-
-            <item
-                android:id="@+id/nav_poczta"
-                android:checkable="true"
-                android:icon="@mipmap/poczta"
-                android:title="Poczta"
-                android:visible="false" />
         </menu>
     </item>
 </group>

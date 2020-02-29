@@ -9,7 +9,6 @@
         <item name="colorControlHighlight">@color/colorHighlited</item>
 
 
-
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -21,7 +20,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="MyTitleText" parent = "@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    <style name="MyTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorHighlited</item>
     </style>
 </resources>

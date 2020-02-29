@@ -3,18 +3,11 @@ package fdnt.app.android;
 //chcę tu trzymać jakieś globalne dane
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import javax.mail.Message;
+import javax.mail.Session;
 
 public class Dane {
 
@@ -27,24 +20,15 @@ public class Dane {
             return true;
     }
     protected static String zawartoscDoWyświetlenia = Dane.główna;
-    protected static Boolean czy_chcemy_Internet = true;
-    public static String getZawartoscDoWyświetlenia() {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) ta_aktywnosc.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if((connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) ||
-                !Dane.czy_chcemy_Internet) {
-
-            //jesli to jest zakladla z internetem i jest Internet
-            return zawartoscDoWyświetlenia;
-        }
-        else
-            return "file:///android_asset/offline.html";
-    }
 
 
     protected static MainActivity ta_aktywnosc;
     protected static UstawieniaAX aktywnosc_ustawienia;
+
+    //Poczta
+    protected static Session smtpSession;
+    protected static Session pop3Session;
+    protected static Message[] messages;
 
     //Aktualnie zalogowany użytkownik
     protected static String emailZalogowanego() {
@@ -71,61 +55,8 @@ public class Dane {
             return "";
     }
 
-    private static Long uprawnienia = null;
-
-    protected static Long getUprawnienia() {
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null)
-            return Long.valueOf(0);
-
-        Long value;
-
-        try {
-
-            value = Long.parseLong(user.getDisplayName());
-            return value;
-        }
-        catch (NumberFormatException e)
-        {
-            return Long.valueOf(0);
-        }
-    }
-
-    protected static void wczytajUprawnieniaZalogowanego() {
-
-        if(FirebaseAuth.getInstance().getCurrentUser() == null)
-            return;
-
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference upr = mRef.child("users").child(nazwaZalogowanego());
 
 
-        upr.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String noweUprawnienia = dataSnapshot.getValue(String.class);
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                if(noweUprawnienia != null && !noweUprawnienia.equals(user.getDisplayName())) {
-
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(noweUprawnienia)
-                            .build();
-
-                    user.updateProfile(profileUpdates);
-                    ta_aktywnosc.odswiez();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-            }
-        });
-
-    }
 
 
     //Rzeczy z ustawieniami

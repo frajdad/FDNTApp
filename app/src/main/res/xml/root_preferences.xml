@@ -51,13 +51,13 @@
         <PreferenceScreen
             android:title="O Aplikacji"
             android:summary="Dowiedz się więcej o aplikacji i jej twórcach">
-            <intent android:action="com.example.helloworld.ONas"/> <!--Tu odpalamy zakładkę ONas -->
+            <intent android:action="fdnt.app.android.ONas"/> <!--Tu odpalamy zakładkę ONas -->
         </PreferenceScreen>
 
         <PreferenceScreen
             android:title="Changelog"
             android:summary="Zoabcz co nowego i jak powstawała aplikacja">
-            <intent android:action="com.example.helloworld.Changelog"/> <!--Tu odpalamy zakładkę Changelog -->
+            <intent android:action="fdnt.app.android.Changelog"/> <!--Tu odpalamy zakładkę Changelog -->
 
         </PreferenceScreen>
 
@@ -72,7 +72,7 @@
 
         <PreferenceScreen
             android:title="Wersja"
-            android:summary="1.0.013">
+            android:summary="1.0.14">
         </PreferenceScreen>
 
 
