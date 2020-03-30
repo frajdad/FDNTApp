@@ -21,7 +21,6 @@ public class UstawieniaAX extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         Dane.aktywnosc_ustawienia = this;
 
         super.onCreate(savedInstanceState);
@@ -91,9 +90,6 @@ public class UstawieniaAX extends AppCompatActivity {
 
 
         }
-
-
-
     }
 
     public void resetPassword() {

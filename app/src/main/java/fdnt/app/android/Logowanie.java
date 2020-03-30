@@ -46,24 +46,21 @@ public class Logowanie extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null)
-            resetuj(currentUser);
+            reset(currentUser);
     }
 
     // uruchamia się gdy zostanie przyciśnięty przysisk
-    public void zaloguj(View view) {
-
+    public void onLogInPressed(View view) {
         mProgress.show();
-
         try {
             EditText editTextEmail = (EditText) findViewById(R.id.email);
             String email = editTextEmail.getText().toString();
             EditText editTextPassword = (EditText) findViewById(R.id.password);
             String password = editTextPassword.getText().toString();
 
-            loguj(email, password);
+            logIn(email, password);
         }
         catch (Exception e) {
             TextView zle_dane = findViewById(R.id.zle_dane);
@@ -72,7 +69,7 @@ public class Logowanie extends AppCompatActivity {
         }
     }
 
-    private void loguj(String email, String password) {
+    private void logIn(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -80,7 +77,7 @@ public class Logowanie extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            resetuj(user);
+                            reset(user);
                         } else {
 
                             mProgress.dismiss();
@@ -92,16 +89,15 @@ public class Logowanie extends AppCompatActivity {
                 });
     }
 
-    private void resetuj(FirebaseUser user) {
-
+    private void reset(FirebaseUser user) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         Dane.ta_aktywnosc.finish();
         finish();
     }
 
-    public void nowyUżytkownik(View view) {
 
+    public void onNewUserPressed(View view) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Logowanie.this);
         alertDialog.setMessage("Najpierw upewnij się, że Twój email jest już w bazie. " +
                 "Aby ustawić hasło do aplikacji wpisz poniżej swój adres mailowy w domenie dzielo.pl " +
@@ -131,8 +127,6 @@ public class Logowanie extends AppCompatActivity {
                     }
                 });
 
-
         alertDialog.show();
     }
-
 }

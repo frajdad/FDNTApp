@@ -1,4 +1,3 @@
-
 package fdnt.app.android;
 
 import android.content.Intent;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity
 
 
     //ładuje ponownie MainActivity
-    public void odswiez() {
+    public void restart() {
 
         finish();
         startActivity(getIntent());
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity
 
     private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
 
-    //to bardzo ważna funkcja
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Wyświetlanie odpowiedniego layoutu
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.setWebViewClient(myClient);
 
-        zmieńZakładkę(Dane.zawartoscDoWyświetlenia, "FDNT");
+        changeTab("https://dzielo.pl/", "FDNT");
 
         //Menu w prawym górnym rogu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         drawerNames = getSharedPreferences(Dane.nazwaZalogowanego()+"name", MODE_PRIVATE); //id->name
         drawerActions = getSharedPreferences(Dane.nazwaZalogowanego()+"act", MODE_PRIVATE); //name->site
         drawerIcons = getSharedPreferences(Dane.nazwaZalogowanego()+"icon", MODE_PRIVATE); //name->icon
-        dostosujZakładki();
+        adjustTabs();
 
         //Pobieramy treści związane z tym, jakie zakładki wyświetlić (w osobnym wątku).
         new Thread(new Runnable() {
@@ -113,13 +111,11 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
 
-        wyświetlPowiadomienia();
+        displayNotifications();
     }
 
-    private void wyświetlPowiadomienia() {
-
+    private void displayNotifications() {
         try {
-
             String tekst = (String) getIntent().getExtras().get("value");
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -127,10 +123,8 @@ public class MainActivity extends AppCompatActivity
 
             AlertDialog dialog = builder.create();
             dialog.show();
-
-
-        } catch (NullPointerException e) {
-
+        }
+        catch (NullPointerException e) {
         }
     }
 
@@ -157,13 +151,10 @@ public class MainActivity extends AppCompatActivity
         //tu robimy cos, żeby było widać odpowiednie napisy na samej górze paska bocznego
         //nie wiem czy to najlepsze miejsce na to, ale działa
         if (Dane.czy_zalogowany()) {
-
             TextView email_text = findViewById(R.id.miejsce_na_email);
             email_text.setText(Dane.emailZalogowanego());
             TextView name_text = findViewById(R.id.miejsce_logowanie);
             name_text.setText("Wyloguj się");
-
-
         } else {
             TextView email_text = findViewById(R.id.miejsce_na_email);
             email_text.setText(" ");
@@ -191,7 +182,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //Wczytujemy z pamięci telefonu i ładujemy zakładki do jakich mamy dostęp
-    private void dostosujZakładki() {
+    private void adjustTabs() {
         Menu nav_Menu = navigationView.getMenu();
 
         Set<String> items = drawerNames.getAll().keySet();
@@ -252,7 +243,7 @@ public class MainActivity extends AppCompatActivity
                     updateTabInfo(name, (String) tabs.get(name));
                 }
                 nameEdit.commit();
-                dostosujZakładki();
+                adjustTabs();
             }
 
             @Override
@@ -299,8 +290,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    private void zmieńZakładkę(String adres, String nagłówek) {
-
+    private void changeTab(String adres, String nagłówek) {
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         clear = true;
 
@@ -318,28 +308,28 @@ public class MainActivity extends AppCompatActivity
         if (name == null) {
             switch (id) {
                 case R.id.nav_main_menu:
-                    zmieńZakładkę("https://dzielo.pl/", "FDNT");
+                    changeTab("https://dzielo.pl/", "FDNT");
                     break;
                 case R.id.nav_o_fundacji:
-                    zmieńZakładkę("file:///android_asset/o_fundacji.html", "O Fundacji");
+                    changeTab("file:///android_asset/o_fundacji.html", "O Fundacji");
                     break;
                 case R.id.nav_nasz_patron:
-                    zmieńZakładkę("file:///android_asset/nasz_patron.html", "Nasz Patron");
+                    changeTab("file:///android_asset/nasz_patron.html", "Nasz Patron");
                     break;
                 case R.id.nav_dla_darczyncy:
-                    zmieńZakładkę("file:///android_asset/dla_daroczyncy.html", "Dla darczyńcy");
+                    changeTab("file:///android_asset/dla_daroczyncy.html", "Dla darczyńcy");
                     break;
                 case R.id.nav_materialy_prasowe:
-                    zmieńZakładkę("file:///android_asset/materialy_prasowe.html", "Materiały prasowe");
+                    changeTab("file:///android_asset/materialy_prasowe.html", "Materiały prasowe");
                     break;
                 case R.id.nav_kontakt:
-                    zmieńZakładkę("file:///android_asset/kontakt.html", "Kontakt");
+                    changeTab("file:///android_asset/kontakt.html", "Kontakt");
                     break;
             }
         }
         else {
             String site = drawerActions.getString(name, "");
-            zmieńZakładkę(site, name);
+            changeTab(site, name);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -349,39 +339,34 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void logInOut(View view) {
-
         if (!Dane.czy_zalogowany()) {
             Intent intent = new Intent(this, Logowanie.class);
             startActivity(intent);
         } else {
             FirebaseAuth.getInstance().signOut();
-            odswiez();
+            restart();
         }
     }
 
     public void startUstawienia(MenuItem item) {
-
         Intent intent = new Intent(this, UstawieniaAX.class);
         startActivity(intent);
     }
 
 
     public void callTo(String command) {
-
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
         callIntent.setData(Uri.parse(command));
         startActivity(callIntent);
     }
 
     public void sendEmail(String command) {
-
         Intent emailIntent = new Intent(Intent.ACTION_VIEW);
         emailIntent.setData(Uri.parse(command));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
 
     private  WebViewClient myClient = new WebViewClient() {
-
         public void onPageFinished(WebView view, String url) {
 
             findViewById(R.id.progressBar).setVisibility(View.INVISIBLE); //chowamy kręcące się kółko
@@ -412,8 +397,6 @@ public class MainActivity extends AppCompatActivity
     };
 
     void poczta() {
-
-
         try {
             if (PoczaLogowanie.openSessions()) {
                 PoczaLogowanie.getMesseges();
