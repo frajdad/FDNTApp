@@ -1,9 +1,0 @@
-Dokumentacja zakładki "kontakt":
-Wszystkie css'y i skrypty znajdują się w folderze jscssContact
-    Główne pliki html to kontakt.html, kontaktBiuro.html i kontaktZarzad.html.
-CSS'em do nich jest mainContactPagesStyle.css.
-Obrazki używane w tych 3 podstronach znajdują się w folderze images.
-    W plikach kontaktBiuro i kontaktZarzad mamy obrazki osób z Biura i Zarządu fundacji,
-każdy obrazek jest linkiem do pliku html, w którym jest napisane coś więcej o tej osobie. 
-Dla Biura te pliki znajdują się w folderze infoBiuro, dla Zarządu w infoZarzad. 
-CSS'em do nich jest plik personStyle.css, obrazki znajdują się w folderze personImages.
