@@ -13,7 +13,7 @@ public class Dane {
 
 
 
-    protected static Boolean czy_zalogowany() {
+    protected static Boolean ifLogged() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null)
             return false;
         else
@@ -30,7 +30,7 @@ public class Dane {
     protected static Message[] messages;
 
     //Aktualnie zalogowany użytkownik
-    protected static String emailZalogowanego() {
+    protected static String userEmail() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
@@ -38,9 +38,10 @@ public class Dane {
         else
             return "";
     }
-    protected static String nazwaZalogowanego() {
 
-         return emailZalogowanego()
+    protected static String userName() {
+
+         return userEmail()
                  .replace(".", "")
                  .replace("@dzielopl", "");
     }

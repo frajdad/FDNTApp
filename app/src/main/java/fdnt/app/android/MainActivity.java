@@ -82,16 +82,16 @@ public class MainActivity extends AppCompatActivity
 
         //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
-        if (Dane.czy_zalogowany()) {
+        if (Dane.ifLogged()) {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
         }
         else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
         }
 
-        drawerNames = getSharedPreferences(Dane.nazwaZalogowanego()+"name", MODE_PRIVATE); //id->name
-        drawerActions = getSharedPreferences(Dane.nazwaZalogowanego()+"act", MODE_PRIVATE); //name->site
-        drawerIcons = getSharedPreferences(Dane.nazwaZalogowanego()+"icon", MODE_PRIVATE); //name->icon
+        drawerNames = getSharedPreferences(Dane.userName()+"name", MODE_PRIVATE); //id->name
+        drawerActions = getSharedPreferences(Dane.userName()+"act", MODE_PRIVATE); //name->site
+        drawerIcons = getSharedPreferences(Dane.userName()+"icon", MODE_PRIVATE); //name->icon
         adjustTabs();
 
         //Pobieramy treści związane z tym, jakie zakładki wyświetlić (w osobnym wątku).
@@ -150,9 +150,9 @@ public class MainActivity extends AppCompatActivity
 
         //tu robimy cos, żeby było widać odpowiednie napisy na samej górze paska bocznego
         //nie wiem czy to najlepsze miejsce na to, ale działa
-        if (Dane.czy_zalogowany()) {
+        if (Dane.ifLogged()) {
             TextView email_text = findViewById(R.id.miejsce_na_email);
-            email_text.setText(Dane.emailZalogowanego());
+            email_text.setText(Dane.userEmail());
             TextView name_text = findViewById(R.id.miejsce_logowanie);
             name_text.setText("Wyloguj się");
         } else {
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity
             return;
 
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference tabsData = mRef.child("users").child(Dane.nazwaZalogowanego());
+        DatabaseReference tabsData = mRef.child("users").child(Dane.userName());
 
         tabsData.addValueEventListener(new ValueEventListener() {
             Map<String, Object> tabs;
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void logInOut(View view) {
-        if (!Dane.czy_zalogowany()) {
+        if (!Dane.ifLogged()) {
             Intent intent = new Intent(this, Logowanie.class);
             startActivity(intent);
         } else {
@@ -396,6 +396,7 @@ public class MainActivity extends AppCompatActivity
         }
     };
 
+    //W budowie
     void poczta() {
         try {
             if (PoczaLogowanie.openSessions()) {
