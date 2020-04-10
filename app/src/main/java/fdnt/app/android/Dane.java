@@ -3,6 +3,8 @@ package fdnt.app.android;
 //chcę tu trzymać jakieś globalne dane
 
 
+import android.app.Activity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,7 +23,7 @@ public class Dane {
     }
 
 
-    protected static MainActivity ta_aktywnosc;
+    public static Activity ta_aktywnosc;
     protected static UstawieniaAX aktywnosc_ustawienia;
 
     //Poczta

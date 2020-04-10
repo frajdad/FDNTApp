@@ -90,7 +90,7 @@ public class Logowanie extends AppCompatActivity {
     }
 
     private void reset(FirebaseUser user) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainFrame.class);
         startActivity(intent);
         Dane.ta_aktywnosc.finish();
         finish();
