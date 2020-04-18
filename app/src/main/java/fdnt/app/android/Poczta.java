@@ -33,6 +33,7 @@ public class Poczta extends AppCompatActivity implements View.OnClickListener {
     private ListView list ;
     private ArrayAdapter<String> adapter ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +44,12 @@ public class Poczta extends AppCompatActivity implements View.OnClickListener {
         buttonWriteNew = (Button) findViewById(R.id.buttonWriteNew);
         list = (ListView) findViewById(R.id.listInbox);
 
-        ArrayList<String> carL = check();
-        adapter = new ArrayAdapter<String>(this, R.layout.email_list_item, carL);
-        list.setAdapter(adapter);
+     //   ArrayList<String> carL = check();
+        //adapter = new ArrayAdapter<String>(this, R.layout.email_list_item,  R.id.item_subject, carL);
+       // list.setAdapter(adapter);
+      //  View item = getLayoutInflater().inflate(R.layout.email_list_item, list);
+
+
 
         //Adding click listener
         buttonWriteNew.setOnClickListener(this);
@@ -77,7 +81,7 @@ public class Poczta extends AppCompatActivity implements View.OnClickListener {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-            for (int i = 0, n = messages.length; i < 2; i++) {
+            for (int i = 0, n = messages.length; i < 5; i++) {
                 Message message = messages[i];
                 result.add(message.getSubject());
             }

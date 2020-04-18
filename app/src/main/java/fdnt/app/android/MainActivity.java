@@ -308,7 +308,8 @@ public class MainActivity extends AppCompatActivity
         if (name == null) {
             switch (id) {
                 case R.id.nav_main_menu:
-                    changeTab("https://dzielo.pl/", "FDNT");
+                    poczta();
+                 //   changeTab("https://dzielo.pl/", "FDNT");
                     break;
                 case R.id.nav_o_fundacji:
                     changeTab("file:///android_asset/o_fundacji.html", "O Fundacji");
