@@ -2,14 +2,11 @@ package fdnt.app.android;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
@@ -33,41 +31,39 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
-import javax.mail.MessagingException;
+import fdnt.app.android.ui.main.DlaDarczyncy;
+import fdnt.app.android.ui.main.Kontakt;
+import fdnt.app.android.ui.main.MaterialyPrasowe;
+import fdnt.app.android.ui.main.NaszPatron;
+import fdnt.app.android.ui.main.OFundacji;
+import fdnt.app.android.ui.main.WebTab;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
-
-    //ładuje ponownie MainActivity
-    public void restart() {
-
-        finish();
-        startActivity(getIntent());
-    }
+public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private FirebaseAnalytics mFirebaseAnalytics;
-    private WebView myWebView;
     private NavigationView navigationView;
     private SharedPreferences preferences;
     private SharedPreferences drawerNames, drawerActions, drawerIcons;
 
-    private Boolean clear; //Zmienna pilnująca żeby się nie cofnąć za daleko
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Wyświetlanie odpowiedniego layoutu
         setContentView(R.layout.activity_main);
 
-        //Wyświetlanie treści napisanej w html i różne ustawienia Webview
-        myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(myClient);
+        Bundle tabInfo = new Bundle();
+        tabInfo.putString("adress", "https://dzielo.pl/");
+        WebTab mainTab = WebTab.newInstance();
+        mainTab.setArguments(tabInfo);
+        setTitle("FDNT");
 
-        changeTab("https://dzielo.pl/", "FDNT");
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, mainTab)
+                    .commitNow();
+        }
 
-        //Menu w prawym górnym rogu
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Pasek górny
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Pasek poczny z opcjami
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
@@ -100,7 +96,7 @@ public class MainActivity extends AppCompatActivity
             {
                 updateTabs();
             }
-         }).start();
+        }).start();
 
         Dane.ta_aktywnosc = this;
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -112,6 +108,11 @@ public class MainActivity extends AppCompatActivity
 
 
         displayNotifications();
+    }
+
+    public void restart() {
+        finish();
+        startActivity(getIntent());
     }
 
     private void displayNotifications() {
@@ -135,9 +136,8 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (myWebView.canGoBack()) {
-            myWebView.goBack();
-        } else {
+        }
+        else {
             super.onBackPressed();
         }
 
@@ -288,54 +288,62 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-
-
-    private void changeTab(String adres, String nagłówek) {
-        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
-        clear = true;
-
-        myWebView.loadUrl(adres);
-        setTitle(nagłówek);
-    }
-
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Integer id = item.getItemId();
+        int id = item.getItemId();
 
-        String name = drawerNames.getString(id.toString(), null);
+        String name = drawerNames.getString(Integer.toString(id), null);
+
+        Bundle tabInfo = new Bundle();
+        Fragment newInstance = WebTab.newInstance(); //Jak się pozbędziemy zakomentowanych rzeczy w switch to trzeba usunąć inicjalizajcę tu
+
         if (name == null) {
             switch (id) {
                 case R.id.nav_main_menu:
-                    poczta();
-                 //   changeTab("https://dzielo.pl/", "FDNT");
+                    newInstance = WebTab.newInstance();
+                    setTitle("FDNT");
+                    tabInfo.putString("adress", "https://dzielo.pl/");
                     break;
                 case R.id.nav_o_fundacji:
-                    changeTab("file:///android_asset/o_fundacji.html", "O Fundacji");
+                    newInstance = OFundacji.newInstance();
+                    setTitle("O Fundacji");
                     break;
                 case R.id.nav_nasz_patron:
-                    changeTab("file:///android_asset/nasz_patron.html", "Nasz Patron");
+                     newInstance = NaszPatron.newInstance();
+                    setTitle("Nasz Patron");
                     break;
                 case R.id.nav_dla_darczyncy:
-                    changeTab("file:///android_asset/dla_daroczyncy.html", "Dla darczyńcy");
+                    newInstance = DlaDarczyncy.newInstance();
+                    setTitle("Dla Darczyńcy");
                     break;
                 case R.id.nav_materialy_prasowe:
-                    changeTab("file:///android_asset/materialy_prasowe.html", "Materiały prasowe");
+                    newInstance = MaterialyPrasowe.newInstance();
+                    setTitle("Materiały Prasowe");
                     break;
                 case R.id.nav_kontakt:
-                    changeTab("file:///android_asset/kontakt.html", "Kontakt");
+                    newInstance = Kontakt.newInstance();
+                    setTitle("Kontakt");
                     break;
+                default:
+                    newInstance = WebTab.newInstance();
             }
         }
         else {
             String site = drawerActions.getString(name, "");
-            changeTab(site, name);
+            newInstance = WebTab.newInstance();
+            setTitle(name);
+            tabInfo.putString("adress", site);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        newInstance.setArguments(tabInfo);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, newInstance)
+                .commitNow();
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -355,68 +363,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void callTo(String command) {
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse(command));
-        startActivity(callIntent);
-    }
-
-    public void sendEmail(String command) {
-        Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-        emailIntent.setData(Uri.parse(command));
-        startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-    }
-
-    private  WebViewClient myClient = new WebViewClient() {
-        public void onPageFinished(WebView view, String url) {
-
-            findViewById(R.id.progressBar).setVisibility(View.INVISIBLE); //chowamy kręcące się kółko
-            if (clear)
-                myWebView.clearHistory(); //czyścimy historię żeby nie móc się cofać zbyt daleko
-            clear = false;
-        }
-
-        @SuppressWarnings("deprecation")
-        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-            myWebView.loadUrl("file:///android_asset/offline.html");
-        }
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("mailto:")) {
-                sendEmail(url);
-                return true;
-            } else if (url.contains("tel:")) {
-                callTo(url);
-                return true;
-            } else {
-                // Handle what t do if the link doesn't contain or start with mailto:
-                view.loadUrl(url);
-            }
-            return true;
-        }
-    };
-
-    //W budowie
-    void poczta() {
-        try {
-            if (PoczaLogowanie.openSessions()) {
-                PoczaLogowanie.getMesseges();
-
-
-
-                Intent intent = new Intent(this, Poczta.class);
-                startActivity(intent);
-                return;
-            }
-
-        }
-        catch (MessagingException e) {
-
-        }
-
-
-    }
 
 
 }
