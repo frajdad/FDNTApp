@@ -300,31 +300,26 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         Fragment newInstance = WebTab.newInstance(); //Jak się pozbędziemy zakomentowanych rzeczy w switch to trzeba usunąć inicjalizajcę tu
 
         if (name == null) {
+            setTitle("FDNT");
             switch (id) {
                 case R.id.nav_main_menu:
                     newInstance = WebTab.newInstance();
-                    setTitle("FDNT");
                     tabInfo.putString("adress", "https://dzielo.pl/");
                     break;
                 case R.id.nav_o_fundacji:
                     newInstance = OFundacji.newInstance();
-                    setTitle("O Fundacji");
                     break;
                 case R.id.nav_nasz_patron:
                      newInstance = NaszPatron.newInstance();
-                    setTitle("Nasz Patron");
                     break;
                 case R.id.nav_dla_darczyncy:
                     newInstance = DlaDarczyncy.newInstance();
-                    setTitle("Dla Darczyńcy");
                     break;
                 case R.id.nav_materialy_prasowe:
                     newInstance = MaterialyPrasowe.newInstance();
-                    setTitle("Materiały Prasowe");
                     break;
                 case R.id.nav_kontakt:
                     newInstance = Kontakt.newInstance();
-                    setTitle("Kontakt");
                     break;
                 default:
                     newInstance = WebTab.newInstance();

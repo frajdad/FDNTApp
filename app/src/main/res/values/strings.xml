@@ -28,7 +28,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="headre_o_fundacji">O Fundacji</string>
+    <string name="header_o_fundacji">O FUNDACJI</string>
+    <string name="header_dla_darczyncy">DLA DARCZYŃCY</string>
     <string name="title_activity_ustawienia_ax">Ustawienia</string>
 
     <!-- Preference Titles -->
