@@ -28,24 +28,16 @@ import static fdnt.app.android.Dane.pop3Session;
 
 
 public class Poczta extends Fragment implements View.OnClickListener {
-
-<<<<<<< HEAD
-=======
     public static DlaDarczyncy newInstance() {
         return new DlaDarczyncy();
     }
 
->>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_poczta, container, false);
     }
 
-<<<<<<< HEAD
-        ArrayList<String> carL = check();
-        adapter = new ArrayAdapter<String>(this, R.layout.email_list_item, carL);
-=======
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -57,7 +49,6 @@ public class Poczta extends Fragment implements View.OnClickListener {
         list = getActivity().findViewById(R.id.listInbox);
 
         adapter = new ArrayAdapter<String>(getActivity(), R.layout.email_list_item, emails);
->>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
         list.setAdapter(adapter);
 
         //Adding click listener
@@ -111,11 +102,7 @@ public class Poczta extends Fragment implements View.OnClickListener {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-<<<<<<< HEAD
-            for (int i = 0, n = messages.length; i < 2; i++) {
-=======
             for (int i = 0, n = messages.length; i < number; i++) {
->>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
                 Message message = messages[i];
                 result.add(message.getSubject());
             }
