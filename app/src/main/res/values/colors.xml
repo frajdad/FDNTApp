@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FCCF03</color>
+    <color name="yellowMain">#F1C603</color>
     <color name="colorPrimaryDark">#B19102</color>
     <color name="colorAccent">#135A9C</color>
+    <color name="whiteBackground">#fafafa</color>
+    <color name="checked">#AEB1AC</color>
+    <color name="icons">#737373</color>
     <color name="colorHighlited">#222222</color>
+    <color name="menuText">#202020</color>
+    <color name="checkedText">#000000</color>
 </resources>
 
 

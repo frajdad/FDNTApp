@@ -13,11 +13,11 @@ import javax.mail.Store;
 import javax.mail.Transport;
 
 
-public class PoczaLogowanie {
+public class  PoczaLogowanie {
 
 
-    private static String email = "lukasz.kaminski@dzielo.pl";
-    private static String pass = "a02b100x3";
+    private static String email = "example@dzielo.pl";
+    private static String pass = "pass";
 
 
 

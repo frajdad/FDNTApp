@@ -6,3 +6,35 @@
     android:gravity="center"
     android:textSize="16dp"
     tools:text="@tools:sample/cities" />
+
+<!--<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item"
+    android:layout_width="fill_parent"
+    android:layout_height="50sp"
+    android:gravity="center"
+    android:textSize="16dp"
+    tools:text="@tools:sample/cities" />
+=======
+    android:layout_height="50sp">
+
+    <TextView
+        android:id="@+id/item_subject"
+        android:layout_width="match_parent"
+        android:layout_height="25sp"
+        android:gravity="start"
+        android:text="Subject"
+        android:textColor="#222121"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/item_from"
+        android:layout_width="match_parent"
+        android:layout_height="20sp"
+        android:gravity="start"
+        android:text="From"
+        android:textColor="#4A4A4A"
+        android:textSize="12sp" />
+
+</LinearLayout> -->
+

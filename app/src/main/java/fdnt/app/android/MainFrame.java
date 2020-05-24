@@ -31,11 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
-import fdnt.app.android.ui.main.DlaDarczyncy;
 import fdnt.app.android.ui.main.Kontakt;
-import fdnt.app.android.ui.main.MaterialyPrasowe;
-import fdnt.app.android.ui.main.NaszPatron;
-import fdnt.app.android.ui.main.OFundacji;
 import fdnt.app.android.ui.main.WebTab;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -145,9 +141,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-
         //tu robimy cos, żeby było widać odpowiednie napisy na samej górze paska bocznego
         //nie wiem czy to najlepsze miejsce na to, ale działa
         if (Dane.ifLogged()) {
@@ -163,22 +156,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         }
 
         return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     //Wczytujemy z pamięci telefonu i ładujemy zakładki do jakich mamy dostęp
@@ -288,6 +265,57 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         });
     }
 
+    void onOFunacjiVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_kim_jestesmy).setVisible(state);
+        menu.findItem(R.id.nav_co_robimy).setVisible(state);
+        menu.findItem(R.id.nav_gdzie_jestesmy).setVisible(state);
+    }
+
+    void onNaszPatronVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_jan_pawel).setVisible(state);
+        menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
+        menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
+        menu.findItem(R.id.nav_modlitwa).setVisible(state);
+    }
+
+    void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_wplac).setVisible(state);
+        menu.findItem(R.id.nav_sposoby).setVisible(state);
+        menu.findItem(R.id.nav_pobierz_blankiet).setVisible(state);
+        menu.findItem(R.id.nav_przekaz_1).setVisible(state);
+    }
+
+    void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_media_o_nas).setVisible(state);
+        menu.findItem(R.id.nav_biuro_prasowe).setVisible(state);
+        menu.findItem(R.id.nav_dzielo_tv).setVisible(state);
+        menu.findItem(R.id.nav_do_pobrania).setVisible(state);
+    }
+
+    void onKontaktVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_fundacja).setVisible(state);
+        menu.findItem(R.id.nav_biuro).setVisible(state);
+        menu.findItem(R.id.nav_zarzad).setVisible(state);
+    }
+
+    void hideTabs(Menu menu) {
+        onOFunacjiVisibilityChange(false, menu);
+        onNaszPatronVisibilityChange(false, menu);
+        onDlaDarczyncyVisibilityChange(false, menu);
+        onMaterialyPrasoweVisibilityChange(false, menu);
+        onKontaktVisibilityChange(false, menu);
+    }
+
+    void openTab(Fragment newInstance, Bundle tabInfo) {
+        newInstance.setArguments(tabInfo);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, newInstance)
+                .commitNow();
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -296,6 +324,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         String name = drawerNames.getString(Integer.toString(id), null);
 
+        Menu menu = navigationView.getMenu();
         Bundle tabInfo = new Bundle();
         Fragment newInstance = WebTab.newInstance(); //Jak się pozbędziemy zakomentowanych rzeczy w switch to trzeba usunąć inicjalizajcę tu
 
@@ -305,29 +334,39 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     newInstance = WebTab.newInstance();
                     setTitle("FDNT");
                     tabInfo.putString("adress", "https://dzielo.pl/");
+                    openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_o_fundacji:
-                    newInstance = OFundacji.newInstance();
-                    setTitle("O Fundacji");
+                    hideTabs(menu);
+                    onOFunacjiVisibilityChange(true, menu);
                     break;
                 case R.id.nav_nasz_patron:
-                     newInstance = NaszPatron.newInstance();
-                    setTitle("Nasz Patron");
+                    hideTabs(menu);
+                    onNaszPatronVisibilityChange(true, menu);
                     break;
                 case R.id.nav_dla_darczyncy:
-                    newInstance = DlaDarczyncy.newInstance();
-                    setTitle("Dla Darczyńcy");
+                    hideTabs(menu);
+                    onDlaDarczyncyVisibilityChange(true, menu);
                     break;
                 case R.id.nav_materialy_prasowe:
-                    newInstance = MaterialyPrasowe.newInstance();
-                    setTitle("Materiały Prasowe");
+                    hideTabs(menu);
+                    onMaterialyPrasoweVisibilityChange(true, menu);
                     break;
                 case R.id.nav_kontakt:
+                    hideTabs(menu);
+                    onKontaktVisibilityChange(true, menu);
                     newInstance = Kontakt.newInstance();
                     setTitle("Kontakt");
                     break;
-                default:
-                    newInstance = WebTab.newInstance();
+                case R.id.nav_settings:
+                    newInstance = new UstawieniaAX();
+                    setTitle("Ustawienia");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_poczta:
+                    newInstance = new Poczta();
+                    openTab(newInstance, tabInfo);
+                    break;
             }
         }
         else {
@@ -335,15 +374,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             newInstance = WebTab.newInstance();
             setTitle(name);
             tabInfo.putString("adress", site);
+            openTab(newInstance, tabInfo);
         }
 
-        newInstance.setArguments(tabInfo);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, newInstance)
-                .commitNow();
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -356,13 +389,4 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             restart();
         }
     }
-
-    public void startUstawienia(MenuItem item) {
-        Intent intent = new Intent(this, UstawieniaAX.class);
-        startActivity(intent);
-    }
-
-
-
-
 }

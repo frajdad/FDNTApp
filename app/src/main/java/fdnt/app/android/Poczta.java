@@ -2,13 +2,17 @@ package fdnt.app.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -18,33 +22,42 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Store;
 
+import fdnt.app.android.ui.main.DlaDarczyncy;
+
 import static fdnt.app.android.Dane.pop3Session;
 
 
-public class Poczta extends AppCompatActivity implements View.OnClickListener {
+public class Poczta extends Fragment implements View.OnClickListener {
 
-    //Send button
-    private Button buttonWriteNew;
+<<<<<<< HEAD
+=======
+    public static DlaDarczyncy newInstance() {
+        return new DlaDarczyncy();
+    }
 
-    private String email = "lukasz.kaminski@dzielo.pl";
-    private String pass = "a02b100x3";
-
-    //Inbox positions
-    private ListView list ;
-    private ArrayAdapter<String> adapter ;
-
+>>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poczta);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_poczta, container, false);
+    }
 
-
-        //Initializing the views
-        buttonWriteNew = (Button) findViewById(R.id.buttonWriteNew);
-        list = (ListView) findViewById(R.id.listInbox);
-
+<<<<<<< HEAD
         ArrayList<String> carL = check();
         adapter = new ArrayAdapter<String>(this, R.layout.email_list_item, carL);
+=======
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        buttonWriteNew = getActivity().findViewById(R.id.buttonWriteNew);
+        loadEmails(getEmails("INBOX", 5));
+    }
+
+    private void loadEmails(ArrayList<String> emails) {
+        list = getActivity().findViewById(R.id.listInbox);
+
+        adapter = new ArrayAdapter<String>(getActivity(), R.layout.email_list_item, emails);
+>>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
         list.setAdapter(adapter);
 
         //Adding click listener
@@ -57,27 +70,52 @@ public class Poczta extends AppCompatActivity implements View.OnClickListener {
         });
     }
 
+    //Send button
+    private Button buttonWriteNew;
+
+    //Inbox positions
+    private ListView list ;
+    private ArrayAdapter<String> adapter ;
+
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, ONas.class);
-        startActivity(intent);
+        switch (v.getId()) {
+            case R.id.buttonWriteNew:
+                Intent intent = new Intent(getActivity(), ONas.class);
+                startActivity(intent);
+                break;
+            case R.id.odebrane:
+                loadEmails(getEmails("INBOX", 5));
+                break;
+            case R.id.robocze:
+                loadEmails(getEmails("DRAFTS", 5));
+                break;
+            case R.id.wyslane:
+                loadEmails(getEmails("SENT", 5));
+                break;
+        }
     }
 
-    private static ArrayList<String> check()
+    private static ArrayList<String> getEmails(String box, int number)
     {
         ArrayList<String> result = new ArrayList<String>();
-
         try {
+            PoczaLogowanie.openSessions();
+
             Store store = pop3Session.getStore("pop3");
             store.connect();
 
             //create the folder object and open it
-            Folder emailFolder = store.getFolder("INBOX");
+            Folder emailFolder = store.getFolder(box);
             emailFolder.open(Folder.READ_ONLY);
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
+<<<<<<< HEAD
             for (int i = 0, n = messages.length; i < 2; i++) {
+=======
+            for (int i = 0, n = messages.length; i < number; i++) {
+>>>>>>> f7a39de... Zmieniono wygląd menu, dodano szkielet poczty
                 Message message = messages[i];
                 result.add(message.getSubject());
             }
@@ -96,9 +134,4 @@ public class Poczta extends AppCompatActivity implements View.OnClickListener {
 
         return result;
     }
-
-
-
-
-
 }

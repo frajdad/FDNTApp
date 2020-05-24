@@ -12,10 +12,10 @@
         android:icon="@mipmap/strona_glowna"
         android:title="Strona główna" />
 
-
     <item
         android:id="@+id/opcje_ogolne"
         android:enabled="true"
+        android:checkable="false"
         android:title="Ogólne"
         android:visible="true"
         app:showAsAction="withText">
@@ -24,46 +24,139 @@
                 android:id="@+id/nav_o_fundacji"
                 android:checkable="true"
                 android:icon="@mipmap/o_fundacji"
-
                 android:title="O Fundacji" />
+                <item
+                    android:id="@+id/nav_kim_jestesmy"
+                    android:checkable="true"
+                    android:title="    Kim jesteśmy?"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_co_robimy"
+                    android:checkable="true"
+                    android:title="    Co robimy?"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_gdzie_jestesmy"
+                    android:checkable="true"
+                    android:title="    Gdzie jesteśmy?"
+                    android:visible="false"/>
             <item
                 android:id="@+id/nav_nasz_patron"
                 android:checkable="true"
                 android:icon="@mipmap/nasz_patron"
                 android:title="Nasz Patron" />
-
-
+                <item
+                    android:id="@+id/nav_jan_pawel"
+                    android:checkable="true"
+                    android:title="    Św. Jan Paweł II"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_my_o_patronie"
+                    android:checkable="true"
+                    android:title="    My o patronie"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_dzien_papieski"
+                    android:checkable="true"
+                    android:title="    Dzień Papieski"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_modlitwa"
+                    android:checkable="true"
+                    android:title="    Modlitwa"
+                    android:visible="false"/>
             <item
                 android:id="@+id/nav_dla_darczyncy"
                 android:checkable="true"
                 android:icon="@mipmap/dla_darczyncy"
                 android:title="Dla Darczyńcy" />
+                <item
+                    android:id="@+id/nav_sposoby"
+                    android:checkable="true"
+                    android:title="    Sposoby"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_wplac"
+                    android:checkable="true"
+                    android:title="    Wpłać darowiznę"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_pobierz_blankiet"
+                    android:checkable="true"
+                    android:title="    Pobierz blankiet"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_przekaz_1"
+                    android:checkable="true"
+                    android:title="    Przekaż 1%"
+                    android:visible="false"/>
             <item
                 android:id="@+id/nav_materialy_prasowe"
                 android:checkable="true"
                 android:icon="@mipmap/materialy_prasowe"
                 android:title="Materiały prasowe" />
-
+                <item
+                    android:id="@+id/nav_media_o_nas"
+                    android:checkable="true"
+                    android:title="    Media o nas"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_biuro_prasowe"
+                    android:checkable="true"
+                    android:title="    Biuro prasowe"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_dzielo_tv"
+                    android:checkable="true"
+                    android:title="    Dzieło TV"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_do_pobrania"
+                    android:checkable="true"
+                    android:title="    Do pobrania"
+                    android:visible="false"/>
             <item
                 android:id="@+id/nav_kontakt"
                 android:checkable="true"
                 android:icon="@mipmap/kontakt"
                 android:title="Kontakt" />
+                <item
+                    android:id="@+id/nav_fundacja"
+                    android:checkable="true"
+                    android:title="    Fundacja"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_biuro"
+                    android:checkable="true"
+                    android:title="    Biuro"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_zarzad"
+                    android:checkable="true"
+                    android:title="    Zarząd"
+                    android:visible="false"/>
+            <item
+                android:id="@+id/nav_settings"
+                android:checkable="true"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Ustawienia" />
 
         </menu>
     </item>
 
     <item
         android:id="@+id/opcje_dla_zalogowanych"
-        android:checkable="true"
+        android:checkable="false"
         android:enabled="true"
         android:title="Dla zalogowanych"
         android:visible="true"
         app:showAsAction="withText">
-
         <menu>
-
-
+            <item
+                android:id="@+id/nav_poczta"
+                android:checkable="true"
+                android:icon="@android:drawable/ic_dialog_email"
+                android:title="Poczta" />
         </menu>
     </item>
 </group>
