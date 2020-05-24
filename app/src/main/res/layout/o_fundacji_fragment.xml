@@ -9,14 +9,42 @@
 
     <TextView
         android:id="@+id/header_o_fundacji"
-        android:layout_width="179dp"
-        android:layout_height="42dp"
+        android:layout_width="182dp"
+        android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="@string/header_o_fundacji"
-        android:textColor="#1464AA"
-        android:textSize="30sp"
+        android:layout_marginBottom="67dp"
         android:fontFamily="@font/roboto_condensed_regular"
+        android:text="@string/header_o_fundacji"
+        android:textColor="@color/colorTitle"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/animatedLineImageView"
+        android:contentDescription="linia"
+        android:layout_width="330dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="630dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_o_fundacji"
+        app:srcCompat="@drawable/ic_pasekill" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="198dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="577dp"
+        android:text="@string/subheader_kim_jestesmy"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_o_fundacji" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

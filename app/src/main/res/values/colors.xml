@@ -5,6 +5,7 @@
     <color name="colorAccent">#135A9C</color>
     <color name="colorHighlited">#222222</color>
     <color name="colorTitle">#1464AA</color>
+    <color name="colorSubTitle">#202020</color>
 </resources>
 
 
