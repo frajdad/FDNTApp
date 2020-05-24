@@ -5,39 +5,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_weight="0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".Poczta">
 
     <LinearLayout
         android:id="@+id/postboxbuttons"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/odebrane"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".33"
             android:layout_margin="0dp"
+            android:layout_weight=".34"
             android:text="Odebrane" />
+
         <Button
             android:id="@+id/robocze"
             android:layout_width="0dp"
-            android:layout_weight="0.33"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
+            android:layout_weight="0.33"
             android:text="Robocze" />
+
         <Button
             android:id="@+id/wyslane"
             android:layout_width="0dp"
-            android:layout_weight="0.33"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
+            android:layout_weight="0.33"
             android:text="Wysłane" />
 
     </LinearLayout>
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonWriteNew"
-        app:layout_constraintTop_toTopOf="@+id/postboxbuttons"
+        app:layout_constraintTop_toBottomOf="@+id/postboxbuttons"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
