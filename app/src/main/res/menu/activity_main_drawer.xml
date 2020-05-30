@@ -152,11 +152,6 @@
         android:visible="true"
         app:showAsAction="withText">
         <menu>
-            <item
-                android:id="@+id/nav_poczta"
-                android:checkable="true"
-                android:icon="@android:drawable/ic_dialog_email"
-                android:title="Poczta" />
         </menu>
     </item>
 </group>

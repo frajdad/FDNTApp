@@ -20,16 +20,6 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".Poczta"
-            android:label="@string/title_activity_poczta"
-            android:parentActivityName=".MainFrame">
-            <intent-filter>
-                <action android:name="fdnt.app.android.Poczta" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Changelog"
             android:label="Changelog"
             android:parentActivityName=".UstawieniaAX">
@@ -48,14 +38,6 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".UstawieniaAX"
-            android:label="@string/title_activity_ustawienia_ax"
-            android:parentActivityName=".MainFrame">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainFrame" />
         </activity>
         <activity
             android:name=".ZglosBlad"

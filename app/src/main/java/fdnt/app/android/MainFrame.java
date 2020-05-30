@@ -363,10 +363,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Ustawienia");
                     openTab(newInstance, tabInfo);
                     break;
-                case R.id.nav_poczta:
-                    newInstance = new Poczta();
-                    openTab(newInstance, tabInfo);
-                    break;
             }
         }
         else {
