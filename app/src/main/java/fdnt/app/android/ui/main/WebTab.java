@@ -48,6 +48,16 @@ public class WebTab extends Fragment {
         loadTab(getArguments().getString("adress"));
     }
 
+    @Override
+    public void onDestroy() {
+        try {
+            getActivity().findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
+        }
+        catch (NullPointerException e) {
+        }
+        super.onDestroy();
+    }
+
     private WebViewClient myClient = new WebViewClient() {
         public void onPageFinished(WebView view, String url) {
             //chowamy kręcące się kółko

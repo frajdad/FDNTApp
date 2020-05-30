@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.Set;
 
 import fdnt.app.android.ui.main.Kontakt;
+import fdnt.app.android.ui.main.OFundacji;
 import fdnt.app.android.ui.main.WebTab;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -339,6 +340,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
                     onOFunacjiVisibilityChange(true, menu);
+                    newInstance = OFundacji.newInstance();
+                    openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_nasz_patron:
                     hideTabs(menu);
