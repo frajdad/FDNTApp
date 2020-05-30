@@ -10,6 +10,8 @@
     <color name="colorHighlited">#222222</color>
     <color name="menuText">#202020</color>
     <color name="checkedText">#000000</color>
+    <color name="colorTitle">#1464AA</color>
+    <color name="colorSubTitle">#202020</color>
 </resources>
 
 

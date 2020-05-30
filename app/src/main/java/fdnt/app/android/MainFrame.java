@@ -31,8 +31,19 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
-import fdnt.app.android.ui.main.Kontakt;
-import fdnt.app.android.ui.main.OFundacji;
+import fdnt.app.android.ui.main.CoRobimy;
+import fdnt.app.android.ui.main.DoPobrania;
+import fdnt.app.android.ui.main.DzienPapieski;
+import fdnt.app.android.ui.main.GdzieJestesmy;
+import fdnt.app.android.ui.main.JanPawelIi;
+import fdnt.app.android.ui.main.KimJestemy;
+import fdnt.app.android.ui.main.KontaktBiuro;
+import fdnt.app.android.ui.main.KontaktFundacja;
+import fdnt.app.android.ui.main.KontaktZarzad;
+import fdnt.app.android.ui.main.Modlitwa;
+import fdnt.app.android.ui.main.MyOPatronie;
+import fdnt.app.android.ui.main.PobierzBlankiet;
+import fdnt.app.android.ui.main.Sposoby;
 import fdnt.app.android.ui.main.WebTab;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -275,7 +286,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     void onNaszPatronVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_jan_pawel).setVisible(state);
         menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
-        menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
+        menu.findItem(R.id.nav_dzien_papieski).setVisible(state);
         menu.findItem(R.id.nav_modlitwa).setVisible(state);
     }
 
@@ -330,36 +341,109 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         Fragment newInstance = WebTab.newInstance(); //Jak się pozbędziemy zakomentowanych rzeczy w switch to trzeba usunąć inicjalizajcę tu
 
         if (name == null) {
+            setTitle("FDNT");
             switch (id) {
                 case R.id.nav_main_menu:
                     newInstance = WebTab.newInstance();
-                    setTitle("FDNT");
                     tabInfo.putString("adress", "https://dzielo.pl/");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
                     onOFunacjiVisibilityChange(true, menu);
-                    newInstance = OFundacji.newInstance();
+                    break;
+                case R.id.nav_kim_jestesmy:
+                    newInstance = KimJestemy.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_gdzie_jestesmy:
+                    newInstance = GdzieJestesmy.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_co_robimy:
+                    newInstance = CoRobimy.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_nasz_patron:
                     hideTabs(menu);
                     onNaszPatronVisibilityChange(true, menu);
                     break;
+                case R.id.nav_jan_pawel:
+                    newInstance = JanPawelIi.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_my_o_patronie:
+                    newInstance = MyOPatronie.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_dzien_papieski:
+                    newInstance = DzienPapieski.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_modlitwa:
+                    newInstance = Modlitwa.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
                 case R.id.nav_dla_darczyncy:
                     hideTabs(menu);
                     onDlaDarczyncyVisibilityChange(true, menu);
+                    break;
+                case R.id.nav_sposoby:
+                    newInstance = Sposoby.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_wplac:
+                    newInstance = WebTab.newInstance();
+                    tabInfo.putString("adress", "https://dzielo.pl/dla-darczyncy/wplata/");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_pobierz_blankiet:
+                    newInstance = PobierzBlankiet.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_przekaz_1:
+                    newInstance = WebTab.newInstance();
+                    tabInfo.putString("adress", "https://2018.pit-format-online.pl/?rid=b1b5566183bd3f337c9a1f4bd2b2daa0f0728ad2");
+                    openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_materialy_prasowe:
                     hideTabs(menu);
                     onMaterialyPrasoweVisibilityChange(true, menu);
                     break;
+                case R.id.nav_media_o_nas:
+                    newInstance = WebTab.newInstance();
+                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/media-o-nas/");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_biuro_prasowe:
+                    newInstance = WebTab.newInstance();
+                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/biuro-prasowe/");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_dzielo_tv:
+                    newInstance = WebTab.newInstance();
+                    tabInfo.putString("adress", "https://www.youtube.com/user/DzieloTV");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_do_pobrania:
+                    newInstance = DoPobrania.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
                 case R.id.nav_kontakt:
                     hideTabs(menu);
                     onKontaktVisibilityChange(true, menu);
-                    newInstance = Kontakt.newInstance();
-                    setTitle("Kontakt");
+                    break;
+                case R.id.nav_fundacja:
+                    newInstance = KontaktFundacja.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_biuro:
+                    newInstance = KontaktBiuro.newInstance();
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_zarzad:
+                    newInstance = KontaktZarzad.newInstance();
+                    openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_settings:
                     newInstance = new UstawieniaAX();
