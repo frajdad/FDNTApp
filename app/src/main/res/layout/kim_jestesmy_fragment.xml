@@ -20,7 +20,7 @@
             android:fontFamily="@font/roboto_condensed_regular"
             android:text="@string/header_o_fundacji"
             android:textColor="@color/colorTitle"
-            android:textSize="30sp"
+            android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

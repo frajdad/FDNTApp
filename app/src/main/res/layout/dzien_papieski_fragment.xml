@@ -1,13 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.DzienPapieski">
-
-    <TextView
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/oFundacji"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        tools:context=".ui.main.OFundacji">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/header_nasz_patron"
+            android:layout_width="183dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:text="@string/header_nasz_patron"
+            android:textColor="@color/colorTitle"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/pasekill"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="101dp"
+            android:src="@drawable/pasekill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_nasz_patron" />
+
+        <TextView
+            android:id="@+id/subheader_dzien_papieski"
+            android:layout_width="203dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/subheader_dzien_papieski"
+            android:textColor="@color/colorSubTitle"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pasekill" />
+
+        <ImageView
+            android:id="@+id/bialypasek"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/pasekszary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subheader_dzien_papieski" />
+
+        <TextView
+            android:id="@+id/myopatronie_tekst"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:justificationMode="inter_word"
+            android:text="@string/dzienpapieski_tekst"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/bialypasek"
+            app:layout_constraintStart_toStartOf="@+id/bialypasek"
+            app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

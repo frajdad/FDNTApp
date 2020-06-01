@@ -32,6 +32,15 @@
     <string name="subheader_kim_jestesmy">KIM JESTEŚMY?</string>
     <string name="subheader_co_robimy">CO ROBIMY?</string>
     <string name="subheader_gdzie_jestesmy">GDZIE JESTEŚMY?</string>
+    <string name="header_nasz_patron">NASZ PATRON</string>
+    <string name="subheader_jp_II">ŚW. JAN PAWEŁ II</string>
+    <string name="subheader_my_o_patronie">MY O PATRONIE</string>
+    <string name="subheader_dzien_papieski">DZIEŃ PAPIESKI</string>
+    <string name="subheader_modlitwa">MODLITWA</string>
+    <string name="header_kontakt">KONTAKT</string>
+    <string name="subheader_fundacja">FUNDACJA</string>
+    <string name="subheader_biuro">BIURO</string>
+    <string name="subheader_zarzad">ZARZĄD</string>
     <string name="header_dla_darczyncy">DLA DARCZYŃCY</string>
     
     <string name="title_activity_ustawienia_ax">Ustawienia</string>
@@ -59,6 +68,76 @@
     Na czele Rady Fundacji stoi ks. kard. Łukasz Nycz, a przewodniczącym Zarządu jest ks. Dariusz Kowalczyk. Siedziba znajduje się w Warszawie w Sekretariacie Konferencji Episkopatu Polski.
     W ciągu dziewiętnastu lat swojej działalności Fundacja objęła opieką 4000 młodych ludzi z całej Polski zgodnie z wezwaniem Ojca Świętego do „nowej wyobraźni miłosierdzia”. Stypendyści z każdego zakątka Polski tworzą Żywy Pomnik Papieża Jana Pawła II, przy okazji jednocząc się i realizując swoje pasje i cele.</string>
     <string name="gdziejestesmy_tekst">Po pielgrzymce Jana Pawła II do Polski w 2000 roku, u początków idei powstania Fundacji, komisja sponsoringowa pielgrzymki zadecydowała o przekazaniu 700 tys. złotych na stypendia dla ubogiej, zdolnej młodzieży. Do programu pilotażowego wybrano 5 diecezji z terenów popegeerowskich i wykazujących wysoki stopień bezrobocia. Były to: diecezja przemyska, koszalińsko – kołobrzeska, drohiczyńska, ełcka i radomska. Rok później kontynuowanie dzieła stanęło pod znakiem zapytania, gdyż sponsorzy programu wycofali się. Pojawiła się jednak idea zbiórek środków na fundusz stypendialny towarzyszących obchodom Dnia Papieskiego. Już pierwsza zbiórka „Dzielmy się miłością” przyniosła ok. 2 mln 300 tys. złotych, co wydatnie rozszerzyło realizowany przez Fundację program stypendialny. Z roku na rok liczba diecezji i stypendystów objętych programem zwiększała się, by w 2014 roku osiągnąć apogeum – Fundacja wspierała wtedy ponad 2,5 tys. młodych z całej Polski. Wszystko dzięki ofiarności Polaków, którym nie jest obojętny los uboższych. Aktualnie Fundacja obejmuje programem stypendialnym około 2000 uczniów szkół podstawowych, gimnazjalistów, uczniów szkół średnich i studentów z całej Polski. Poszerza ona także program o młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
-    Po pielgrzymce Jana Pawła II do Polski w 2000 roku, u początków idei powstania Fundacji, komisja sponsoringowa pielgrzymki zadecydowała o przekazaniu 700 tys. złotych na stypendia dla ubogiej, zdolnej młodzieży. Do programu pilotażowego wybrano 5 diecezji z terenów popegeerowskich i wykazujących wysoki stopień bezrobocia. Były to: diecezja przemyska, koszalińsko – kołobrzeska, drohiczyńska, ełcka i radomska. Rok później kontynuowanie dzieła stanęło pod znakiem zapytania, gdyż sponsorzy programu wycofali się. Pojawiła się jednak idea zbiórek środków na fundusz stypendialny towarzyszących obchodom Dnia Papieskiego. Już pierwsza zbiórka „Dzielmy się miłością” przyniosła ok. 2 mln 300 tys. złotych, co wydatnie rozszerzyło realizowany przez Fundację program stypendialny. Z roku na rok liczba diecezji i stypendystów objętych programem zwiększała się, by w 2014 roku osiągnąć apogeum – Fundacja wspierała wtedy ponad 2,5 tys. młodych z całej Polski. Wszystko dzięki ofiarności Polaków, którym nie jest obojętny los uboższych. Aktualnie Fundacja obejmuje programem stypendialnym około 2000 uczniów szkół podstawowych, gimnazjalistów, uczniów szkół średnich i studentów z całej Polski. Poszerza ona także program o młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
+    Po pielgrzymce Jana Pawła II do Polski w 2000 roku, u początków idei powstania Fundacji, komisja sponsoringowa pielgrzymki zadecydowała o przekazaniu 700 tys. złotych na stypendia dla ubogiej, zdolnej młodzieży. Do programu pilotażowego wybrano 5 diecezji z terenów popegeerowskich i wykazujących wysoki stopień bezrobocia. Były to: diecezja przemyska, koszalińsko – kołobrzeska, drohiczyńska, ełcka i radomska. Rok później kontynuowanie dzieła stanęło pod znakiem zapytania, gdyż sponsorzy programu wycofali się. Pojawiła się jednak idea zbiórek środków na fundusz stypendialny towarzyszących obchodom Dnia Papieskiego. Już pierwsza zbiórka „Dzielmy się miłością” przyniosła ok. 2 mln 300 tys. złotych, co wydatnie rozszerzyło realizowany przez Fundację program stypendialny. Z roku na rok liczba diecezji i stypendystów objętych programem zwiększała się, by w 2014 roku osiągnąć apogeum – Fundacja wspierała wtedy ponad 2,5 tys. młodych z całej Polski. Wszystko dzięki ofiarności Polaków, którym nie jest obojętny los uboższych. łej Polski.
     </string>
+    <string name="jpII_tekst">Fundacja “Dzielo Nowego Tysiaclecia” jest odpowiedzią na nauczanie św. Jana Pawła II, naszego patrona. Stypendyści nazywani są niejednokrotnie Jego żywym pomnikiem, dlatego że swoją postawą i stylem życia niosą dalej słowo papieża Polaka.
+    Jan Paweł II wciąż jest bardzo ważną postacią dla Polaków, nawet jeżeli niektórzy z nas nie pamiętają go zbyt dobrze. Od niego uczymy się dobra i ciepła w kontakcie z drugim człowiekiem, ale też człowieczeństwa w najpełniejszym wymiarze oraz miłosierdzia i zawierzenia swojego życia Matce Bożej. Jan Paweł II pokazuje nam też, że musimy stawiać samym sobie wysokie wymagania, nawet jeżeli inni od nas nie wymagają. Swoim życiem już w młodości świadczył, że talenty, które każdy z nas posiada są darem danym nam przez Boga i nie możemy ich zakopać, ale naszym zadaniem jest nieustannie je rozwijać dla dobra ludzi i ojczyzny oraz ku chwale Bożej. Fundacja umożliwia to wielu młodym ludziom, wpisując się tym bardziej w ideały głoszone przez Ojca Świętego, natomiast zachęcając stypendystów do wolontariatu uczy ich, że talenty którymi są obdarzeni mogą być dla drugiego człowieka prawdziwym skarbem.
+    Budując żywy pomnik Jana Pawła II, czyli Fundację “Dzieło Nowego Tysiąclecia” na fundamencie wartości głoszonych przez naszego patrona przygotowujemy
+    młodych ludzi do tego, aby idąc w świat pamiętali zawsze o tym, że nie żyją tylko dla siebie, ale przede wszystkim dla Boga oraz ludzi którzy znajdują się dookoła nich i są ich bliźnimi, którym należy wybaczać oraz nieść dobro. Dlatego też patronat Jana Pawła II to przede wszystkim patronat miłości i miłosierdzia.</string>
+    <string name="myopatronie_tekst">Jeden ze stypendystów, Jakub Kubat mówi o Janie Pawle II tak: Dla mnie Jan Paweł II jest wspaniałym wzorem, który staram się naśladować. Jego życie uczy mnie pokory wobec Boga. Wszystkie Jego nauki pomimo upływu lat są wciąż tak samo aktualne. Nasz kochany Papież pokazywał nam, że należy zmieniać świat zaczynając od samego siebie. Całe życie Karola Wojtyły pokazuje nam, jak należy realizować słowa "Totus Tuus Maria", i jak być prawdziwym chrześcijaninem. On naprawdę ukazał nam tajemnicę Bożego Miłosierdzia, wybaczając zamachowcy, który omal Go nie zabił. Ojciec Święty jednoczył chrześcijan na całym świecie zacierając pozornie nieprzekraczalne granice.</string>
+    <string name="modlitwa_tekst">Kyrie elejson, Chryste elejson, Kyrie elejson Chryste usłysz nas, Chryste wysłuchaj nas Ojcze z nieba, Boże – zmiłuj się nad nami Synu Odkupicielu świata, Boże – zmiłuj się nad nami Duchu Święty, Boże – zmiłuj się nad nami Święta Trójco, Jedyny Boże – zmiłuj się nad nami
+        Święta Maryjo – módl się za nami
+        Święty Janie Pawle – módl się za nami
+        Zanurzony w Ojcu, bogatym w miłosierdzie,
+        Zjednoczony z Chrystusem, Odkupicielem człowieka,
+        Napełniony Duchem Świętym, Panem i Ożywicielem
+        Całkowicie oddany Maryi i przyodziany Jej szkaplerzem,
+        Przyjacielu Świętych i Błogosławionych,
+        Następco Piotra i Sługo sług Bożych,
+        Stróżu Kościoła nauczający prawd wiary,
+        Ojcze Soboru i wykonawco jego wskazań,
+        Umacniający jedność chrześcijan i całej rodziny ludzkiej,
+        Gorliwy Miłośniku Eucharystii,
+        Niestrudzony Pielgrzymie tej ziemi,
+        Misjonarzu wszystkich narodów,
+        Świadku wiary, nadziei i miłości,
+        Wytrwały Uczestniku cierpień Chrystusowych,
+        Apostole pojednania i pokoju,
+        Promotorze cywilizacji miłości,
+        Głosicielu Nowej Ewangelizacji,
+        Mistrzu wzywający do wypłynięcia na głębię,
+        Nauczycielu ukazujący świętość jako mia-rę życia,
+        Papieżu Bożego Miłosierdzia,
+        Kapłanie gromadzący Kościół na składanie ofiary,
+        Pasterzu prowadzący owczarnię do nieba,
+        Bracie i Mistrzu kapłanów,
+        Ojcze osób konsekrowanych,
+        Patronie rodzin chrześcijańskich,
+        Umocnienie małżonków,
+        Obrońco nienarodzonych,
+        Opiekunie dzieci, sierot i opuszczonych,
+        Przyjacielu i Wychowawco młodzieży,
+        Dobry Samarytaninie dla cierpiących,
+        Wsparcie dla ludzi starszych i samotnych,
+        Głosicielu prawdy o godności człowieka,
+        Mężu modlitwy zanurzony w Bogu,
+        Miłośniku liturgii sprawujący Ofiarę na ołtarzach świata,
+        Uosobienie pracowitości,
+        Zakochany w krzyżu Chrystusa,
+        Przykładnie realizujący powołanie,
+        Wytrwały w cierpieniu,
+        Wzorze życia i umierania dla Pana,
+        Upominający grzeszników,
+        Wskazujący drogę błądzącym,
+        Przebaczający krzywdzicielom,
+        Szanujący przeciwników i prześladowców,
+        Rzeczniku i obrońco prześladowanych,
+        Wspierający bezrobotnych,
+        Zatroskany o bezdomnych,
+        Odwiedzający więźniów,
+        Umacniający słabych,
+        Uczący wszystkich solidarności,
+
+        Baranku Boży, który gładzisz grzechy świata, przepuść nam Panie
+        Baranku Boży, który gładzisz grzechy świata, wysłuchaj nas Panie
+        Baranku Boży, który gładzisz grzechy świata, zmiłuj się nad nami
+
+        K: Módl się za nami święty Janie Pawle.
+        W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.</string>
+
+    <string name="dzienpapieski_tekst"> Każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową, w całej Polsce oraz środowiskach polonijnych obchodzony jest Dzień Papieski, podczas którego łączymy sięw modlitwie z obecnym papieżem oraz zagłębiamy się w nauczanie św. Jana Pawła II.
+    Polacy gromadzą się wtedy na liturgiach, nabożeństwach, czuwaniach modlitewnych, medytacjach oraz konferencjach poświęconych nauczaniu Ojca Świętego. Tydzień wcześniej we wszystkich parafiach odczytywany jest list pasterski Konferencji Episkopatu Polski, przygotowujący do tego wydarzenia. Dzień Papieski w każdym roku ma swoje hasło, wskazujące na istotny obszar papieskiego nauczania. Hasło to stanowi osnowę wszystkich wydarzeń modlitewnych, liturgicznych i artystycznych. Obchodom Dnia Papieskiego towarzyszą konkursy, wystawy, sztuki teatralne, wieczory poetyckie, imprezy sportowe, kulturalne, artystyczne, między innymi koncert galowy Dnia Papieskiego w Warszawie transmitowany przez TVP 1 i TVP Polonia.
+    Aspekt charytatywny tego dnia to przykościelna i publiczna zbiórka pieniędzy na rzecz funduszu stypendialnego dla zdolnej młodzieży z niezamożnych rodzin.Podopieczni Fundacji są nazywani mianem „żywego pomnika” św. Jana Pawła II, a wspieranie ich wyrazem wdzięczności Polaków wobec swojego Wielkiego Rodaka.
+    Przygotowanie uroczystości to duże wyzwanie organizacyjne, w które angażują się tysiące wolontariuszy, m.in. harcerze, ministranci, aktorzy, dziennikarze, piosenkarze oraz sami stypendyści. Fundację wspiera w tym wyjątkowym przedsięwzięciu Ogólnopolski Komitet Organizacyjny Dnia Papieskiego, w którego skład wchodzą przedstawiciele stowarzyszeń, fundacji i duszpasterstw z całego kraju.
+    Jan Paweł II gromadzi Polaków na całym świecie. W organizację Dnia Papieskiego włączają się również rodacy mieszkający poza granicami Polski i wspierają Fundację „Dzieło Nowego Tysiąclecia”, zarówno w wymiarze duchowym, jak i finansowym. Polacy mieszkający w Wielkiej Brytanii, Hiszpanii, Stanach Zjednoczonych, Niemczech, Irlandii, Szwecji, Norwegii, Kanadzie, Argentynie, Australii czy Francji spotykają się na Eucharystiach i wspólnej modlitwie, organizują konferencje, wystawy i koncerty, aby wspólnie pielęgnować pamięć o największym z Polaków.</string>
 </resources>
