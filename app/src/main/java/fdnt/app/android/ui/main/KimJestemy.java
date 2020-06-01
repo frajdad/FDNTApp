@@ -19,7 +19,7 @@ public class KimJestemy extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.o_fundacji_fragment, container, false);
+        return inflater.inflate(R.layout.kim_jestesmy_fragment, container, false);
     }
 
     @Override

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/oFundacji"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.main.OFundacji">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/oFundacji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.main.OFundacji">
 
 
         <TextView
@@ -35,12 +38,12 @@
             app:layout_constraintTop_toBottomOf="@+id/header_o_fundacji" />
 
         <TextView
-            android:id="@+id/subheader_corobimy"
+            android:id="@+id/subheader_kimjestesmy"
             android:layout_width="203dp"
             android:layout_height="31dp"
             android:layout_marginStart="19dp"
             android:layout_marginTop="32dp"
-            android:text="@string/subheader_co_robimy"
+            android:text="@string/subheader_kim_jestesmy"
             android:textColor="@color/colorSubTitle"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,19 +57,19 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/pasekszary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subheader_corobimy" />
+            app:layout_constraintTop_toBottomOf="@+id/subheader_kimjestesmy" />
 
         <TextView
-            android:id="@+id/corobimy_tekst"
+            android:id="@+id/kimjestesmy_tekst"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:justificationMode="inter_word"
-            android:text="@string/corobimy_tekst"
+            android:text="@string/kimjestesmy_tekst"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/bialypasek"
             app:layout_constraintStart_toStartOf="@+id/bialypasek"
             app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
