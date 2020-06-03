@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/oFundacji"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.main.OFundacji">
 
 
@@ -54,4 +55,37 @@
         android:src="@drawable/pasekszary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheader_fundacja" />
+
+    <ImageView
+        android:id="@+id/trasa_png"
+        android:layout_width="39dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/lok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
+
+    <TextView
+        android:id="@+id/title_adres"
+        android:layout_width="45dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/adres"
+        app:layout_constraintStart_toEndOf="@+id/trasa_png"
+        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
+
+    <TextView
+        android:id="@+id/adres_tekst"
+        android:layout_width="244dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/adres_tekst"
+        android:textColor="@color/colorSubTitle"
+        app:layout_constraintStart_toEndOf="@+id/trasa_png"
+        app:layout_constraintTop_toBottomOf="@+id/title_adres" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
