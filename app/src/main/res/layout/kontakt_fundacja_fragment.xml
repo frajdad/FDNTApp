@@ -11,13 +11,15 @@
     <TextView
         android:id="@+id/header_kontakt"
         android:layout_width="183dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="134dp"
         android:fontFamily="@font/roboto_condensed_regular"
         android:text="@string/header_kontakt"
         android:textColor="@color/colorTitle"
         android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/icons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,40 +54,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="19dp"
         android:src="@drawable/pasekszary"
+        app:layout_constraintBottom_toTopOf="@+id/icons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subheader_fundacja" />
 
+
     <ImageView
-        android:id="@+id/trasa_png"
-        android:layout_width="39dp"
-        android:layout_height="94dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/lok"
+        android:id="@+id/icons"
+        android:layout_width="72dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="36dp"
+        android:src="@drawable/zakadkakontakt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
-
-    <TextView
-        android:id="@+id/title_adres"
-        android:layout_width="45dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="21dp"
-        android:text="@string/adres"
-        app:layout_constraintStart_toEndOf="@+id/trasa_png"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
-
-    <TextView
-        android:id="@+id/adres_tekst"
-        android:layout_width="244dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="13dp"
-        android:text="@string/adres_tekst"
-        android:textColor="@color/colorSubTitle"
-        app:layout_constraintStart_toEndOf="@+id/trasa_png"
-        app:layout_constraintTop_toBottomOf="@+id/title_adres" />
+        app:layout_constraintTop_toBottomOf="@+id/header_kontakt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
