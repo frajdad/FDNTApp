@@ -145,7 +145,7 @@
     <string name="tel">Telefon:</string>
     <string name="tel_tekst">(22) 530 48 28</string>
     <string name="email">E-mail:</string>
-    <string name="email_tekst">dzielo@episkopat.pl</string>
+    <string name="mail_tekst">dzielo@episkopat.pl</string>
     <string name="nip">NIP:</string>
     <string name="nip_tekst">527-23-16-033</string>
 </resources>

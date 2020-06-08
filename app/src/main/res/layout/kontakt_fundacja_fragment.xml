@@ -182,12 +182,12 @@
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
-        android:id="@+id/email_tekst"
+        android:id="@+id/mail_tekst"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="11dp"
-        android:text="@string/email_tekst"
+        android:text="@string/mail_tekst"
         android:textColor="@color/colorSubTitle"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.035"
@@ -205,7 +205,7 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.03"
         app:layout_constraintStart_toEndOf="@+id/ikonanip"
-        app:layout_constraintTop_toBottomOf="@+id/email_tekst"
+        app:layout_constraintTop_toBottomOf="@+id/mail_tekst"
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
