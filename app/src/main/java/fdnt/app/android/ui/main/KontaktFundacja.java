@@ -1,7 +1,9 @@
 package fdnt.app.android.ui.main;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,16 +54,22 @@ public class KontaktFundacja extends Fragment {
         }
     };
 
-    private View.OnClickListener copyFoundationNIP = new View.OnClickListener() {
+    private  View.OnClickListener copyFoundationNIP = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            final String NIP = "527-23-16-033";
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("nip", NIP);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(getActivity(), "Skopiowano!", Toast.LENGTH_SHORT).show();
         }
     };
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.kontakt_fundacja_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.kontakt_fundacja_fragment, container, false);
 
         ImageView localizationIcon = (ImageView) rootView.findViewById(R.id.ikonatrasa);
         TextView localizationHeader = (TextView) rootView.findViewById(R.id.adres);
@@ -83,6 +92,12 @@ public class KontaktFundacja extends Fragment {
         mailHeader.setOnClickListener(mailToFoundation);
         mailText.setOnClickListener(mailToFoundation);
 
+        ImageView nipIcon = (ImageView) rootView.findViewById(R.id.ikonanip);
+        TextView nipHeader = (TextView) rootView.findViewById(R.id.nip);
+        TextView nipText = (TextView) rootView.findViewById(R.id.nip_tekst);
+        nipIcon.setOnClickListener(copyFoundationNIP);
+        nipHeader.setOnClickListener(copyFoundationNIP);
+        nipText.setOnClickListener(copyFoundationNIP);
 
         return rootView;
     }
