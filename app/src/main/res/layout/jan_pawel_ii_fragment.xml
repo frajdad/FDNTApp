@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oFundacji"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,48 +17,44 @@
             android:id="@+id/header_nasz_patron"
             android:layout_width="183dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto_condensed_regular"
             android:text="@string/header_nasz_patron"
             android:textColor="@color/colorTitle"
             android:textSize="28sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:autoSizeTextType="uniform"
+            app:layout_constraintDimensionRatio="h,5:1"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
+            app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 
         <ImageView
             android:id="@+id/pasekill"
-            android:layout_width="300dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="101dp"
+            android:contentDescription="pasek"
             android:src="@drawable/pasekill"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineright"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/header_nasz_patron" />
 
         <TextView
             android:id="@+id/subheader_jpII"
             android:layout_width="203dp"
             android:layout_height="31dp"
-            android:layout_marginStart="19dp"
             android:layout_marginTop="32dp"
             android:text="@string/subheader_jp_II"
             android:textColor="@color/colorSubTitle"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/pasekill" />
 
         <ImageView
             android:id="@+id/bialypasek"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/pasekszary"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/subheader_jpII" />
 
         <TextView
@@ -67,9 +65,37 @@
             android:justificationMode="inter_word"
             android:text="@string/jpII_tekst"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/bialypasek"
-            app:layout_constraintStart_toStartOf="@+id/bialypasek"
+            app:layout_constraintEnd_toEndOf="@+id/guidelinebottom"
+            app:layout_constraintStart_toStartOf="@+id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinetop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.012" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinebottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
