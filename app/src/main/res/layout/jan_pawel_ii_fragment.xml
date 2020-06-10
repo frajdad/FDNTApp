@@ -55,6 +55,7 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/pasekszary"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
+            app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
             app:layout_constraintTop_toBottomOf="@+id/subheader_jpII" />
 
         <TextView
@@ -65,7 +66,7 @@
             android:justificationMode="inter_word"
             android:text="@string/jpII_tekst"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/guidelinebottom"
+            app:layout_constraintEnd_toEndOf="@+id/guidelinemiddle"
             app:layout_constraintStart_toStartOf="@+id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
 
@@ -91,11 +92,11 @@
             app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelinebottom"
+            android:id="@+id/guidelinemiddle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.81" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
