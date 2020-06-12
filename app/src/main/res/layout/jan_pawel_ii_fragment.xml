@@ -12,30 +12,20 @@
         android:layout_height="wrap_content"
         tools:context=".ui.main.OFundacji">
 
-
-        <TextView
-            android:id="@+id/header_nasz_patron"
+        <include android:id="@+id/header_nasz_patron"
             android:layout_width="183dp"
             android:layout_height="0dp"
-            android:fontFamily="@font/roboto_condensed_regular"
-            android:text="@string/header_nasz_patron"
-            android:textColor="@color/colorTitle"
-            android:textSize="28sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintDimensionRatio="h,5:1"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
+            app:layout_constraintTop_toTopOf="@+id/guidelinetop"
+            layout="@layout/header_nasz_patron"/>
 
-        <ImageView
-            android:id="@+id/pasekill"
+        <include android:id="@+id/pasekill"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:contentDescription="pasek"
-            android:src="@drawable/pasekill"
             app:layout_constraintEnd_toEndOf="@id/guidelineright"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/header_nasz_patron" />
+            app:layout_constraintTop_toBottomOf="@id/header_nasz_patron"
+            layout="@layout/pasekill" />
 
         <TextView
             android:id="@+id/subheader_jpII"
@@ -48,15 +38,13 @@
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/pasekill" />
 
-        <ImageView
-            android:id="@+id/bialypasek"
-            android:layout_width="300dp"
+        <include android:id="@+id/bialypasek"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/pasekszary"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
-            app:layout_constraintTop_toBottomOf="@+id/subheader_jpII" />
+            app:layout_constraintTop_toBottomOf="@+id/subheader_jpII"
+            layout="@layout/bialypasek"/>
 
         <TextView
             android:id="@+id/jpII_tekst"
@@ -66,7 +54,7 @@
             android:justificationMode="inter_word"
             android:text="@string/jpII_tekst"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/guidelinemiddle"
+            app:layout_constraintEnd_toEndOf="@+id/guidelineright"
             app:layout_constraintStart_toStartOf="@+id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
 
