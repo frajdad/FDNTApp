@@ -8,63 +8,40 @@
     tools:context=".ui.main.OFundacji">
 
 
-    <TextView
-        android:id="@+id/header_kontakt"
+    <include android:id="@+id/header_kontakt"
         android:layout_width="183dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto_condensed_regular"
-        android:text="@string/header_kontakt"
-        android:textColor="@color/colorTitle"
-        android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop"
+        layout="@layout/header_o_fundacji"/>
 
-    <ImageView
-        android:id="@+id/pasekill"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/pasekill"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_kontakt" />
+    <include android:id="@+id/pasekill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_kontakt"
+        layout="@layout/pasekill" />
 
     <TextView
         android:id="@+id/subheader_fundacja"
         android:layout_width="203dp"
         android:layout_height="31dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/subheader_fundacja"
         android:textColor="@color/colorSubTitle"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill"/>
 
-    <ImageView
-        android:id="@+id/bialypasek"
-        android:layout_width="300dp"
+    <include android:id="@+id/bialypasek"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/pasekszary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subheader_fundacja" />
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toBottomOf="@+id/subheader_fundacja"
+        layout="@layout/bialypasek"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
 
     <ImageView
         android:id="@+id/ikonatrasa"
@@ -73,7 +50,8 @@
         android:layout_marginTop="14dp"
         android:src="@drawable/lok"
         app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
         app:layout_constraintTop_toBottomOf="@+id/bialypasek"
         app:layout_constraintWidth_percent="0.14" />
 
@@ -81,12 +59,11 @@
         android:id="@+id/ikonatel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-
         android:layout_marginTop="21dp"
         android:src="@drawable/tel"
         app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
         app:layout_constraintTop_toBottomOf="@+id/ikonatrasa"
         app:layout_constraintWidth_percent="0.14" />
 
@@ -94,11 +71,10 @@
         android:id="@+id/ikonamail"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
         android:src="@drawable/mail"
         app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
         app:layout_constraintTop_toBottomOf="@+id/ikonatel"
         app:layout_constraintWidth_percent="0.14" />
 
@@ -106,11 +82,11 @@
         android:id="@+id/ikonanip"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="21dp"
         android:src="@drawable/nip"
         app:layout_constraintHeight_percent="0.13"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintTop_toBottomOf="@+id/ikonamail"
         app:layout_constraintWidth_percent="0.13" />
 
@@ -223,12 +199,39 @@
         app:layout_constraintWidth_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineBottom"
+        android:id="@+id/guidelinetop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_percent="0.015" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinemiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineicons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.19" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
