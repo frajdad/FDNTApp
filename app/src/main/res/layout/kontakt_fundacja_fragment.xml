@@ -8,63 +8,73 @@
     tools:context=".ui.main.OFundacji">
 
 
-    <include android:id="@+id/header_kontakt"
+    <include
+        android:id="@+id/header_kontakt"
+        layout="@layout/header_kontakt"
         android:layout_width="183dp"
-        android:layout_height="0dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/pasekill"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toTopOf="@+id/guidelinetop"
-        layout="@layout/header_o_fundacji"/>
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 
-    <include android:id="@+id/pasekill"
+    <include
+        android:id="@+id/pasekill"
+        layout="@layout/pasekill"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="@id/guidelineright"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@id/header_kontakt"
-        layout="@layout/pasekill" />
+        app:layout_constraintTop_toBottomOf="@id/header_kontakt" />
 
     <TextView
         android:id="@+id/subheader_fundacja"
-        android:layout_width="203dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="@string/subheader_fundacja"
         android:textColor="@color/colorSubTitle"
         android:textSize="20sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/bialypasek"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/pasekill"/>
+        app:layout_constraintTop_toTopOf="@id/guideline5"
+        app:layout_constraintWidth_percent="0.5" />
 
-    <include android:id="@+id/bialypasek"
+    <include
+        android:id="@+id/bialypasek"
+        layout="@layout/bialypasek"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
-        app:layout_constraintTop_toBottomOf="@+id/subheader_fundacja"
-        layout="@layout/bialypasek"/>
+        app:layout_constraintHeight_percent="0.02"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="@id/guidelinepasek"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft" />
 
 
     <ImageView
         android:id="@+id/ikonatrasa"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="14dp"
         android:src="@drawable/lok"
-        app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek"
+        app:layout_constraintHeight_percent="0.13"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
         app:layout_constraintWidth_percent="0.14" />
 
     <ImageView
         android:id="@+id/ikonatel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="21dp"
         android:src="@drawable/tel"
-        app:layout_constraintHeight_percent="0.14"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintBottom_toTopOf="@id/guideline7"
         app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-        app:layout_constraintTop_toBottomOf="@+id/ikonatrasa"
+        app:layout_constraintHeight_percent="0.14"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/guideline6"
         app:layout_constraintWidth_percent="0.14" />
 
     <ImageView
@@ -72,75 +82,69 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/mail"
+        app:layout_constraintBottom_toTopOf="@id/guideline8"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
         app:layout_constraintHeight_percent="0.14"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-        app:layout_constraintTop_toBottomOf="@+id/ikonatel"
+        app:layout_constraintTop_toBottomOf="@+id/guideline7"
         app:layout_constraintWidth_percent="0.14" />
 
     <ImageView
         android:id="@+id/ikonanip"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="21dp"
         android:src="@drawable/nip"
-        app:layout_constraintHeight_percent="0.13"
         app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
+        app:layout_constraintHeight_percent="0.13"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/ikonamail"
+        app:layout_constraintTop_toBottomOf="@+id/guideline8"
         app:layout_constraintWidth_percent="0.13" />
 
     <TextView
         android:id="@+id/adres"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="16dp"
         android:text="@string/adres"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.03"
-        app:layout_constraintStart_toEndOf="@+id/ikonatrasa"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
         android:id="@+id/adres_tekst"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="9dp"
         android:text="@string/adres_tekst"
         android:textColor="@color/colorSubTitle"
         app:autoSizeTextType="uniform"
-        app:layout_constraintHeight_percent="0.09"
-        app:layout_constraintStart_toEndOf="@+id/ikonatrasa"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
         app:layout_constraintTop_toBottomOf="@+id/adres"
-        app:layout_constraintWidth_percent="0.60" />
+        app:layout_constraintWidth_percent="0.66" />
 
     <TextView
         android:id="@+id/telefon"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="44dp"
         android:text="@string/tel"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.03"
-        app:layout_constraintStart_toEndOf="@+id/ikonatel"
-        app:layout_constraintTop_toBottomOf="@+id/adres_tekst"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toTopOf="@+id/guideline6"
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
         android:id="@+id/tel_tekst"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
         android:layout_marginTop="11dp"
         android:text="@string/tel_tekst"
         android:textColor="@color/colorSubTitle"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.04"
-        app:layout_constraintStart_toEndOf="@+id/ikonatel"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
         app:layout_constraintTop_toBottomOf="@+id/telefon"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -148,26 +152,23 @@
         android:id="@+id/mail"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="44dp"
         android:text="@string/email"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.03"
-        app:layout_constraintStart_toEndOf="@+id/ikonamail"
-        app:layout_constraintTop_toBottomOf="@+id/tel_tekst"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toBottomOf="@id/guideline7"
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
         android:id="@+id/mail_tekst"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
         android:layout_marginTop="11dp"
         android:text="@string/mail_tekst"
         android:textColor="@color/colorSubTitle"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.035"
-        app:layout_constraintStart_toEndOf="@+id/ikonamail"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
         app:layout_constraintTop_toBottomOf="@+id/mail"
         app:layout_constraintWidth_percent="0.35" />
 
@@ -175,26 +176,23 @@
         android:id="@+id/nip"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="44dp"
         android:text="@string/nip"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.03"
-        app:layout_constraintStart_toEndOf="@+id/ikonanip"
-        app:layout_constraintTop_toBottomOf="@+id/mail_tekst"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toBottomOf="@+id/guideline8"
         app:layout_constraintWidth_percent="0.30" />
 
     <TextView
         android:id="@+id/nip_tekst"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="36dp"
         android:layout_marginTop="12dp"
         android:text="@string/nip_tekst"
         android:textColor="@color/colorSubTitle"
         app:autoSizeTextType="uniform"
         app:layout_constraintHeight_percent="0.04"
-        app:layout_constraintStart_toEndOf="@+id/ikonanip"
+        app:layout_constraintStart_toStartOf="@id/guidelinemiddle"
         app:layout_constraintTop_toBottomOf="@+id/nip"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -203,7 +201,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.015" />
+        app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineleft"
@@ -224,7 +222,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.81" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineicons"
@@ -232,6 +230,69 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinepasek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.71" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
