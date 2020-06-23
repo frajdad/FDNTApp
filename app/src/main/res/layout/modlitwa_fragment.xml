@@ -31,7 +31,7 @@
             android:layout_width="203dp"
             android:layout_height="31dp"
             android:layout_marginTop="32dp"
-            android:text="@string/subheader_my_o_patronie"
+            android:text="@string/subheader_modlitwa"
             android:textColor="@color/colorSubTitle"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
