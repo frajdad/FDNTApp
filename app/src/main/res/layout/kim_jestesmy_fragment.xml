@@ -1,89 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/oFundacji"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/oFundacji"
-        android:layout_width="match_parent"
+    tools:context=".ui.main.OFundacji">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".ui.main.OFundacji">
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
 
-        <include android:id="@+id/header_o_fundacji"
-            android:layout_width="183dp"
-            android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toTopOf="@+id/guidelinetop"
-            layout="@layout/header_o_fundacji"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
-        <include android:id="@+id/pasekill"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/guidelineright"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@id/header_o_fundacji"
-            layout="@layout/pasekill" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinemiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.81" />
 
-        <TextView
-            android:id="@+id/subheader_kimjestesmy"
-            android:layout_width="203dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/subheader_kim_jestesmy"
-            android:textColor="@color/colorSubTitle"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/pasekill" />
+    <include
+        android:id="@+id/header_o_fundacji"
+        layout="@layout/header_o_fundacji"
+        android:layout_width="183dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 
-        <include android:id="@+id/bialypasek"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
-            app:layout_constraintTop_toBottomOf="@+id/subheader_kimjestesmy"
-            layout="@layout/bialypasek"/>
+    <include
+        android:id="@+id/pasekill"
+        layout="@layout/pasekill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_o_fundacji" />
+
+    <TextView
+        android:id="@+id/subheader_kimjestesmy"
+        android:layout_width="203dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/subheader_kim_jestesmy"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
+
+    <include
+        android:id="@+id/bialypasek"
+        layout="@layout/bialypasek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/subheader_kimjestesmy" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintTop_toBottomOf="@+id/bialypasek">
 
         <TextView
             android:id="@+id/kimjestesmy_tekst"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
             android:justificationMode="inter_word"
             android:text="@string/kimjestesmy_tekst"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/guidelineright"
-            app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/bialypasek"/>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelinetop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.032" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineleft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineright"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelinemiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.81" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            android:textSize="20sp" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

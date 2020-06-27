@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/oFundacji"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.OFundacji">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinemiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <include android:id="@+id/header_kontakt"
+        android:layout_width="183dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop"
+        layout="@layout/header_o_fundacji"/>
+
+    <include android:id="@+id/pasekill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_kontakt"
+        layout="@layout/pasekill" />
+
+    <TextView
+        android:id="@+id/subheader_zarzad"
+        android:layout_width="203dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/subheader_zarzad"
+        android:textColor="@color/colorSubTitle"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill"/>
+
+    <include android:id="@+id/bialypasek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
+        app:layout_constraintTop_toBottomOf="@+id/subheader_zarzad"
+        layout="@layout/bialypasek"/>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="@+id/bialypasek"
+        android:layout_height="wrap_content" >
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
