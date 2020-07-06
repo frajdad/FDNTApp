@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/oFundacji"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.OFundacji">
+    tools:context=".ui.main.KontaktZarzad">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelinetop"
@@ -61,19 +62,25 @@
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintTop_toBottomOf="@+id/pasekill"/>
 
-    <include android:id="@+id/bialypasek"
+    <include
+        android:id="@+id/bialypasek"
+        layout="@layout/bialypasek"
         android:layout_width="0dp"
+        android:layout_marginBottom="5dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
-        app:layout_constraintTop_toBottomOf="@+id/subheader_zarzad"
-        layout="@layout/bialypasek"/>
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/subheader_zarzad" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontal_scroll"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="@+id/bialypasek"
-        android:layout_height="wrap_content" >
-    </HorizontalScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/managementRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
