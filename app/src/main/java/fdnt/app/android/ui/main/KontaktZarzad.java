@@ -33,13 +33,11 @@ public class KontaktZarzad extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.kontakt_zarzad_fragment, container, false);
 
-        managementPersonRoles = new ArrayList<String>();
-        managementPersonRoles.addAll(Arrays.asList(roles));
-        managementPersonMails = new ArrayList<String>();
-        managementPersonMails.addAll(Arrays.asList(mails));
+        managementPersonRoles = new ArrayList<String>(Arrays.asList(roles));
+        managementPersonMails = new ArrayList<String>(Arrays.asList(mails));
 
         managementRecyclerView = (RecyclerView) rootView.findViewById(R.id.managementRecyclerView);
-        managementRecyclerAdapter= new ManagementRecyclerAdapter(managementPersonRoles, managementPersonMails);
+        managementRecyclerAdapter = new ManagementRecyclerAdapter(managementPersonRoles, managementPersonMails);
 
         managementRecyclerView.setAdapter(managementRecyclerAdapter);
 
