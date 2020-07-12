@@ -1,7 +1,9 @@
 package fdnt.app.android;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -31,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
+import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
 import fdnt.app.android.ui.main.DoPobrania;
 import fdnt.app.android.ui.main.DzienPapieski;
@@ -293,6 +296,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_wplac).setVisible(state);
         menu.findItem(R.id.nav_sposoby).setVisible(state);
+        menu.findItem(R.id.nav_wyslij_sms).setVisible(state);
         menu.findItem(R.id.nav_pobierz_blankiet).setVisible(state);
         menu.findItem(R.id.nav_przekaz_1).setVisible(state);
     }
@@ -397,6 +401,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     tabInfo.putString("adress", "https://dzielo.pl/dla-darczyncy/wplata/");
                     openTab(newInstance, tabInfo);
                     break;
+                case R.id.nav_wyslij_sms:
+                    sendSMS();
+                    break;
                 case R.id.nav_pobierz_blankiet:
                     newInstance = PobierzBlankiet.newInstance();
                     openTab(newInstance, tabInfo);
@@ -450,6 +457,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Ustawienia");
                     openTab(newInstance, tabInfo);
                     break;
+                case R.id.nav_post:
+                    newInstance = new PostItemFragment();
+                    setTitle("Poczta");
+                    openTab(newInstance, tabInfo);
+                    break;
             }
         }
         else {
@@ -463,12 +475,41 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 
+    private void sendSMS() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainFrame.this);
+        alertDialog.setMessage("Aby wysłać SMS i wspomóc naszą Fundację kliknij WYŚLIJ " +
+                "(4,92 zł z VAT). Dziękujemy!");
+
+        alertDialog.setNegativeButton("Anuluj",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.setPositiveButton("Wyślij",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("smsto:"));
+                        i.setType("vnd.android-dir/mms-sms");
+                        i.putExtra("address", new String("74265"));
+                        i.putExtra("sms_body", "STYPENDIA");
+                        startActivity(Intent.createChooser(i, "Send sms via:"));
+                    }
+                });
+        alertDialog.show();
+    }
+
     public void logInOut(View view) {
         if (!Dane.ifLogged()) {
             Intent intent = new Intent(this, Logowanie.class);
             startActivity(intent);
         } else {
             FirebaseAuth.getInstance().signOut();
+            SharedPreferences.Editor mailClear = getSharedPreferences("post", MODE_PRIVATE).edit();
+            mailClear.clear();
+            mailClear.apply();
             restart();
         }
     }

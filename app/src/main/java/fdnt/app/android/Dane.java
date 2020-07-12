@@ -13,8 +13,6 @@ import javax.mail.Session;
 
 public class Dane {
 
-
-
     protected static Boolean ifLogged() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null)
             return false;
@@ -27,13 +25,12 @@ public class Dane {
     protected static UstawieniaAX aktywnosc_ustawienia;
 
     //Poczta
-    protected static Session smtpSession;
-    protected static Session pop3Session;
-    protected static Message[] messages;
+    public static Session smtpSession;
+    public static Session pop3Session;
+    public static Message[] messages;
 
     //Aktualnie zalogowany użytkownik
-    protected static String userEmail() {
-
+    public static String userEmail() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user != null)
             return user.getEmail();
