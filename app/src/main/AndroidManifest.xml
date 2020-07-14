@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="fdnt.app.android">
 
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -19,14 +20,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity
+            android:name=".post.MailViewer"
+            android:label="e-mail">
+        </activity>
         <activity
             android:name=".Changelog"
             android:label="Changelog"
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
                 <action android:name="fdnt.app.android.Changelog" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -36,7 +39,6 @@
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
                 <action android:name="fdnt.app.android.ONas" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -46,7 +48,6 @@
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
                 <action android:name="fdnt.app.android.ZglosBlad" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -64,7 +65,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

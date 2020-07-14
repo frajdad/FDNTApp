@@ -81,6 +81,11 @@
                     android:title="    Wpłać darowiznę"
                     android:visible="false"/>
                 <item
+                    android:id="@+id/nav_wyslij_sms"
+                    android:checkable="false"
+                    android:title="    Wyślij SMS"
+                    android:visible="false"/>
+                <item
                     android:id="@+id/nav_pobierz_blankiet"
                     android:checkable="true"
                     android:title="    Pobierz blankiet"
@@ -140,7 +145,11 @@
                 android:checkable="true"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Ustawienia" />
-
+            <item
+                android:id="@+id/nav_post"
+                android:checkable="true"
+                android:icon="@drawable/mail"
+                android:title="Poczta" />
         </menu>
     </item>
 

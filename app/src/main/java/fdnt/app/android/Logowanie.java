@@ -3,6 +3,7 @@ package fdnt.app.android;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -59,8 +60,10 @@ public class Logowanie extends AppCompatActivity {
             String email = editTextEmail.getText().toString();
             EditText editTextPassword = (EditText) findViewById(R.id.password);
             String password = editTextPassword.getText().toString();
+            EditText editTextMailPassword = (EditText) findViewById(R.id.mail_password);
+            String mailPassword = editTextMailPassword.getText().toString();
 
-            logIn(email, password);
+            logIn(email, password, mailPassword);
         }
         catch (Exception e) {
             TextView zle_dane = findViewById(R.id.zle_dane);
@@ -69,17 +72,20 @@ public class Logowanie extends AppCompatActivity {
         }
     }
 
-    private void logIn(String email, String password) {
+    private void logIn(String email, String password, final String mailPass) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            SharedPreferences data = getSharedPreferences("post", MODE_PRIVATE);
+                            SharedPreferences.Editor dataEdit = data.edit();
+                            dataEdit.putString("pass", mailPass);
+                            dataEdit.commit();
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             reset(user);
                         } else {
-
                             mProgress.dismiss();
                             TextView zle_dane = findViewById(R.id.zle_dane);
                             zle_dane.setVisibility(View.VISIBLE);
