@@ -1,5 +1,7 @@
 package fdnt.app.android;
+
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -9,12 +11,15 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import fdnt.app.android.post.MailSender;
+
 public class UstawieniaAX extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
             Preference resetPref = (Preference) findPreference("reset");
+            Preference sendPref = (Preference) findPreference("send");
 
             if(FirebaseAuth.getInstance().getCurrentUser() == null)
                 resetPref.setVisible(false);
@@ -23,8 +28,15 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
 
             resetPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 public boolean onPreferenceClick(Preference preference) {
+                    resetPassword();
+                    return true;
+                }
+            });
 
-                    Dane.aktywnosc_ustawienia.resetPassword();
+            sendPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    sendComment();
                     return true;
                 }
             });
@@ -64,7 +76,6 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
 
 
     public void resetPassword() {
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseAuth.getInstance().sendPasswordResetEmail(user.getEmail());
 
@@ -76,5 +87,11 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
             }
         });
         builder.show();
+    }
+
+    public void sendComment() {
+            Intent intent = new Intent(getActivity(), MailSender.class);
+            intent.putExtra("to", "aplikacja@dzielo.pl");
+            startActivity(intent);
     }
 }

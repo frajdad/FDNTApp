@@ -33,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
+import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
 import fdnt.app.android.ui.main.DoPobrania;
@@ -116,7 +117,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
 
         displayNotifications();
     }
@@ -342,7 +342,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         Menu menu = navigationView.getMenu();
         Bundle tabInfo = new Bundle();
-        Fragment newInstance = WebTab.newInstance(); //Jak się pozbędziemy zakomentowanych rzeczy w switch to trzeba usunąć inicjalizajcę tu
+        Fragment newInstance;
 
         if (name == null) {
             setTitle("FDNT");
@@ -512,5 +512,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             mailClear.apply();
             restart();
         }
+    }
+
+    // Po kliknięciu przycisku wysyłania emaila
+    public void writeEmail(View view) {
+        Intent intent = new Intent(this, MailSender.class);
+        startActivity(intent);
     }
 }

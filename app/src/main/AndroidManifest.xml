@@ -20,6 +20,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".post.MailSender"
+            android:label="e-mail">
+            <intent-filter>
+                <action android:name="fdnt.app.android.post.MailSender" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".post.MailViewer"
             android:label="e-mail">
         </activity>
@@ -38,15 +46,7 @@
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
                 <action android:name="fdnt.app.android.ONas" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ZglosBlad"
-            android:label="Zgłoś błąd"
-            android:parentActivityName=".UstawieniaAX">
-            <intent-filter>
-                <action android:name="fdnt.app.android.ZglosBlad" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -64,6 +64,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

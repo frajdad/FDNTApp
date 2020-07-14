@@ -49,7 +49,7 @@ public class Logowanie extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null)
-            reset(currentUser);
+            reset();
     }
 
     // uruchamia się gdy zostanie przyciśnięty przysisk
@@ -81,10 +81,8 @@ public class Logowanie extends AppCompatActivity {
                             SharedPreferences data = getSharedPreferences("post", MODE_PRIVATE);
                             SharedPreferences.Editor dataEdit = data.edit();
                             dataEdit.putString("pass", mailPass);
-                            dataEdit.commit();
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            reset(user);
+                            dataEdit.apply();
+                            reset();
                         } else {
                             mProgress.dismiss();
                             TextView zle_dane = findViewById(R.id.zle_dane);
@@ -95,7 +93,7 @@ public class Logowanie extends AppCompatActivity {
                 });
     }
 
-    private void reset(FirebaseUser user) {
+    private void reset() {
         Intent intent = new Intent(this, MainFrame.class);
         startActivity(intent);
         Dane.ta_aktywnosc.finish();

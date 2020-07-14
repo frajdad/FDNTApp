@@ -1,0 +1,63 @@
+package fdnt.app.android.post;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import fdnt.app.android.R;
+
+public class MailSender extends AppCompatActivity {
+
+    private EditText addressView;
+    private EditText subjectView;
+    private EditText contentView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mail_sender2);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        addressView = findViewById(R.id.send_to);
+        subjectView = findViewById(R.id.send_subject);
+        contentView = findViewById(R.id.send_content);
+
+        Bundle extras = getIntent().getExtras();
+        if(extras.getString("to") != null) {
+            addressView.setText(extras.getString("to"));
+        }
+    }
+
+    public void send(View view) {
+
+
+        String address = addressView.getText().toString();
+        String subject = subjectView.getText().toString();
+        String content = contentView.getText().toString();
+
+        if (address.isEmpty()) {
+            Toast.makeText(this,"Podaj adres!",Toast.LENGTH_LONG).show();
+        }
+        else if (subject.isEmpty()) {
+            Toast.makeText(this,"Podaj temat!",Toast.LENGTH_LONG).show();
+        }
+        else {
+            Send sm = new Send(this, address, subject, content);
+            sm.execute();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()== android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

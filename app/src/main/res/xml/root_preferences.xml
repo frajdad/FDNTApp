@@ -29,9 +29,9 @@
     <PreferenceCategory app:title="Tworzenie aplikacji">
 
         <PreferenceScreen
+            android:key="send"
             android:title="Zgłoś błąd"
             android:summary="Zgłoś błędy i uwagi dotyczące aplikacji">
-            <intent android:action="com.example.helloworld.ZglosBlad"/> <!--Tu odpalamy zakładkę ZglosBlad -->
         </PreferenceScreen>
 
         <Preference

@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onNewUserPressed"
-        android:text="Nie wiesz jakie jest Twoje hasło aplikcacji?"
+        android:text="Nie wiesz jakie jest Twoje hasło aplikacji?"
         android:textColor="#3F51B5"
         android:textSize="17sp" />
 </LinearLayout>

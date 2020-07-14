@@ -35,13 +35,9 @@ import fdnt.app.android.R;
 
 import static fdnt.app.android.Dane.pop3Session;
 
-/**
- * A fragment representing a list of Items.
- */
 public class PostItemFragment extends Fragment {
-    // TODO: Customize parameter argument names
+
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     /**
@@ -74,20 +70,20 @@ public class PostItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
-
         // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
 
-            getEmails("INBOX", COUNT);
-            recyclerView.setAdapter(new MyPostItemRecyclerViewAdapter(ITEMS));
+        Context context = view.getContext();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+
+
+        getEmails("INBOX", COUNT);
+        recyclerView.setAdapter(new MyPostItemRecyclerViewAdapter(ITEMS));
+
         return view;
     }
 
@@ -130,6 +126,7 @@ public class PostItemFragment extends Fragment {
     private void getEmails(String box, int number)
     {
         try {
+            Log.d("pref", "dupa");
             SharedPreferences data = getActivity().getSharedPreferences("post", Context.MODE_PRIVATE);
             String pass = data.getString("pass", "");
             Log.d("pref", pass);
