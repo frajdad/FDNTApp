@@ -24,8 +24,8 @@ public class KontaktZarzad extends Fragment {
 
     RecyclerView managementRecyclerView;
     ManagementRecyclerAdapter managementRecyclerAdapter;
-    String roles[] = {"Przewodniczący", "Wiceprzewodniczący", "Wiceprzewodniczący"};
-    String mails[] = {"dariusz.kowalczyk@dzielo.pl", "pawel.walkiewicz@dzielo.pl", "marek.zdrojewski@dzielo.pl"};
+    String[] roles = {"Przewodniczący", "Wiceprzewodniczący", "Wiceprzewodniczący"};
+    String[] mails = {"dariusz.kowalczyk@dzielo.pl", "pawel.walkiewicz@dzielo.pl", "marek.zdrojewski@dzielo.pl"};
     List<String> managementPersonRoles , managementPersonMails;
 
     @Override
