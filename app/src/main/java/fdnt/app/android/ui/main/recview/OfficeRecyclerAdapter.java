@@ -16,11 +16,23 @@ import java.util.List;
 
 import fdnt.app.android.R;
 
+
+
 public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAdapter.ViewHolder>{
     protected Context context;
     List<String> personRoles;
     List<String> personMails;
     List<String> personTels;
+
+    private final int[] personImages = {
+            R.drawable.ksnycz,
+            R.drawable.annamarszalek,
+            R.drawable.monikagawracz,
+            R.drawable.marzenasawula,
+            R.drawable.malgorzatakucharska,
+            R.drawable.paulinaworozbit,
+            R.drawable.hubertszczypek
+    };
 
     public OfficeRecyclerAdapter(List<String> personRoles, List<String> personMails, List<String> personTels) {
         this.personRoles = personRoles;
@@ -41,6 +53,7 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.PersonRole.setText(personRoles.get(position));
+        holder.PersonImage.setImageResource(personImages[position]);
     }
 
     @Override

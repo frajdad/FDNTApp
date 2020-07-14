@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fdnt.app.android.R;
@@ -21,7 +23,7 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
     protected Context context;
     List<String> personRoles;
     List<String> personMails;
-
+    private final int[] personImages = { R.drawable.ksdarek, R.drawable.pawelwalkiewicz, R.drawable.marekzdrojewski };
 
     public ManagementRecyclerAdapter(List<String> personRoles, List<String> personMails) {
         this.personRoles = personRoles;
@@ -41,6 +43,7 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
     @Override
     public void onBindViewHolder(@NonNull ManagementRecyclerAdapter.ViewHolder holder, int position) {
         holder.PersonRole.setText(personRoles.get(position));
+        holder.PersonImage.setImageResource(personImages[position]);
     }
 
     @Override
