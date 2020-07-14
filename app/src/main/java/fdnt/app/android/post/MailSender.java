@@ -29,7 +29,7 @@ public class MailSender extends AppCompatActivity {
         contentView = findViewById(R.id.send_content);
 
         Bundle extras = getIntent().getExtras();
-        if(extras.getString("to") != null) {
+        if (extras != null && extras.getString("to") != null) {
             addressView.setText(extras.getString("to"));
         }
     }
