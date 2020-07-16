@@ -75,18 +75,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/zle_dane"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/zle_dane"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="18sp"
-        android:visibility="invisible" />
-
-    <TextView
         android:id="@+id/new_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:onClick="onNewUserPressed"
         android:text="Nie wiesz jakie jest Twoje hasło aplikacji?"
         android:textColor="#3F51B5"

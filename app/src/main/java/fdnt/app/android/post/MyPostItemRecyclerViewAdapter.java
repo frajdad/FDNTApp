@@ -47,6 +47,9 @@ public class MyPostItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPostIt
         holder.date.setText(mValues.get(position).date);
         holder.sender.setText(mValues.get(position).sender);
         holder.subject.setText(cutString(mValues.get(position).subject));
+        if (mValues.get(position).sender != null) {
+            holder.circle.setText(mValues.get(position).sender.substring(0, 1).toUpperCase());
+        }
     }
 
     static String cutString(String s) {
@@ -69,15 +72,17 @@ public class MyPostItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPostIt
         public final TextView subject;
         public final TextView content;
         public final TextView date;
+        public final TextView circle;
         public MailItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            sender = (TextView) view.findViewById(R.id.sender);
-            content = (TextView) view.findViewById(R.id.email_content);
+            sender = view.findViewById(R.id.sender);
+            content = view.findViewById(R.id.email_content);
             subject = view.findViewById(R.id.subject);
             date = view.findViewById(R.id.email_date);
+            circle = view.findViewById(R.id.name_circle);
 
             view.setOnClickListener(this);
         }

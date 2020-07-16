@@ -26,8 +26,8 @@
     android:name="fdnt.app.android.PostItemFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginStart="0dp"
+    android:layout_marginEnd="16dp"
     tools:context=".post.PostItemFragment"
     tools:listitem="@layout/fragment_item"/>
 

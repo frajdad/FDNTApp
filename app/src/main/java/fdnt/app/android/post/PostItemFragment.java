@@ -126,7 +126,6 @@ public class PostItemFragment extends Fragment {
     private void getEmails(String box, int number)
     {
         try {
-            Log.d("pref", "dupa");
             SharedPreferences data = getActivity().getSharedPreferences("post", Context.MODE_PRIVATE);
             String pass = data.getString("pass", "");
             Log.d("pref", pass);

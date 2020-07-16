@@ -19,16 +19,20 @@ public class MailViewer extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        TextView view_sender = (TextView) findViewById(R.id.view_sender);
-        TextView view_subject = (TextView) findViewById(R.id.view_subject);
-        WebView view_content = (WebView) findViewById(R.id.view_content);
-        TextView view_date = (TextView) findViewById(R.id.view_date);
+        TextView view_sender = findViewById(R.id.view_sender);
+        TextView view_subject = findViewById(R.id.view_subject);
+        WebView view_content = findViewById(R.id.view_content);
+        TextView view_date = findViewById(R.id.view_date);
+        TextView view_circle = findViewById(R.id.name_circle);
+        TextView view_to = findViewById(R.id.view_to);
 
         Bundle extras = getIntent().getExtras();
 
         view_sender.setText(extras.getString("sender"));
+        view_circle.setText(extras.getString("sender").substring(0,1).toUpperCase());
         view_subject.setText(extras.getString("subject"));
         view_date.setText(extras.getString("date"));
+        view_to.setText("do mnie");
 
         view_content.getSettings().setJavaScriptEnabled(true);
         view_content.loadDataWithBaseURL("", extras.getString("content"), "text/html", "UTF-8", "");

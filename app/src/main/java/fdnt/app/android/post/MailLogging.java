@@ -4,8 +4,6 @@ import android.os.StrictMode;
 
 import java.util.Properties;
 
-import javax.mail.AuthenticationFailedException;
-import javax.mail.Folder;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -59,11 +57,10 @@ public class  MailLogging {
         store.close();
     }
 
-    protected static boolean openSessions(String email, String pass) throws MessagingException {
+    public static void openSessions(String email, String pass) throws MessagingException {
         enableStrictMode();
         openSmtpSession(email, pass);
         openPop3Session(email, pass);
-        return testConnection(email, pass);
     }
 
     private static void enableStrictMode() {
@@ -71,45 +68,15 @@ public class  MailLogging {
         StrictMode.setThreadPolicy(policy);
     }
 
-    private static boolean testConnection(String email, String pass) {
+    public static void testConnection(String email, String pass) throws MessagingException {
         enableStrictMode();
 
-        try {
-            Transport transport = Dane.smtpSession.getTransport("smtp");
-            transport.connect("smtp.dzielo.pl", 465, email, pass);
-            transport.close();
+        Transport transport = Dane.smtpSession.getTransport("smtp");
+        transport.connect("smtp.dzielo.pl", 465, email, pass);
+        transport.close();
 
-            Store store = Dane.pop3Session.getStore("pop3");
-            store.connect();
-            store.close();
-
-            return true;
-
-        } catch (AuthenticationFailedException e) {
-            System.out.println("AuthenticationFailedException - for authentication failures");
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (MessagingException e) {
-            System.out.println("for other failures");
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    protected static void getMesseges() throws MessagingException {
         Store store = Dane.pop3Session.getStore("pop3");
         store.connect();
-
-        Folder emailFolder = store.getFolder("INBOX");
-        emailFolder.open(Folder.READ_ONLY);
-
-
-        Dane.messages = emailFolder.getMessages();
-
-        emailFolder.close(false);
         store.close();
     }
 }

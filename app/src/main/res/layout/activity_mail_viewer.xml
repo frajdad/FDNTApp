@@ -11,12 +11,14 @@
         android:id="@+id/view_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="16sp"
         android:text="To jest temat maila"
         android:textColor="#000000"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,10 +26,12 @@
             android:id="@+id/view_sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:text="Nadawca"
-            android:textColor="#000000"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="16dp"
+            android:text="Przykładowy tekst"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/subject"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,11 +39,40 @@
             android:id="@+id/view_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="01.12"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="12:45"
+            android:textSize="20dp"
             app:layout_constraintStart_toEndOf="@+id/view_sender"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/view_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="44dp"
+            android:text="Kolejny tekst"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/cardview_dark_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_circle"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="13dp"
+            android:background="@drawable/circle_yellow"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/cardview_light_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView

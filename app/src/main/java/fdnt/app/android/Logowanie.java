@@ -1,22 +1,15 @@
 package fdnt.app.android;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,9 +18,6 @@ public class Logowanie extends AppCompatActivity {
 
     //To jest obiekt do uwierzytelniania
     private FirebaseAuth mAuth;
-    //To jest obiekt, który pokazjuje kręcące się kóło na czas logowania
-    private ProgressDialog mProgress;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +25,6 @@ public class Logowanie extends AppCompatActivity {
         setContentView(R.layout.activity_logowanie);
 
         mAuth = FirebaseAuth.getInstance();
-
-        mProgress = new ProgressDialog(this);
-        mProgress.setTitle("Logowanie");
-        mProgress.setMessage("Proszę czekać...");
-        mProgress.setCancelable(false);
-        mProgress.setIndeterminate(true);
     }
 
     @Override
@@ -54,43 +38,15 @@ public class Logowanie extends AppCompatActivity {
 
     // uruchamia się gdy zostanie przyciśnięty przysisk
     public void onLogInPressed(View view) {
-        mProgress.show();
-        try {
-            EditText editTextEmail = (EditText) findViewById(R.id.email);
-            String email = editTextEmail.getText().toString();
-            EditText editTextPassword = (EditText) findViewById(R.id.password);
-            String password = editTextPassword.getText().toString();
-            EditText editTextMailPassword = (EditText) findViewById(R.id.mail_password);
-            String mailPassword = editTextMailPassword.getText().toString();
+        EditText editTextEmail = findViewById(R.id.email);
+        String email = editTextEmail.getText().toString();
+        EditText editTextPassword = findViewById(R.id.password);
+        String password = editTextPassword.getText().toString();
+        EditText editTextMailPassword = findViewById(R.id.mail_password);
+        String mailPassword = editTextMailPassword.getText().toString();
 
-            logIn(email, password, mailPassword);
-        }
-        catch (Exception e) {
-            TextView zle_dane = findViewById(R.id.zle_dane);
-            zle_dane.setVisibility(View.VISIBLE);
-            mProgress.dismiss();
-        }
-    }
-
-    private void logIn(String email, String password, final String mailPass) {
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            SharedPreferences data = getSharedPreferences("post", MODE_PRIVATE);
-                            SharedPreferences.Editor dataEdit = data.edit();
-                            dataEdit.putString("pass", mailPass);
-                            dataEdit.apply();
-                            reset();
-                        } else {
-                            mProgress.dismiss();
-                            TextView zle_dane = findViewById(R.id.zle_dane);
-                            zle_dane.setVisibility(View.VISIBLE);
-                        }
-
-                    }
-                });
+        LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
+        logging.execute();
     }
 
     private void reset() {
@@ -99,7 +55,6 @@ public class Logowanie extends AppCompatActivity {
         Dane.ta_aktywnosc.finish();
         finish();
     }
-
 
     public void onNewUserPressed(View view) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Logowanie.this);
