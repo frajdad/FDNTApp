@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.concurrent.Semaphore;
 
 import javax.mail.MessagingException;
 
@@ -25,7 +28,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
     private Activity context;
 
     private ProgressDialog progressDialog;
-    private int ok;
+    private short ok;
 
     private String email;
     private String password;
@@ -41,6 +44,8 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        Log.d("login", email);
+
         progressDialog = ProgressDialog.show(context,"Logowanie","Proszę czekać...",false,false);
     }
 
@@ -60,7 +65,10 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
+        // Zmienna określa kod błędu
         ok = 0;
+        // Semafor do synchronizacji logowania do poczty i Firebase
+        final Semaphore semaphore = new Semaphore(0);
 
         if (!mailPass.equals("")) {
             try {
@@ -85,9 +93,9 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
                                     ok = 2;
                                 }
                                 else {
-                                    progressDialog.dismiss();
                                     reset();
                                 }
+                                semaphore.release();
                             }
                         });
             }
@@ -95,6 +103,13 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
                 ok = 2;
             }
         }
+
+        try {
+            semaphore.acquire();
+        } catch (InterruptedException e) {
+            ok = 2;
+        }
+
         return null;
     }
 

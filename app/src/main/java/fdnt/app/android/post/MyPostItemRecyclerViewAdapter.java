@@ -15,7 +15,7 @@ import org.jsoup.Jsoup;
 import java.util.List;
 
 import fdnt.app.android.R;
-import fdnt.app.android.post.PostItemFragment.MailItem;
+import fdnt.app.android.post.AsyncMailLoad.MailItem;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link MailItem}.

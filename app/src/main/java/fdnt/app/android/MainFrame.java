@@ -1,5 +1,6 @@
 package fdnt.app.android;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
+import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
@@ -96,6 +98,10 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
         }
+        SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
+        if (data.getString("pass", "").equals(""))  {
+            nav_Menu.findItem(R.id.nav_post).setVisible(false);
+        }
 
         drawerNames = getSharedPreferences(Dane.userName()+"name", MODE_PRIVATE); //id->name
         drawerActions = getSharedPreferences(Dane.userName()+"act", MODE_PRIVATE); //name->site
@@ -119,6 +125,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         displayNotifications();
+
+        new Thread(new Runnable() {
+            public void run()
+            {
+                AsyncMailLoad.getEmails("INBOX", 20, Dane.ta_aktywnosc);
+            }
+        }).start();
     }
 
     public void restart() {
@@ -280,6 +293,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         });
     }
 
+    private short chosenTab = 0;
+
     void onOFunacjiVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_kim_jestesmy).setVisible(state);
         menu.findItem(R.id.nav_co_robimy).setVisible(state);
@@ -354,7 +369,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
-                    onOFunacjiVisibilityChange(true, menu);
+                    if (chosenTab != 1) {
+                        onOFunacjiVisibilityChange(true, menu);
+                        chosenTab = 1;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
                     break;
                 case R.id.nav_kim_jestesmy:
                     newInstance = KimJestemy.newInstance();
@@ -370,7 +391,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_nasz_patron:
                     hideTabs(menu);
-                    onNaszPatronVisibilityChange(true, menu);
+                    if (chosenTab != 2) {
+                        onNaszPatronVisibilityChange(true, menu);
+                        chosenTab = 2;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
                     break;
                 case R.id.nav_jan_pawel:
                     newInstance = JanPawelIi.newInstance();
@@ -390,7 +417,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_dla_darczyncy:
                     hideTabs(menu);
-                    onDlaDarczyncyVisibilityChange(true, menu);
+                    if (chosenTab != 3) {
+                        onDlaDarczyncyVisibilityChange(true, menu);
+                        chosenTab = 3;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
                     break;
                 case R.id.nav_sposoby:
                     newInstance = Sposoby.newInstance();
@@ -415,7 +448,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_materialy_prasowe:
                     hideTabs(menu);
-                    onMaterialyPrasoweVisibilityChange(true, menu);
+                    if (chosenTab != 4) {
+                        onMaterialyPrasoweVisibilityChange(true, menu);
+                        chosenTab = 4;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
                     break;
                 case R.id.nav_media_o_nas:
                     newInstance = WebTab.newInstance();
@@ -438,7 +477,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_kontakt:
                     hideTabs(menu);
-                    onKontaktVisibilityChange(true, menu);
+                    if (chosenTab != 5) {
+                        onKontaktVisibilityChange(true, menu);
+                        chosenTab = 5;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
                     break;
                 case R.id.nav_fundacja:
                     newInstance = KontaktFundacja.newInstance();
