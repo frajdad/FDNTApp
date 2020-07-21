@@ -28,19 +28,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="header_o_fundacji">O FUNDACJI</string>
-    <string name="subheader_kim_jestesmy">KIM JESTEŚMY?</string>
-    <string name="subheader_co_robimy">CO ROBIMY?</string>
-    <string name="subheader_gdzie_jestesmy">GDZIE JESTEŚMY?</string>
+    <string name="header_kim_jestesmy">KIM JESTEŚMY?</string>
+    <string name="header_co_robimy">CO ROBIMY?</string>
+    <string name="header_gdzie_jestesmy">GDZIE JESTEŚMY?</string>
     <string name="header_nasz_patron">NASZ PATRON</string>
-    <string name="subheader_jp_II">ŚW. JAN PAWEŁ II</string>
-    <string name="subheader_my_o_patronie">MY O PATRONIE</string>
-    <string name="subheader_dzien_papieski">DZIEŃ PAPIESKI</string>
-    <string name="subheader_modlitwa">MODLITWA</string>
-    <string name="header_kontakt">KONTAKT</string>
-    <string name="subheader_fundacja">FUNDACJA</string>
-    <string name="subheader_biuro">BIURO</string>
-    <string name="subheader_zarzad">ZARZĄD</string>
+    <string name="header_jp_II">ŚW. JAN PAWEŁ II</string>
+    <string name="header_my_o_patronie">MY O PATRONIE</string>
+    <string name="header_dzien_papieski">DZIEŃ PAPIESKI</string>
+    <string name="header_modlitwa">MODLITWA</string>
+    <string name="header_fundacja">FUNDACJA</string>
+    <string name="header_biuro">BIURO</string>
+    <string name="header_zarzad">ZARZĄD</string>
     <string name="header_dla_darczyncy">DLA DARCZYŃCY</string>
 
     <string name="title_activity_ustawienia_ax">Ustawienia</string>
@@ -67,8 +65,7 @@
     <string name="kimjestesmy_tekst">Aktualnie Fundacja “Dzieło Nowego Tysiąclecia” obejmuje programem stypendialnym około 2000 uczniów szkół podstawowych i średnich oraz studentów z całej Polski, a także młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
     Na czele Rady Fundacji stoi ks. kard. Łukasz Nycz, a przewodniczącym Zarządu jest ks. Dariusz Kowalczyk. Siedziba znajduje się w Warszawie w Sekretariacie Konferencji Episkopatu Polski.
     W ciągu dziewiętnastu lat swojej działalności Fundacja objęła opieką 4000 młodych ludzi z całej Polski zgodnie z wezwaniem Ojca Świętego do „nowej wyobraźni miłosierdzia”. Stypendyści z każdego zakątka Polski tworzą Żywy Pomnik Papieża Jana Pawła II, przy okazji jednocząc się i realizując swoje pasje i cele.</string>
-    <string name="gdziejestesmy_tekst">Po pielgrzymce Jana Pawła II do Polski w 2000 roku, u początków idei powstania Fundacji, komisja sponsoringowa pielgrzymki zadecydowała o przekazaniu 700 tys. złotych na stypendia dla ubogiej, zdolnej młodzieży. Do programu pilotażowego wybrano 5 diecezji z terenów popegeerowskich i wykazujących wysoki stopień bezrobocia. Były to: diecezja przemyska, koszalińsko – kołobrzeska, drohiczyńska, ełcka i radomska. Rok później kontynuowanie dzieła stanęło pod znakiem zapytania, gdyż sponsorzy programu wycofali się. Pojawiła się jednak idea zbiórek środków na fundusz stypendialny towarzyszących obchodom Dnia Papieskiego. Już pierwsza zbiórka „Dzielmy się miłością” przyniosła ok. 2 mln 300 tys. złotych, co wydatnie rozszerzyło realizowany przez Fundację program stypendialny. Z roku na rok liczba diecezji i stypendystów objętych programem zwiększała się, by w 2014 roku osiągnąć apogeum – Fundacja wspierała wtedy ponad 2,5 tys. młodych z całej Polski. Wszystko dzięki ofiarności Polaków, którym nie jest obojętny los uboższych. Aktualnie Fundacja obejmuje programem stypendialnym około 2000 uczniów szkół podstawowych, gimnazjalistów, uczniów szkół średnich i studentów z całej Polski. Poszerza ona także program o młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
-    Po pielgrzymce Jana Pawła II do Polski w 2000 roku, u początków idei powstania Fundacji, komisja sponsoringowa pielgrzymki zadecydowała o przekazaniu 700 tys. złotych na stypendia dla ubogiej, zdolnej młodzieży. Do programu pilotażowego wybrano 5 diecezji z terenów popegeerowskich i wykazujących wysoki stopień bezrobocia. Były to: diecezja przemyska, koszalińsko – kołobrzeska, drohiczyńska, ełcka i radomska. Rok później kontynuowanie dzieła stanęło pod znakiem zapytania, gdyż sponsorzy programu wycofali się. Pojawiła się jednak idea zbiórek środków na fundusz stypendialny towarzyszących obchodom Dnia Papieskiego. Już pierwsza zbiórka „Dzielmy się miłością” przyniosła ok. 2 mln 300 tys. złotych, co wydatnie rozszerzyło realizowany przez Fundację program stypendialny. Z roku na rok liczba diecezji i stypendystów objętych programem zwiększała się, by w 2014 roku osiągnąć apogeum – Fundacja wspierała wtedy ponad 2,5 tys. młodych z całej Polski. Wszystko dzięki ofiarności Polaków, którym nie jest obojętny los uboższych. łej Polski.
+    <string name="gdziejestesmy_tekst">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
     </string>
     <string name="jpII_tekst">Fundacja “Dzielo Nowego Tysiaclecia” jest odpowiedzią na nauczanie św. Jana Pawła II, naszego patrona. Stypendyści nazywani są niejednokrotnie Jego żywym pomnikiem, dlatego że swoją postawą i stylem życia niosą dalej słowo papieża Polaka.
     Jan Paweł II wciąż jest bardzo ważną postacią dla Polaków, nawet jeżeli niektórzy z nas nie pamiętają go zbyt dobrze. Od niego uczymy się dobra i ciepła w kontakcie z drugim człowiekiem, ale też człowieczeństwa w najpełniejszym wymiarze oraz miłosierdzia i zawierzenia swojego życia Matce Bożej. Jan Paweł II pokazuje nam też, że musimy stawiać samym sobie wysokie wymagania, nawet jeżeli inni od nas nie wymagają. Swoim życiem już w młodości świadczył, że talenty, które każdy z nas posiada są darem danym nam przez Boga i nie możemy ich zakopać, ale naszym zadaniem jest nieustannie je rozwijać dla dobra ludzi i ojczyzny oraz ku chwale Bożej. Fundacja umożliwia to wielu młodym ludziom, wpisując się tym bardziej w ideały głoszone przez Ojca Świętego, natomiast zachęcając stypendystów do wolontariatu uczy ich, że talenty którymi są obdarzeni mogą być dla drugiego człowieka prawdziwym skarbem.

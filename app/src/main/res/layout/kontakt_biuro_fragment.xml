@@ -4,56 +4,52 @@
     android:id="@+id/oFundacji"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.OFundacji">
+    tools:context=".MainFrame">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
     <TextView
-        android:id="@+id/header_kontakt"
         android:layout_width="183dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_condensed_regular"
-        android:text="@string/header_kontakt"
         android:textColor="@color/colorTitle"
         android:textSize="28sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/header_zarzad"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintDimensionRatio="h,5:1"
+        android:id="@+id/header_zarzad"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 
-    <ImageView
+
+    <include
         android:id="@+id/pasekill"
-        android:layout_width="300dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="101dp"
-        android:src="@drawable/pasekill"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_kontakt" />
-
-    <TextView
-        android:id="@+id/subheader_biuro"
-        android:layout_width="203dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/subheader_biuro"
-        android:textColor="@color/colorSubTitle"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
-
-    <ImageView
-        android:id="@+id/bialypasek"
-        android:layout_width="300dp"
+        layout="@layout/pasekill"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/pasekszary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subheader_biuro" />
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_zarzad" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/officeRecyclerView"
@@ -65,7 +61,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek" />
+        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

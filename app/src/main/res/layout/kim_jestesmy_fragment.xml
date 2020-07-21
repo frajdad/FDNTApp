@@ -6,7 +6,7 @@
     android:id="@+id/oFundacji"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.OFundacji">
+    tools:context=".MainFrame">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelinetop"
@@ -36,13 +36,20 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.81" />
 
-    <include
-        android:id="@+id/header_o_fundacji"
-        layout="@layout/header_o_fundacji"
+
+    <TextView
         android:layout_width="183dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/colorTitle"
+        android:textSize="28sp"
+        android:text="@string/header_kim_jestesmy"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintDimensionRatio="h,5:1"
+        android:id="@+id/header_kim_jestesmy"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
+
 
     <include
         android:id="@+id/pasekill"
@@ -50,36 +57,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@id/header_o_fundacji" />
-
-    <TextView
-        android:id="@+id/subheader_kimjestesmy"
-        android:layout_width="203dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/subheader_kim_jestesmy"
-        android:textColor="@color/colorSubTitle"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
-
-    <include
-        android:id="@+id/bialypasek"
-        layout="@layout/bialypasek"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/guidelinemiddle"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/subheader_kimjestesmy" />
+        app:layout_constraintTop_toBottomOf="@id/header_kim_jestesmy" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintEnd_toEndOf="@id/guidelineright"
-        app:layout_constraintTop_toBottomOf="@+id/bialypasek">
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill">
 
         <TextView
             android:id="@+id/kimjestesmy_tekst"

@@ -66,7 +66,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         tabInfo.putString("adress", "https://dzielo.pl/");
         WebTab mainTab = WebTab.newInstance();
         mainTab.setArguments(tabInfo);
-        setTitle("FDNT");
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -345,9 +344,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         Fragment newInstance;
 
         if (name == null) {
-            setTitle("FDNT");
             switch (id) {
                 case R.id.nav_main_menu:
+                    setTitle("FDNT");
                     newInstance = WebTab.newInstance();
                     tabInfo.putString("adress", "https://dzielo.pl/");
                     openTab(newInstance, tabInfo);
@@ -357,14 +356,17 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     onOFunacjiVisibilityChange(true, menu);
                     break;
                 case R.id.nav_kim_jestesmy:
+                    setTitle("O FUNDACJI");
                     newInstance = KimJestemy.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_gdzie_jestesmy:
+                    setTitle("O FUNDACJI");
                     newInstance = GdzieJestesmy.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_co_robimy:
+                    setTitle("O FUNDACJI");
                     newInstance = CoRobimy.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
@@ -374,18 +376,22 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_jan_pawel:
                     newInstance = JanPawelIi.newInstance();
+                    setTitle("NASZ PATRON");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_my_o_patronie:
                     newInstance = MyOPatronie.newInstance();
+                    setTitle("NASZ PATRON");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dzien_papieski:
                     newInstance = DzienPapieski.newInstance();
+                    setTitle("NASZ PATRON");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_modlitwa:
                     newInstance = Modlitwa.newInstance();
+                    setTitle("NASZ PATRON");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dla_darczyncy:
@@ -442,14 +448,17 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_fundacja:
                     newInstance = KontaktFundacja.newInstance();
+                    setTitle("KONTAKT");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_biuro:
                     newInstance = KontaktBiuro.newInstance();
+                    setTitle("KONTAKT");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_zarzad:
                     newInstance = KontaktZarzad.newInstance();
+                    setTitle("KONTAKT");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_settings:
