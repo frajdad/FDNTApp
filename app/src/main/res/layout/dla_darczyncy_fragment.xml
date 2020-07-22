@@ -1,22 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.DlaDarczyncy">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
     <TextView
         android:id="@+id/header_dla_darczyncy"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="183dp"
+        android:layout_height="0dp"
         android:fontFamily="@font/roboto_condensed_regular"
-        android:text="@string/header_dla_darczyncy"
-        android:textColor="#1464AA"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/header_jak_pomoc"
+        android:textColor="@color/colorTitle"
+        android:textSize="28sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintDimensionRatio="h,5:1"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 
-</FrameLayout>
+
+    <include
+        android:id="@+id/pasekill"
+        layout="@layout/pasekill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_dla_darczyncy" />
+
+    <ImageView
+        android:id="@+id/belka_sms"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/belka_sms"
+        app:layout_constraintBottom_toTopOf="@+id/belka_wplac"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill" />
+
+    <ImageView
+        android:id="@+id/belka_wplac"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/belka_wplac"
+        app:layout_constraintBottom_toTopOf="@+id/belka_pobierz"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/belka_sms" />
+
+    <ImageView
+        android:id="@+id/belka_pobierz"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/belka_pobierz"
+        app:layout_constraintBottom_toTopOf="@+id/belka_przekaz"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/belka_wplac" />
+
+    <ImageView
+        android:id="@+id/belka_przekaz"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/belka_przekaz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/belka_pobierz" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

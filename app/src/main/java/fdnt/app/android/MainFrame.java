@@ -38,6 +38,7 @@ import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
+import fdnt.app.android.ui.main.DlaDarczyncy;
 import fdnt.app.android.ui.main.DoPobrania;
 import fdnt.app.android.ui.main.DzienPapieski;
 import fdnt.app.android.ui.main.GdzieJestesmy;
@@ -48,8 +49,6 @@ import fdnt.app.android.ui.main.KontaktFundacja;
 import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.Modlitwa;
 import fdnt.app.android.ui.main.MyOPatronie;
-import fdnt.app.android.ui.main.PobierzBlankiet;
-import fdnt.app.android.ui.main.Sposoby;
 import fdnt.app.android.ui.main.WebTab;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -422,34 +421,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dla_darczyncy:
-                    hideTabs(menu);
-                    if (chosenTab != 3) {
-                        onDlaDarczyncyVisibilityChange(true, menu);
-                        chosenTab = 3;
-                    }
-                    else {
-                        chosenTab = 0;
-                    }
-                    break;
-                case R.id.nav_sposoby:
-                    newInstance = Sposoby.newInstance();
-                    openTab(newInstance, tabInfo);
-                    break;
-                case R.id.nav_wplac:
-                    newInstance = WebTab.newInstance();
-                    tabInfo.putString("adress", "https://dzielo.pl/dla-darczyncy/wplata/");
-                    openTab(newInstance, tabInfo);
-                    break;
-                case R.id.nav_wyslij_sms:
-                    sendSMS();
-                    break;
-                case R.id.nav_pobierz_blankiet:
-                    newInstance = PobierzBlankiet.newInstance();
-                    openTab(newInstance, tabInfo);
-                    break;
-                case R.id.nav_przekaz_1:
-                    newInstance = WebTab.newInstance();
-                    tabInfo.putString("adress", "https://2018.pit-format-online.pl/?rid=b1b5566183bd3f337c9a1f4bd2b2daa0f0728ad2");
+                    newInstance = new DlaDarczyncy();
+                    setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_materialy_prasowe:
@@ -527,32 +500,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         }
 
         return true;
-    }
-
-    private void sendSMS() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainFrame.this);
-        alertDialog.setMessage("Aby wysłać SMS i wspomóc naszą Fundację kliknij WYŚLIJ " +
-                "(4,92 zł z VAT). Dziękujemy!");
-
-        alertDialog.setNegativeButton("Anuluj",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-        alertDialog.setPositiveButton("Wyślij",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse("smsto:"));
-                        i.setType("vnd.android-dir/mms-sms");
-                        i.putExtra("address", new String("74265"));
-                        i.putExtra("sms_body", "STYPENDIA");
-                        startActivity(Intent.createChooser(i, "Send sms via:"));
-                    }
-                });
-        alertDialog.show();
     }
 
     public void logInOut(View view) {
