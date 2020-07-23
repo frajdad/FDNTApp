@@ -40,7 +40,8 @@ public class KontaktZarzad extends Fragment {
         managementRecyclerAdapter = new ManagementRecyclerAdapter(managementPersonRoles, managementPersonMails);
 
         managementRecyclerView.setAdapter(managementRecyclerAdapter);
-
+        managementRecyclerView.setHasFixedSize(true);
+        managementRecyclerView.setItemViewCacheSize(20);
         return rootView;
     }
 

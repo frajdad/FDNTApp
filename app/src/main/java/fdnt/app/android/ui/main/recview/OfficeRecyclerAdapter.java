@@ -44,7 +44,6 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.office_row, parent, false);
         return new ViewHolder(view);
