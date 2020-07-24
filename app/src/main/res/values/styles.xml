@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -19,6 +18,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NewActivity" parent="Theme.AppCompat.Light">
+
+    </style>
 
     <style name="MyTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">@color/colorHighlited</item>

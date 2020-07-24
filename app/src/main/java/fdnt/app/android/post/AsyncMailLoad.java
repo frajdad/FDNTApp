@@ -3,6 +3,7 @@ package fdnt.app.android.post;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,7 +70,13 @@ public class AsyncMailLoad {
             MailLogging.openSessions(email, pass);
 
             Store store = pop3Session.getStore("pop3");
+         //   Log.d("boxes", store.toString());
+
             store.connect();
+            Folder[] fs = store.getPersonalNamespaces();
+            for (Folder f: fs) {
+                Log.d("boxes", f.getFullName());
+            }
 
             //create the folder object and open it
             Folder emailFolder = store.getFolder(box);

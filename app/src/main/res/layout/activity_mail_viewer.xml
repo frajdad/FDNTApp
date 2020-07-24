@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".post.MailViewer">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_viewer"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <TextView
         android:id="@+id/view_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16sp"
+        android:layout_marginHorizontal="16sp"
         android:layout_marginTop="16sp"
         android:text="To jest temat maila"
         android:textColor="#000000"
@@ -40,9 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="19dp"
             android:text="12:45"
-            android:textSize="20dp"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/view_sender"
             app:layout_constraintTop_toTopOf="parent" />
 

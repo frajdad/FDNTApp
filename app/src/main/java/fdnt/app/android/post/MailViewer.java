@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import fdnt.app.android.R;
 
@@ -15,6 +16,9 @@ public class MailViewer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail_viewer);
+
+        Toolbar toolbar = findViewById(R.id.toolbar_viewer);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

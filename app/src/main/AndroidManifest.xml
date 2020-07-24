@@ -22,7 +22,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".post.MailSender"
-            android:label="e-mail">
+            android:label="e-mail"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="fdnt.app.android.post.MailSender" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -30,7 +31,8 @@
         </activity>
         <activity
             android:name=".post.MailViewer"
-            android:label="e-mail">
+            android:label="e-mail"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".Changelog"
@@ -47,13 +49,13 @@
             android:parentActivityName=".UstawieniaAX">
             <intent-filter>
                 <action android:name="fdnt.app.android.ONas" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Logowanie"
             android:label="@string/logowanie_gora"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainFrame">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -65,7 +67,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
