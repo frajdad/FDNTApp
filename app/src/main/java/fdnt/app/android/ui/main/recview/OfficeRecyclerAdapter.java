@@ -79,10 +79,7 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.MailIcon) {
-                String mail = "mailto:" + personMails.get(getAdapterPosition());
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(mail));
-                context.startActivity(intent);
+                Static.sendMail(personMails.get(getAdapterPosition()), context);
             }
             else if (view.getId() == R.id.TelIcon) {
                 String mail = "tel:" + personTels.get(getAdapterPosition());

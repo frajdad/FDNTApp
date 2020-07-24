@@ -111,7 +111,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             }
         }).start();
 
-        Dane.ta_aktywnosc = this;
+        Dane.this_activity = this;
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //wysyłąnie danych do analizy w Firebase
@@ -124,7 +124,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         new Thread(new Runnable() {
             public void run()
             {
-                AsyncMailLoad.getEmails("INBOX", 20, Dane.ta_aktywnosc);
+                AsyncMailLoad.getEmails("INBOX", 20, Dane.this_activity);
             }
         }).start();
     }

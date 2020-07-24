@@ -17,7 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import fdnt.app.android.Dane;
 import fdnt.app.android.R;
+import fdnt.app.android.post.MailSender;
 
 public class KontaktFundacja extends Fragment {
     public static KontaktFundacja newInstance() {
@@ -48,9 +50,16 @@ public class KontaktFundacja extends Fragment {
         @Override
         public void onClick(View view) {
             final String mail = "mailto:dzielo@episkopat.pl";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(mail));
-            startActivity(intent);
+            if(Dane.ifLoggedToPost()) {
+                Intent intent = new Intent(getActivity(), MailSender.class);
+                intent.putExtra("to", "mailto:dzielo@episkopat.pl");
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(mail));
+                startActivity(intent);
+            }
         }
     };
 

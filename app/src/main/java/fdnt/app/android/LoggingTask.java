@@ -116,7 +116,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
     private void reset() {
         Intent intent = new Intent(context, MainFrame.class);
         context.startActivity(intent);
-        Dane.ta_aktywnosc.finish();
+        Dane.this_activity.finish();
         context.finish();
     }
 }

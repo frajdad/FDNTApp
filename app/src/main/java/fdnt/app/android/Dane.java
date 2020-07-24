@@ -4,6 +4,8 @@ package fdnt.app.android;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,9 +21,13 @@ public class Dane {
         else
             return true;
     }
+    public static boolean ifLoggedToPost() {
+        SharedPreferences data = this_activity.getSharedPreferences("post", Context.MODE_PRIVATE);
+        return data.getString("pass", "").equals("");
+    }
 
 
-    public static Activity ta_aktywnosc;
+    public static Activity this_activity;
     protected static UstawieniaAX aktywnosc_ustawienia;
 
     //Poczta

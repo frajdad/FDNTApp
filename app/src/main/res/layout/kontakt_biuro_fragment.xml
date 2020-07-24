@@ -33,7 +33,7 @@
         android:fontFamily="@font/roboto_condensed_regular"
         android:textColor="@color/colorTitle"
         android:textSize="28sp"
-        android:text="@string/header_zarzad"
+        android:text="@string/header_biuro"
         app:autoSizeTextType="uniform"
         app:layout_constraintDimensionRatio="h,5:1"
         android:id="@+id/header_zarzad"
