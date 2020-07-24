@@ -68,7 +68,7 @@ public class KontaktBiuro extends Fragment {
         officeRecyclerView.setAdapter(officeRecyclerAdapter);
 
         officeRecyclerView.setHasFixedSize(true);
-        officeRecyclerView.setItemViewCacheSize(20);
+        officeRecyclerView.setItemViewCacheSize(7);
         return rootView;
     }
 

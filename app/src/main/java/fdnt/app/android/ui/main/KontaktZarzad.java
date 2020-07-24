@@ -41,7 +41,7 @@ public class KontaktZarzad extends Fragment {
 
         managementRecyclerView.setAdapter(managementRecyclerAdapter);
         managementRecyclerView.setHasFixedSize(true);
-        managementRecyclerView.setItemViewCacheSize(20);
+        managementRecyclerView.setItemViewCacheSize(7);
         return rootView;
     }
 

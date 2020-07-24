@@ -23,7 +23,11 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
     protected Context context;
     List<String> personRoles;
     List<String> personMails;
-    private final int[] personImages = { R.drawable.ksdarek, R.drawable.pawelwalkiewicz, R.drawable.marekzdrojewski };
+    private final int[] personImages = {
+            R.mipmap.ksdarek_foreground,
+            R.mipmap.pawelwalkiewicz_foreground,
+            R.mipmap.marekzdrojewski_foreground
+    };
 
     public ManagementRecyclerAdapter(List<String> personRoles, List<String> personMails) {
         this.personRoles = personRoles;
