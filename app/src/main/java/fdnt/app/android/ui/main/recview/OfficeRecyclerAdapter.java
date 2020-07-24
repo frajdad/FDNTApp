@@ -25,13 +25,13 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
     List<String> personTels;
 
     private final int[] personImages = {
-            R.drawable.ksnycz,
-            R.drawable.annamarszalek,
-            R.drawable.monikagawracz,
-            R.drawable.marzenasawula,
-            R.drawable.malgorzatakucharska,
-            R.drawable.paulinaworozbit,
-            R.drawable.hubertszczypek
+            R.mipmap.ksnycz_foreground,
+            R.mipmap.annamarszalek_foreground,
+            R.mipmap.monikagawracz_foreground,
+            R.mipmap.marzenasawula_foreground,
+            R.mipmap.malgorzatakucharska_foreground,
+            R.mipmap.paulinaworozbit_foreground,
+            R.mipmap.hubertszczypek_foreground
     };
 
     public OfficeRecyclerAdapter(List<String> personRoles, List<String> personMails, List<String> personTels) {
@@ -44,7 +44,6 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.office_row, parent, false);
         return new ViewHolder(view);

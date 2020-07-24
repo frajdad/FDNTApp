@@ -40,7 +40,7 @@ public class KontaktBiuro extends Fragment {
             "dzienpapieski@dzielo.pl",
             "darczyncy@dzielo.pl",
             "paulina.worozbit@dzielo.pl",
-            " biuroprasowe@dzielo.pl"
+            "biuroprasowe@dzielo.pl"
     };
     String[] tels = {
             "503504407",
@@ -66,6 +66,9 @@ public class KontaktBiuro extends Fragment {
         officeRecyclerView = rootView.findViewById(R.id.officeRecyclerView);
         officeRecyclerAdapter = new OfficeRecyclerAdapter(officePersonRoles ,officePersonMails, officePersonTels);
         officeRecyclerView.setAdapter(officeRecyclerAdapter);
+
+        officeRecyclerView.setHasFixedSize(true);
+        officeRecyclerView.setItemViewCacheSize(7);
         return rootView;
     }
 

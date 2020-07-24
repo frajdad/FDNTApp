@@ -1,10 +1,8 @@
 package fdnt.app.android;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -39,7 +37,6 @@ import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
 import fdnt.app.android.ui.main.DlaDarczyncy;
-import fdnt.app.android.ui.main.DoPobrania;
 import fdnt.app.android.ui.main.DzienPapieski;
 import fdnt.app.android.ui.main.GdzieJestesmy;
 import fdnt.app.android.ui.main.JanPawelIi;
@@ -448,10 +445,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 case R.id.nav_dzielo_tv:
                     newInstance = WebTab.newInstance();
                     tabInfo.putString("adress", "https://www.youtube.com/user/DzieloTV");
-                    openTab(newInstance, tabInfo);
-                    break;
-                case R.id.nav_do_pobrania:
-                    newInstance = DoPobrania.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_kontakt:
