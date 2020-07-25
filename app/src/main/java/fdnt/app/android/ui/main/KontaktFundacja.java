@@ -52,7 +52,7 @@ public class KontaktFundacja extends Fragment {
             final String mail = "mailto:dzielo@episkopat.pl";
             if(Dane.ifLoggedToPost()) {
                 Intent intent = new Intent(getActivity(), MailSender.class);
-                intent.putExtra("to", "mailto:dzielo@episkopat.pl");
+                intent.putExtra("to", "dzielo@episkopat.pl");
                 startActivity(intent);
             }
             else {

@@ -35,24 +35,6 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".Changelog"
-            android:label="Changelog"
-            android:parentActivityName=".UstawieniaAX">
-            <intent-filter>
-                <action android:name="fdnt.app.android.Changelog" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ONas"
-            android:label="O Aplikacji"
-            android:parentActivityName=".UstawieniaAX">
-            <intent-filter>
-                <action android:name="fdnt.app.android.ONas" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Logowanie"
             android:label="@string/logowanie_gora"
             android:theme="@style/AppTheme.NoActionBar"

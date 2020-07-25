@@ -2,6 +2,7 @@ package fdnt.app.android;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -90,8 +91,15 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
     }
 
     public void sendComment() {
+        if(Dane.ifLoggedToPost()) {
             Intent intent = new Intent(getActivity(), MailSender.class);
             intent.putExtra("to", "aplikacja@dzielo.pl");
             startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("mailto:aplikacja@dzielo.pl"));
+            startActivity(intent);
+        }
     }
 }

@@ -61,7 +61,15 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_main);
 
         Bundle tabInfo = new Bundle();
-        tabInfo.putString("adress", "https://dzielo.pl/");
+        if (PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getBoolean("dzielo_site", true)) {
+            tabInfo.putString("adress", "https://dzielo.pl/");
+        }
+        else {
+            tabInfo.putString("adress", "file:///android_asset/offline.html");
+        }
+
         WebTab mainTab = WebTab.newInstance();
         mainTab.setArguments(tabInfo);
 
@@ -357,7 +365,14 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 case R.id.nav_main_menu:
                     setTitle("FDNT");
                     newInstance = WebTab.newInstance();
-                    tabInfo.putString("adress", "https://dzielo.pl/");
+                    if (PreferenceManager
+                            .getDefaultSharedPreferences(this)
+                            .getBoolean("dzielo_site", true)) {
+                        tabInfo.putString("adress", "https://dzielo.pl/");
+                    }
+                    else {
+                        tabInfo.putString("adress", "file:///android_asset/offline.html");
+                    }
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_o_fundacji:

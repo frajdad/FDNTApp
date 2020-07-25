@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -56,9 +57,14 @@ public class PostItemFragment extends Fragment {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
 
-
-
-        recyclerView.setAdapter(new MyPostItemRecyclerViewAdapter(AsyncMailLoad.ITEMS));
+        if (AsyncMailLoad.ITEMS.isEmpty()) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+            alertDialog.setMessage("Wystąpił błąd! \n \n Możliwe przyczyny: \n - brak połączenia z internetem lub zbyt słabe połączenie \n - brak maili w tej skrzynce");
+            alertDialog.show();
+        }
+        else {
+            recyclerView.setAdapter(new MyPostItemRecyclerViewAdapter(AsyncMailLoad.ITEMS));
+        }
 
         return view;
     }

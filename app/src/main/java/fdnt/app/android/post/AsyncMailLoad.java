@@ -137,7 +137,7 @@ public class AsyncMailLoad {
                 result = result + getTextFromMimeMultipart((MimeMultipart)bodyPart.getContent());
             }
         }
-        return result;
+        return result.replaceAll("\n", "<br>");
     }
 
     static String formatDate(Date d) {

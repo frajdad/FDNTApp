@@ -28,9 +28,15 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="dark_mode"
-            android:title="Dark Mode"
-            android:summary="Zmień użyte kolory na ciemne"/>
+            android:title="Dark Mode (w budowie)"
+            android:summary="Zmień użyte kolory na ciemne (wymaga ponownego uruchomienia)"/>
     </PreferenceCategory>
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="dzielo_site"
+            android:title="www.dzielo.pl"
+            android:summary="Ładowanie strony www.dzielo.pl na stronie głównej"/>
 
     <PreferenceCategory app:title="Tworzenie aplikacji">
 
@@ -49,14 +55,11 @@
         <PreferenceScreen
             android:title="O Aplikacji"
             android:summary="Dowiedz się więcej o aplikacji i jej twórcach">
-            <intent android:action="fdnt.app.android.ONas"/> <!--Tu odpalamy zakładkę ONas -->
         </PreferenceScreen>
 
         <PreferenceScreen
             android:title="Changelog"
             android:summary="Zoabcz co nowego i jak powstawała aplikacja">
-            <intent android:action="fdnt.app.android.Changelog"/> <!--Tu odpalamy zakładkę Changelog -->
-
         </PreferenceScreen>
 
         <Preference

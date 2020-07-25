@@ -23,17 +23,7 @@ public class Dane {
     }
     public static boolean ifLoggedToPost() {
         SharedPreferences data = this_activity.getSharedPreferences("post", Context.MODE_PRIVATE);
-        return data.getString("pass", "").equals("");
-    }
-
-    public static boolean ifLoggedToPost() {
-        SharedPreferences data = ta_aktywnosc.getSharedPreferences("post", Context.MODE_PRIVATE);
-        if (data.getString("pass", "").equals(""))  {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return !data.getString("pass", "").equals("");
     }
 
 
