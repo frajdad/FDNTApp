@@ -76,7 +76,7 @@ public class Logowanie extends AppCompatActivity {
     private void reset() {
         Intent intent = new Intent(this, MainFrame.class);
         startActivity(intent);
-        Dane.ta_aktywnosc.finish();
+        Dane.this_activity.finish();
         finish();
     }
 

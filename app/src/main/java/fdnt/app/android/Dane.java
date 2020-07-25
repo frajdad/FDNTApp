@@ -21,6 +21,10 @@ public class Dane {
         else
             return true;
     }
+    public static boolean ifLoggedToPost() {
+        SharedPreferences data = this_activity.getSharedPreferences("post", Context.MODE_PRIVATE);
+        return data.getString("pass", "").equals("");
+    }
 
     public static boolean ifLoggedToPost() {
         SharedPreferences data = ta_aktywnosc.getSharedPreferences("post", Context.MODE_PRIVATE);
@@ -33,7 +37,7 @@ public class Dane {
     }
 
 
-    public static Activity ta_aktywnosc;
+    public static Activity this_activity;
     protected static UstawieniaAX aktywnosc_ustawienia;
 
     //Poczta
