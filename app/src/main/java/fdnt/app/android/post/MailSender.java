@@ -30,6 +30,12 @@ public class MailSender extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        /*if (PreferenceManager
+                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getBoolean("dark_mode", true)) {
+            setTheme(R.style.AppTheme_NoActionBarDark);
+        }*/
+
         addressView = findViewById(R.id.send_to);
         subjectView = findViewById(R.id.send_subject);
         contentView = findViewById(R.id.send_content);

@@ -98,6 +98,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             nav_Menu.findItem(R.id.nav_post).setVisible(false);
         }
 
+        if (PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getBoolean("dark_mode", true)) {
+            getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.checkedText));
+            setTheme(R.style.AppTheme_NoActionBarDark);
+        }
+
         drawerNames = getSharedPreferences(Dane.userName()+"name", MODE_PRIVATE); //id->name
         drawerActions = getSharedPreferences(Dane.userName()+"act", MODE_PRIVATE); //name->site
         drawerIcons = getSharedPreferences(Dane.userName()+"icon", MODE_PRIVATE); //name->icon
@@ -303,14 +310,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_modlitwa).setVisible(state);
     }
 
-    void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
-        menu.findItem(R.id.nav_wplac).setVisible(state);
-        menu.findItem(R.id.nav_sposoby).setVisible(state);
-        menu.findItem(R.id.nav_wyslij_sms).setVisible(state);
-        menu.findItem(R.id.nav_pobierz_blankiet).setVisible(state);
-        menu.findItem(R.id.nav_przekaz_1).setVisible(state);
-    }
-
     void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_media_o_nas).setVisible(state);
         menu.findItem(R.id.nav_biuro_prasowe).setVisible(state);
@@ -327,7 +326,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     void hideTabs(Menu menu) {
         onOFunacjiVisibilityChange(false, menu);
         onNaszPatronVisibilityChange(false, menu);
-        onDlaDarczyncyVisibilityChange(false, menu);
         onMaterialyPrasoweVisibilityChange(false, menu);
         onKontaktVisibilityChange(false, menu);
     }

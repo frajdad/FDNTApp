@@ -4,6 +4,8 @@ package fdnt.app.android;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -13,11 +15,21 @@ import javax.mail.Session;
 
 public class Dane {
 
-    protected static Boolean ifLogged() {
+    protected static boolean ifLogged() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null)
             return false;
         else
             return true;
+    }
+
+    public static boolean ifLoggedToPost() {
+        SharedPreferences data = ta_aktywnosc.getSharedPreferences("post", Context.MODE_PRIVATE);
+        if (data.getString("pass", "").equals(""))  {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 

@@ -23,6 +23,12 @@ public class MailViewer extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        /*if (PreferenceManager
+                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getBoolean("dark_mode", true)) {
+            setTheme(R.style.AppTheme_NoActionBarDark);
+        }*/
+
         TextView view_sender = findViewById(R.id.view_sender);
         TextView view_subject = findViewById(R.id.view_subject);
         WebView view_content = findViewById(R.id.view_content);

@@ -26,10 +26,18 @@ public class Logowanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
+        /*if (PreferenceManager
+                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getBoolean("dark_mode", true)) {
+            Log.d("style", "logg");
+            setTheme(R.style.AppTheme_NoActionBarDark);
+        }*/
+
         Toolbar toolbar = findViewById(R.id.toolbar_logging);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -59,8 +67,10 @@ public class Logowanie extends AppCompatActivity {
         EditText editTextMailPassword = findViewById(R.id.mail_password);
         String mailPassword = editTextMailPassword.getText().toString();
 
-        LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
-        logging.execute();
+        if (!email.equals("")) {
+            LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
+            logging.execute();
+        }
     }
 
     private void reset() {

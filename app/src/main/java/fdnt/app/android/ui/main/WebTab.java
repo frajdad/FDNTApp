@@ -12,6 +12,7 @@ import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import fdnt.app.android.R;
 
@@ -46,6 +47,14 @@ public class WebTab extends Fragment {
         myWebView.setWebViewClient(myClient);
 
         loadTab(getArguments().getString("adress"));
+
+        if (PreferenceManager
+                .getDefaultSharedPreferences(getContext())
+                .getBoolean("dark_mode", true)) {
+           // if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+             //   WebSettingsCompat.setForceDark(myWebView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+           // }
+        }
     }
 
     @Override

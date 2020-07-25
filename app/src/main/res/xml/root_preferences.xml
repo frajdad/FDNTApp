@@ -24,6 +24,12 @@
             android:key="powiadomienia_zezwolenie"
             android:title="Powiadomienia"
             android:summary="Zezwól na otrzymywanie powiadomień push"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="dark_mode"
+            android:title="Dark Mode"
+            android:summary="Zmień użyte kolory na ciemne"/>
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Tworzenie aplikacji">
@@ -33,14 +39,6 @@
             android:title="Zgłoś błąd"
             android:summary="Zgłoś błędy i uwagi dotyczące aplikacji">
         </PreferenceScreen>
-
-        <Preference
-            android:title="Zaktualizuj"
-            android:summary="Pobierz najnowszą wersję aplikacji">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://github.com/frajdad/FDNTApp/blob/master/releases/NewFDNT.apk?raw=true" />
-        </Preference>
 
         <PreferenceScreen
             android:key="reset"
@@ -72,7 +70,7 @@
 
         <PreferenceScreen
             android:title="Wersja"
-            android:summary="1.0.14">
+            android:summary="1.1.0">
         </PreferenceScreen>
 
 
