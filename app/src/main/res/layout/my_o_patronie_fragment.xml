@@ -71,11 +71,11 @@
         app:layout_constraintTop_toBottomOf="@+id/pasekill">
 
         <TextView
-            android:id="@+id/myopatronie_tekst"
+            android:id="@+id/myopatronie_tekst1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:justificationMode="inter_word"
-            android:text="@string/myopatronie_tekst"
+            android:text="@string/myopatronie_tekst1"
             android:textSize="20sp" />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
