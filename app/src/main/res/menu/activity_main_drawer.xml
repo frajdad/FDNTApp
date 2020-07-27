@@ -143,7 +143,7 @@
             <item
                 android:id="@+id/nav_settings"
                 android:checkable="true"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@mipmap/baseline_settings_black_48"
                 android:title="Ustawienia" />
         </menu>
     </item>
@@ -159,7 +159,7 @@
             <item
                 android:id="@+id/nav_post"
                 android:checkable="true"
-                android:icon="@drawable/mail1"
+                android:icon="@mipmap/poczta"
                 android:title="Poczta" />
         </menu>
     </item>
