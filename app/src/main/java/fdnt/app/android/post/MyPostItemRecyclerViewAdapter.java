@@ -43,21 +43,12 @@ public class MyPostItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPostIt
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.content.setText(cutString(Jsoup.parse(mValues.get(position).content).text()));
+        holder.content.setText(Jsoup.parse(mValues.get(position).content).text());
         holder.date.setText(mValues.get(position).date);
         holder.sender.setText(mValues.get(position).sender);
-        holder.subject.setText(cutString(mValues.get(position).subject));
+        holder.subject.setText(mValues.get(position).subject);
         if (mValues.get(position).sender != null) {
             holder.circle.setText(mValues.get(position).sender.substring(0, 1).toUpperCase());
-        }
-    }
-
-    static String cutString(String s) {
-        if (s.length() > 40) {
-            return s.substring(0, 37) + "...";
-        }
-        else {
-            return s;
         }
     }
 

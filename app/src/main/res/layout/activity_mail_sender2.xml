@@ -119,6 +119,7 @@
         android:inputType="textMultiLine"
         android:lines="20" />
     </android.widget.LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/writeEmailButton"
         android:layout_width="212dp"
@@ -128,8 +129,10 @@
         android:clickable="true"
         android:focusable="true"
         android:onClick="send"
-        android:src="@drawable/ic_menu_send"
-        app:backgroundTint="@color/colorPrimary"
+        android:src="@mipmap/round_send_icon_foreground"
+        app:backgroundTint="@color/whiteBackground"
+        app:borderWidth="0dp"
+        app:elevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

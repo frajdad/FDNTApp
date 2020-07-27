@@ -447,17 +447,26 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_media_o_nas:
                     newInstance = WebTab.newInstance();
+                    setTitle("Materiały Prasowe");
                     tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/media-o-nas/");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_biuro_prasowe:
                     newInstance = WebTab.newInstance();
+                    setTitle("Materiały Prasowe");
                     tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/biuro-prasowe/");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dzielo_tv:
                     newInstance = WebTab.newInstance();
+                    setTitle("Materiały Prasowe");
                     tabInfo.putString("adress", "https://www.youtube.com/user/DzieloTV");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_do_pobrania:
+                    newInstance = WebTab.newInstance();
+                    setTitle("Materiały Prasowe");
+                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/do-pobrania/");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_kontakt:
