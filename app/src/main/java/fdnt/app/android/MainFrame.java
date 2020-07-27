@@ -106,12 +106,12 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             nav_Menu.findItem(R.id.nav_post).setVisible(false);
         }
 
-        if (PreferenceManager
+   /*     if (PreferenceManager
                 .getDefaultSharedPreferences(this)
                 .getBoolean("dark_mode", true)) {
             getWindow().getDecorView().setBackgroundColor(getResources().getColor(R.color.checkedText));
             setTheme(R.style.AppTheme_NoActionBarDark);
-        }
+        }*/
 
         drawerNames = getSharedPreferences(Dane.userName()+"name", MODE_PRIVATE); //id->name
         drawerActions = getSharedPreferences(Dane.userName()+"act", MODE_PRIVATE); //name->site
