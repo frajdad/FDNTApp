@@ -65,6 +65,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:scrollbarStyle="outsideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineright"
         app:layout_constraintHorizontal_bias="0.0"
