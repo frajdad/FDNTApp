@@ -25,18 +25,28 @@
             android:title="Powiadomienia"
             android:summary="Zezwól na otrzymywanie powiadomień push"/>
 
-        <SwitchPreference
+     <!--   <SwitchPreference
             android:defaultValue="false"
             android:key="dark_mode"
             android:title="Dark Mode (w budowie)"
             android:summary="Zmień użyte kolory na ciemne (wymaga ponownego uruchomienia)"/>
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
         <SwitchPreference
             android:defaultValue="true"
             android:key="dzielo_site"
             android:title="www.dzielo.pl"
             android:summary="Ładowanie strony www.dzielo.pl na stronie głównej"/>
+
+        <ListPreference
+            android:title="Ładowanie e-maili"
+            android:summary="Ustal jak dużo wiadomości e-mail załadować podczas korzystania z poczty"
+            android:entries="@array/max_email"
+            android:entryValues="@array/max_email"
+            android:defaultValue="20"
+            android:key="max_emails"/>
+
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="Tworzenie aplikacji">
 
@@ -55,11 +65,6 @@
         <PreferenceScreen
             android:title="O Aplikacji"
             android:summary="Dowiedz się więcej o aplikacji i jej twórcach">
-        </PreferenceScreen>
-
-        <PreferenceScreen
-            android:title="Changelog"
-            android:summary="Zoabcz co nowego i jak powstawała aplikacja">
         </PreferenceScreen>
 
         <Preference

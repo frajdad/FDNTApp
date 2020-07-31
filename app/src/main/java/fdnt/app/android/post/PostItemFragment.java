@@ -50,7 +50,7 @@ public class PostItemFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        RecyclerView recyclerView = view.findViewById(R.id.list);
         if (mColumnCount <= 1) {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
         } else {
@@ -64,6 +64,7 @@ public class PostItemFragment extends Fragment {
         }
         else {
             recyclerView.setAdapter(new MyPostItemRecyclerViewAdapter(AsyncMailLoad.ITEMS));
+            AsyncMailLoad.setAdapterChanger(recyclerView);
         }
 
         return view;

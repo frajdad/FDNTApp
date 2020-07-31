@@ -64,19 +64,16 @@ public class Send extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            //Creating MimeMessage object
             MimeMessage mm = new MimeMessage(Dane.smtpSession);
-            //Setting sender address
             mm.setFrom(new InternetAddress(Dane.userEmail()));
-            //Adding receiver
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-            //Adding subject
             mm.setSubject(subject);
-            //Adding message
             mm.setText(message);
 
             //Sending email
             Transport.send(mm);
+
+
 
         } catch (MessagingException e) {
             ok = false;

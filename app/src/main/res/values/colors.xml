@@ -12,6 +12,7 @@
     <color name="checkedText">#000000</color>
     <color name="colorTitle">#1464AA</color>
     <color name="colorSubTitle">#202020</color>
+    <color name="whiteDark">#FAEEEE</color>
 </resources>
 
 

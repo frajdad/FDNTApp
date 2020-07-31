@@ -16,7 +16,6 @@ public class MailViewer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mail_viewer);
-
         Toolbar toolbar = findViewById(R.id.toolbar_viewer);
         setSupportActionBar(toolbar);
 
