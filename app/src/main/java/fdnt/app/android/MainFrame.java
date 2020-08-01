@@ -36,9 +36,10 @@ import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
-import fdnt.app.android.ui.main.DlaDarczyncy;
+import fdnt.app.android.ui.main.HelpNowTab;
 import fdnt.app.android.ui.main.DzienPapieski;
 import fdnt.app.android.ui.main.GdzieJestesmy;
+import fdnt.app.android.ui.main.HowToHelpTab;
 import fdnt.app.android.ui.main.JanPawelIi;
 import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
@@ -318,6 +319,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_modlitwa).setVisible(state);
     }
 
+    void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_sposoby).setVisible(state);
+        menu.findItem(R.id.nav_pomoz).setVisible(state);
+    }
+
     void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_media_o_nas).setVisible(state);
         menu.findItem(R.id.nav_biuro_prasowe).setVisible(state);
@@ -431,7 +437,22 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dla_darczyncy:
-                    newInstance = new DlaDarczyncy();
+                    hideTabs(menu);
+                    if (chosenTab != 2) {
+                        onDlaDarczyncyVisibilityChange(true, menu);
+                        chosenTab = 2;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
+                    break;
+                case R.id.nav_sposoby:
+                    newInstance = new HowToHelpTab();
+                    setTitle("Dla Darczyńcy");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_pomoz:
+                    newInstance = new HelpNowTab();
                     setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;

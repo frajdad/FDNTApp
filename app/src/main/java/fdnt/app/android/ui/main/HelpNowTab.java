@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -15,11 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import fdnt.app.android.MainFrame;
 import fdnt.app.android.R;
 
-public class DlaDarczyncy extends Fragment {
-    public static DlaDarczyncy newInstance() { return new DlaDarczyncy(); }
+public class HelpNowTab extends Fragment {
+    public static HelpNowTab newInstance() { return new HelpNowTab(); }
 
     @Nullable
     @Override

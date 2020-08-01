@@ -172,4 +172,11 @@ W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="header_jak_pomoc">JAK MOŻESZ POMÓC?</string>
+
+    <string name="text_sms">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
+    <string name="text_wplac"></string>
+    <string name="text_pobierz">
+    </string>
+    <string name="text_przekaz"></string>
+    <string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
 </resources>
