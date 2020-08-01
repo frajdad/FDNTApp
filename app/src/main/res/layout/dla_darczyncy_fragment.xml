@@ -30,14 +30,15 @@
 
     <TextView
         android:id="@+id/header_topomoz"
-        android:layout_width="183dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/roboto_condensed_regular"
         android:text="@string/header_tupomoz"
         android:textColor="@color/colorTitle"
         android:textSize="28sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintDimensionRatio="h,5:1"
+        app:layout_constraintDimensionRatio="h,11:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
 

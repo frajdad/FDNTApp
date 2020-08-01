@@ -179,4 +179,8 @@ W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
     </string>
     <string name="text_przekaz"></string>
     <string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
+    <string name="modl_sie_">MÓDL SIĘ ZA NAS!</string>
+    <string name="modl_sie_text">Potrzebujemy modlitwy naszych darczyńców i sympatyków by z dnia na dzień rozwijać się i nieść dalej nauczanie Ojca Świętego.</string>
+    <string name="wspieraj_nas_finansowo">WSPIERAJ NAS FINANSOWO!</string>
+    <string name="wspieraj_text">Tylko dzięki otrzymanym środkom jesteśmy w stanie zapewnić dalszą budowę żywego pomnika św. Jana Pawła II. Pieniądze można wpłacić za pomocą formularza dostępnego w aplikacji lub pobierając blankiet przelewu, zrealizować można go na poczcie lub w banku.</string>
 </resources>

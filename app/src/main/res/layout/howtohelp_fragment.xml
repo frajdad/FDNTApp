@@ -1,6 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
+    <TextView
+        android:id="@+id/header_jakpomoc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:text="@string/header_jak_pomoc"
+        android:textColor="@color/colorTitle"
+        android:textSize="28sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintDimensionRatio="h,11:1"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop" />
+
+
+    <include
+        android:id="@+id/pasekill"
+        layout="@layout/pasekill"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/guidelineright"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@id/header_jakpomoc" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingEnd="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guidelineleft"
+        app:layout_constraintTop_toBottomOf="@+id/pasekill"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/header_modlsie"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="right"
+                android:text="@string/modl_sie_"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/modlsie_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="@string/modl_sie_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_modlsie" />
+
+            <TextView
+                android:id="@+id/header_wspieraj"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="right"
+                android:text="@string/wspieraj_nas_finansowo"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/modlsie_text" />
+
+            <TextView
+                android:id="@+id/wspieraj_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/wspieraj_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_wspieraj" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    >
 
 </androidx.constraintlayout.widget.ConstraintLayout>
