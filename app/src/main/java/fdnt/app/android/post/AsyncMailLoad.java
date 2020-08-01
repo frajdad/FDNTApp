@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -29,16 +29,34 @@ import fdnt.app.android.Dane;
 import static fdnt.app.android.Dane.pop3Session;
 
 public class AsyncMailLoad {
-    private AppCompatActivity context;
-
     public static List<MailItem> ITEMS = new ArrayList<MailItem>();
-
     public static Map<String, MailItem> ITEM_MAP = new HashMap<String, MailItem>();
 
+    private static RecyclerView view;
 
     private static void addItem(MailItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
+        if (view != null) {
+            view.post(new Runnable()
+            {
+                @Override
+                public void run() {
+                    view.getAdapter().notifyItemInserted(ITEMS.size()-1);
+                }
+            });
+        }
+    }
+
+    public static void setAdapterChanger(RecyclerView view) {
+        AsyncMailLoad.view = view;
+        view.post(new Runnable()
+        {
+            @Override
+            public void run() {
+                AsyncMailLoad.view.getAdapter().notifyDataSetChanged();
+            }
+        });
     }
 
     private static MailItem createItem(int position, String content, String subject, String sender, String date) {
@@ -70,7 +88,6 @@ public class AsyncMailLoad {
             MailLogging.openSessions(email, pass);
 
             Store store = pop3Session.getStore("pop3");
-         //   Log.d("boxes", store.toString());
 
             store.connect();
             Folder[] fs = store.getPersonalNamespaces();
@@ -95,11 +112,8 @@ public class AsyncMailLoad {
                         message.getSubject(),
                         personal,
                         formatDate(message.getSentDate())));
+                System.out.println("item " + i);
             }
-
-            //close the store and folder objects
-            emailFolder.close(false);
-            store.close();
 
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
@@ -109,6 +123,7 @@ public class AsyncMailLoad {
             e.printStackTrace();
         }
     }
+
 
     public static String getTextFromMessage(Message message) throws MessagingException, IOException {
         String result = "";

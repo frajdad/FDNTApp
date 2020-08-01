@@ -20,25 +20,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
             android:name=".post.MailSender"
             android:label="e-mail"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="fdnt.app.android.post.MailSender" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".post.MailViewer"
             android:label="e-mail"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Logowanie"
             android:label="@string/logowanie_gora"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainFrame">
+            android:parentActivityName=".MainFrame"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainFrame" />
@@ -49,6 +50,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
