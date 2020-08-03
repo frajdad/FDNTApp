@@ -74,7 +74,7 @@
                 android:id="@+id/header_modlsie"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:gravity="right"
+                android:gravity="left"
                 android:text="@string/modl_sie_"
                 android:textColor="@color/colorSubTitle"
                 android:textSize="20sp"
@@ -101,7 +101,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                android:gravity="right"
+                android:gravity="left"
                 android:text="@string/wspieraj_nas_finansowo"
                 android:textColor="@color/colorSubTitle"
                 android:textSize="20sp"
@@ -122,6 +122,143 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/header_wspieraj" />
+
+            <TextView
+                android:id="@+id/header_przelew"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="@string/przelew_tradycyjny"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/wspieraj_text" />
+
+            <TextView
+                android:id="@+id/przelew_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/przelew_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_przelew" />
+
+
+            <TextView
+                android:id="@+id/header_przekaz"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="@string/przeka_1"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/przelew_text" />
+
+            <TextView
+                android:id="@+id/przekaz_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/przekaz_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_przekaz" />
+
+            <TextView
+                android:id="@+id/header_sms"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="@string/wyslij_sms"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/przekaz_text" />
+
+            <TextView
+                android:id="@+id/sms_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sms_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_sms" />
+
+            <TextView
+                android:id="@+id/header_regularny_darczynca"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="@string/header_regularny_darczynca"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sms_text" />
+
+            <TextView
+                android:id="@+id/regularny_darczynca_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/regularny_darczynca_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_regularny_darczynca" />
+
+            <TextView
+                android:id="@+id/header_zbiorka"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="@string/header_zbiorka"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/regularny_darczynca_text" />
+
+            <TextView
+                android:id="@+id/zbiorka_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/regularny_darczynca_text"
+                android:textSize="15sp"
+                app:autoSizeTextType="uniform"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_zbiorka" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
