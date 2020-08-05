@@ -12,18 +12,40 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import fdnt.app.android.R;
 
 
 
 public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAdapter.ViewHolder>{
     protected Context context;
-    List<String> personRoles;
-    List<String> personMails;
-    List<String> personTels;
 
+    private final String[] personRoles = {
+            "Koordynator ds. formacji stypendystów",
+            "Asystentka Zarządu",
+            "Menadżer ds. stypendialnych",
+            "Menedżer ds. Dnia Papieskiego",
+            "Menedżer ds. kontaktu z Darczyńcami",
+            "Menedżer ds. kampanii społecznych",
+            "Kierownik Biura Prasowego"
+    };
+    private final String[] personMails = {
+            "lukasz.nycz@dzielo.pl",
+            "sekretariat@dzielo.pl",
+            "stypendia@dzielo.pl",
+            "dzienpapieski@dzielo.pl",
+            "darczyncy@dzielo.pl",
+            "paulina.worozbit@dzielo.pl",
+            "biuroprasowe@dzielo.pl"
+    };
+    private final String[] personTels = {
+            "503504407",
+            "668286129",
+            "734445490",
+            "602830082",
+            "668285959",
+            "881678857",
+            "662506859"
+    };
     private final int[] personImages = {
             R.mipmap.ksnycz_foreground,
             R.mipmap.annamarszalek_foreground,
@@ -34,10 +56,7 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
             R.mipmap.hubertszczypek_foreground
     };
 
-    public OfficeRecyclerAdapter(List<String> personRoles, List<String> personMails, List<String> personTels) {
-        this.personRoles = personRoles;
-        this.personMails = personMails;
-        this.personTels = personTels;
+    public OfficeRecyclerAdapter() {
     }
 
     @NonNull
@@ -51,13 +70,13 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.PersonRole.setText(personRoles.get(position));
+        holder.PersonRole.setText(personRoles[position]);
         holder.PersonImage.setImageResource(personImages[position]);
     }
 
     @Override
     public int getItemCount() {
-        return personMails.size();
+        return personMails.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -79,10 +98,10 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.MailIcon) {
-                Static.sendMail(personMails.get(getAdapterPosition()), context);
+                Shared.sendMail(personMails[getAdapterPosition()], context);
             }
             else if (view.getId() == R.id.TelIcon) {
-                String mail = "tel:" + personTels.get(getAdapterPosition());
+                String mail = "tel:" + personTels[getAdapterPosition()];
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(mail));
                 context.startActivity(intent);

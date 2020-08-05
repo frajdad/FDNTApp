@@ -24,8 +24,6 @@ public class KontaktZarzad extends Fragment {
 
     RecyclerView managementRecyclerView;
     ManagementRecyclerAdapter managementRecyclerAdapter;
-    String[] roles = {"Przewodniczący", "Wiceprzewodniczący", "Wiceprzewodniczący"};
-    String[] mails = {"dariusz.kowalczyk@dzielo.pl", "pawel.walkiewicz@dzielo.pl", "marek.zdrojewski@dzielo.pl"};
     List<String> managementPersonRoles , managementPersonMails;
 
     @Override
@@ -33,11 +31,10 @@ public class KontaktZarzad extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.kontakt_zarzad_fragment, container, false);
 
-        managementPersonRoles = new ArrayList<String>(Arrays.asList(roles));
-        managementPersonMails = new ArrayList<String>(Arrays.asList(mails));
+
 
         managementRecyclerView = (RecyclerView) rootView.findViewById(R.id.managementRecyclerView);
-        managementRecyclerAdapter = new ManagementRecyclerAdapter(managementPersonRoles, managementPersonMails);
+        managementRecyclerAdapter = new ManagementRecyclerAdapter();
 
         managementRecyclerView.setAdapter(managementRecyclerAdapter);
         managementRecyclerView.setHasFixedSize(true);

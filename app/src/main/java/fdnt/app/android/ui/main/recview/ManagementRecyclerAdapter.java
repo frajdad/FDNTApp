@@ -1,8 +1,6 @@
 package fdnt.app.android.ui.main.recview;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,26 +10,29 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import fdnt.app.android.R;
 
 public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRecyclerAdapter.ViewHolder> {
 
     protected Context context;
-    List<String> personRoles;
-    List<String> personMails;
+    private final String[] personRoles = {
+            "Przewodniczący",
+            "Wiceprzewodniczący",
+            "Wiceprzewodniczący"
+    };
+    private final String[] personMails = {
+            "dariusz.kowalczyk@dzielo.pl",
+            "pawel.walkiewicz@dzielo.pl",
+            "marek.zdrojewski@dzielo.pl"
+    };
     private final int[] personImages = {
             R.mipmap.ksdarek_foreground,
             R.mipmap.pawelwalkiewicz_foreground,
             R.mipmap.marekzdrojewski_foreground
     };
 
-    public ManagementRecyclerAdapter(List<String> personRoles, List<String> personMails) {
-        this.personRoles = personRoles;
-        this.personMails = personMails;
+    public ManagementRecyclerAdapter() {
+
     }
 
     @NonNull
@@ -46,13 +47,13 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
 
     @Override
     public void onBindViewHolder(@NonNull ManagementRecyclerAdapter.ViewHolder holder, int position) {
-        holder.PersonRole.setText(personRoles.get(position));
+        holder.PersonRole.setText(personRoles[position]);
         holder.PersonImage.setImageResource(personImages[position]);
     }
 
     @Override
     public int getItemCount() {
-        return personMails.size();
+        return personMails.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -70,7 +71,7 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
 
         @Override
         public void onClick(View view) {
-            Static.sendMail(personMails.get(getAdapterPosition()), context);
+            Shared.sendMail(personMails[getAdapterPosition()], context);
         }
     }
 }

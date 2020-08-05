@@ -8,7 +8,7 @@ import android.net.Uri;
 import fdnt.app.android.Dane;
 import fdnt.app.android.post.MailSender;
 
-public class Static {
+public class Shared {
     public static void sendMail(String mail, Context context) {
         if(Dane.ifLoggedToPost()) {
             Intent intent = new Intent(Dane.this_activity, MailSender.class);

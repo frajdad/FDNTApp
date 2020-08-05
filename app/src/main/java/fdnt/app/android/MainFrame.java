@@ -308,7 +308,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     private short chosenTab = 0;
 
-    void onOFunacjiVisibilityChange(boolean state, Menu menu) {
+    void onOFundacjiVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_kim_jestesmy).setVisible(state);
         menu.findItem(R.id.nav_co_robimy).setVisible(state);
         menu.findItem(R.id.nav_gdzie_jestesmy).setVisible(state);
@@ -340,7 +340,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
 
     void hideTabs(Menu menu) {
-        onOFunacjiVisibilityChange(false, menu);
+        onOFundacjiVisibilityChange(false, menu);
         onNaszPatronVisibilityChange(false, menu);
         onMaterialyPrasoweVisibilityChange(false, menu);
         onKontaktVisibilityChange(false, menu);
@@ -386,7 +386,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
                     if (chosenTab != 1) {
-                        onOFunacjiVisibilityChange(true, menu);
+                    onOFundacjiVisibilityChange(true, menu);
                         chosenTab = 1;
                     }
                     else {
