@@ -160,14 +160,14 @@ W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
 
     <string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
 </string>
-    <string name="adres">Adres:</string>
-    <string name="adres_tekst">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
+    <string name="loc_header">Adres:</string>
+    <string name="loc_text">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
     <string name="tel">Telefon:</string>
-    <string name="tel_tekst">(22) 530 48 28</string>
+    <string name="tel_text">(22) 530 48 28</string>
     <string name="email">E-mail:</string>
-    <string name="mail_tekst">dzielo@episkopat.pl</string>
-    <string name="nip">NIP:</string>
-    <string name="nip_tekst">527-23-16-033</string>
+    <string name="mail_text">dzielo@episkopat.pl</string>
+    <string name="nip_header">NIP:</string>
+    <string name="nip_text">527-23-16-033</string>
     <string name="title_activity_poczta_main">PocztaMain</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

@@ -10,11 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.databinding.adapters.LinearLayoutBindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import fdnt.app.android.R;
-
-
 
 public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAdapter.ViewHolder>{
     protected Context context;
@@ -55,9 +54,6 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
             R.mipmap.paulinaworozbit_foreground,
             R.mipmap.hubertszczypek_foreground
     };
-
-    public OfficeRecyclerAdapter() {
-    }
 
     @NonNull
     @Override

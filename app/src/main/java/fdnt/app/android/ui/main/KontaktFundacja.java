@@ -15,13 +15,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import fdnt.app.android.Dane;
 import fdnt.app.android.R;
+import fdnt.app.android.databinding.FoundationContactFragmentBinding;
 import fdnt.app.android.post.MailSender;
 
 public class KontaktFundacja extends Fragment {
+
     public static KontaktFundacja newInstance() {
         return new KontaktFundacja();
     }
@@ -78,37 +81,30 @@ public class KontaktFundacja extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.kontakt_fundacja_fragment, container, false);
+        /*
+        "if something is incorrect then correct it"
+        there i obtain binding object which assures me access to views
+         */
+        FoundationContactFragmentBinding binding = DataBindingUtil.inflate(inflater,
+                 R.layout.foundation_contact_fragment, container, false);
 
-        ImageView localizationIcon = (ImageView) rootView.findViewById(R.id.ikonatrasa);
-        TextView localizationHeader = (TextView) rootView.findViewById(R.id.adres);
-        TextView localizationText = (TextView) rootView.findViewById(R.id.adres_tekst);
-        localizationIcon.setOnClickListener(showFoundationLocalization);
-        localizationHeader.setOnClickListener(showFoundationLocalization);
-        localizationText.setOnClickListener(showFoundationLocalization);
+        binding.locIcon.setOnClickListener(showFoundationLocalization);
+        binding.locHeader.setOnClickListener(showFoundationLocalization);
+        binding.locText.setOnClickListener(showFoundationLocalization);
 
-        ImageView callIcon = (ImageView) rootView.findViewById(R.id.ikonatel);
-        TextView callHeader = (TextView) rootView.findViewById(R.id.telefon);
-        TextView callText = (TextView) rootView.findViewById(R.id.tel_tekst);
-        callIcon.setOnClickListener(callToFoundation);
-        callHeader.setOnClickListener(callToFoundation);
-        callText.setOnClickListener(callToFoundation);
+        binding.telIcon.setOnClickListener(callToFoundation);
+        binding.telHeader.setOnClickListener(callToFoundation);
+        binding.telText.setOnClickListener(callToFoundation);
 
-        ImageView mailIcon = (ImageView) rootView.findViewById(R.id.ikonamail);
-        TextView mailHeader = (TextView) rootView.findViewById(R.id.mail);
-        TextView mailText = (TextView) rootView.findViewById(R.id.mail_tekst);
-        mailIcon.setOnClickListener(mailToFoundation);
-        mailHeader.setOnClickListener(mailToFoundation);
-        mailText.setOnClickListener(mailToFoundation);
+        binding.mailIcon.setOnClickListener(mailToFoundation);
+        binding.mailHeader.setOnClickListener(mailToFoundation);
+        binding.mailText.setOnClickListener(mailToFoundation);
 
-        ImageView nipIcon = (ImageView) rootView.findViewById(R.id.ikonanip);
-        TextView nipHeader = (TextView) rootView.findViewById(R.id.nip);
-        TextView nipText = (TextView) rootView.findViewById(R.id.nip_tekst);
-        nipIcon.setOnClickListener(copyFoundationNIP);
-        nipHeader.setOnClickListener(copyFoundationNIP);
-        nipText.setOnClickListener(copyFoundationNIP);
+        binding.nipIcon.setOnClickListener(copyFoundationNIP);
+        binding.nipHeader.setOnClickListener(copyFoundationNIP);
+        binding.nipText.setOnClickListener(copyFoundationNIP);
 
-        return rootView;
+        return binding.getRoot();
     }
 
     @Override

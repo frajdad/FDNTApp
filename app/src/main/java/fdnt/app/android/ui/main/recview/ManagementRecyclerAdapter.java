@@ -31,10 +31,6 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
             R.mipmap.marekzdrojewski_foreground
     };
 
-    public ManagementRecyclerAdapter() {
-
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
