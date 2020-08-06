@@ -29,55 +29,6 @@ public class KontaktFundacja extends Fragment {
         return new KontaktFundacja();
     }
 
-    private View.OnClickListener showFoundationLocalization = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            final String locURI = "https://www.google.com/maps/place/Dzie%C5%82o+Nowego+Tysi%C4%85clecia.+Fundacja/@52.239936,20.9829355,19z/data=!4m5!3m4!1s0x471ecc81b5b10f39:0x78e923cda8fbf5ad!8m2!3d52.2398794!4d20.9830964";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(locURI));
-            startActivity(intent);
-        }
-    };
-
-    private View.OnClickListener callToFoundation = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            final String tel = "tel:225304828";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(tel));
-            startActivity(intent);
-        }
-    };
-
-    private View.OnClickListener mailToFoundation = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            final String mail = "mailto:dzielo@episkopat.pl";
-            if(Dane.ifLoggedToPost()) {
-                Intent intent = new Intent(getActivity(), MailSender.class);
-                intent.putExtra("to", "dzielo@episkopat.pl");
-                startActivity(intent);
-            }
-            else {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(mail));
-                startActivity(intent);
-            }
-        }
-    };
-
-    private  View.OnClickListener copyFoundationNIP = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            final String NIP = "527-23-16-033";
-            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("nip", NIP);
-            clipboard.setPrimaryClip(clip);
-            Toast.makeText(getActivity(), "Skopiowano!", Toast.LENGTH_SHORT).show();
-        }
-    };
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -87,22 +38,8 @@ public class KontaktFundacja extends Fragment {
          */
         FoundationContactFragmentBinding binding = DataBindingUtil.inflate(inflater,
                  R.layout.foundation_contact_fragment, container, false);
-
-        binding.locIcon.setOnClickListener(showFoundationLocalization);
-        binding.locHeader.setOnClickListener(showFoundationLocalization);
-        binding.locText.setOnClickListener(showFoundationLocalization);
-
-        binding.telIcon.setOnClickListener(callToFoundation);
-        binding.telHeader.setOnClickListener(callToFoundation);
-        binding.telText.setOnClickListener(callToFoundation);
-
-        binding.mailIcon.setOnClickListener(mailToFoundation);
-        binding.mailHeader.setOnClickListener(mailToFoundation);
-        binding.mailText.setOnClickListener(mailToFoundation);
-
-        binding.nipIcon.setOnClickListener(copyFoundationNIP);
-        binding.nipHeader.setOnClickListener(copyFoundationNIP);
-        binding.nipText.setOnClickListener(copyFoundationNIP);
+        EventHandler handler = new EventHandler();
+        binding.setHandler(handler);
 
         return binding.getRoot();
     }
