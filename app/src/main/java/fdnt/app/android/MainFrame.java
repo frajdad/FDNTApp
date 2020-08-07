@@ -1,5 +1,6 @@
 package fdnt.app.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,6 +49,10 @@ import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.Modlitwa;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
+import fdnt.app.android.ui.main.recview.Assignment;
+import fdnt.app.android.ui.main.recview.ManagementRecyclerAdapter;
+import fdnt.app.android.ui.main.recview.OfficeRecyclerAdapter;
+import fdnt.app.android.ui.main.recview.Shared;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -59,8 +64,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Shared.loadStaffDataFromFile (getApplicationContext ());
         setContentView(R.layout.activity_main);
-
         Bundle tabInfo = new Bundle();
         if (PreferenceManager
                 .getDefaultSharedPreferences(this)
@@ -361,7 +366,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         String name = drawerNames.getString(Integer.toString(id), null);
 
         Menu menu = navigationView.getMenu();

@@ -13,48 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.databinding.adapters.LinearLayoutBindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import java.util.ArrayList;
+
 import fdnt.app.android.R;
 
 public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAdapter.ViewHolder>{
     protected Context context;
-
-    private final String[] personRoles = {
-            "Koordynator ds. formacji stypendystów",
-            "Asystentka Zarządu",
-            "Menadżer ds. stypendialnych",
-            "Menedżer ds. Dnia Papieskiego",
-            "Menedżer ds. kontaktu z Darczyńcami",
-            "Menedżer ds. kampanii społecznych",
-            "Kierownik Biura Prasowego"
-    };
-    private final String[] personMails = {
-            "lukasz.nycz@dzielo.pl",
-            "sekretariat@dzielo.pl",
-            "stypendia@dzielo.pl",
-            "dzienpapieski@dzielo.pl",
-            "darczyncy@dzielo.pl",
-            "paulina.worozbit@dzielo.pl",
-            "biuroprasowe@dzielo.pl"
-    };
-    private final String[] personTels = {
-            "503504407",
-            "668286129",
-            "734445490",
-            "602830082",
-            "668285959",
-            "881678857",
-            "662506859"
-    };
-    private final int[] personImages = {
-            R.mipmap.ksnycz_foreground,
-            R.mipmap.annamarszalek_foreground,
-            R.mipmap.monikagawracz_foreground,
-            R.mipmap.marzenasawula_foreground,
-            R.mipmap.malgorzatakucharska_foreground,
-            R.mipmap.paulinaworozbit_foreground,
-            R.mipmap.hubertszczypek_foreground
-    };
-
+    
+    protected ArrayList<Person> officeStaff;
+    
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -66,13 +34,15 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.PersonRole.setText(personRoles[position]);
-        holder.PersonImage.setImageResource(personImages[position]);
+        holder.PersonRole.setText(officeStaff.get (position).role);
+        holder.PersonImage.setImageResource(officeStaff.get (position).imageID);
     }
 
     @Override
     public int getItemCount() {
-        return personMails.length;
+        if(officeStaff == null)
+            officeStaff = Shared.getStaffWithGivenAssignment (Assignment.Office);
+        return officeStaff.size ();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -94,10 +64,10 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<OfficeRecyclerAd
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.MailIcon) {
-                Shared.sendMail(personMails[getAdapterPosition()], context);
+                Shared.sendMail(officeStaff.get (getAdapterPosition()).email, context);
             }
             else if (view.getId() == R.id.TelIcon) {
-                String mail = "tel:" + personTels[getAdapterPosition()];
+                String mail = "tel:" + officeStaff.get (getAdapterPosition()).phone;
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(mail));
                 context.startActivity(intent);
