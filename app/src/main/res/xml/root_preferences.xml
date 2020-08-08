@@ -78,7 +78,7 @@
 
         <PreferenceScreen
             android:title="Wersja"
-            android:summary="1.1.0">
+            android:summary="2.0.0">
         </PreferenceScreen>
 
 

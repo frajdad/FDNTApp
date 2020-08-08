@@ -18,14 +18,15 @@
         android:clickable="true"
         android:focusable="true"
         android:onClick="writeEmail"
-        android:src="@mipmap/send_icon_foreground"
-        app:backgroundTint="@color/whiteDark"
+        android:src="@mipmap/round_send_icon_whole_foreground"
+        android:scaleType="center"
+        app:backgroundTint="@color/checked"
         app:borderWidth="0dp"
         app:elevation="30dp"
-        app:fabCustomSize="70dp"
+        app:fabCustomSize="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="35dp" />
+        app:maxImageSize="93dp" />
 
     <androidx.recyclerview.widget.RecyclerView
     app:layoutManager="LinearLayoutManager"

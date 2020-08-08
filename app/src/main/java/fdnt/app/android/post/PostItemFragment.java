@@ -51,8 +51,9 @@ public class PostItemFragment extends Fragment {
 
         Context context = view.getContext();
         RecyclerView recyclerView = view.findViewById(R.id.list);
+
         if (mColumnCount <= 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(context));
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
@@ -68,5 +69,24 @@ public class PostItemFragment extends Fragment {
         }
 
         return view;
+    }
+
+    // Tworzymy wraper dla tej klasy aby uniknąć błędów przy obsłudze RecyclerView przez kilka wątków
+    // Patrz: https://stackoverflow.com/questions/31759171/recyclerview-and-java-lang-indexoutofboundsexception-inconsistency-detected-in
+    private class WrapContentLinearLayoutManager extends LinearLayoutManager {
+        public WrapContentLinearLayoutManager(Context context) {
+            super(context);
+        }
+
+        @Override
+        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+            try {
+                super.onLayoutChildren(recycler, state);
+            } catch (IndexOutOfBoundsException e) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                alertDialog.setMessage("Wystąpił problem z ładowaniem wiadomości.");
+                alertDialog.show();
+            }
+        }
     }
 }

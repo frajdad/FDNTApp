@@ -140,7 +140,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             public void run()
             {
                 AsyncMailLoad.getEmails("INBOX",
-                        Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(Dane.this_activity).getString("max_emails", "20")),
+                        Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(Dane.this_activity)
+                                .getString("max_emails", "20")),
                         Dane.this_activity);
             }
         }).start();

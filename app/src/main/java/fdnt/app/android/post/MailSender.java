@@ -1,5 +1,6 @@
 package fdnt.app.android.post;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MailSender extends AppCompatActivity {
     private EditText addressView;
     private EditText subjectView;
     private EditText contentView;
+    private String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +76,12 @@ public class MailSender extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getPath(View view) {
+        Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+        chooseFile.setType("*/*");
+        chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+        startActivityForResult(chooseFile, 0);
     }
 }
