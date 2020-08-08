@@ -1,38 +1,35 @@
 package fdnt.app.android.ui.main.recview;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import fdnt.app.android.R;
+import fdnt.app.android.BR;
+import fdnt.app.android.databinding.ManagementRowBinding;
 
-public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRecyclerAdapter.ViewHolder> {
-
-    protected Context context;
+/**
+ * Recycler Adapter for ManagementRecyclerView. Uses StaffViewHolder
+ * */
+public class ManagementRecyclerAdapter extends RecyclerView.Adapter<StaffViewHolder> {
+    
+    /**ArrayList of People, whose assignment is Management.*/
     protected ArrayList<Person> managementStaff;
     
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.management_row, parent, false);
-        return new ViewHolder(view);
+    public StaffViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        ManagementRowBinding itemBinding = ManagementRowBinding.inflate(layoutInflater, parent, false);
+        return new StaffViewHolder (itemBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ManagementRecyclerAdapter.ViewHolder holder, int position) {
-        holder.PersonRole.setText(managementStaff.get (position).role);
-        holder.PersonImage.setImageResource(managementStaff.get (position).imageID);
-        
+    public void onBindViewHolder(@NonNull StaffViewHolder holder, int position) {
+        holder.bind (BR.person, (Object) managementStaff.get (position));
     }
 
     @Override
@@ -42,22 +39,5 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<ManagementRe
         return managementStaff.size ();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView PersonRole;
-        ImageView PersonImage, MailIcon;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            PersonRole = itemView.findViewById(R.id.PersonRole);
-            PersonImage = itemView.findViewById(R.id.PersonImage);
-            MailIcon = itemView.findViewById(R.id.MailIcon);
-            MailIcon.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Shared.sendMail(managementStaff.get (getAdapterPosition()).email, context);
-        }
-    }
+    
 }

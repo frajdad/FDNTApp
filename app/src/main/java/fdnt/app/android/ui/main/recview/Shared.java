@@ -19,11 +19,19 @@ import fdnt.app.android.Dane;
 import fdnt.app.android.R;
 import fdnt.app.android.post.MailSender;
 
+/**
+ * Class contains static methods which are shared, by package.
+ * */
 public class Shared {
     
-    //List contains management and office staff informations
+    /**List of People, who are in office or management.*/
     protected static ArrayList<Person> staff = new ArrayList<Person> ();
     
+    /**
+     * Method returns List of People, who have given assignment.
+     * @param assignment Specifies assignment, which is filter.
+     * @return List of filtered People, whose assignment is same as parameter.
+     * */
     public static ArrayList<Person> getStaffWithGivenAssignment(Assignment assignment){
         ArrayList<Person> output = new ArrayList<Person>();
         for(Person p : staff)
@@ -31,6 +39,10 @@ public class Shared {
         return output;
     }
     
+    /**
+     * Method loads List of People from staff.json and puts it in staff List.
+     * @param context Context, which allows for method to read resources.
+     * */
     public static void loadStaffDataFromFile(Context context) {
         InputStream stream = context.getResources ().openRawResource (R.raw.staff);
         Scanner scanner = new Scanner (stream);
@@ -49,6 +61,10 @@ public class Shared {
         }
     }
     
+    /**
+     * Methods responsible for sending and email.
+     * @param mail Receiver's email address.
+     * @param context Required for some magic :(*/
     public static void sendMail(String mail, Context context) {
         if(Dane.ifLoggedToPost()) {
             Intent intent = new Intent(Dane.this_activity, MailSender.class);
