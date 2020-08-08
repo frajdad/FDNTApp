@@ -20,7 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity
+            android:name=".ui.main.Changelog"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="fdnt.app.android.ui.main.Changelog" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".post.MailSender"
             android:label="e-mail"
@@ -34,7 +41,7 @@
         <activity
             android:name=".post.MailViewer"
             android:label="e-mail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Logowanie"
             android:label="@string/logowanie_gora"
