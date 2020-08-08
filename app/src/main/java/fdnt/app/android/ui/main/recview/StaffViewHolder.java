@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.databinding.ViewDataBinding;
 
@@ -18,22 +19,25 @@ public class StaffViewHolder extends UniversalViewHolder implements View.OnClick
 		
 		public StaffViewHolder(ViewDataBinding binding){
 			super(binding);
+			((ImageView)binding.getRoot ().findViewById (R.id.MailIcon)).setOnClickListener (this);
+			ImageView phone = binding.getRoot ().findViewById (R.id.TelIcon);
+			if(phone != null) phone.setOnClickListener (this);
 		}
 	
-		@Override
-		public void onClick(View view) {
-			Person person = (Person) variable;
-			Context context = binding.getRoot ().getContext ();
+	@Override
+	public void onClick(View v) {
+		Person person = (Person) variable;
+		Context context = binding.getRoot ().getContext ();
+		Shared.sendMail(person.email, context);
+		if (v.getId() == R.id.MailIcon) {
 			Shared.sendMail(person.email, context);
-			if (view.getId() == R.id.MailIcon) {
-				Shared.sendMail(person.email, context);
-			}
-			else if (view.getId() == R.id.TelIcon) {
-				String mail = "tel:" + person.phone;
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse(mail));
-				context.startActivity(intent);
-			}
 		}
+		else if (v.getId() == R.id.TelIcon) {
+			String mail = "tel:" + person.phone;
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			intent.setData(Uri.parse(mail));
+			context.startActivity(intent);
+		}
+	}
 	
 }

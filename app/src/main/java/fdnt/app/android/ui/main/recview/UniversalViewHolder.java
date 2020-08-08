@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 * Class represents universal view holder, which implements basic functionality of supporting data
  * binding
 * */
-public class UniversalViewHolder extends RecyclerView.ViewHolder {
+public class UniversalViewHolder extends RecyclerView.ViewHolder  {
 
 	protected ViewDataBinding binding;
 	protected Object variable;
