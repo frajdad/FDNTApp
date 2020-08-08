@@ -67,6 +67,13 @@
             android:summary="Dowiedz się więcej o aplikacji i jej twórcach">
         </PreferenceScreen>
 
+        <PreferenceScreen
+            android:title="Changelog"
+            android:summary="Zoabcz co nowego i jak powstawała aplikacja">
+            <intent android:action="fdnt.app.android.ui.main.Changelog"/> <!--Tu odpalamy zakładkę Changelog -->
+
+        </PreferenceScreen>
+
         <Preference
             android:title="Nasz GitHub"
             android:summary="Zobacz kod źródłowy aplikacji">

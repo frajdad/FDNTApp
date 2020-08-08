@@ -73,27 +73,12 @@
                 <item
                     android:id="@+id/nav_sposoby"
                     android:checkable="true"
-                    android:title="    Sposoby"
+                    android:title="Jak możesz pomóc?"
                     android:visible="false"/>
                 <item
-                    android:id="@+id/nav_wplac"
+                    android:id="@+id/nav_pomoz"
                     android:checkable="true"
-                    android:title="    Wpłać darowiznę"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_wyslij_sms"
-                    android:checkable="false"
-                    android:title="    Wyślij SMS"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_pobierz_blankiet"
-                    android:checkable="true"
-                    android:title="    Pobierz blankiet"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_przekaz_1"
-                    android:checkable="true"
-                    android:title="    Przekaż 1%"
+                    android:title="Tu możesz pomóc!"
                     android:visible="false"/>
             <item
                 android:id="@+id/nav_materialy_prasowe"

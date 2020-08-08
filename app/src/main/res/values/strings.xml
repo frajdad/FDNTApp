@@ -160,16 +160,42 @@ W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
 
     <string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
 </string>
-    <string name="adres">Adres:</string>
-    <string name="adres_tekst">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
+    <string name="loc_header">Adres:</string>
+    <string name="loc_text">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
     <string name="tel">Telefon:</string>
-    <string name="tel_tekst">(22) 530 48 28</string>
+    <string name="tel_text">(22) 530 48 28</string>
     <string name="email">E-mail:</string>
-    <string name="mail_tekst">dzielo@episkopat.pl</string>
-    <string name="nip">NIP:</string>
-    <string name="nip_tekst">527-23-16-033</string>
+    <string name="mail_text">dzielo@episkopat.pl</string>
+    <string name="nip_header">NIP:</string>
+    <string name="nip_text">527-23-16-033</string>
     <string name="title_activity_poczta_main">PocztaMain</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="header_jak_pomoc">JAK MOŻESZ POMÓC?</string>
+
+    <string name="text_sms">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
+    <string name="text_wplac"></string>
+    <string name="text_pobierz">
+    </string>
+    <string name="text_przekaz"></string>
+    <string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
+    <string name="modl_sie_">MÓDL SIĘ ZA NAS!</string>
+    <string name="modl_sie_text">Potrzebujemy modlitwy naszych darczyńców i sympatyków by z dnia na dzień rozwijać się i nieść dalej nauczanie Ojca Świętego.</string>
+    <string name="wspieraj_nas_finansowo">WSPIERAJ NAS FINANSOWO!</string>
+    <string name="wspieraj_text">Tylko dzięki otrzymanym środkom jesteśmy w stanie zapewnić dalszą budowę żywego pomnika św. Jana Pawła II. Pieniądze można wpłacić za pomocą formularza dostępnego w aplikacji lub pobierając blankiet przelewu, zrealizować można go na poczcie lub w banku.</string>
+    <string name="przelew_tradycyjny">\u0020PRZELEW TRADYCYJNY</string>
+    <string name="przelew_text">
+        \u0020Dane do przelewu:\n
+        Fundacja „Dzieło Nowego Tysiąclecia”\n
+        Skwer Ks. Kard. Stefana Wyszyńskiego 6\n
+        01-015 Warszawa\n
+        Numer konta: 75 1240 2034 1111 0000 0306 8582</string>
+    <string name="przeka_1">PRZEKAŻ 1% PODATKU!</string>
+    <string name="przekaz_text">Program PIT umieszczamy każdego roku na naszej stronie.</string>
+    <string name="wyslij_sms">WYŚLIJ SMS!</string>
+    <string name="sms_text">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
+    <string name="header_regularny_darczynca">ZOSTAŃ REGULARNYM DARCZYŃCĄ!</string>
+    <string name="header_zbiorka">ZBIÓRKA NA TWOIM ŚLUBIE!</string>
+    <string name="regularny_darczynca_text">Regularne wpłaty dają nam możliwość lepszego zaplanowania wydatków i działań. Można nam pomóc poprzez stałe, np. comiesięczne wpłaty. Wystarczy złożyć w swoim banku stałe zlecenie przelewu określonej kwoty na rachunek Fundacji „Dzieło Nowego Tysiąclecia”. Zadeklarowana przez Państwa kwota może być dowolnej wysokości. </string>
+    <string name="zbiorka_text">Wystarczy zamiast zwyczajowych kwiatów poprosić gości weselnych o wsparcie programu stypendialnego. Można też na zaproszeniu na uroczystość zaślubin dopisać </string>
 </resources>

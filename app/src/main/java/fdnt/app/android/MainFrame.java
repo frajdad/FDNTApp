@@ -1,5 +1,6 @@
 package fdnt.app.android;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,9 +37,10 @@ import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
-import fdnt.app.android.ui.main.DlaDarczyncy;
+import fdnt.app.android.ui.main.HelpNowTab;
 import fdnt.app.android.ui.main.DzienPapieski;
 import fdnt.app.android.ui.main.GdzieJestesmy;
+import fdnt.app.android.ui.main.HowToHelpTab;
 import fdnt.app.android.ui.main.JanPawelIi;
 import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
@@ -47,6 +49,10 @@ import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.Modlitwa;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
+import fdnt.app.android.ui.main.recview.Assignment;
+import fdnt.app.android.ui.main.recview.ManagementRecyclerAdapter;
+import fdnt.app.android.ui.main.recview.OfficeRecyclerAdapter;
+import fdnt.app.android.ui.main.recview.Shared;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -58,8 +64,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Shared.loadStaffDataFromFile (getApplicationContext ());
         setContentView(R.layout.activity_main);
-
         Bundle tabInfo = new Bundle();
         if (PreferenceManager
                 .getDefaultSharedPreferences(this)
@@ -308,7 +314,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     private short chosenTab = 0;
 
-    void onOFunacjiVisibilityChange(boolean state, Menu menu) {
+    void onOFundacjiVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_kim_jestesmy).setVisible(state);
         menu.findItem(R.id.nav_co_robimy).setVisible(state);
         menu.findItem(R.id.nav_gdzie_jestesmy).setVisible(state);
@@ -319,6 +325,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
         menu.findItem(R.id.nav_dzien_papieski).setVisible(state);
         menu.findItem(R.id.nav_modlitwa).setVisible(state);
+    }
+
+    void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
+        menu.findItem(R.id.nav_sposoby).setVisible(state);
+        menu.findItem(R.id.nav_pomoz).setVisible(state);
     }
 
     void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
@@ -335,7 +346,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
 
     void hideTabs(Menu menu) {
-        onOFunacjiVisibilityChange(false, menu);
+        onOFundacjiVisibilityChange(false, menu);
         onNaszPatronVisibilityChange(false, menu);
         onMaterialyPrasoweVisibilityChange(false, menu);
         onKontaktVisibilityChange(false, menu);
@@ -356,7 +367,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         String name = drawerNames.getString(Integer.toString(id), null);
 
         Menu menu = navigationView.getMenu();
@@ -381,7 +391,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
                     if (chosenTab != 1) {
-                        onOFunacjiVisibilityChange(true, menu);
+                    onOFundacjiVisibilityChange(true, menu);
                         chosenTab = 1;
                     }
                     else {
@@ -434,7 +444,22 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_dla_darczyncy:
-                    newInstance = new DlaDarczyncy();
+                    hideTabs(menu);
+                    if (chosenTab != 2) {
+                        onDlaDarczyncyVisibilityChange(true, menu);
+                        chosenTab = 2;
+                    }
+                    else {
+                        chosenTab = 0;
+                    }
+                    break;
+                case R.id.nav_sposoby:
+                    newInstance = new HowToHelpTab();
+                    setTitle("Dla Darczyńcy");
+                    openTab(newInstance, tabInfo);
+                    break;
+                case R.id.nav_pomoz:
+                    newInstance = new HelpNowTab();
                     setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;
