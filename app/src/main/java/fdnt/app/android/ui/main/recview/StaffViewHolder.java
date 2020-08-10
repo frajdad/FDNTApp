@@ -19,15 +19,15 @@ public class StaffViewHolder extends UniversalViewHolder implements View.OnClick
 		
 		public StaffViewHolder(ViewDataBinding binding){
 			super(binding);
-			((ImageView)binding.getRoot ().findViewById (R.id.MailIcon)).setOnClickListener (this);
-			ImageView phone = binding.getRoot ().findViewById (R.id.TelIcon);
+			((ImageView)binding.getRoot().findViewById(R.id.MailIcon)).setOnClickListener(this);
+			ImageView phone = binding.getRoot().findViewById(R.id.TelIcon);
 			if(phone != null) phone.setOnClickListener (this);
 		}
 	
 	@Override
 	public void onClick(View v) {
 		Person person = (Person) variable;
-		Context context = binding.getRoot ().getContext ();
+		Context context = binding.getRoot().getContext();
 		Shared.sendMail(person.email, context);
 		if (v.getId() == R.id.MailIcon) {
 			Shared.sendMail(person.email, context);

@@ -8,6 +8,8 @@ import android.net.Uri;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -60,7 +62,7 @@ public class Shared {
             e.printStackTrace ();
         }
     }
-    
+
     /**
      * Methods responsible for sending and email.
      * @param mail Receiver's email address.

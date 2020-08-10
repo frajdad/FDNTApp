@@ -13,7 +13,7 @@ public class UniversalViewHolder extends RecyclerView.ViewHolder  {
 	protected Object variable;
 	
 	public UniversalViewHolder(ViewDataBinding binding){
-		super(binding.getRoot ());
+		super(binding.getRoot());
 		this.binding = binding;
 	}
 	/**

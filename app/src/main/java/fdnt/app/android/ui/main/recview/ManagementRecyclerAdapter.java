@@ -29,7 +29,7 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<StaffViewHol
 
     @Override
     public void onBindViewHolder(@NonNull StaffViewHolder holder, int position) {
-        holder.bind (BR.person, (Object) managementStaff.get (position));
+        holder.bind (BR.person, (Object) managementStaff.get(position));
     }
 
     @Override

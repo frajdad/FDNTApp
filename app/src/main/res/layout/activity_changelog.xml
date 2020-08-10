@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.Changelog">
 
-    <TextView
+    <ListView
+        android:id="@+id/listview"
         android:layout_width="0dp"
-        android:id="@+id/textview"
         android:layout_height="0dp"
-        android:text="changelog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

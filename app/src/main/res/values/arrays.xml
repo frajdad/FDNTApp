@@ -18,4 +18,9 @@
         <item>10</item>
         <item>5</item>
     </string-array>
+
+    <string-array name="changenotes">
+        <item>"wprowadzono zakładkę changelog"</item>
+        <item>"poprawiono wydajność aplikacji"</item>
+    </string-array>
 </resources>
