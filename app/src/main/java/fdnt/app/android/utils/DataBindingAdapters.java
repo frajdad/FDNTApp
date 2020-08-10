@@ -8,8 +8,9 @@ import androidx.databinding.BindingAdapter;
 public class DataBindingAdapters {
 	
 	@BindingAdapter ("app:src")
-	public static void setImageUri(ImageView view, int imageID) {
-		view.setImageResource (imageID);
+	public static void setImageUri(ImageView view, String imageName) {
+		view.setImageResource (view.getContext ().getResources ().getIdentifier (imageName,
+				"mipmap", view.getContext ().getPackageName ()));
 	}
 	
 }

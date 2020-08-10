@@ -8,16 +8,16 @@ public class Person {
 	protected String role;
 	protected String email;
 	protected String phone;
-	protected int imageID;
+	protected String imageName;
 	protected Assignment assignment;
 	
 	public Person(){}
 	
-	public Person (String role, String email, String phone, int imageID, Assignment assignment){
+	public Person (String role, String email, String phone, String imageName, Assignment assignment){
 		this.role = role;
 		this.email = email;
 		this.phone = phone;
-		this.imageID = imageID;
+		this.imageName = imageName;
 		this.assignment = assignment;
 	}
 	
@@ -45,12 +45,12 @@ public class Person {
 		this.phone = phone;
 	}
 	
-	public int getImageID () {
-		return imageID;
+	public String getImageName () {
+		return imageName;
 	}
 	
-	public void setImageID (int imageID) {
-		this.imageID = imageID;
+	public void setImageName (String imageName) {
+		this.imageName = imageName;
 	}
 	
 	public Assignment getAssignment () {

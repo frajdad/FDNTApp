@@ -25,6 +25,7 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<StaffViewHolder>
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         OfficeRowBinding itemBinding = OfficeRowBinding.inflate(layoutInflater, parent, false);
         return new StaffViewHolder(itemBinding);
+        
     }
 
     @Override

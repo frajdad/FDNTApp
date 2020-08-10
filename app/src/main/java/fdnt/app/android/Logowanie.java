@@ -66,7 +66,6 @@ public class Logowanie extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
         EditText editTextMailPassword = findViewById(R.id.mail_password);
         String mailPassword = editTextMailPassword.getText().toString();
-
         if (!email.equals("")) {
             LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
             logging.execute();
