@@ -11,7 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import fdnt.app.android.Dane;
+import fdnt.app.android.GlobalUtil;
 
 
 //Class is extending AsyncTask because this class is going to perform a networking operation
@@ -64,15 +64,14 @@ public class Send extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            MimeMessage mm = new MimeMessage(Dane.smtpSession);
-            mm.setFrom(new InternetAddress(Dane.userEmail()));
+            MimeMessage mm = new MimeMessage(GlobalUtil.smtpSession);
+            mm.setFrom(new InternetAddress(GlobalUtil.userEmail()));
             mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             mm.setSubject(subject);
             mm.setText(message);
 
             //Sending email
             Transport.send(mm);
-
 
 
         } catch (MessagingException e) {

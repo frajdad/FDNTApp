@@ -10,7 +10,7 @@ import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.Transport;
 
-import fdnt.app.android.Dane;
+import fdnt.app.android.GlobalUtil;
 
 public class  MailLogging {
 
@@ -23,7 +23,7 @@ public class  MailLogging {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
 
-        Dane.smtpSession = Session.getInstance(props,
+        GlobalUtil.smtpSession = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -32,7 +32,7 @@ public class  MailLogging {
                 });
 
         //Testing connection
-        Transport transport = Dane.smtpSession.getTransport("smtp");
+        Transport transport = GlobalUtil.smtpSession.getTransport("smtp");
         transport.connect("smtp.dzielo.pl", 465, email, pass);
         transport.close();
     }
@@ -43,7 +43,7 @@ public class  MailLogging {
         props.put("mail.pop3.host", "mail.dzielo.pl");
         props.put("mail.pop3.port", "110");
         props.put("mail.pop3.starttls.enable", "true");
-        Dane.pop3Session = Session.getInstance(props,
+        GlobalUtil.pop3Session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     //Authenticating the password
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -52,7 +52,7 @@ public class  MailLogging {
                 });
 
         //Testing connection
-        Store store = Dane.pop3Session.getStore("pop3");
+        Store store = GlobalUtil.pop3Session.getStore("pop3");
         store.connect();
         store.close();
     }
@@ -71,11 +71,11 @@ public class  MailLogging {
     public static void testConnection(String email, String pass) throws MessagingException {
         enableStrictMode();
 
-        Transport transport = Dane.smtpSession.getTransport("smtp");
+        Transport transport = GlobalUtil.smtpSession.getTransport("smtp");
         transport.connect("smtp.dzielo.pl", 465, email, pass);
         transport.close();
 
-        Store store = Dane.pop3Session.getStore("pop3");
+        Store store = GlobalUtil.pop3Session.getStore("pop3");
         store.connect();
         store.close();
     }

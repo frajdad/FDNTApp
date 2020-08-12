@@ -28,11 +28,10 @@ public class StaffViewHolder extends UniversalViewHolder implements View.OnClick
 	public void onClick(View v) {
 		Person person = (Person) variable;
 		Context context = binding.getRoot().getContext();
-		Shared.sendMail(person.email, context);
+		RecViewUtil.sendMail(person.email, context);
 		if (v.getId() == R.id.MailIcon) {
-			Shared.sendMail(person.email, context);
-		}
-		else if (v.getId() == R.id.TelIcon) {
+			RecViewUtil.sendMail(person.email, context);
+		} else if (v.getId() == R.id.TelIcon) {
 			String mail = "tel:" + person.phone;
 			Intent intent = new Intent(Intent.ACTION_VIEW);
 			intent.setData(Uri.parse(mail));

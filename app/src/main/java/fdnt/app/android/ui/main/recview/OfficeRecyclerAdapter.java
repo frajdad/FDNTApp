@@ -36,7 +36,7 @@ public class OfficeRecyclerAdapter extends RecyclerView.Adapter<StaffViewHolder>
     @Override
     public int getItemCount() {
         if(officeStaff == null)
-            officeStaff = Shared.getStaffWithGivenAssignment(Assignment.Office);
+            officeStaff = RecViewUtil.getStaffWithGivenAssignment(Assignment.Office);
         return officeStaff.size();
     }
 }

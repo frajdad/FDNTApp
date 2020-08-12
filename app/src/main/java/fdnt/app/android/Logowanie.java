@@ -27,7 +27,7 @@ public class Logowanie extends AppCompatActivity {
         setContentView(R.layout.activity_logowanie);
 
         /*if (PreferenceManager
-                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getDefaultSharedPreferences(GlobalUtil.ta_aktywnosc)
                 .getBoolean("dark_mode", true)) {
             Log.d("style", "logg");
             setTheme(R.style.AppTheme_NoActionBarDark);
@@ -75,7 +75,7 @@ public class Logowanie extends AppCompatActivity {
     private void reset() {
         Intent intent = new Intent(this, MainFrame.class);
         startActivity(intent);
-        Dane.this_activity.finish();
+        GlobalUtil.this_activity.finish();
         finish();
     }
 

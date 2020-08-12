@@ -35,7 +35,7 @@ public class ManagementRecyclerAdapter extends RecyclerView.Adapter<StaffViewHol
     @Override
     public int getItemCount() {
         if(managementStaff == null)
-            managementStaff = Shared.getStaffWithGivenAssignment (Assignment.Management);
+            managementStaff = RecViewUtil.getStaffWithGivenAssignment(Assignment.Management);
         return managementStaff.size ();
     }
 

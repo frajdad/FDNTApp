@@ -24,9 +24,9 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
-import fdnt.app.android.Dane;
+import fdnt.app.android.GlobalUtil;
 
-import static fdnt.app.android.Dane.pop3Session;
+import static fdnt.app.android.GlobalUtil.pop3Session;
 
 public class AsyncMailLoad {
     public static List<MailItem> ITEMS = new ArrayList<MailItem>();
@@ -84,7 +84,7 @@ public class AsyncMailLoad {
         try {
             SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
             String pass = data.getString("pass", "");
-            String email = Dane.userEmail();
+            String email = GlobalUtil.userEmail();
             MailLogging.openSessions(email, pass);
 
             Store store = pop3Session.getStore("pop3");

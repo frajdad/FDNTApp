@@ -1,15 +1,12 @@
 package fdnt.app.android.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
 
 import fdnt.app.android.R;
-import fdnt.app.android.ui.main.recview.Shared;
 
 public class Changelog extends AppCompatActivity {
 

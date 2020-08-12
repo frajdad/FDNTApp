@@ -47,7 +47,7 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
                 public boolean onPreferenceClick(Preference preference) {
 
                  /*   if (PreferenceManager
-                            .getDefaultSharedPreferences(Dane.aktywnosc_ustawienia)
+                            .getDefaultSharedPreferences(GlobalUtil.aktywnosc_ustawienia)
                             .getBoolean("powiadomienia_zezwolenie", true)){
 
 
@@ -91,12 +91,11 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
     }
 
     public void sendComment() {
-        if(Dane.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost()) {
             Intent intent = new Intent(getActivity(), MailSender.class);
             intent.putExtra("to", "aplikacja@dzielo.pl");
             startActivity(intent);
-        }
-        else {
+        } else {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("mailto:aplikacja@dzielo.pl"));
             startActivity(intent);

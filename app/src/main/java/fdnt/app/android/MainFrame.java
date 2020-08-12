@@ -48,7 +48,7 @@ import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.Modlitwy;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
-import fdnt.app.android.ui.main.recview.Shared;
+import fdnt.app.android.ui.main.recview.RecViewUtil;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -60,7 +60,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Shared.loadStaffDataFromFile (getApplicationContext ());
+        RecViewUtil.loadStaffDataFromFile(getApplicationContext());
         setContentView(R.layout.activity_main);
         Bundle tabInfo = new Bundle();
         if (PreferenceManager
@@ -97,10 +97,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
-        if (Dane.ifLogged()) {
+        if (GlobalUtil.ifLogged()) {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
-        }
-        else {
+        } else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
         }
         SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
@@ -115,20 +114,19 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             setTheme(R.style.AppTheme_NoActionBarDark);
         }*/
 
-        drawerNames = getSharedPreferences(Dane.userName()+"name", MODE_PRIVATE); //id->name
-        drawerActions = getSharedPreferences(Dane.userName()+"act", MODE_PRIVATE); //name->site
-        drawerIcons = getSharedPreferences(Dane.userName()+"icon", MODE_PRIVATE); //name->icon
+        drawerNames = getSharedPreferences(GlobalUtil.userName() + "name", MODE_PRIVATE); //id->name
+        drawerActions = getSharedPreferences(GlobalUtil.userName() + "act", MODE_PRIVATE); //name->site
+        drawerIcons = getSharedPreferences(GlobalUtil.userName() + "icon", MODE_PRIVATE); //name->icon
         adjustTabs();
 
         //Pobieramy treści związane z tym, jakie zakładki wyświetlić (w osobnym wątku).
         new Thread(new Runnable() {
-            public void run()
-            {
+            public void run() {
                 updateTabs();
             }
         }).start();
 
-        Dane.this_activity = this;
+        GlobalUtil.this_activity = this;
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         //wysyłąnie danych do analizy w Firebase
@@ -142,9 +140,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             public void run()
             {
                 AsyncMailLoad.getEmails("INBOX",
-                        Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(Dane.this_activity)
+                        Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(GlobalUtil.this_activity)
                                 .getString("max_emails", "20")),
-                        Dane.this_activity);
+                        GlobalUtil.this_activity);
             }
         }).start();
     }
@@ -186,9 +184,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     public boolean onCreateOptionsMenu(Menu menu) {
         //tu robimy cos, żeby było widać odpowiednie napisy na samej górze paska bocznego
         //nie wiem czy to najlepsze miejsce na to, ale działa
-        if (Dane.ifLogged()) {
+        if (GlobalUtil.ifLogged()) {
             TextView email_text = findViewById(R.id.miejsce_na_email);
-            email_text.setText(Dane.userEmail());
+            email_text.setText(GlobalUtil.userEmail());
             TextView name_text = findViewById(R.id.miejsce_logowanie);
             name_text.setText("Wyloguj się");
         } else {
@@ -246,7 +244,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             return;
 
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference tabsData = mRef.child("users").child(Dane.userName());
+        DatabaseReference tabsData = mRef.child("users").child(GlobalUtil.userName());
 
         tabsData.addValueEventListener(new ValueEventListener() {
             Map<String, Object> tabs;
@@ -541,7 +539,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
 
     public void logInOut(View view) {
-        if (!Dane.ifLogged()) {
+        if (!GlobalUtil.ifLogged()) {
             Intent intent = new Intent(this, Logowanie.class);
             startActivity(intent);
         } else {

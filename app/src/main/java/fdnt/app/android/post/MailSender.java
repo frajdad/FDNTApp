@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import fdnt.app.android.Dane;
+import fdnt.app.android.GlobalUtil;
 import fdnt.app.android.R;
 
 public class MailSender extends AppCompatActivity {
@@ -33,7 +33,7 @@ public class MailSender extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /*if (PreferenceManager
-                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getDefaultSharedPreferences(GlobalUtil.ta_aktywnosc)
                 .getBoolean("dark_mode", true)) {
             setTheme(R.style.AppTheme_NoActionBarDark);
         }*/
@@ -43,7 +43,7 @@ public class MailSender extends AppCompatActivity {
         contentView = findViewById(R.id.send_content);
         TextView myAdress = findViewById(R.id.my_email);
 
-        myAdress.setText(Dane.userEmail());
+        myAdress.setText(GlobalUtil.userEmail());
 
         Bundle extras = getIntent().getExtras();
         if (extras != null && extras.getString("to") != null) {

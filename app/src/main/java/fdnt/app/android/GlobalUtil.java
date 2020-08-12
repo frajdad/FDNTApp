@@ -13,14 +13,12 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.mail.Message;
 import javax.mail.Session;
 
-public class Dane {
+public class GlobalUtil {
 
     protected static boolean ifLogged() {
-        if(FirebaseAuth.getInstance().getCurrentUser() == null)
-            return false;
-        else
-            return true;
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
     }
+
     public static boolean ifLoggedToPost() {
         SharedPreferences data = this_activity.getSharedPreferences("post", Context.MODE_PRIVATE);
         return !data.getString("pass", "").equals("");

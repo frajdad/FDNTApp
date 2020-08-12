@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.Toast;
 
-import fdnt.app.android.Dane;
+import fdnt.app.android.GlobalUtil;
 import fdnt.app.android.post.MailSender;
 
 public class EventHandler {
@@ -30,12 +30,11 @@ public class EventHandler {
         view.getContext().startActivity(intent);
     }
     public void mailToFdn(View view) {
-        if(Dane.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost()) {
             Intent intent = new Intent(view.getContext(), MailSender.class);
             intent.putExtra("to", "dzielo@episkopat.pl");
             view.getContext().startActivity(intent);
-        }
-        else {
+        } else {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(mail));
             view.getContext().startActivity(intent);

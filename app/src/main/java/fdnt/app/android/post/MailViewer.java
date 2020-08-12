@@ -23,7 +23,7 @@ public class MailViewer extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         /*if (PreferenceManager
-                .getDefaultSharedPreferences(Dane.ta_aktywnosc)
+                .getDefaultSharedPreferences(GlobalUtil.ta_aktywnosc)
                 .getBoolean("dark_mode", true)) {
             setTheme(R.style.AppTheme_NoActionBarDark);
         }*/
