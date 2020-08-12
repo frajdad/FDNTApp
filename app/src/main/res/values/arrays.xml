@@ -20,7 +20,6 @@
     </string-array>
 
     <string-array name="changenotes">
-        <item>"wprowadzono zakładkę changelog"</item>
-        <item>"poprawiono wydajność aplikacji"</item>
+        <item>"wprowadzono zakładkę changelog"  10-08-2020</item>
     </string-array>
 </resources>

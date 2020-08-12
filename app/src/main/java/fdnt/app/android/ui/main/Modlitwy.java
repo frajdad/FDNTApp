@@ -11,15 +11,15 @@ import androidx.fragment.app.Fragment;
 
 import fdnt.app.android.R;
 
-public class Modlitwa extends Fragment {
-    public static Modlitwa newInstance() {
-        return new Modlitwa();
+public class Modlitwy extends Fragment {
+    public static Modlitwy newInstance() {
+        return new Modlitwy();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.modlitwa_fragment, container, false);
+        return inflater.inflate(R.layout.modlitwy_fragment, container, false);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package fdnt.app.android;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,21 +36,18 @@ import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
-import fdnt.app.android.ui.main.HelpNowTab;
 import fdnt.app.android.ui.main.DzienPapieski;
 import fdnt.app.android.ui.main.GdzieJestesmy;
+import fdnt.app.android.ui.main.HelpNowTab;
 import fdnt.app.android.ui.main.HowToHelpTab;
 import fdnt.app.android.ui.main.JanPawelIi;
 import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
 import fdnt.app.android.ui.main.KontaktFundacja;
 import fdnt.app.android.ui.main.KontaktZarzad;
-import fdnt.app.android.ui.main.Modlitwa;
+import fdnt.app.android.ui.main.Modlitwy;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
-import fdnt.app.android.ui.main.recview.Assignment;
-import fdnt.app.android.ui.main.recview.ManagementRecyclerAdapter;
-import fdnt.app.android.ui.main.recview.OfficeRecyclerAdapter;
 import fdnt.app.android.ui.main.recview.Shared;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -324,7 +320,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_jan_pawel).setVisible(state);
         menu.findItem(R.id.nav_my_o_patronie).setVisible(state);
         menu.findItem(R.id.nav_dzien_papieski).setVisible(state);
-        menu.findItem(R.id.nav_modlitwa).setVisible(state);
+        menu.findItem(R.id.nav_modlitwy).setVisible(state);
     }
 
     void onDlaDarczyncyVisibilityChange(boolean state, Menu menu) {
@@ -438,8 +434,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Nasz Patron");
                     openTab(newInstance, tabInfo);
                     break;
-                case R.id.nav_modlitwa:
-                    newInstance = Modlitwa.newInstance();
+                case R.id.nav_modlitwy:
+                    newInstance = Modlitwy.newInstance();
                     setTitle("Nasz Patron");
                     openTab(newInstance, tabInfo);
                     break;
@@ -448,8 +444,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     if (chosenTab != 2) {
                         onDlaDarczyncyVisibilityChange(true, menu);
                         chosenTab = 2;
-                    }
-                    else {
+                    } else {
                         chosenTab = 0;
                     }
                     break;

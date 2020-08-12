@@ -61,9 +61,9 @@
                     android:title="    Dzień Papieski"
                     android:visible="false"/>
                 <item
-                    android:id="@+id/nav_modlitwa"
+                    android:id="@+id/nav_modlitwy"
                     android:checkable="true"
-                    android:title="    Modlitwa"
+                    android:title="    Modlitwy"
                     android:visible="false"/>
             <item
                 android:id="@+id/nav_dla_darczyncy"

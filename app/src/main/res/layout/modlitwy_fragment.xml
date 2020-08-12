@@ -64,7 +64,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:fillViewport="true"
         android:paddingRight="10dp"
         android:scrollbarStyle="outsideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,12 +72,64 @@
         app:layout_constraintStart_toStartOf="@id/guidelineleft"
         app:layout_constraintTop_toBottomOf="@+id/pasekill">
 
-        <TextView
-            android:id="@+id/modlitwa_tekst"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:justificationMode="inter_word"
-            android:text="@string/modlitwa_tekst"
-            android:textSize="20sp" />
+            android:layout_height="fill_parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/header_litania"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="start"
+                android:text="@string/litania"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/modlitwa_tekst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="@string/modlitwa_tekst"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_litania" />
+
+            <TextView
+                android:id="@+id/header_zawierzenie"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:gravity="start"
+                android:text="@string/litania"
+                android:textColor="@color/colorSubTitle"
+                android:textSize="20sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintDimensionRatio="h,12:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/modlitwa_tekst" />
+
+            <TextView
+                android:id="@+id/zawierzenie_tekst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:text="@string/zawierzenie_text"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_zawierzenie" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
