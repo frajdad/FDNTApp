@@ -25,7 +25,6 @@ public class HelpNowTab extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.dla_darczyncy_fragment, container, false);
         ImageView barSendSMS = (ImageView) rootView.findViewById(R.id.belka_sms);
-        ImageView barPay = (ImageView) rootView.findViewById(R.id.belka_wplac);
         ImageView barDownload = (ImageView) rootView.findViewById(R.id.belka_pobierz);
         ImageView barTransferPercent = (ImageView) rootView.findViewById(R.id.belka_przekaz);
 
@@ -57,15 +56,6 @@ public class HelpNowTab extends Fragment {
                             }
                         });
                 alertDialog.show();
-            }
-        });
-        barPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String URL = "https://dzielo.pl/dla-darczyncy/wplata/";
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(URL));
-                startActivity(intent);
             }
         });
         barDownload.setOnClickListener(new View.OnClickListener() {

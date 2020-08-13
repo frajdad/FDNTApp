@@ -58,43 +58,34 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/belka_sms"
-        app:layout_constraintBottom_toTopOf="@+id/belka_wplac"
+        app:layout_constraintBottom_toTopOf="@+id/belka_przekaz"
         app:layout_constraintEnd_toStartOf="@+id/guidelineright"
         app:layout_constraintHeight_percent="0.17"
         app:layout_constraintStart_toStartOf="@+id/guidelineleft"
         app:layout_constraintTop_toBottomOf="@+id/pasekill" />
 
-    <ImageView
-        android:id="@+id/belka_wplac"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/belka_wplac"
-        app:layout_constraintBottom_toTopOf="@+id/belka_pobierz"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineright"
-        app:layout_constraintHeight_percent="0.17"
-        app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/belka_sms" />
 
     <ImageView
         android:id="@+id/belka_pobierz"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/belka_pobierz"
-        app:layout_constraintBottom_toTopOf="@+id/belka_przekaz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineright"
         app:layout_constraintHeight_percent="0.17"
         app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/belka_wplac" />
+        app:layout_constraintTop_toBottomOf="@+id/belka_przekaz"  />
 
     <ImageView
         android:id="@+id/belka_przekaz"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/belka_przekaz"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/belka_sms"
         app:layout_constraintEnd_toStartOf="@+id/guidelineright"
         app:layout_constraintHeight_percent="0.17"
         app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-        app:layout_constraintTop_toBottomOf="@+id/belka_pobierz" />
+        app:layout_constraintTop_toBottomOf="@+id/belka_pobierz"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
