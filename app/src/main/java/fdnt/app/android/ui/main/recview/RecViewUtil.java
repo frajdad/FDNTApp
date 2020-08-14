@@ -41,6 +41,7 @@ public class RecViewUtil {
      * @param context Context, which allows for method to read resources.
      * */
     public static void loadStaffDataFromFile(Context context) {
+        staff = new ArrayList<Person> ();
         InputStream stream = context.getResources ().openRawResource (R.raw.staff);
         Scanner scanner = new Scanner (stream);
         String json = "";
