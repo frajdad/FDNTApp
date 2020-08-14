@@ -14,21 +14,4 @@
         android:layout_height="match_parent"
         tools:context=".MainFrame"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@android:style/Widget.ProgressBar.Large"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/webview"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="182dp"
-        android:layout_marginLeft="181dp"
-        android:layout_marginTop="265dp"
-        android:layout_marginEnd="181dp"
-        android:layout_marginRight="181dp"
-        android:visibility="invisible" />
-
 </com.google.android.material.circularreveal.CircularRevealRelativeLayout>

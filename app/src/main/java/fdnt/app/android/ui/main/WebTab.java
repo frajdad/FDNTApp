@@ -33,7 +33,6 @@ public class WebTab extends Fragment {
     }
 
     private void loadTab(String adress) {
-        getActivity().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         myWebView.loadUrl(adress);
     }
 
@@ -57,25 +56,7 @@ public class WebTab extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        try {
-            getActivity().findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
-        }
-        catch (NullPointerException e) {
-        }
-        super.onDestroy();
-    }
-
     private WebViewClient myClient = new WebViewClient() {
-        public void onPageFinished(WebView view, String url) {
-            //chowamy kręcące się kółko
-            try {
-                getActivity().findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
-            }
-            catch (NullPointerException e) {
-            }
-        }
 
         @SuppressWarnings("deprecation")
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
