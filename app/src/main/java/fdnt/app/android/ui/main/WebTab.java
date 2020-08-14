@@ -1,6 +1,8 @@
 package fdnt.app.android.ui.main;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,18 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import fdnt.app.android.Logowanie;
 import fdnt.app.android.R;
+import fdnt.app.android.utils.NetworkChangeReceiver;
 
-public class WebTab extends Fragment {
+public class WebTab extends Fragment implements NetworkChangeReceiver.ConnectionChangeCallback {
 
     private WebView myWebView;
-
+    private NetworkChangeReceiver networkChangeReceiver;
+    private String lastUrl;
     public static WebTab newInstance() {
         return new WebTab();
     }
@@ -28,11 +35,20 @@ public class WebTab extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        IntentFilter intentFilter = new
+                IntentFilter ("android.net.conn.CONNECTIVITY_CHANGE");
+    
+        networkChangeReceiver = new NetworkChangeReceiver();
+    
+        getActivity ().registerReceiver(networkChangeReceiver, intentFilter);
+    
+        networkChangeReceiver.setConnectionChangeCallback(this);
         View view = inflater.inflate(R.layout.main_fragment, container, false);
         return view;
     }
 
     private void loadTab(String adress) {
+        lastUrl = adress;
         myWebView.loadUrl(adress);
     }
 
@@ -60,6 +76,15 @@ public class WebTab extends Fragment {
 
         @SuppressWarnings("deprecation")
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            AlertDialog.Builder noInternetDialog = new AlertDialog.Builder(getContext ());
+            noInternetDialog.setMessage ("Jesteś offline. Sprawdź swoje łącze internetowe i " +
+                    "spróbuj później.");
+            noInternetDialog.setNeutralButton ("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            noInternetDialog.show ();
             myWebView.loadUrl("file:///android_asset/offline.html");
         }
 
@@ -90,4 +115,21 @@ public class WebTab extends Fragment {
         emailIntent.setData(Uri.parse(command));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
+    
+    @Override
+    public void onConnectionChange (boolean isConnected) {
+        if(isConnected && lastUrl != null) {
+            Toast.makeText(getActivity(), "Internet powrócił :)",
+                    Toast.LENGTH_LONG).show();
+            loadTab (lastUrl);
+        }
+    }
+    
+    @Override
+    public void onStop() {
+        getActivity ().unregisterReceiver (networkChangeReceiver);
+        super.onStop ();
+    }
+    
+    
 }

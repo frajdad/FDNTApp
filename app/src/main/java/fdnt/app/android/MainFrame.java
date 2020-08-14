@@ -550,7 +550,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             restart();
         }
     }
-
+    
     // Po kliknięciu przycisku wysyłania emaila
     public void writeEmail(View view) {
         Intent intent = new Intent(this, MailSender.class);
