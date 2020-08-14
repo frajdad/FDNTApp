@@ -62,24 +62,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         RecViewUtil.loadStaffDataFromFile(getApplicationContext());
         setContentView(R.layout.activity_main);
-        Bundle tabInfo = new Bundle();
-        if (PreferenceManager
-                .getDefaultSharedPreferences(this)
-                .getBoolean("dzielo_site", true)) {
-            tabInfo.putString("adress", "https://dzielo.pl/");
-        }
-        else {
-            tabInfo.putString("adress", "file:///android_asset/offline.html");
-        }
-
-        WebTab mainTab = WebTab.newInstance();
-        mainTab.setArguments(tabInfo);
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, mainTab)
-                    .commitNow();
-        }
 
         //Pasek górny
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -94,6 +76,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        openMain(savedInstanceState);
 
         //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
@@ -147,6 +131,29 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         }).start();
     }
 
+    private void openMain(Bundle savedInstanceState) {
+        Bundle tabInfo = new Bundle();
+        if (PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getBoolean("dzielo_site", true)) {
+            tabInfo.putString("adress", "https://dzielo.pl/");
+        }
+        else {
+            tabInfo.putString("adress", "file:///android_asset/offline.html");
+        }
+
+        WebTab mainTab = WebTab.newInstance();
+        mainTab.setArguments(tabInfo);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, mainTab)
+                    .commitNow();
+        }
+
+        navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
     public void restart() {
         finish();
         startActivity(getIntent());
@@ -175,9 +182,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             drawer.closeDrawer(GravityCompat.START);
         }
         else {
-            super.onBackPressed();
+            openMain(null);
         }
-
     }
 
     @Override
@@ -345,6 +351,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     void openTab(Fragment newInstance, Bundle tabInfo) {
         newInstance.setArguments(tabInfo);
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, newInstance)
                 .commitNow();
