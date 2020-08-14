@@ -18,7 +18,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import fdnt.app.android.Logowanie;
 import fdnt.app.android.R;
 import fdnt.app.android.utils.NetworkChangeReceiver;
 
@@ -101,6 +100,18 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
                 view.loadUrl(url);
             }
             return true;
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+
+            if (url.contains("dzielo.pl")) {
+                myWebView.loadUrl(
+                        "javascript:(function() {document.getElementById('header').style.display = 'none'; " +
+                                "document.getElementsByClassName('slider-section')[0].style.top = '0px'; " +
+                                "document.getElementsByClassName('main-section')[0].style.top = '0px'; })()");
+            }
         }
     };
 
