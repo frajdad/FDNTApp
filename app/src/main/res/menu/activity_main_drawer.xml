@@ -64,66 +64,47 @@
                     android:id="@+id/nav_modlitwy"
                     android:checkable="true"
                     android:title="    Modlitwy"
-                    android:visible="false"/>
+                    android:visible="false" />
             <item
                 android:id="@+id/nav_dla_darczyncy"
                 android:checkable="true"
                 android:icon="@mipmap/dla_darczyncy"
                 android:title="Dla Darczyńcy" />
-                <item
-                    android:id="@+id/nav_sposoby"
-                    android:checkable="true"
-                    android:title="Jak możesz pomóc?"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_pomoz"
-                    android:checkable="true"
-                    android:title="Tu możesz pomóc!"
-                    android:visible="false"/>
             <item
-                android:id="@+id/nav_materialy_prasowe"
+                android:id="@+id/nav_sposoby"
+                android:checkable="true"
+                android:title="Jak możesz pomóc?"
+                android:visible="false" />
+            <item
+                android:id="@+id/nav_pomoz"
+                android:checkable="true"
+                android:title="Tu możesz pomóc!"
+                android:visible="false" />
+            <item
+                android:id="@+id/nav_dzielo_tv"
                 android:checkable="true"
                 android:icon="@mipmap/materialy_prasowe"
-                android:title="Materiały prasowe" />
-                <item
-                    android:id="@+id/nav_media_o_nas"
-                    android:checkable="true"
-                    android:title="    Media o nas"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_biuro_prasowe"
-                    android:checkable="true"
-                    android:title="    Biuro prasowe"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_dzielo_tv"
-                    android:checkable="true"
-                    android:title="    Dzieło TV"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_do_pobrania"
-                    android:checkable="true"
-                    android:title="    Do pobrania"
-                    android:visible="false"/>
+                android:title="Dzieło TV" />
+
             <item
                 android:id="@+id/nav_kontakt"
                 android:checkable="true"
                 android:icon="@mipmap/kontakt"
                 android:title="Kontakt" />
-                <item
-                    android:id="@+id/nav_fundacja"
-                    android:checkable="true"
-                    android:title="    Fundacja"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_biuro"
-                    android:checkable="true"
-                    android:title="    Biuro"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_zarzad"
-                    android:checkable="true"
-                    android:title="    Zarząd"
+            <item
+                android:id="@+id/nav_fundacja"
+                android:checkable="true"
+                android:title="    Fundacja"
+                android:visible="false" />
+            <item
+                android:id="@+id/nav_biuro"
+                android:checkable="true"
+                android:title="    Biuro"
+                android:visible="false" />
+            <item
+                android:id="@+id/nav_zarzad"
+                android:checkable="true"
+                android:title="    Zarząd"
                     android:visible="false"/>
             <item
                 android:id="@+id/nav_settings"

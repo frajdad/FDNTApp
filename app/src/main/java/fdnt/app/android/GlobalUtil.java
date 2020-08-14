@@ -5,9 +5,10 @@ package fdnt.app.android;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.net.Uri;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,19 +47,31 @@ public class GlobalUtil {
 
     protected static String userName() {
 
-         return userEmail()
-                 .replace(".", "")
-                 .replace("@dzielopl", "");
+        return userEmail()
+                .replace(".", "")
+                .replace("@dzielopl", "");
+    }
+
+    public static void parseUriHandler(View view, String uri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(uri));
+        view.getContext().startActivity(intent);
+    }
+
+    public static void watchYtFilm(View view, String link) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        view.getContext().startActivity(intent);
     }
 
     //Wersja aplikacji
     public String nazwaWersjiAplikacji() {
         return BuildConfig.VERSION_NAME;
     }
+
     public int numerWersjiAplikacji() {
         return BuildConfig.VERSION_CODE;
     }
-    
+
 }
 
 

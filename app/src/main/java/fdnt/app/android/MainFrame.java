@@ -86,7 +86,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         setSupportActionBar(toolbar);
 
         //Pasek poczny z opcjami
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -170,7 +170,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     //Co się dzieje jak klikamy "wstecz"
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
@@ -327,10 +327,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
 
     void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
-        menu.findItem(R.id.nav_media_o_nas).setVisible(state);
-        menu.findItem(R.id.nav_biuro_prasowe).setVisible(state);
         menu.findItem(R.id.nav_dzielo_tv).setVisible(state);
-        menu.findItem(R.id.nav_do_pobrania).setVisible(state);
     }
 
     void onKontaktVisibilityChange(boolean state, Menu menu) {
@@ -382,6 +379,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     }
                     openTab(newInstance, tabInfo);
                     break;
+
                 case R.id.nav_o_fundacji:
                     hideTabs(menu);
                     if (chosenTab != 1) {
@@ -407,6 +405,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     newInstance = CoRobimy.newInstance();
                     openTab(newInstance, tabInfo);
                     break;
+
                 case R.id.nav_nasz_patron:
                     hideTabs(menu);
                     if (chosenTab != 2) {
@@ -437,6 +436,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Nasz Patron");
                     openTab(newInstance, tabInfo);
                     break;
+
                 case R.id.nav_dla_darczyncy:
                     hideTabs(menu);
                     if (chosenTab != 2) {
@@ -456,47 +456,18 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;
-                case R.id.nav_materialy_prasowe:
-                    hideTabs(menu);
-                    if (chosenTab != 4) {
-                        onMaterialyPrasoweVisibilityChange(true, menu);
-                        chosenTab = 4;
-                    }
-                    else {
-                        chosenTab = 0;
-                    }
-                    break;
-                case R.id.nav_media_o_nas:
-                    newInstance = WebTab.newInstance();
-                    setTitle("Materiały Prasowe");
-                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/media-o-nas/");
-                    openTab(newInstance, tabInfo);
-                    break;
-                case R.id.nav_biuro_prasowe:
-                    newInstance = WebTab.newInstance();
-                    setTitle("Materiały Prasowe");
-                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/biuro-prasowe/");
-                    openTab(newInstance, tabInfo);
-                    break;
+
                 case R.id.nav_dzielo_tv:
-                    newInstance = WebTab.newInstance();
-                    setTitle("Materiały Prasowe");
-                    tabInfo.putString("adress", "https://www.youtube.com/user/DzieloTV");
-                    openTab(newInstance, tabInfo);
+                    setTitle("Dzieło TV");
+                    GlobalUtil.watchYtFilm(navigationView, "https://www.youtube.com/user/DzieloTV");
                     break;
-                case R.id.nav_do_pobrania:
-                    newInstance = WebTab.newInstance();
-                    setTitle("Materiały Prasowe");
-                    tabInfo.putString("adress", "https://dzielo.pl/dla-mediow/do-pobrania/");
-                    openTab(newInstance, tabInfo);
-                    break;
+
                 case R.id.nav_kontakt:
                     hideTabs(menu);
                     if (chosenTab != 5) {
                         onKontaktVisibilityChange(true, menu);
                         chosenTab = 5;
-                    }
-                    else {
+                    } else {
                         chosenTab = 0;
                     }
                     break;
@@ -515,6 +486,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Kontakt");
                     openTab(newInstance, tabInfo);
                     break;
+
                 case R.id.nav_settings:
                     newInstance = new UstawieniaAX();
                     setTitle("Ustawienia");

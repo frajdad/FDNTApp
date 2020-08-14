@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,14 +19,10 @@ public class EventHandler {
     final String NIP = "527-23-16-033";
 
     public void showFdnCoords(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(locURI));
-        view.getContext().startActivity(intent);
+        GlobalUtil.parseUriHandler(view, locURI);
     }
     public void callToFdn(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(tel));
-        view.getContext().startActivity(intent);
+        GlobalUtil.parseUriHandler(view, tel);
     }
     public void mailToFdn(View view) {
         if (GlobalUtil.ifLoggedToPost()) {
@@ -35,9 +30,7 @@ public class EventHandler {
             intent.putExtra("to", "dzielo@episkopat.pl");
             view.getContext().startActivity(intent);
         } else {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(mail));
-            view.getContext().startActivity(intent);
+            GlobalUtil.parseUriHandler(view, mail);
         }
     }
     public void copyFdnNIP(View view) {
