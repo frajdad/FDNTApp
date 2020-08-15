@@ -29,6 +29,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
     public static WebTab newInstance() {
         return new WebTab();
     }
+    private int counter = 0;
 
     @Nullable
     @Override
@@ -85,6 +86,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
             });
             noInternetDialog.show ();
             myWebView.loadUrl("file:///android_asset/offline.html");
+            counter++;
         }
 
         @Override
@@ -126,13 +128,13 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
         emailIntent.setData(Uri.parse(command));
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
     }
-    
+
     @Override
     public void onConnectionChange (boolean isConnected) {
-        if(isConnected && lastUrl != null) {
+        if (isConnected && lastUrl != null && counter >= 1) {
             Toast.makeText(getActivity(), "Internet powrócił :)",
                     Toast.LENGTH_LONG).show();
-            loadTab (lastUrl);
+            loadTab(lastUrl);
         }
     }
     
