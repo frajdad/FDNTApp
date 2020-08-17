@@ -19,10 +19,10 @@ public class EventHandler {
     final String NIP = "527-23-16-033";
 
     public void showFdnCoords(View view) {
-        GlobalUtil.parseUriHandler(view, locURI);
+        GlobalUtil.createUriIntent(view.getContext(), locURI);
     }
     public void callToFdn(View view) {
-        GlobalUtil.parseUriHandler(view, tel);
+        GlobalUtil.createUriIntent(view.getContext(), tel);
     }
     public void mailToFdn(View view) {
         if (GlobalUtil.ifLoggedToPost()) {
@@ -30,7 +30,7 @@ public class EventHandler {
             intent.putExtra("to", "dzielo@episkopat.pl");
             view.getContext().startActivity(intent);
         } else {
-            GlobalUtil.parseUriHandler(view, mail);
+            GlobalUtil.createUriIntent(view.getContext(), mail);
         }
     }
     public void copyFdnNIP(View view) {

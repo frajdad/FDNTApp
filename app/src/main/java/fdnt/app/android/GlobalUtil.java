@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,15 +51,9 @@ public class GlobalUtil {
                 .replace("@dzielopl", "");
     }
 
-    public static void parseUriHandler(View view, String uri) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(uri));
-        view.getContext().startActivity(intent);
-    }
-
-    public static void watchYtFilm(View view, String link) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        view.getContext().startActivity(intent);
+    public static void createUriIntent(Context context, String uri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        context.startActivity(intent);
     }
 
     //Wersja aplikacji

@@ -38,6 +38,14 @@ public class Logowanie extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        /*TextView contact_to_admin = findViewById(R.id.contact_to_admin);
+
+        contact_to_admin.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -93,21 +101,22 @@ public class Logowanie extends AppCompatActivity {
         input.setLayoutParams(lp);
         alertDialog.setView(input);
 
-        alertDialog.setNegativeButton("Anuluj",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
 
-        alertDialog.setPositiveButton("Wyślij",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String email = input.getText().toString();
-                        FirebaseAuth.getInstance().sendPasswordResetEmail(email);
-                        dialog.cancel();
-                    }
-                });
+        alertDialog.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        alertDialog.setPositiveButton("Wyślij", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String email = input.getText().toString();
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email);
+                dialog.cancel();
+            }
+        });
 
         alertDialog.show();
     }

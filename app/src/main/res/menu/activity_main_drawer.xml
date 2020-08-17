@@ -105,7 +105,12 @@
                 android:id="@+id/nav_zarzad"
                 android:checkable="true"
                 android:title="    Zarząd"
-                    android:visible="false"/>
+                android:visible="false" />
+            <item
+                android:id="@+id/nav_admin"
+                android:checkable="true"
+                android:title="    Administracja"
+                android:visible="false" />
             <item
                 android:id="@+id/nav_settings"
                 android:checkable="true"

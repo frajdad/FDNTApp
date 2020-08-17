@@ -79,24 +79,24 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/email_sign_in_button"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="onLogInPressed"
-        android:text="@string/logowanie_przycisk"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/email_sign_in_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="onLogInPressed"
+            android:text="@string/logowanie_przycisk"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/new_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="onNewUserPressed"
-        android:text="Nie wiesz jakie jest Twoje hasło aplikacji?"
-        android:textColor="#3F51B5"
-        android:textSize="17sp" />
+        <TextView
+            android:id="@+id/new_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onNewUserPressed"
+            android:text="Nie wiesz jakie jest Twoje hasło aplikacji?"
+            android:textColor="#3F51B5"
+            android:textSize="17sp" />
     </LinearLayout>
 </LinearLayout>

@@ -340,6 +340,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_fundacja).setVisible(state);
         menu.findItem(R.id.nav_biuro).setVisible(state);
         menu.findItem(R.id.nav_zarzad).setVisible(state);
+        menu.findItem(R.id.nav_admin).setVisible(state);
     }
 
     void hideTabs(Menu menu) {
@@ -466,7 +467,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
                 case R.id.nav_dzielo_tv:
                     setTitle("Dzieło TV");
-                    GlobalUtil.watchYtFilm(navigationView, "https://www.youtube.com/user/DzieloTV");
+                    GlobalUtil.createUriIntent(navigationView.getContext(),
+                            "https://www.youtube.com/user/DzieloTV");
                     break;
 
                 case R.id.nav_kontakt:
@@ -493,7 +495,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Kontakt");
                     openTab(newInstance, tabInfo);
                     break;
-
+                case R.id.nav_admin:
+                    setTitle("Administracja");
+                    GlobalUtil.createUriIntent(navigationView.getContext(),
+                            "mailto:aplikacja@dzielo.pl");
+                    break;
                 case R.id.nav_settings:
                     newInstance = new UstawieniaAX();
                     setTitle("Ustawienia");
