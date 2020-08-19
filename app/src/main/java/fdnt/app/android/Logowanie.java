@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,9 +75,11 @@ public class Logowanie extends AppCompatActivity {
         String password = editTextPassword.getText().toString();
         EditText editTextMailPassword = findViewById(R.id.mail_password);
         String mailPassword = editTextMailPassword.getText().toString();
-        if (!email.equals("")) {
+        if (GlobalUtil.isValidEmailAddr(email)) {
             LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
             logging.execute();
+        } else {
+            Toast.makeText(this, "Zły login aplikacji", Toast.LENGTH_LONG).show();
         }
     }
 

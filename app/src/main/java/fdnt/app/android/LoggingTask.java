@@ -70,6 +70,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
         // Semafor do synchronizacji logowania do poczty i Firebase
         final Semaphore semaphore = new Semaphore(0);
 
+
         if (!mailPass.equals("")) {
             try {
                 MailLogging.openSessions(email, mailPass);
@@ -81,6 +82,9 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
             } catch (MessagingException e) {
                 ok = 1;
             }
+        } else {
+            progressDialog.dismiss();
+            ok = 2;
         }
 
         if (ok == 0) {

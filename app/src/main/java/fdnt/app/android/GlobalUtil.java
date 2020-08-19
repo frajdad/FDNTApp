@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.Patterns;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,6 +55,14 @@ public class GlobalUtil {
     public static void createUriIntent(Context context, String uri) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         context.startActivity(intent);
+    }
+
+    public static boolean isValidEmailAddr(String emailAddr) {
+        if (emailAddr.isEmpty()) {
+            return false;
+        } else {
+            return Patterns.EMAIL_ADDRESS.matcher(emailAddr).matches();
+        }
     }
 
     //Wersja aplikacji
