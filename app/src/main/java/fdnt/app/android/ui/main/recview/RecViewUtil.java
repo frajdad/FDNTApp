@@ -2,8 +2,6 @@ package fdnt.app.android.ui.main.recview;
 // wspólne metody dla obu adapterów
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 
 import com.google.gson.Gson;
 
@@ -12,9 +10,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import fdnt.app.android.GlobalUtil;
 import fdnt.app.android.R;
-import fdnt.app.android.post.MailSender;
 
 /**
  * Class contains static methods which are shared, by package.
@@ -56,23 +52,6 @@ public class RecViewUtil {
             stream.close ();
         } catch (IOException e) {
             e.printStackTrace ();
-        }
-    }
-
-    /**
-     * Methods responsible for sending and email.
-     * @param mail Receiver's email address.
-     * @param context Required for some magic :(*/
-    public static void sendMail(String mail, Context context) {
-        if (GlobalUtil.ifLoggedToPost()) {
-            Intent intent = new Intent(GlobalUtil.this_activity, MailSender.class);
-            intent.putExtra("to", mail);
-            GlobalUtil.this_activity.startActivity(intent);
-        } else {
-            String mailURL = "mailto:" + mail;
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(mailURL));
-            context.startActivity(intent);
         }
     }
 }

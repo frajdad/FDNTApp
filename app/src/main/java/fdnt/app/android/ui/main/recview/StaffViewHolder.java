@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.databinding.ViewDataBinding;
 
+import fdnt.app.android.GlobalUtil;
 import fdnt.app.android.R;
 
 /*
@@ -17,20 +18,20 @@ import fdnt.app.android.R;
  */
 public class StaffViewHolder extends UniversalViewHolder implements View.OnClickListener {
 		
-		public StaffViewHolder(ViewDataBinding binding){
+		public StaffViewHolder(ViewDataBinding binding) {
 			super(binding);
-			((ImageView)binding.getRoot().findViewById(R.id.MailIcon)).setOnClickListener(this);
+			binding.getRoot().findViewById(R.id.MailIcon).setOnClickListener(this);
 			ImageView phone = binding.getRoot().findViewById(R.id.TelIcon);
-			if(phone != null) phone.setOnClickListener (this);
+			if (phone != null) phone.setOnClickListener(this);
 		}
 	
 	@Override
 	public void onClick(View v) {
 		Person person = (Person) variable;
 		Context context = binding.getRoot().getContext();
-		RecViewUtil.sendMail(person.email, context);
+		GlobalUtil.sendMail(person.email, context);
 		if (v.getId() == R.id.MailIcon) {
-			RecViewUtil.sendMail(person.email, context);
+			GlobalUtil.sendMail(person.email, context);
 		} else if (v.getId() == R.id.TelIcon) {
 			String mail = "tel:" + person.phone;
 			Intent intent = new Intent(Intent.ACTION_VIEW);

@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 import javax.mail.Message;
 import javax.mail.Session;
 
+import fdnt.app.android.post.MailSender;
+
 public class GlobalUtil {
 
     protected static boolean ifLogged() {
@@ -62,6 +64,25 @@ public class GlobalUtil {
             return false;
         } else {
             return Patterns.EMAIL_ADDRESS.matcher(emailAddr).matches();
+        }
+    }
+
+    /**
+     * Methods responsible for sending and email.
+     *
+     * @param mail    Receiver's email address.
+     * @param context Required for some magic :(
+     */
+    public static void sendMail(String mail, Context context) {
+        if (GlobalUtil.ifLoggedToPost()) {
+            Intent intent = new Intent(GlobalUtil.this_activity, MailSender.class);
+            intent.putExtra("to", mail);
+            GlobalUtil.this_activity.startActivity(intent);
+        } else {
+            String mailURL = "mailto:" + mail;
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(mailURL));
+            context.startActivity(intent);
         }
     }
 

@@ -497,8 +497,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     break;
                 case R.id.nav_admin:
                     setTitle("Administracja");
-                    GlobalUtil.createUriIntent(navigationView.getContext(),
-                            "mailto:aplikacja@dzielo.pl");
+                    GlobalUtil.sendMail("aplikacja@dzielo.pl", navigationView.getContext());
                     break;
                 case R.id.nav_settings:
                     newInstance = new UstawieniaAX();
