@@ -71,6 +71,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
         final Semaphore semaphore = new Semaphore(0);
 
 
+        // Sprawdzamy czy użytkownik loguje się do poczty
         if (!mailPass.equals("")) {
             try {
                 MailLogging.openSessions(email, mailPass);
@@ -82,9 +83,6 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
             } catch (MessagingException e) {
                 ok = 1;
             }
-        } else {
-            progressDialog.dismiss();
-            ok = 2;
         }
 
         if (ok == 0) {
@@ -106,12 +104,12 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
             catch (Exception e) {
                 ok = 2;
             }
-        }
 
-        try {
-            semaphore.acquire();
-        } catch (InterruptedException e) {
-            ok = 2;
+            try {
+                semaphore.acquire();
+            } catch (InterruptedException e) {
+                ok = 2;
+            }
         }
 
         return null;
