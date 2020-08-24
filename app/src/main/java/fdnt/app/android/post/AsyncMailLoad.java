@@ -14,19 +14,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
+import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
 import fdnt.app.android.GlobalUtil;
-
-import static fdnt.app.android.GlobalUtil.pop3Session;
 
 public class AsyncMailLoad {
     public static List<MailItem> ITEMS = new ArrayList<MailItem>();
@@ -85,15 +85,18 @@ public class AsyncMailLoad {
             SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
             String pass = data.getString("pass", "");
             String email = GlobalUtil.userEmail();
-            MailLogging.openSessions(email, pass);
+         //   MailLogging.openSessions(email, pass);
 
-            Store store = pop3Session.getStore("pop3");
+            Session session = Session.getDefaultInstance(new Properties());
+            Store store = session.getStore("imaps");
+            store.connect("mail.dzielo.pl", 993, email, pass);
 
-            store.connect();
-            Folder[] fs = store.getPersonalNamespaces();
-            for (Folder f: fs) {
-                Log.d("boxes", f.getFullName());
+            Folder[] fs = store.getDefaultFolder().list();
+
+            for(Folder f: fs) {
+                Log.d("boxes", f.getName());
             }
+
 
             //create the folder object and open it
             Folder emailFolder = store.getFolder(box);

@@ -13,7 +13,6 @@ import android.util.Patterns;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import javax.mail.Message;
 import javax.mail.Session;
 
 import fdnt.app.android.post.MailSender;
@@ -36,7 +35,7 @@ public class GlobalUtil {
     //Poczta
     public static Session smtpSession;
     public static Session pop3Session;
-    public static Message[] messages;
+    public static Session imapSession;
 
     //Aktualnie zalogowany użytkownik
     public static String userEmail() {

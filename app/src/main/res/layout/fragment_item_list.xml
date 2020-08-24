@@ -8,6 +8,60 @@
     android:clipToPadding="false"
     tools:context=".MainFrame">
 
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/mail_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_inbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/mail_button_unchecked"
+                android:text="Odebrane" />
+            <Button
+                android:id="@+id/button_sent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mail_button_unchecked"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="Wysłane" />
+            <Button
+                android:id="@+id/button_drafts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/mail_button_unchecked"
+                android:text="Robocze" />
+            <Button
+                android:id="@+id/button_spam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/mail_button_unchecked"
+                android:text="Spam" />
+            <Button
+                android:id="@+id/button_trash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/mail_button_unchecked"
+                android:text="Kosz" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/writeEmailButton"
         android:layout_width="wrap_content"
@@ -29,14 +83,13 @@
         app:maxImageSize="93dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-    app:layoutManager="LinearLayoutManager"
-    android:id="@+id/list"
-    android:name="fdnt.app.android.PostItemFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginStart="0dp"
-    android:layout_marginEnd="16dp"
-    tools:context=".post.PostItemFragment"
-    tools:listitem="@layout/fragment_item"/>
+        android:id="@+id/list"
+        android:name="fdnt.app.android.PostItemFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+        tools:context=".post.PostItemFragment"
+        tools:listitem="@layout/fragment_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

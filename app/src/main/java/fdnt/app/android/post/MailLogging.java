@@ -57,10 +57,27 @@ public class  MailLogging {
         store.close();
     }
 
+    private static void openImapSession(final String email, final String pass) throws MessagingException {
+        Properties props = new Properties();
+
+        props.put("mail.imap.host", "mail.dzielo.pl");
+        props.put("mail.imap.port", "993");
+        props.put("mail.imap.starttls.enable", "true");
+
+        GlobalUtil.imapSession = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    //Authenticating the password
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(email, pass);
+                    }
+                });
+    }
+
     public static void openSessions(String email, String pass) throws MessagingException {
         enableStrictMode();
         openSmtpSession(email, pass);
         openPop3Session(email, pass);
+    //    openImapSession(email, pass);
     }
 
     private static void enableStrictMode() {

@@ -32,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Map;
 import java.util.Set;
 
-import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
@@ -119,16 +118,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         displayNotifications();
-
-        new Thread(new Runnable() {
-            public void run()
-            {
-                AsyncMailLoad.getEmails("INBOX",
-                        Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(GlobalUtil.this_activity)
-                                .getString("max_emails", "20")),
-                        GlobalUtil.this_activity);
-            }
-        }).start();
     }
 
     private void openMain(Bundle savedInstanceState) {
