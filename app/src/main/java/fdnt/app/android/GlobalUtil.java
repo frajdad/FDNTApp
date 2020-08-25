@@ -34,8 +34,6 @@ public class GlobalUtil {
 
     //Poczta
     public static Session smtpSession;
-    public static Session pop3Session;
-    public static Session imapSession;
 
     //Aktualnie zalogowany użytkownik
     public static String userEmail() {

@@ -3,7 +3,6 @@ package fdnt.app.android.post;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -85,18 +84,10 @@ public class AsyncMailLoad {
             SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
             String pass = data.getString("pass", "");
             String email = GlobalUtil.userEmail();
-         //   MailLogging.openSessions(email, pass);
 
             Session session = Session.getDefaultInstance(new Properties());
             Store store = session.getStore("imaps");
             store.connect("mail.dzielo.pl", 993, email, pass);
-
-            Folder[] fs = store.getDefaultFolder().list();
-
-            for(Folder f: fs) {
-                Log.d("boxes", f.getName());
-            }
-
 
             //create the folder object and open it
             Folder emailFolder = store.getFolder(box);
@@ -115,7 +106,6 @@ public class AsyncMailLoad {
                         message.getSubject(),
                         personal,
                         formatDate(message.getSentDate())));
-                System.out.println("item " + i);
             }
 
         } catch (NoSuchProviderException e) {

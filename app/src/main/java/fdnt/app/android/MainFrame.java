@@ -1,6 +1,9 @@
 package fdnt.app.android;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -150,10 +154,20 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     private void displayNotifications() {
         try {
-            String tekst = (String) getIntent().getExtras().get("value");
+            final String tekst = (String) getIntent().getExtras().get("value");
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage(Html.fromHtml("<i>" + tekst + "</i>"));
+
+            builder.setNeutralButton("KOPIUJ", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("fdnt-powiadomienie", tekst);
+                    clipboard.setPrimaryClip(clip);
+                    Toast.makeText(GlobalUtil.this_activity, "Skopiowano!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             AlertDialog dialog = builder.create();
             dialog.show();

@@ -27,12 +27,12 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-<!-- Załączniki
+<!--
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:scaleX="1.5"
-                        android:scaleY="1.5"
+                        android:scaleX="1.4"
+                        android:scaleY="1.4"
                         android:onClick="getPath"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/arrow_send"
@@ -46,8 +46,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:onClick="send"
-                        android:scaleX="0.6"
-                        android:scaleY="0.6"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

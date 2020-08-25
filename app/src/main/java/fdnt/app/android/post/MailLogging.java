@@ -7,7 +7,6 @@ import java.util.Properties;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Store;
 import javax.mail.Transport;
 
 import fdnt.app.android.GlobalUtil;
@@ -37,47 +36,9 @@ public class  MailLogging {
         transport.close();
     }
 
-    private static void openPop3Session(final String email, final String pass) throws MessagingException {
-        Properties props = new Properties();
-
-        props.put("mail.pop3.host", "mail.dzielo.pl");
-        props.put("mail.pop3.port", "110");
-        props.put("mail.pop3.starttls.enable", "true");
-        GlobalUtil.pop3Session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    //Authenticating the password
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(email, pass);
-                    }
-                });
-
-        //Testing connection
-        Store store = GlobalUtil.pop3Session.getStore("pop3");
-        store.connect();
-        store.close();
-    }
-
-    private static void openImapSession(final String email, final String pass) throws MessagingException {
-        Properties props = new Properties();
-
-        props.put("mail.imap.host", "mail.dzielo.pl");
-        props.put("mail.imap.port", "993");
-        props.put("mail.imap.starttls.enable", "true");
-
-        GlobalUtil.imapSession = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-                    //Authenticating the password
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(email, pass);
-                    }
-                });
-    }
-
     public static void openSessions(String email, String pass) throws MessagingException {
         enableStrictMode();
         openSmtpSession(email, pass);
-        openPop3Session(email, pass);
-    //    openImapSession(email, pass);
     }
 
     private static void enableStrictMode() {
@@ -91,9 +52,5 @@ public class  MailLogging {
         Transport transport = GlobalUtil.smtpSession.getTransport("smtp");
         transport.connect("smtp.dzielo.pl", 465, email, pass);
         transport.close();
-
-        Store store = GlobalUtil.pop3Session.getStore("pop3");
-        store.connect();
-        store.close();
     }
 }

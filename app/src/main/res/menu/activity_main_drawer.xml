@@ -73,12 +73,12 @@
             <item
                 android:id="@+id/nav_sposoby"
                 android:checkable="true"
-                android:title="Jak możesz pomóc?"
+                android:title="    Jak możesz pomóc?"
                 android:visible="false" />
             <item
                 android:id="@+id/nav_pomoz"
                 android:checkable="true"
-                android:title="Tu możesz pomóc!"
+                android:title="    Tu możesz pomóc!"
                 android:visible="false" />
             <item
                 android:id="@+id/nav_dzielo_tv"
