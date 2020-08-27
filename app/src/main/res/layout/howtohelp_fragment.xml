@@ -251,7 +251,7 @@
                 android:id="@+id/zbiorka_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/regularny_darczynca_text"
+                android:text="@string/zbiorka_text"
                 android:textSize="15sp"
                 app:autoSizeTextType="uniform"
                 android:justificationMode="inter_word"
