@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
@@ -7,7 +8,6 @@
             type="fdnt.app.android.ui.main.EventHandler" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/oFundacji"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -96,7 +96,7 @@
             app:layout_constraintBottom_toTopOf="@+id/mail_icon"
             app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
             app:layout_constraintHeight_percent="0.14"
-            app:layout_constraintHorizontal_bias="0.5"
+
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/loc_icon"
             app:layout_constraintWidth_percent="0.14"
@@ -134,14 +134,14 @@
             android:id="@+id/loc_header"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="36dp"
+            android:onClick="@{handler::showFdnCoords}"
             android:text="@string/loc_header"
             app:autoSizeTextType="uniform"
             app:layout_constraintHeight_percent="0.03"
             app:layout_constraintStart_toEndOf="@+id/loc_icon"
             app:layout_constraintTop_toTopOf="@+id/loc_icon"
-            app:layout_constraintWidth_percent="0.30"
-            android:onClick="@{handler::showFdnCoords}"/>
+            app:layout_constraintWidth_percent="0.30" />
 
         <TextView
             android:id="@+id/loc_text"
@@ -175,16 +175,16 @@
             android:id="@+id/tel_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="11dp"
+            android:onClick="@{handler::callToFdn}"
             android:text="@string/tel_text"
             android:textColor="@color/colorSubTitle"
             app:autoSizeTextType="uniform"
             app:layout_constraintHeight_percent="0.04"
             app:layout_constraintStart_toEndOf="@+id/tel_icon"
             app:layout_constraintTop_toBottomOf="@+id/tel_header"
-            app:layout_constraintWidth_percent="0.25"
-            android:onClick="@{handler::callToFdn}"/>
+            app:layout_constraintWidth_percent="0.25" />
 
         <TextView
             android:id="@+id/mail_header"
@@ -203,16 +203,16 @@
             android:id="@+id/mail_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="11dp"
+            android:onClick="@{handler::mailToFdn}"
             android:text="@string/mail_text"
             android:textColor="@color/colorSubTitle"
             app:autoSizeTextType="uniform"
             app:layout_constraintHeight_percent="0.035"
             app:layout_constraintStart_toEndOf="@+id/mail_icon"
             app:layout_constraintTop_toBottomOf="@+id/mail_header"
-            app:layout_constraintWidth_percent="0.35"
-            android:onClick="@{handler::mailToFdn}"/>
+            app:layout_constraintWidth_percent="0.35" />
 
         <TextView
             android:id="@+id/nip_header"

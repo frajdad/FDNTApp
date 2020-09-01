@@ -66,6 +66,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:scrollbarStyle="outsideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guidelineright"
@@ -73,16 +74,18 @@
         app:layout_constraintTop_toBottomOf="@+id/pasekill">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/myopatronie_tekst1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:justificationMode="inter_word"
                 android:text="@string/myopatronie_tekst1"
                 android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/myopatronie_tekst1_podpis"
                 android:layout_width="wrap_content"
@@ -92,14 +95,17 @@
                 android:layout_marginTop="2dp"
                 android:text="~Magdalena Wlazło, stypendystka" />
 
+            <include layout="@layout/bialypasek" />
+
             <TextView
                 android:id="@+id/myopatronie_tekst2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:justificationMode="inter_word"
                 android:text="@string/myopatronie_tekst2"
                 android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/myopatronie_tekst2_podpis"
                 android:layout_width="wrap_content"
