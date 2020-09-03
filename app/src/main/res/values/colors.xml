@@ -13,6 +13,8 @@
     <color name="colorTitle">#1464AA</color>
     <color name="colorSubTitle">#202020</color>
     <color name="whiteDark">#FAEEEE</color>
+    <color name="inactiveButton">#D6D7D7</color>
+    <color name="activeButton">#00A651</color>
 </resources>
 
 
