@@ -5,7 +5,7 @@
     <data>
         <variable
             name="handler"
-            type="fdnt.app.android.ui.main.EventHandler" />
+            type="fdnt.app.android.ui.main.FdnContactEventHandler" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oFundacji"

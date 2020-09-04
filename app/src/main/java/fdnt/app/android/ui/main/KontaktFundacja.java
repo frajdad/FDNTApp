@@ -28,7 +28,7 @@ public class KontaktFundacja extends Fragment {
          */
         FoundationContactFragmentBinding binding = DataBindingUtil.inflate(inflater,
                  R.layout.foundation_contact_fragment, container, false);
-        EventHandler handler = new EventHandler();
+        FdnContactEventHandler handler = new FdnContactEventHandler();
         binding.setHandler(handler);
 
         return binding.getRoot();
