@@ -89,74 +89,7 @@ Katarzyna Cieniuch, stypendystka</string>
 Krzysztof Babicki, stypendysta
 
 </string>
-    <string name="litania_text">Litania do św. Jana Pawła II
 
-Kyrie elejson, Chryste elejson, Kyrie elejson
-Chryste usłysz nas, Chryste wysłuchaj nas
-Ojcze z nieba, Boże – zmiłuj się nad nami
-Synu Odkupicielu świata, Boże – zmiłuj się nad nami
-Duchu Święty, Boże – zmiłuj się nad nami
-Święta Trójco, Jedyny Boże – zmiłuj się nad nami
-
-Święta Maryjo – módl się za nami
-Święty Janie Pawle – módl się za nami
-Zanurzony w Ojcu, bogatym w miłosierdzie,
-Zjednoczony z Chrystusem, Odkupicielem człowieka,
-Napełniony Duchem Świętym, Panem i Ożywicielem
-Całkowicie oddany Maryi i przyodziany Jej szkaplerzem,
-Przyjacielu Świętych i Błogosławionych,
-Następco Piotra i Sługo sług Bożych,
-Stróżu Kościoła nauczający prawd wiary,
-Ojcze Soboru i wykonawco jego wskazań,
-Umacniający jedność chrześcijan i całej rodziny ludzkiej,
-Gorliwy Miłośniku Eucharystii,
-Niestrudzony Pielgrzymie tej ziemi,
-Misjonarzu wszystkich narodów,
-Świadku wiary, nadziei i miłości,
-Wytrwały Uczestniku cierpień Chrystusowych,
-Apostole pojednania i pokoju,
-Promotorze cywilizacji miłości,
-Głosicielu Nowej Ewangelizacji,
-Mistrzu wzywający do wypłynięcia na głębię,
-Nauczycielu ukazujący świętość jako miarę życia,
-Papieżu Bożego Miłosierdzia,
-Kapłanie gromadzący Kościół na składanie ofiary,
-Pasterzu prowadzący owczarnię do nieba,
-Bracie i Mistrzu kapłanów,
-Ojcze osób konsekrowanych,
-Patronie rodzin chrześcijańskich,
-Umocnienie małżonków,
-Obrońco nienarodzonych,
-Opiekunie dzieci, sierot i opuszczonych,
-Przyjacielu i Wychowawco młodzieży,
-Dobry Samarytaninie dla cierpiących,
-Wsparcie dla ludzi starszych i samotnych,
-Głosicielu prawdy o godności człowieka,
-Mężu modlitwy zanurzony w Bogu,
-Miłośniku liturgii sprawujący Ofiarę na ołtarzach świata,
-Uosobienie pracowitości,
-Zakochany w krzyżu Chrystusa,
-Przykładnie realizujący powołanie,
-Wytrwały w cierpieniu,
-Wzorze życia i umierania dla Pana,
-Upominający grzeszników,
-Wskazujący drogę błądzącym,
-Przebaczający krzywdzicielom,
-Szanujący przeciwników i prześladowców,
-Rzeczniku i obrońco prześladowanych,
-Wspierający bezrobotnych,
-Zatroskany o bezdomnych,
-Odwiedzający więźniów,
-Umacniający słabych,
-Uczący wszystkich solidarności,
-
-Baranku Boży, który gładzisz grzechy świata, przepuść nam Panie
-Baranku Boży, który gładzisz grzechy świata, wysłuchaj nas Panie
-Baranku Boży, który gładzisz grzechy świata, zmiłuj się nad nami
-
-K: Módl się za nami święty Janie Pawle.
-W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
-</string>
 
     <string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
 </string>
@@ -195,7 +128,6 @@ W: Abyśmy życiem i słowem głosili światu Chrystusa, Odkupiciela człowieka.
     <string name="zbiorka_text">Wystarczy zamiast zwyczajowych kwiatów poprosić gości weselnych o wsparcie programu stypendialnego. Można też na zaproszeniu na uroczystość zaślubin dopisać uprzejmie sformułowaną prośbę, aby goście zamiast kwiatów dla Państwa Młodych przynieśli potwierdzenie wpłaty na konto Fundacji „Dzieło Nowego Tysiąclecia”. Aby ułatwić zaproszonym sprawę, można dołączyć osobny kartonik i na nim dopisać dane rachunku bankowego Fundacji.
 Osoby zainteresowane zachęcamy do kontaktu pod adresem: darczyncy@dzielo.pl.
 </string>
-    <string name="litania_header">Litania do św. Jana Pawła II</string>
     <string name="zawierzenie_text">Boże, Ojcze miłosierny, który objawiłeś swoją miłość w Twoim Synu Jezusie Chrystusie i wylałeś ją na nas w Duchu Świętym, Pocieszycielu, Tobie zawierzamy dziś losy świata i każdego człowieka. Pochyl się nad nami grzesznymi, ulecz naszą słabość, przezwycięż wszelkie zło, pozwól wszystkim mieszkańcom ziemi doświadczyć Twojego miłosierdzia, aby w Tobie, trójjedyny Boże, zawsze odnajdywali źródło nadziei. Ojcze przedwieczny, dla bolesnej męki i zmartwychwstania Twojego Syna, miej miłosierdzie dla nas i całego świata! Amen.</string>
     <string name="header_zawierzenie">Akt zawierzenia świata Miłosierdziu Bożemu</string>
 </resources>

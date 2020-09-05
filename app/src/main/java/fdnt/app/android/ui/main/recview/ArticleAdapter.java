@@ -22,8 +22,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<UniversalViewHolder> {
 
     @NonNull
     @Override
-    //Create new views
-    public UniversalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    //Create new views h
+     public UniversalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =  LayoutInflater.from(parent.getContext());
         ArticleCardRowBinding itemBinding = ArticleCardRowBinding.inflate(layoutInflater, parent, false);
         return new UniversalViewHolder(itemBinding);

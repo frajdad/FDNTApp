@@ -17,6 +17,7 @@ import fdnt.app.android.R;
 import fdnt.app.android.databinding.ModlitwyFragmentBinding;
 import fdnt.app.android.ui.main.recview.Article;
 import fdnt.app.android.ui.main.recview.ArticleAdapter;
+import fdnt.app.android.ui.main.recview.RecViewUtil;
 
 public class Modlitwy extends Fragment {
     public static Modlitwy newInstance() {
@@ -29,11 +30,9 @@ public class Modlitwy extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         ModlitwyFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.modlitwy_fragment, container, false);
 
-        articlesList = new ArrayList<Article>();
-        articlesList.add(new Article(getString(R.string.litania_header), getString(R.string.litania_text)));
-        articlesList.add(new Article(getString(R.string.header_zawierzenie), getString(R.string.zawierzenie_text)));
-
-        ArticleAdapter articleAdapter = new ArticleAdapter(articlesList);
+        ArticleAdapter articleAdapter = new ArticleAdapter(
+                RecViewUtil.deserializeArticleJSON(binding.getRoot().getContext(), R.raw.prayers)
+        );
         binding.prayersRecyclerView.setAdapter(articleAdapter);
 
         return binding.getRoot();
