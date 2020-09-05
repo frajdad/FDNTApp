@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="article"
+            type="fdnt.app.android.ui.main.recview.Article" />
+    </data>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/card_header"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:textColor="@color/colorSubTitle"
+            android:textSize="17sp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@{article.header}"/>
+        <TextView
+            android:id="@+id/card_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:textSize="17sp"
+            android:gravity="center"
+            app:autoSizeTextType="uniform"
+            android:textColor="@color/colorSubTitle"
+            android:text="@{article.content}"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</layout>

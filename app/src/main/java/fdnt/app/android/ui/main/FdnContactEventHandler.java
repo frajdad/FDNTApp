@@ -10,7 +10,7 @@ import android.widget.Toast;
 import fdnt.app.android.GlobalUtil;
 import fdnt.app.android.post.MailSender;
 
-public class EventHandler {
+public class FdnContactEventHandler {
     //methods called when on click in different views in foundation contact tab
 
     final String tel = "tel:225304828";

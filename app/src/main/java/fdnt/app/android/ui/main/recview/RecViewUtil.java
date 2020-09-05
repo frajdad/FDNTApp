@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -38,8 +40,8 @@ public class RecViewUtil {
      * */
     public static void loadStaffDataFromFile(Context context) {
         staff = new ArrayList<Person> ();
-        InputStream stream = context.getResources ().openRawResource (R.raw.staff);
-        Scanner scanner = new Scanner (stream);
+        InputStream stream = context.getResources().openRawResource (R.raw.staff);
+        Scanner scanner = new Scanner(stream);
         String json = "";
         while(scanner.hasNext ()) json += scanner.next ();
         Person[] temp = new Gson().fromJson (json, Person[].class);
@@ -53,5 +55,33 @@ public class RecViewUtil {
         } catch (IOException e) {
             e.printStackTrace ();
         }
+    }
+
+    public static ArrayList<Article> deserializeArticleJSON(Context context, int path) {
+        ArrayList<Article> arr = new ArrayList<Article>();
+        InputStream stream = context.getResources().openRawResource(path);
+        Scanner scanner = new Scanner(stream);
+        String json = "";
+
+        while(scanner.hasNext()) {
+            json += scanner.next();
+        }
+
+        Article[] temp = new Gson().fromJson(json, Article[].class);
+
+        for(Article a : temp) {
+            a.header = a.header.replace('$',' ');
+            a.content = a.content.replace('$',' ');
+            arr.add(a);
+        }
+        scanner.close();
+
+        try {
+            stream.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arr;
     }
 }
