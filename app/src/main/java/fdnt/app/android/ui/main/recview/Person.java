@@ -5,11 +5,11 @@ package fdnt.app.android.ui.main.recview;
 * */
 public class Person {
 
-	protected String role;
-	protected String email;
-	protected String phone;
-	protected String imageName;
-	protected Assignment assignment;
+	public String role;
+	public String email;
+	public String phone;
+	public String imageName;
+	public Assignment assignment;
 	
 	public Person(){}
 	

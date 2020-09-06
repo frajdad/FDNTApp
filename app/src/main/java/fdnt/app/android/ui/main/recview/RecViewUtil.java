@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import fdnt.app.android.R;
+import fdnt.app.android.utils.JsonConvert;
 
 /**
  * Class contains static methods which are shared, by package.
@@ -44,9 +45,17 @@ public class RecViewUtil {
         Scanner scanner = new Scanner(stream);
         String json = "";
         while(scanner.hasNext ()) json += scanner.next ();
-        Person[] temp = new Gson().fromJson (json, Person[].class);
+        //Person[] temp = new Gson().fromJson (json, Person[].class);
+        Person[] temp = new Person[0];
+        try {
+            Object[] t = (Object[]) JsonConvert.deserializeObject (json,
+                    new Person[1]);
+            temp = JsonConvert.rewriteArray (t, new Person[t.length]);
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
         for(Person p : temp) {
-            p.role = p.role.replace ('$', ' ');
+            //p.role = p.role.replace ('$', ' ');
             staff.add (p);
         }
         scanner.close ();

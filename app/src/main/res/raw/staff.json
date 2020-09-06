@@ -25,48 +25,48 @@
 	"email":"lukasz.nycz@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/ksnycz_foreground",
 	"phone":"503504407",
-	"role":"Koordynator$ds.$formacji$stypendystów"
+	"role":"Koordynator ds. formacji stypendystów"
   },
   {
 	"assignment":"Office",
 	"email":"sekretariat@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/annamarszalek_foreground",
 	"phone":"668286129",
-	"role":"Asystentka$Zarządu"
+	"role":"Asystentka Zarządu"
   },
   {
 	"assignment":"Office",
 	"email":"stypendia@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/monikagawracz_foreground",
 	"phone":"734445490",
-	"role":"Menadżer$ds.$stypendialnych"
+	"role":"Menadżer ds. stypendialnych"
   },
   {
 	"assignment":"Office",
 	"email":"dzienpapieski@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/marzenasawula_foreground",
 	"phone":"602830082",
-	"role":"Menedżer$ds.$Dnia$Papieskiego"
+	"role":"Menedżer ds. Dnia Papieskiego"
   },
   {
 	"assignment":"Office",
 	"email":"darczyncy@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/malgorzatakucharska_foreground",
 	"phone":"668285959",
-	"role":"Menedżer$ds.$kontaktu$z$Darczyńcami"
+	"role":"Menedżer ds. kontaktu z Darczyńcami"
   },
   {
 	"assignment":"Office",
 	"email":"paulina.worozbit@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/paulinaworozbit_foreground",
 	"phone":"881678857",
-	"role":"Menedżer$ds.$kampanii$społecznych"
+	"role":"Menedżer ds. kampanii społecznych"
   },
   {
 	"assignment":"Office",
 	"email":"biuroprasowe@dzielo.pl",
 	"imageName":"fdnt.app.android:mipmap/hubertszczypek_foreground",
 	"phone":"662506859",
-	"role":"Kierownik$Biura$Prasowego"
+	"role":"Kierownik Biura Prasowego"
   }
 ]
