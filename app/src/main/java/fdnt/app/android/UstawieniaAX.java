@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import fdnt.app.android.post.MailSender;
+import fdnt.app.android.utils.GlobalUtil;
 
 public class UstawieniaAX extends PreferenceFragmentCompat {
         @Override

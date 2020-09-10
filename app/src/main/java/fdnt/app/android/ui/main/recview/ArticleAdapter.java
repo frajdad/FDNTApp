@@ -1,6 +1,8 @@
 package fdnt.app.android.ui.main.recview;
 
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,7 +16,7 @@ import fdnt.app.android.BR;
 import fdnt.app.android.R;
 import fdnt.app.android.databinding.ArticleCardRowBinding;
 
-public class ArticleAdapter extends RecyclerView.Adapter<UniversalViewHolder> {
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
     List<Article> articlesList;
     public ArticleAdapter(List<Article> articlesList) {
         this.articlesList = articlesList;
@@ -22,21 +24,23 @@ public class ArticleAdapter extends RecyclerView.Adapter<UniversalViewHolder> {
 
     @NonNull
     @Override
-    //Create new views h
-     public UniversalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    //Creates new views
+     public ArticleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =  LayoutInflater.from(parent.getContext());
         ArticleCardRowBinding itemBinding = ArticleCardRowBinding.inflate(layoutInflater, parent, false);
-        return new UniversalViewHolder(itemBinding);
+        return new ArticleViewHolder(itemBinding);
     }
 
     @Override
-    // Replace the contents of a view
-    public void onBindViewHolder(@NonNull UniversalViewHolder holder, int position) {
-        holder.bind(BR.article, (Object) articlesList.get(position));
+    // Replaces the contents of a view
+    public void onBindViewHolder(@NonNull ArticleViewHolder holder, int position) {
+        Article article = articlesList.get(position);
+        holder.bind(article);
+
     }
 
     @Override
-    // Return the size of your dataset
+    // Returns the size of your dataset
     public int getItemCount() {
         return articlesList != null ? articlesList.size() : 0;
     }

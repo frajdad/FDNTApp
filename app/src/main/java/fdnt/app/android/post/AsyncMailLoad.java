@@ -25,7 +25,7 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 
 public class AsyncMailLoad {
     public static List<MailItem> ITEMS = new ArrayList<MailItem>();

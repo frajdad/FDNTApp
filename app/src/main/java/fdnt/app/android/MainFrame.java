@@ -52,6 +52,7 @@ import fdnt.app.android.ui.main.Modlitwy;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
 import fdnt.app.android.ui.main.recview.RecViewUtil;
+import fdnt.app.android.utils.GlobalUtil;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

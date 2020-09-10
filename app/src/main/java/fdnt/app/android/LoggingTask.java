@@ -21,6 +21,7 @@ import java.util.concurrent.Semaphore;
 import javax.mail.MessagingException;
 
 import fdnt.app.android.post.MailLogging;
+import fdnt.app.android.utils.GlobalUtil;
 
 //Class is extending AsyncTask because this class is going to perform a networking operation
 public class LoggingTask extends AsyncTask<Void,Void,Void> {

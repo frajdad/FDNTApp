@@ -6,6 +6,9 @@
         <variable
             name="article"
             type="fdnt.app.android.ui.main.recview.Article" />
+        <variable
+            name="expanded"
+            type="java.lang.Boolean" />
     </data>
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
@@ -13,31 +16,42 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="6dp"
     app:cardElevation="6dp">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:animateLayoutChanges="true">
+
         <TextView
             android:id="@+id/card_header"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="0.9"
             android:textColor="@color/colorSubTitle"
-            android:textSize="17sp"
+            android:textSize="18sp"
             app:autoSizeTextType="uniform"
             android:gravity="center"
             android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/card_content"
             android:text="@{article.header}"/>
         <TextView
             android:id="@+id/card_content"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:justificationMode="inter_word"
             android:textSize="17sp"
             android:gravity="center"
+            android:visibility="gone"
             app:autoSizeTextType="uniform"
             android:textColor="@color/colorSubTitle"
+            app:layout_constraintTop_toBottomOf="@id/card_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:text="@{article.content}"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
 </layout>

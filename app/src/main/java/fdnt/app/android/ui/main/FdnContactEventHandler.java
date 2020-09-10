@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 import fdnt.app.android.post.MailSender;
 
 public class FdnContactEventHandler {

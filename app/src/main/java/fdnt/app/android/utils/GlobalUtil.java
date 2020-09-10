@@ -1,4 +1,4 @@
-package fdnt.app.android;
+package fdnt.app.android.utils;
 
 //chcę tu trzymać jakieś globalne dane
 
@@ -15,11 +15,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import javax.mail.Session;
 
+import fdnt.app.android.BuildConfig;
+import fdnt.app.android.UstawieniaAX;
 import fdnt.app.android.post.MailSender;
 
 public class GlobalUtil {
 
-    protected static boolean ifLogged() {
+    public static boolean ifLogged() {
         return FirebaseAuth.getInstance().getCurrentUser() != null;
     }
 
@@ -30,7 +32,7 @@ public class GlobalUtil {
 
 
     public static Activity this_activity;
-    protected static UstawieniaAX aktywnosc_ustawienia;
+    public static UstawieniaAX aktywnosc_ustawienia;
 
     //Poczta
     public static Session smtpSession;
@@ -44,7 +46,7 @@ public class GlobalUtil {
             return "";
     }
 
-    protected static String userName() {
+    public static String userName() {
 
         return userEmail()
                 .replace(".", "")

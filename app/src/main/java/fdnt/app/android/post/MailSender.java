@@ -24,7 +24,7 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 import fdnt.app.android.R;
 
 public class MailSender extends AppCompatActivity {

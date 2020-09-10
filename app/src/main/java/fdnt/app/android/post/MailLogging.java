@@ -9,7 +9,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 
 public class  MailLogging {
 

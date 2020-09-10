@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 import fdnt.app.android.R;
 
 public class PostItemFragment extends Fragment {

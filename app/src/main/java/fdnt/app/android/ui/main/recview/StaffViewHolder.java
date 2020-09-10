@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import androidx.databinding.ViewDataBinding;
 
-import fdnt.app.android.GlobalUtil;
+import fdnt.app.android.utils.GlobalUtil;
 import fdnt.app.android.R;
 
 /*
