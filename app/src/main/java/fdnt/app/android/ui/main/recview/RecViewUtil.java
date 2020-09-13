@@ -48,9 +48,7 @@ public class RecViewUtil {
         //Person[] temp = new Gson().fromJson (json, Person[].class);
         Person[] temp = new Person[0];
         try {
-            Object[] t = (Object[]) JsonConvert.deserializeObject (json,
-                    new Person[1]);
-            temp = JsonConvert.rewriteArray (t, new Person[t.length]);
+            temp = new Gson().fromJson(json, Person[].class);
         } catch (Exception e) {
             e.printStackTrace ();
         }
