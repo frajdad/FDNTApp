@@ -61,24 +61,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/mail_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Hasło poczty home (opcjonalnie)"
-            android:imeActionId="6"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionUnspecified"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:singleLine="true" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:id="@+id/email_sign_in_button"
             style="?android:textAppearanceSmall"

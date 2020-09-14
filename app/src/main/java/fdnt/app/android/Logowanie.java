@@ -1,15 +1,20 @@
 package fdnt.app.android;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,19 +22,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import javax.mail.internet.InternetAddress;
+import javax.mail.MessagingException;
 
+import fdnt.app.android.ui.main.MailLogIn;
 import fdnt.app.android.utils.GlobalUtil;
+import fdnt.app.android.post.MailLogging;
 
 
 public class Logowanie extends AppCompatActivity {
     
     //To jest obiekt do uwierzytelniania
     private FirebaseAuth mAuth;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,24 +66,24 @@ public class Logowanie extends AppCompatActivity {
         TextWatcher textWatcher = new TextWatcher () {
             @Override
             public void beforeTextChanged (CharSequence s, int start, int count, int after) {
-        
+            
             }
-    
+        
             @Override
             public void onTextChanged (CharSequence s, int start, int before, int count) {
                 String email = ((EditText) findViewById(R.id.email)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password)).getText().toString();
-                if(isProperEmailAndPasswordProvided (email, password))
+                if(GlobalUtil.isProperEmailAndPasswordProvided (email, password))
                     findViewById (R.id.email_sign_in_button).setBackgroundColor (ContextCompat.getColor(getApplicationContext (),
                             R.color.activeButton));
                 else findViewById (R.id.email_sign_in_button).setBackgroundColor (ContextCompat.getColor(getApplicationContext (),
                         R.color.inactiveButton));
-                
+            
             }
-    
+        
             @Override
             public void afterTextChanged (Editable s) {
-        
+            
             }
         };
         ((AutoCompleteTextView) findViewById (R.id.email)).addTextChangedListener (textWatcher);
@@ -106,11 +114,9 @@ public class Logowanie extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         EditText editTextPassword = findViewById(R.id.password);
         String password = editTextPassword.getText().toString();
-        if(!isProperEmailAndPasswordProvided (email, password)) return;
-        EditText editTextMailPassword = findViewById(R.id.mail_password);
-        String mailPassword = editTextMailPassword.getText().toString();
+        if(!GlobalUtil.isProperEmailAndPasswordProvided (email, password)) return;
         if (GlobalUtil.isValidEmailAddr(email)) {
-            LoggingTask logging = new LoggingTask(email, password, mailPassword, this);
+            LoggingTask logging = new LoggingTask(email, password, "", this);
             logging.execute();
         } else {
             Toast.makeText(this, "Zły login aplikacji", Toast.LENGTH_LONG).show();
@@ -156,16 +162,6 @@ public class Logowanie extends AppCompatActivity {
         });
 
         alertDialog.show();
-    }
-    
-    private boolean isProperEmailAndPasswordProvided(String email, String password) {
-        if(email == null || password == null || password.length () == 0) return false;
-        try {
-            new InternetAddress(email).validate ();
-        } catch (Exception ex) {
-            return false;
-        }
-        return true;
     }
     
 }

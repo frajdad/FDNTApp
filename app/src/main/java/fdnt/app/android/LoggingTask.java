@@ -55,9 +55,6 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
         super.onPostExecute(aVoid);
         progressDialog.dismiss();
         switch (ok) {
-            case 1:
-                Toast.makeText(context, "Błąd logowania poczty", Toast.LENGTH_LONG).show();
-                break;
             case 2:
                 Toast.makeText(context, "Zły login lub hasło aplikacji", Toast.LENGTH_LONG).show();
                 break;
@@ -70,22 +67,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
         ok = 0;
         // Semafor do synchronizacji logowania do poczty i Firebase
         final Semaphore semaphore = new Semaphore(0);
-
-
-        // Sprawdzamy czy użytkownik loguje się do poczty
-        if (!mailPass.equals("")) {
-            try {
-                MailLogging.openSessions(email, mailPass);
-                MailLogging.testConnection(email, mailPass);
-                SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
-                SharedPreferences.Editor dataEdit = data.edit();
-                dataEdit.putString("pass", mailPass);
-                dataEdit.apply();
-            } catch (MessagingException e) {
-                ok = 1;
-            }
-        }
-
+        
         if (ok == 0) {
             try {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)

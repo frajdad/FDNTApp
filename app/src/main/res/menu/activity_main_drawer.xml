@@ -134,6 +134,13 @@
                 android:title="Poczta" />
         </menu>
     </item>
+
+    <item
+        android:id="@+id/mail_log"
+        android:checkable="true"
+        android:icon="@mipmap/poczta"
+        android:title="Zaloguj się do poczty" />
+
 </group>
 
 

@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
 
 import fdnt.app.android.BuildConfig;
 import fdnt.app.android.UstawieniaAX;
@@ -65,7 +66,24 @@ public class GlobalUtil {
             return Patterns.EMAIL_ADDRESS.matcher(emailAddr).matches();
         }
     }
-
+    
+    /**
+     * Method checks does given email and password are correct
+     *
+     * @param email Email, which we wanna check
+     * @param password Password, which we wanna check
+     * @return Returns rather email and password are correct
+     * */
+    public static boolean isProperEmailAndPasswordProvided(String email, String password) {
+        if(email == null || password == null || password.length () == 0) return false;
+        try {
+            new InternetAddress (email).validate ();
+        } catch (Exception ex) {
+            return false;
+        }
+        return true;
+    }
+    
     /**
      * Methods responsible for sending and email.
      *

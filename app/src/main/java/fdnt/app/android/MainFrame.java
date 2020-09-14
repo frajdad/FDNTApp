@@ -1,5 +1,6 @@
 package fdnt.app.android;
 
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Semaphore;
+
+import javax.mail.MessagingException;
 
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
@@ -48,11 +53,13 @@ import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
 import fdnt.app.android.ui.main.KontaktFundacja;
 import fdnt.app.android.ui.main.KontaktZarzad;
+import fdnt.app.android.ui.main.MailLogIn;
 import fdnt.app.android.ui.main.Modlitwy;
 import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
 import fdnt.app.android.ui.main.recview.RecViewUtil;
 import fdnt.app.android.utils.GlobalUtil;
+import fdnt.app.android.post.MailLogging;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -116,7 +123,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         GlobalUtil.this_activity = this;
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+        manageMailLogInButtonVisibility ();
         //wysyłąnie danych do analizy w Firebase
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
@@ -125,6 +132,17 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         displayNotifications();
     }
 
+    private void manageMailLogInButtonVisibility() {
+        Menu nav_Menu = navigationView.getMenu();
+        if(!GlobalUtil.ifLoggedToPost () && GlobalUtil.ifLogged ())
+            nav_Menu.findItem (R.id.mail_log).setVisible (true);
+        else {
+            nav_Menu.findItem (R.id.mail_log).setVisible (false);
+            nav_Menu.findItem(R.id.nav_post).setVisible(true);
+        }
+        
+    }
+    
     private void openMain(Bundle savedInstanceState) {
         Bundle tabInfo = new Bundle();
         if (PreferenceManager
@@ -513,6 +531,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     setTitle("Poczta");
                     openTab(newInstance, tabInfo);
                     break;
+                case R.id.mail_log:
+                    newInstance = MailLogIn.newInstance ();
+                    setTitle("Logowanie do poczty");
+                    openTab(newInstance, tabInfo);
+                    break;
             }
         }
         else {
@@ -544,4 +567,51 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         Intent intent = new Intent(this, MailSender.class);
         startActivity(intent);
     }
+    
+    public void onLogInMailPressed (View view) {
+        ((EditText)findViewById (R.id.mailEmail)).setText ("Poczta");
+        final String password = ((EditText)findViewById (R.id.mail_password)).getText ().toString ();
+        final String email = GlobalUtil.userEmail ();
+        final boolean[] success = {true};
+        final Semaphore semaphore = new Semaphore(0);
+        Thread thread = new Thread (new Runnable () {
+            @Override
+            public void run () {
+                try {
+                    MailLogging.openSessions(email, password);
+                    MailLogging.testConnection(email, password);
+                    SharedPreferences data = MainFrame.this.getSharedPreferences("post",
+                            Context.MODE_PRIVATE);
+                    SharedPreferences.Editor dataEdit = data.edit();
+                    dataEdit.putString("pass", password);
+                    dataEdit.apply ();
+                } catch (MessagingException e) {
+                    success[0] = false;
+                }
+                semaphore.release ();
+            }
+        });
+        thread.start ();
+        try {
+            semaphore.acquire ();
+            manageMailLogInButtonVisibility ();
+        } catch (InterruptedException e) {
+            e.printStackTrace ();
+        }
+        if(success[0]){
+            setTitle("FDNT");
+            Fragment newInstance = WebTab.newInstance();
+            Bundle tabInfo = new Bundle();
+            if (PreferenceManager
+                    .getDefaultSharedPreferences(this)
+                    .getBoolean("dzielo_site", true)) {
+                tabInfo.putString("adress", "https://dzielo.pl/");
+            }
+            else {
+                tabInfo.putString("adress", "file:///android_asset/offline.html");
+            }
+            openTab(newInstance, tabInfo);
+        } else ((EditText)findViewById (R.id.mail_password)).setText ("");
+    }
+    
 }

@@ -140,7 +140,11 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
     
     @Override
     public void onStop() {
-        getActivity ().unregisterReceiver (networkChangeReceiver);
+        try {
+            getActivity ().unregisterReceiver (networkChangeReceiver);
+        } catch (Exception e) {
+        
+        }
         super.onStop ();
     }
     

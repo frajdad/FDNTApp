@@ -1,76 +1,76 @@
 <resources>
-    <string name="app_name">FDNT</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_desc">Menu</string>
-    <string name="action_settings">Ustawienia</string>
-    <string name="nav_header_subtitle">stypendysta@dzielo.pl</string>
-    <string name="nav_header_title">Nie zalogowany</string>
-    <string name="title_activity_logowanie">Sign in</string>
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
+	<string name="app_name">FDNT</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="nav_header_desc">Menu</string>
+	<string name="action_settings">Ustawienia</string>
+	<string name="nav_header_subtitle">stypendysta@dzielo.pl</string>
+	<string name="nav_header_title">Nie zalogowany</string>
+	<string name="title_activity_logowanie">Sign in</string>
+	<!-- Strings related to login -->
+	<string name="prompt_email">Email</string>
+	<string name="prompt_password">Password (optional)</string>
+	<string name="action_sign_in">Sign in or register</string>
+	<string name="action_sign_in_short">Sign in</string>
+	<string name="error_invalid_email">This email address is invalid</string>
+	<string name="error_invalid_password">This password is too short</string>
+	<string name="error_incorrect_password">This password is incorrect</string>
+	<string name="error_field_required">This field is required</string>
+	<string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="logowanie_przycisk">Zaloguj się</string>
-    <string name="logowanie_hasło">Hasło</string>
-    <string name="logowanie_gora">Logowanie</string>
-    <string name="zle_dane">Zły login lub hasło!</string>
-    <string name="title_activity_kalendarz">Kalendarz</string>
-    <string name="o_fundacji_gora">O Fundacji</string>
+	<string name="logowanie_przycisk">Zaloguj się</string>
+	<string name="logowanie_hasło">Hasło</string>
+	<string name="logowanie_gora">Logowanie</string>
+	<string name="zle_dane">Zły login lub hasło!</string>
+	<string name="title_activity_kalendarz">Kalendarz</string>
+	<string name="o_fundacji_gora">O Fundacji</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="header_kim_jestesmy">KIM JESTEŚMY?</string>
-    <string name="header_co_robimy">CO ROBIMY?</string>
-    <string name="header_gdzie_jestesmy">GDZIE JESTEŚMY?</string>
-    <string name="header_nasz_patron">NASZ PATRON</string>
-    <string name="header_jp_II">ŚW. JAN PAWEŁ II</string>
-    <string name="header_my_o_patronie">MY O PATRONIE</string>
-    <string name="header_dzien_papieski">DZIEŃ PAPIESKI</string>
-    <string name="header_modlitwa">MODLITWY</string>
-    <string name="header_fundacja">FUNDACJA</string>
-    <string name="header_biuro">BIURO</string>
-    <string name="header_zarzad">ZARZĄD</string>
-    <string name="header_dla_darczyncy">DLA DARCZYŃCY</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="header_kim_jestesmy">KIM JESTEŚMY?</string>
+	<string name="header_co_robimy">CO ROBIMY?</string>
+	<string name="header_gdzie_jestesmy">GDZIE JESTEŚMY?</string>
+	<string name="header_nasz_patron">NASZ PATRON</string>
+	<string name="header_jp_II">ŚW. JAN PAWEŁ II</string>
+	<string name="header_my_o_patronie">MY O PATRONIE</string>
+	<string name="header_dzien_papieski">DZIEŃ PAPIESKI</string>
+	<string name="header_modlitwa">MODLITWY</string>
+	<string name="header_fundacja">FUNDACJA</string>
+	<string name="header_biuro">BIURO</string>
+	<string name="header_zarzad">ZARZĄD</string>
+	<string name="header_dla_darczyncy">DLA DARCZYŃCY</string>
 
-    <string name="title_activity_ustawienia_ax">Ustawienia</string>
+	<string name="title_activity_ustawienia_ax">Ustawienia</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+	<!-- Preference Titles -->
+	<string name="messages_header">Messages</string>
+	<string name="sync_header">Sync</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+	<!-- Messages Preferences -->
+	<string name="signature_title">Your signature</string>
+	<string name="reply_title">Default reply action</string>
 
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+	<!-- Sync Preferences -->
+	<string name="sync_title">Sync email periodically</string>
+	<string name="attachment_title">Download incoming attachments</string>
+	<string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="title_activity_poczta">Poczta</string>
-    <string name="linia">linia</string>
+	<string name="attachment_summary_off">Only download attachments when manually requested</string>
+	<string name="title_activity_poczta">Poczta</string>
+	<string name="linia">linia</string>
 
 
-    <string name="corobimy_tekst">Głównym zadaniem i założeniem Fundacji jest wspieranie rozwoju naukowego zdolnej młodzieży pochodzącej z niezamożnych rodzin, z małych miast i terenów wiejskich, ale jej działanie nie ogranicza się jedynie do programu stypendialnego.</string>
-    <string name="kimjestesmy_tekst">Fundacja “Dzieło Nowego Tysiąclecia” obejmuje programem stypendialnym około 2000 uczniów i studentów z całej Polski, a także młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
+	<string name="corobimy_tekst">Głównym zadaniem i założeniem Fundacji jest wspieranie rozwoju naukowego zdolnej młodzieży pochodzącej z niezamożnych rodzin, z małych miast i terenów wiejskich, ale jej działanie nie ogranicza się jedynie do programu stypendialnego.</string>
+	<string name="kimjestesmy_tekst">Fundacja “Dzieło Nowego Tysiąclecia” obejmuje programem stypendialnym około 2000 uczniów i studentów z całej Polski, a także młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
 
 Na czele Rady Fundacji stoi kard. Kazimierz Nycz, a przewodniczącym Zarządu jest ks. Dariusz Kowalczyk. Siedziba znajduje się w Warszawie w Sekretariacie Konferencji Episkopatu Polski.
 
 W ciągu dziewiętnastu lat swojej działalności Fundacja objęła opieką 4000 młodych ludzi z całej Polski. Stypendyści z każdego zakątka kraju tworzą Żywy Pomnik Papieża Jana Pawła II.
 </string>
-    <string name="gdziejestesmy_tekst">Na początku swojego istnienia Fundacja “Dzieło Nowego Tysiąclecia” objęła opieką zdolną młodzież z 5 diecezji: przemyskiej, koszalińsko – kołobrzeskiej, drohiczyńskiej, ełckiej i radomskiej. Z roku na rok zwiększała się jednak liczba diecezji i stypendystów objętych programem stypendialnym. Dziś żywy pomnik budują młodzi ludzie z całej Polski. Stypendystów ze szkół podstawowych i średnich znaleźć można przede wszystkim w małych miejscowościach do 20 tys. mieszkańców. Natomiast studenci, skupieni w większych miastach, tworzą wspólnoty akademickie, w których działają i formują się duchowo. Fundacja obejmuje opieką również młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
+	<string name="gdziejestesmy_tekst">Na początku swojego istnienia Fundacja “Dzieło Nowego Tysiąclecia” objęła opieką zdolną młodzież z 5 diecezji: przemyskiej, koszalińsko – kołobrzeskiej, drohiczyńskiej, ełckiej i radomskiej. Z roku na rok zwiększała się jednak liczba diecezji i stypendystów objętych programem stypendialnym. Dziś żywy pomnik budują młodzi ludzie z całej Polski. Stypendystów ze szkół podstawowych i średnich znaleźć można przede wszystkim w małych miejscowościach do 20 tys. mieszkańców. Natomiast studenci, skupieni w większych miastach, tworzą wspólnoty akademickie, w których działają i formują się duchowo. Fundacja obejmuje opieką również młodzież polskiego pochodzenia z Brazylii, Argentyny, Mołdawii, Ukrainy, Rosji, Uzbekistanu i Kazachstanu.
     </string>
-    <string name="jpII_tekst">Fundacja “Dzieło Nowego Tysiąclecia” nazywana jest żywym pomnikiem św. Jana Pawła II, dlatego że stypendyści swoją postawą i stylem życia niosą dalej nauczanie Papieża Polaka i budują swoje życie w duchu wartości przez Niego głoszonych.
+	<string name="jpII_tekst">Fundacja “Dzieło Nowego Tysiąclecia” nazywana jest żywym pomnikiem św. Jana Pawła II, dlatego że stypendyści swoją postawą i stylem życia niosą dalej nauczanie Papieża Polaka i budują swoje życie w duchu wartości przez Niego głoszonych.
 
 Jan Paweł II wciąż jest bardzo ważną postacią dla Polaków, jednak niektórzy nie pamiętają Go już zbyt dobrze. Fundacja dba więc o to, by pamięć o Nim trwała i była przekazywana następnym pokoleniom.
 
@@ -78,56 +78,56 @@ Nasz patron uczy nas, że musimy stawiać sobie wysokie wymagania. Swoim życiem
 
 Żywy pomnik Jana Pawła II ma więc za zadanie umożliwić rozwój wielu młodym ludziom.  Wspólnotę budujemy na fundamencie wartości głoszonych przez naszego patrona, w ten sposób ucząc się, że człowiek nie żyje tylko dla siebie, ale przede wszystkim dla Boga i dla drugiego człowieka. Patronat św. Jana Pawła II jest więc patronatem miłości i miłosierdzia.
 </string>
-    <string name="myopatronie_tekst1">Jan Paweł II to droga życia. Od kiedy jestem w fundacji, zupełnie inaczej patrzę na swoją wiarę, na ludzi, którzy mnie otaczają. Zdecydowanie łatwiej podejmować decyzje, gdy się wie, że Ojciec nad nami czuwa. Móc nazywać się dzieckiem Jana Pawła II to wielki przywilej, ale też odpowiedzialność. Trzeba żyć tak, aby zawsze być godnym nazywać go swoim Ojcem. Wierzę, że to dzięki Janowi Pawłowi II mam teraz ogromną, żółtą rodzinę, która ma wielkie serce, podobne wartości i wiarę w lepsze jutro. Ojcu Świętemu zawdzięczam miłość, rodzinę, wiarę i miejsce, w którym teraz jestem. Można powiedzieć, że zawdzięczam mu to, kim jestem.
+	<string name="myopatronie_tekst1">Jan Paweł II to droga życia. Od kiedy jestem w fundacji, zupełnie inaczej patrzę na swoją wiarę, na ludzi, którzy mnie otaczają. Zdecydowanie łatwiej podejmować decyzje, gdy się wie, że Ojciec nad nami czuwa. Móc nazywać się dzieckiem Jana Pawła II to wielki przywilej, ale też odpowiedzialność. Trzeba żyć tak, aby zawsze być godnym nazywać go swoim Ojcem. Wierzę, że to dzięki Janowi Pawłowi II mam teraz ogromną, żółtą rodzinę, która ma wielkie serce, podobne wartości i wiarę w lepsze jutro. Ojcu Świętemu zawdzięczam miłość, rodzinę, wiarę i miejsce, w którym teraz jestem. Można powiedzieć, że zawdzięczam mu to, kim jestem.
 Magdalena Wlazło, stypendystka
 </string>
-    <string name="myopatronie_tekst2">Jan Paweł II jest dla mnie wzorem wytrwałości. Mimo swojej choroby trwał do końca w posłudze Bożej. Jest także wzorem wielkiej miłości. Miłość, jaką darzył Boga i Matkę Bożą, była niepojęta. Byłam też pełna podziwu, jak bardzo kochał Ojczyznę. To, jak za każdym razem wysiadając z samolotu, całował ziemię Polski, zawsze chwytało mnie za serce.
+	<string name="myopatronie_tekst2">Jan Paweł II jest dla mnie wzorem wytrwałości. Mimo swojej choroby trwał do końca w posłudze Bożej. Jest także wzorem wielkiej miłości. Miłość, jaką darzył Boga i Matkę Bożą, była niepojęta. Byłam też pełna podziwu, jak bardzo kochał Ojczyznę. To, jak za każdym razem wysiadając z samolotu, całował ziemię Polski, zawsze chwytało mnie za serce.
 
 Katarzyna Cieniuch, stypendystka</string>
-    <string name="myopatronie_tekst3">Jan Paweł II jest dla mnie przewodnikiem. Jego całe życie i dokonania dały mi ogromną motywację do działania i pomagania innym. Jego nauczanie jest dla mnie swoistym drogowskazem, który wyznacza właściwą ścieżkę wiary.
+	<string name="myopatronie_tekst3">Jan Paweł II jest dla mnie przewodnikiem. Jego całe życie i dokonania dały mi ogromną motywację do działania i pomagania innym. Jego nauczanie jest dla mnie swoistym drogowskazem, który wyznacza właściwą ścieżkę wiary.
 
 Krzysztof Babicki, stypendysta
 
 </string>
 
 
-    <string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
+	<string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
 </string>
-    <string name="loc_header">Adres:</string>
-    <string name="loc_text">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
-    <string name="tel">Telefon:</string>
-    <string name="tel_text">(22) 530 48 28</string>
-    <string name="email">E-mail:</string>
-    <string name="mail_text">dzielo@episkopat.pl</string>
-    <string name="nip_header">NIP:</string>
-    <string name="nip_text">527-23-16-033</string>
-    <string name="title_activity_poczta_main">PocztaMain</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="header_jak_pomoc">JAK MOŻESZ POMÓC?</string>
+	<string name="loc_header">Adres:</string>
+	<string name="loc_text">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
+	<string name="tel">Telefon:</string>
+	<string name="tel_text">(22) 530 48 28</string>
+	<string name="email">E-mail:</string>
+	<string name="mail_text">dzielo@episkopat.pl</string>
+	<string name="nip_header">NIP:</string>
+	<string name="nip_text">527-23-16-033</string>
+	<string name="title_activity_poczta_main">PocztaMain</string>
+	<string name="tab_text_1">Tab 1</string>
+	<string name="tab_text_2">Tab 2</string>
+	<string name="header_jak_pomoc">JAK MOŻESZ POMÓC?</string>
 
-    <string name="text_sms">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
-    <string name="text_wplac"></string>
-    <string name="text_pobierz">
+	<string name="text_sms">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
+	<string name="text_wplac"></string>
+	<string name="text_pobierz">
     </string>
-    <string name="text_przekaz"></string>
-    <string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
-    <string name="modl_sie_">MÓDL SIĘ ZA NAS!</string>
-    <string name="modl_sie_text">Potrzebujemy modlitwy naszych darczyńców i sympatyków by z dnia na dzień rozwijać się i nieść dalej nauczanie Ojca Świętego.</string>
-    <string name="wspieraj_nas_finansowo">WSPIERAJ NAS FINANSOWO!</string>
-    <string name="wspieraj_text">Tylko dzięki otrzymanym środkom jesteśmy w stanie zapewnić dalszą budowę żywego pomnika św. Jana Pawła II. Pieniądze można wpłacić za pomocą formularza dostępnego w aplikacji lub pobierając blankiet przelewu, zrealizować można go na poczcie lub w banku.</string>
-    <string name="przelew_tradycyjny">PRZELEW TRADYCYJNY</string>
-    <string name="przelew_text">Dane do przelewu:\nFundacja „Dzieło Nowego Tysiąclecia”\nSkwer Ks. Kard. Stefana Wyszyńskiego 6\n01–015 Warszawa\nNumer konta: 75 1240 2034 1111 0000 0306 8582</string>
-    <string name="przeka_1">PRZEKAŻ 1% PODATKU!</string>
-    <string name="przekaz_text">Program PIT umieszczamy każdego roku na naszej stronie.</string>
-    <string name="wyslij_sms">WYŚLIJ SMS!</string>
-    <string name="sms_text">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
-    <string name="header_regularny_darczynca">ZOSTAŃ REGULARNYM DARCZYŃCĄ!</string>
-    <string name="header_zbiorka">ZBIÓRKA NA TWOIM ŚLUBIE!</string>
-    <string name="regularny_darczynca_text">Regularne wpłaty dają nam możliwość lepszego zaplanowania wydatków i działań. Można nam pomóc poprzez stałe, np. comiesięczne wpłaty. Wystarczy złożyć w swoim banku stałe zlecenie przelewu określonej kwoty na rachunek Fundacji „Dzieło Nowego Tysiąclecia”. Zadeklarowana przez Państwa kwota może być dowolnej wysokości. </string>
-    <string name="zbiorka_text">Wystarczy zamiast zwyczajowych kwiatów poprosić gości weselnych o wsparcie programu stypendialnego. Można też na zaproszeniu na uroczystość zaślubin dopisać uprzejmie sformułowaną prośbę, aby goście zamiast kwiatów dla Państwa Młodych przynieśli potwierdzenie wpłaty na konto Fundacji „Dzieło Nowego Tysiąclecia”. Aby ułatwić zaproszonym sprawę, można dołączyć osobny kartonik i na nim dopisać dane rachunku bankowego Fundacji.
+	<string name="text_przekaz"></string>
+	<string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
+	<string name="modl_sie_">MÓDL SIĘ ZA NAS!</string>
+	<string name="modl_sie_text">Potrzebujemy modlitwy naszych darczyńców i sympatyków by z dnia na dzień rozwijać się i nieść dalej nauczanie Ojca Świętego.</string>
+	<string name="wspieraj_nas_finansowo">WSPIERAJ NAS FINANSOWO!</string>
+	<string name="wspieraj_text">Tylko dzięki otrzymanym środkom jesteśmy w stanie zapewnić dalszą budowę żywego pomnika św. Jana Pawła II. Pieniądze można wpłacić za pomocą formularza dostępnego w aplikacji lub pobierając blankiet przelewu, zrealizować można go na poczcie lub w banku.</string>
+	<string name="przelew_tradycyjny">PRZELEW TRADYCYJNY</string>
+	<string name="przelew_text">Dane do przelewu:\nFundacja „Dzieło Nowego Tysiąclecia”\nSkwer Ks. Kard. Stefana Wyszyńskiego 6\n01–015 Warszawa\nNumer konta: 75 1240 2034 1111 0000 0306 8582</string>
+	<string name="przeka_1">PRZEKAŻ 1% PODATKU!</string>
+	<string name="przekaz_text">Program PIT umieszczamy każdego roku na naszej stronie.</string>
+	<string name="wyslij_sms">WYŚLIJ SMS!</string>
+	<string name="sms_text">Wystarczy wysłać SMS o treści STYPENDIA pod numer 74 265. Koszt jednego SMS-a to 4,96 zł.</string>
+	<string name="header_regularny_darczynca">ZOSTAŃ REGULARNYM DARCZYŃCĄ!</string>
+	<string name="header_zbiorka">ZBIÓRKA NA TWOIM ŚLUBIE!</string>
+	<string name="regularny_darczynca_text">Regularne wpłaty dają nam możliwość lepszego zaplanowania wydatków i działań. Można nam pomóc poprzez stałe, np. comiesięczne wpłaty. Wystarczy złożyć w swoim banku stałe zlecenie przelewu określonej kwoty na rachunek Fundacji „Dzieło Nowego Tysiąclecia”. Zadeklarowana przez Państwa kwota może być dowolnej wysokości. </string>
+	<string name="zbiorka_text">Wystarczy zamiast zwyczajowych kwiatów poprosić gości weselnych o wsparcie programu stypendialnego. Można też na zaproszeniu na uroczystość zaślubin dopisać uprzejmie sformułowaną prośbę, aby goście zamiast kwiatów dla Państwa Młodych przynieśli potwierdzenie wpłaty na konto Fundacji „Dzieło Nowego Tysiąclecia”. Aby ułatwić zaproszonym sprawę, można dołączyć osobny kartonik i na nim dopisać dane rachunku bankowego Fundacji.
 Osoby zainteresowane zachęcamy do kontaktu pod adresem: darczyncy@dzielo.pl.
 </string>
-    <string name="zawierzenie_text">Boże, Ojcze miłosierny, który objawiłeś swoją miłość w Twoim Synu Jezusie Chrystusie i wylałeś ją na nas w Duchu Świętym, Pocieszycielu, Tobie zawierzamy dziś losy świata i każdego człowieka. Pochyl się nad nami grzesznymi, ulecz naszą słabość, przezwycięż wszelkie zło, pozwól wszystkim mieszkańcom ziemi doświadczyć Twojego miłosierdzia, aby w Tobie, trójjedyny Boże, zawsze odnajdywali źródło nadziei. Ojcze przedwieczny, dla bolesnej męki i zmartwychwstania Twojego Syna, miej miłosierdzie dla nas i całego świata! Amen.</string>
-    <string name="header_zawierzenie">Akt zawierzenia świata Miłosierdziu Bożemu</string>
+	<string name="zawierzenie_text">Boże, Ojcze miłosierny, który objawiłeś swoją miłość w Twoim Synu Jezusie Chrystusie i wylałeś ją na nas w Duchu Świętym, Pocieszycielu, Tobie zawierzamy dziś losy świata i każdego człowieka. Pochyl się nad nami grzesznymi, ulecz naszą słabość, przezwycięż wszelkie zło, pozwól wszystkim mieszkańcom ziemi doświadczyć Twojego miłosierdzia, aby w Tobie, trójjedyny Boże, zawsze odnajdywali źródło nadziei. Ojcze przedwieczny, dla bolesnej męki i zmartwychwstania Twojego Syna, miej miłosierdzie dla nas i całego świata! Amen.</string>
+	<string name="header_zawierzenie">Akt zawierzenia świata Miłosierdziu Bożemu</string>
 </resources>

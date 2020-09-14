@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center_horizontal"
+	android:orientation="vertical"
+	tools:context=".MainFrame">
+
+	<com.google.android.material.appbar.AppBarLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="0dp"
+		android:theme="@style/AppTheme.AppBarOverlay">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar_logging"
+			android:layout_width="match_parent"
+			android:layout_height="?attr/actionBarSize"
+			android:background="?attr/colorPrimary" />
+
+	</com.google.android.material.appbar.AppBarLayout>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="16dp">
+
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<AutoCompleteTextView
+				android:id="@+id/mailEmail"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="Samo się uzupuełnia"
+				android:inputType="none"
+				android:maxLines="1"
+				android:text=""
+				android:singleLine="true"
+				/>
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<EditText
+				android:id="@+id/mail_password"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="Hasło do poczty"
+				android:imeActionId="6"
+				android:imeActionLabel="@string/action_sign_in_short"
+				android:imeOptions="actionUnspecified"
+				android:inputType="textPassword"
+				android:maxLines="1"
+				android:singleLine="true"
+				/>
+
+		</com.google.android.material.textfield.TextInputLayout>
+
+
+		<Button
+			android:id="@+id/mail_sign_in_button"
+			style="?android:textAppearanceSmall"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:onClick="onLogInMailPressed"
+			android:text="@string/logowanie_przycisk"
+			android:textStyle="bold"
+			android:clickable="false"/>
+
+	</LinearLayout>
+</LinearLayout>
