@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import fdnt.app.android.R;
-import fdnt.app.android.utils.JsonConvert;
 
 /**
  * Class contains static methods which are shared, by package.
@@ -44,8 +43,10 @@ public class RecViewUtil {
         InputStream stream = context.getResources().openRawResource (R.raw.staff);
         Scanner scanner = new Scanner(stream);
         String json = "";
-        while(scanner.hasNext ()) json += scanner.next ();
-        //Person[] temp = new Gson().fromJson (json, Person[].class);
+        while(scanner.hasNext ())  {
+            json += scanner.nextLine();
+        }
+
         Person[] temp = new Person[0];
         try {
             temp = new Gson().fromJson(json, Person[].class);
@@ -53,7 +54,6 @@ public class RecViewUtil {
             e.printStackTrace ();
         }
         for(Person p : temp) {
-            //p.role = p.role.replace ('$', ' ');
             staff.add (p);
         }
         scanner.close ();
@@ -71,14 +71,17 @@ public class RecViewUtil {
         String json = "";
 
         while(scanner.hasNext()) {
-            json += scanner.next();
+            json += scanner.nextLine();
         }
 
-        Article[] temp = new Gson().fromJson(json, Article[].class);
+        Article[] temp = new Article[0];
+        try {
+            temp = new Gson().fromJson(json, Article[].class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         for(Article a : temp) {
-            a.header = a.header.replace('$',' ');
-            a.content = a.content.replace('$',' ');
             arr.add(a);
         }
         scanner.close();
@@ -91,4 +94,16 @@ public class RecViewUtil {
         }
         return arr;
     }
+
+    /*public static <T> ArrayList<T> deserializeJSONFile(Context context, int path) {
+        InputStream stream = context.getResources().openRawResource(path);
+        Scanner scanner = new Scanner(stream);
+        String json = "";
+
+        while(scanner.hasNext()) {
+            json += scanner.nextLine();
+        }
+
+        T[] temp = new T[0];
+    }*/
 }
