@@ -1,8 +1,5 @@
 package fdnt.app.android.utils;
 
-//chcę tu trzymać jakieś globalne dane
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

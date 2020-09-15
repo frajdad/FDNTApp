@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
@@ -35,6 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
@@ -128,7 +131,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
-
+        System.gc ();
         displayNotifications();
     }
 
@@ -230,16 +233,14 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     //Wczytujemy z pamięci telefonu i ładujemy zakładki do jakich mamy dostęp
     private void adjustTabs() {
         Menu nav_Menu = navigationView.getMenu();
-
         Set<String> items = drawerNames.getAll().keySet();
+        if (nav_Menu.findItem(Integer.parseInt(items.iterator ().next ())) != null) return;
         for(String item: items) {
-            int order = Integer.parseInt(item);
-            if (nav_Menu.findItem(order) == null) {
-                String name = drawerNames.getString(item, "!");
-                MenuItem newItem = nav_Menu.add(R.id.opcje_dla_zalogowanych, order, order, name);
-                newItem.setIcon(getIcon(drawerIcons.getInt(name, 0)));
-                newItem.setCheckable(true); //Chcemy aby zakładka się zaznaczała po pliknięciu
-            }
+            int order = Integer.parseInt (item);
+            String name = drawerNames.getString(item, "!");
+            MenuItem newItem = nav_Menu.add(R.id.opcje_dla_zalogowanych, order, order, name);
+            newItem.setIcon(getIcon(drawerIcons.getInt(name, 0)));
+            newItem.setCheckable(true); //Chcemy aby zakładka się zaznaczała po pliknięciu
         }
     }
 
@@ -372,15 +373,18 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         onKontaktVisibilityChange(false, menu);
     }
 
-    void openTab(Fragment newInstance, Bundle tabInfo) {
+    void openTab(final Fragment newInstance, Bundle tabInfo) {
         newInstance.setArguments(tabInfo);
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, newInstance)
-                .commitNow();
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        getSupportFragmentManager ().beginTransaction()
+                .replace(R.id.container, newInstance).commitNow ();
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        new Handler().postDelayed (new Runnable () {
+            @Override
+            public void run () {
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        }, 100);
+        
     }
 
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
