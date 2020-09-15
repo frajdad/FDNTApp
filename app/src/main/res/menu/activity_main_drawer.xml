@@ -82,7 +82,6 @@
                 android:visible="false" />
             <item
                 android:id="@+id/nav_dzielo_tv"
-                android:checkable="true"
                 android:icon="@mipmap/materialy_prasowe"
                 android:title="Dzieło TV" />
 
@@ -108,7 +107,6 @@
                 android:visible="false" />
             <item
                 android:id="@+id/nav_admin"
-                android:checkable="true"
                 android:title="    Administracja"
                 android:visible="false" />
             <item

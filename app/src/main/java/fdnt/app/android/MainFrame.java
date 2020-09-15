@@ -1,6 +1,5 @@
 package fdnt.app.android;
 
-import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -25,7 +24,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
@@ -37,13 +35,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
 
 import javax.mail.MessagingException;
 
+import fdnt.app.android.post.MailLogging;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
 import fdnt.app.android.ui.main.CoRobimy;
@@ -62,7 +60,6 @@ import fdnt.app.android.ui.main.MyOPatronie;
 import fdnt.app.android.ui.main.WebTab;
 import fdnt.app.android.ui.main.recview.RecViewUtil;
 import fdnt.app.android.utils.GlobalUtil;
-import fdnt.app.android.post.MailLogging;
 
 public class MainFrame extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -355,10 +352,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         menu.findItem(R.id.nav_pomoz).setVisible(state);
     }
 
-    void onMaterialyPrasoweVisibilityChange(boolean state, Menu menu) {
-        menu.findItem(R.id.nav_dzielo_tv).setVisible(state);
-    }
-
     void onKontaktVisibilityChange(boolean state, Menu menu) {
         menu.findItem(R.id.nav_fundacja).setVisible(state);
         menu.findItem(R.id.nav_biuro).setVisible(state);
@@ -369,7 +362,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     void hideTabs(Menu menu) {
         onOFundacjiVisibilityChange(false, menu);
         onNaszPatronVisibilityChange(false, menu);
-        onMaterialyPrasoweVisibilityChange(false, menu);
         onKontaktVisibilityChange(false, menu);
     }
 
