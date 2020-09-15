@@ -231,6 +231,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     private void adjustTabs() {
         Menu nav_Menu = navigationView.getMenu();
         Set<String> items = drawerNames.getAll().keySet();
+        if(items == null || items.size() == 0) return;
         if (nav_Menu.findItem(Integer.parseInt(items.iterator ().next ())) != null) return;
         for(String item: items) {
             int order = Integer.parseInt (item);
