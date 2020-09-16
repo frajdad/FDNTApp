@@ -367,14 +367,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
 
     void openTab(final Fragment newInstance, Bundle tabInfo) {
-        Fragment temp = getSupportFragmentManager ().getFragments ().get (0);
-        if(temp.getClass () != newInstance.getClass ()) {
-            newInstance.setArguments (tabInfo);
-            getSupportFragmentManager ().beginTransaction ()
-                    .replace (R.id.container, newInstance).commitNow ();
-        }else {
-            ((WebTab) temp).loadTab(tabInfo.getString("adress"));
-        }
+        newInstance.setArguments (tabInfo);
+        getSupportFragmentManager ().beginTransaction ()
+                .replace (R.id.container, newInstance).commitNow ();
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         new Handler().postDelayed (new Runnable () {
             @Override

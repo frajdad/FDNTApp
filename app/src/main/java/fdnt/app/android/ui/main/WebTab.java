@@ -28,10 +28,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
     private NetworkChangeReceiver networkChangeReceiver;
     private String lastUrl;
     private static WebTab instance;
-    public static WebTab newInstance() {
-        if(instance == null) instance = new WebTab ();
-        return instance;
-    }
+    public static WebTab newInstance() { return new WebTab ();}
     private int counter = 0;
 
     @Nullable
