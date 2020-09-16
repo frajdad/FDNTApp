@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -26,8 +27,10 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
     private WebView myWebView;
     private NetworkChangeReceiver networkChangeReceiver;
     private String lastUrl;
+    private static WebTab instance;
     public static WebTab newInstance() {
-        return new WebTab();
+        if(instance == null) instance = new WebTab ();
+        return instance;
     }
     private int counter = 0;
 
@@ -39,7 +42,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
                 IntentFilter ("android.net.conn.CONNECTIVITY_CHANGE");
     
         networkChangeReceiver = new NetworkChangeReceiver();
-    
+        CookieSyncManager.createInstance(getContext ());
         getActivity ().registerReceiver(networkChangeReceiver, intentFilter);
     
         networkChangeReceiver.setConnectionChangeCallback(this);
@@ -47,7 +50,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
         return view;
     }
 
-    private void loadTab(String adress) {
+    public void loadTab(String adress) {
         lastUrl = adress;
         myWebView.loadUrl(adress);
     }
@@ -107,7 +110,7 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-
+            CookieSyncManager.getInstance().sync();
             if (url.contains("dzielo.pl")) {
                 myWebView.loadUrl(
                         "javascript:(function() {document.getElementById('header').style.display = 'none'; " +
@@ -147,6 +150,5 @@ public class WebTab extends Fragment implements NetworkChangeReceiver.Connection
         }
         super.onStop ();
     }
-    
     
 }
