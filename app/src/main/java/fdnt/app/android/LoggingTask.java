@@ -2,9 +2,7 @@ package fdnt.app.android;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,9 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.concurrent.Semaphore;
 
-import javax.mail.MessagingException;
-
-import fdnt.app.android.post.MailLogging;
 import fdnt.app.android.utils.GlobalUtil;
 
 //Class is extending AsyncTask because this class is going to perform a networking operation
@@ -100,6 +95,7 @@ public class LoggingTask extends AsyncTask<Void,Void,Void> {
 
     private void reset() {
         Intent intent = new Intent(context, MainFrame.class);
+        intent.putExtra("post_log", "log");
         context.startActivity(intent);
         GlobalUtil.this_activity.finish();
         context.finish();

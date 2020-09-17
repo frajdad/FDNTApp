@@ -97,10 +97,20 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         } else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
         }
+
         SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
-        if (data.getString("pass", "").equals(""))  {
+        if (data.getString("pass", "").equals("")) {
             nav_Menu.findItem(R.id.nav_post).setVisible(false);
+
+            if(getIntent().getExtras() != null && !getIntent().getExtras().getString("post_log", "").equals("")) {
+                // Przenosimy do logowania do poczty
+                navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
+                Fragment newInstance = MailLogIn.newInstance();
+                setTitle("Logowanie do poczty");
+                openTab(newInstance, new Bundle());
+            }
         }
+
 
    /*     if (PreferenceManager
                 .getDefaultSharedPreferences(this)
@@ -173,23 +183,25 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
     private void displayNotifications() {
         try {
-            final String tekst = (String) getIntent().getExtras().get("value");
+            final String tekst = (String) getIntent().getExtras().getString("value", "");
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(Html.fromHtml("<i>" + tekst + "</i>"));
+            if (!tekst.equals("")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(Html.fromHtml("<i>" + tekst + "</i>"));
 
-            builder.setNeutralButton("KOPIUJ", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    ClipData clip = ClipData.newPlainText("fdnt-powiadomienie", tekst);
-                    clipboard.setPrimaryClip(clip);
-                    Toast.makeText(GlobalUtil.this_activity, "Skopiowano!", Toast.LENGTH_SHORT).show();
-                }
-            });
+                builder.setNeutralButton("KOPIUJ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("fdnt-powiadomienie", tekst);
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(GlobalUtil.this_activity, "Skopiowano!", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            AlertDialog dialog = builder.create();
-            dialog.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
         }
         catch (NullPointerException e) {
         }
@@ -566,7 +578,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
     }
     
     public void onLogInMailPressed (View view) {
-        ((EditText)findViewById (R.id.mailEmail)).setText ("Poczta");
         final String password = ((EditText)findViewById (R.id.mail_password)).getText ().toString ();
         final String email = GlobalUtil.userEmail ();
         final boolean[] success = {true};
@@ -608,7 +619,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 tabInfo.putString("adress", "file:///android_asset/offline.html");
             }
             openTab(newInstance, tabInfo);
-        } else ((EditText)findViewById (R.id.mail_password)).setText ("");
+        }
+        else {
+            ((EditText) findViewById(R.id.mail_password)).setText("");
+            Toast.makeText(this, "Złe hasło!", Toast.LENGTH_LONG).show();
+        }
     }
     
 }

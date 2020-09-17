@@ -1,13 +1,6 @@
 package fdnt.app.android.ui.main;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.preference.PreferenceManager;
-
-import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -15,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
 import fdnt.app.android.R;
-import fdnt.app.android.utils.GlobalUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +44,6 @@ public class MailLogIn extends Fragment {
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated (savedInstanceState);
-		((EditText) getActivity ().findViewById (R.id.mailEmail)).setText ("Poczta");
 		TextWatcher textWatcher = new TextWatcher () {
 			@Override
 			public void beforeTextChanged (CharSequence s, int start, int count, int after) {

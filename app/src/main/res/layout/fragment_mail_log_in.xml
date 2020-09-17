@@ -6,21 +6,7 @@
 	android:gravity="center_horizontal"
 	android:orientation="vertical"
 	tools:context=".MainFrame">
-
-	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:padding="0dp"
-		android:theme="@style/AppTheme.AppBarOverlay">
-
-		<androidx.appcompat.widget.Toolbar
-			android:id="@+id/toolbar_logging"
-			android:layout_width="match_parent"
-			android:layout_height="?attr/actionBarSize"
-			android:background="?attr/colorPrimary" />
-
-	</com.google.android.material.appbar.AppBarLayout>
-
+	
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
@@ -28,22 +14,14 @@
 		android:padding="16dp">
 
 
-		<com.google.android.material.textfield.TextInputLayout
+		<TextView
+			android:id="@+id/textView"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
-
-			<AutoCompleteTextView
-				android:id="@+id/mailEmail"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:hint="Samo się uzupuełnia"
-				android:inputType="none"
-				android:maxLines="1"
-				android:text=""
-				android:singleLine="true"
-				/>
-
-		</com.google.android.material.textfield.TextInputLayout>
+			android:layout_height="wrap_content"
+			android:text="Jeśli chcesz uzyskać łatwiejszy dostęp do poczty w domenie dzielo.pl, wpisz poniżej hasło do swojej skrzynki. W przeciwnym przypadku możesz  przejść dalej klikając na wybraną zakładkę w menu."
+			android:textColor="#000000"
+			android:layout_marginBottom="10dp"
+			android:textSize="17sp" />
 
 		<com.google.android.material.textfield.TextInputLayout
 			android:layout_width="match_parent"
@@ -53,14 +31,13 @@
 				android:id="@+id/mail_password"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:hint="Hasło do poczty"
+				android:hint="Hasło poczty"
 				android:imeActionId="6"
 				android:imeActionLabel="@string/action_sign_in_short"
 				android:imeOptions="actionUnspecified"
 				android:inputType="textPassword"
 				android:maxLines="1"
-				android:singleLine="true"
-				/>
+				android:singleLine="true" />
 
 		</com.google.android.material.textfield.TextInputLayout>
 
@@ -77,4 +54,5 @@
 			android:clickable="false"/>
 
 	</LinearLayout>
+
 </LinearLayout>
