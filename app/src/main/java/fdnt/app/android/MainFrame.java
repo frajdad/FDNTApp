@@ -56,7 +56,7 @@ import fdnt.app.android.ui.main.KontaktFundacja;
 import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.MailLogIn;
 import fdnt.app.android.ui.main.Modlitwy;
-import fdnt.app.android.ui.main.MyOPatronie;
+import fdnt.app.android.ui.main.AboutPatron;
 import fdnt.app.android.ui.main.WebTab;
 import fdnt.app.android.ui.main.recview.RecViewUtil;
 import fdnt.app.android.utils.GlobalUtil;
@@ -465,7 +465,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_my_o_patronie:
-                    newInstance = MyOPatronie.newInstance();
+                    newInstance = AboutPatron.newInstance();
                     setTitle("Nasz Patron");
                     openTab(newInstance, tabInfo);
                     break;
