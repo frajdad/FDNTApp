@@ -1,11 +1,13 @@
 package fdnt.app.android.ui.main;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -80,5 +82,15 @@ public class MailLogIn extends Fragment {
 	                          Bundle savedInstanceState) {
 		return inflater.inflate (R.layout.fragment_mail_log_in, container, false);
 	}
-	
+
+	@Override
+	public void onDestroyView() {
+		// Chowamy klawiaturę
+		InputMethodManager inputMethodManager =
+				(InputMethodManager) getActivity().getSystemService(
+						Activity.INPUT_METHOD_SERVICE);
+		inputMethodManager.hideSoftInputFromWindow(
+				getActivity().getCurrentFocus().getWindowToken(), 0);
+		super.onDestroyView();
+	}
 }

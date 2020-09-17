@@ -94,21 +94,22 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         Menu nav_Menu = navigationView.getMenu();
         if (GlobalUtil.ifLogged()) {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
+
+            //
+            SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
+            if (data.getString("pass", "").equals("")) {
+                nav_Menu.findItem(R.id.nav_post).setVisible(false);
+
+                if(getIntent().getExtras() != null && !getIntent().getExtras().getString("post_log", "").equals("")) {
+                    // Przenosimy do logowania do poczty
+                    navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
+                    Fragment newInstance = MailLogIn.newInstance();
+                    setTitle("Logowanie do poczty");
+                    openTab(newInstance, new Bundle());
+                }
+            }
         } else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
-        }
-
-        SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
-        if (data.getString("pass", "").equals("")) {
-            nav_Menu.findItem(R.id.nav_post).setVisible(false);
-
-            if(getIntent().getExtras() != null && !getIntent().getExtras().getString("post_log", "").equals("")) {
-                // Przenosimy do logowania do poczty
-                navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
-                Fragment newInstance = MailLogIn.newInstance();
-                setTitle("Logowanie do poczty");
-                openTab(newInstance, new Bundle());
-            }
         }
 
 
@@ -140,6 +141,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
         System.gc ();
         displayNotifications();
+
+
+
     }
 
     private void manageMailLogInButtonVisibility() {
