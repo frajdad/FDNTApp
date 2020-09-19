@@ -30,7 +30,7 @@ public class AboutPatron extends Fragment {
         );
         binding.aboutPatronRecyclerView.setAdapter(articleAdapter);
         return binding.getRoot();
-        //comment
+
     }
 
     @Override

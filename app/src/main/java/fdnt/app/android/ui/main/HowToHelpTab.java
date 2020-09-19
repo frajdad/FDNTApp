@@ -7,9 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import fdnt.app.android.R;
+import fdnt.app.android.databinding.HowtohelpFragmentBinding;
+import fdnt.app.android.ui.main.recview.ArticleAdapter;
+import fdnt.app.android.ui.main.recview.RecViewUtil;
 
 public class HowToHelpTab extends Fragment {
     public static HowToHelpTab newInstance() {
@@ -19,7 +23,12 @@ public class HowToHelpTab extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.howtohelp_fragment, container, false);
+        HowtohelpFragmentBinding binding = DataBindingUtil.inflate(inflater, R.layout.howtohelp_fragment, container,false);
+        ArticleAdapter articleAdapter = new ArticleAdapter(
+                RecViewUtil.deserializeArticleJSON(binding.getRoot().getContext(), R.raw.how_to_help)
+        );
+        binding.howToHelpRecyclerView.setAdapter(articleAdapter);
+        return binding.getRoot();
     }
 
     @Override
