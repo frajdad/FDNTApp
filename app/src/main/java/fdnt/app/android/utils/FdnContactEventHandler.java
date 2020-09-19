@@ -1,4 +1,4 @@
-package fdnt.app.android.ui.main;
+package fdnt.app.android.utils;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;

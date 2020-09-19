@@ -5,14 +5,13 @@
     <data>
         <variable
             name="handler"
-            type="fdnt.app.android.ui.main.FdnContactEventHandler" />
+            type="fdnt.app.android.utils.FdnContactEventHandler" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oFundacji"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainFrame">
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelinetop"
@@ -35,18 +34,25 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.95" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelinemiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.81" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineicons"
+        android:id="@+id/guideline_vertical_middle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinetopminus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.19" />
 
         <TextView
@@ -72,176 +78,103 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@+id/header_fundacja" />
-
-
-        <ImageView
-            android:id="@+id/loc_icon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/lok"
-            app:layout_constraintBottom_toTopOf="@+id/tel_icon"
-            app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-            app:layout_constraintHeight_percent="0.14"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/pasekill"
-            app:layout_constraintWidth_percent="0.14"
-            android:onClick="@{handler::showFdnCoords}"/>
-
-        <ImageView
-            android:id="@+id/tel_icon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/tel"
-            app:layout_constraintBottom_toTopOf="@+id/mail_icon"
-            app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-            app:layout_constraintHeight_percent="0.14"
-
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/loc_icon"
-            app:layout_constraintWidth_percent="0.14"
-            android:onClick="@{handler::callToFdn}"/>
-
-        <ImageView
-            android:id="@+id/mail_icon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/mail"
-            app:layout_constraintBottom_toTopOf="@+id/nip_icon"
-            app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-            app:layout_constraintHeight_percent="0.14"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/tel_icon"
-            app:layout_constraintWidth_percent="0.14"
-            android:onClick="@{handler::mailToFdn}"/>
-
-        <ImageView
-            android:id="@+id/nip_icon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@drawable/nip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/guidelineicons"
-            app:layout_constraintHeight_percent="0.14"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@id/guidelineleft"
-            app:layout_constraintTop_toBottomOf="@+id/mail_icon"
-            app:layout_constraintWidth_percent="0.14"
-            android:onClick="@{handler::copyFdnNIP}"/>
-
         <TextView
             android:id="@+id/loc_header"
+            android:textSize="20sp"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:onClick="@{handler::showFdnCoords}"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            app:layout_constraintTop_toBottomOf="@id/guidelinetopminus"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
             android:text="@string/loc_header"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.03"
-            app:layout_constraintStart_toEndOf="@+id/loc_icon"
-            app:layout_constraintTop_toTopOf="@+id/loc_icon"
-            app:layout_constraintWidth_percent="0.30" />
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            android:onClick="@{handler::showFdnCoords}"/>
 
-        <TextView
-            android:id="@+id/loc_text"
+        <ImageView
+            android:id="@+id/loc_img"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="9dp"
-            android:text="@string/loc_text"
-            android:textColor="@color/colorSubTitle"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.09"
-            app:layout_constraintStart_toEndOf="@+id/loc_icon"
-            app:layout_constraintTop_toBottomOf="@+id/loc_header"
-            app:layout_constraintWidth_percent="0.60"
-            android:onClick="@{handler::showFdnCoords}"/>
+            android:onClick="@{handler::showFdnCoords}"
+            android:src="@drawable/location"
+            app:layout_constraintEnd_toEndOf="@+id/loc_header"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="@+id/loc_header"
+            app:layout_constraintTop_toBottomOf="@id/loc_header"
+            app:layout_constraintWidth_percent="0.2" />
 
         <TextView
             android:id="@+id/tel_header"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:text="@string/tel"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.03"
-            app:layout_constraintStart_toEndOf="@+id/tel_icon"
-            app:layout_constraintTop_toTopOf="@+id/tel_icon"
-            app:layout_constraintWidth_percent="0.30"
-            android:onClick="@{handler::callToFdn}"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="@{handler::callToFdn}"
+            android:text="@string/tel_header"
+            android:textColor="@color/colorTitle"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintStart_toStartOf="@id/guidelineleft"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_middle" />
 
-        <TextView
-            android:id="@+id/tel_text"
+        <ImageView
+            android:id="@+id/tel_img"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="11dp"
             android:onClick="@{handler::callToFdn}"
-            android:text="@string/tel_text"
-            android:textColor="@color/colorSubTitle"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.04"
-            app:layout_constraintStart_toEndOf="@+id/tel_icon"
-            app:layout_constraintTop_toBottomOf="@+id/tel_header"
-            app:layout_constraintWidth_percent="0.25" />
+            android:src="@drawable/phone"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="@+id/tel_header"
+            app:layout_constraintTop_toBottomOf="@id/tel_header"
+            app:layout_constraintEnd_toEndOf="@+id/tel_header"
+            app:layout_constraintWidth_percent="0.17" />
 
         <TextView
             android:id="@+id/mail_header"
+            android:textSize="20sp"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:text="@string/email"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.03"
-            app:layout_constraintStart_toEndOf="@+id/mail_icon"
-            app:layout_constraintTop_toTopOf="@+id/mail_icon"
-            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            app:layout_constraintTop_toBottomOf="@id/guidelinetopminus"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_middle"
+            android:text="@string/mail_header"
+            app:layout_constraintEnd_toEndOf="@id/guidelineright"
             android:onClick="@{handler::mailToFdn}"/>
 
-        <TextView
-            android:id="@+id/mail_text"
+        <ImageView
+            android:id="@+id/mail_img"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="11dp"
             android:onClick="@{handler::mailToFdn}"
-            android:text="@string/mail_text"
-            android:textColor="@color/colorSubTitle"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.035"
-            app:layout_constraintStart_toEndOf="@+id/mail_icon"
-            app:layout_constraintTop_toBottomOf="@+id/mail_header"
-            app:layout_constraintWidth_percent="0.35" />
-
+            android:src="@drawable/mail"
+            app:layout_constraintEnd_toEndOf="@+id/mail_header"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="@+id/mail_header"
+            app:layout_constraintTop_toBottomOf="@id/mail_header"
+            app:layout_constraintWidth_percent="0.19" />
         <TextView
             android:id="@+id/nip_header"
+            android:textSize="20sp"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="36dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/colorTitle"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_middle"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_middle"
             android:text="@string/nip_header"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.03"
-            app:layout_constraintStart_toEndOf="@+id/nip_icon"
-            app:layout_constraintTop_toTopOf="@+id/nip_icon"
-            app:layout_constraintWidth_percent="0.30"
+            app:layout_constraintEnd_toEndOf="@id/guidelineright"
             android:onClick="@{handler::copyFdnNIP}"/>
 
-        <TextView
-            android:id="@+id/nip_text"
+        <ImageView
+            android:id="@+id/nip_img"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/nip_text"
-            android:textColor="@color/colorSubTitle"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintHeight_percent="0.04"
-            app:layout_constraintStart_toEndOf="@+id/nip_icon"
-            app:layout_constraintTop_toBottomOf="@+id/nip_header"
-            app:layout_constraintWidth_percent="0.25"
-            android:onClick="@{handler::copyFdnNIP}"/>
-
-
+            android:onClick="@{handler::copyFdnNIP}"
+            android:src="@drawable/nip"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="@+id/nip_header"
+            app:layout_constraintTop_toBottomOf="@id/nip_header"
+            app:layout_constraintEnd_toEndOf="@+id/nip_header"
+            app:layout_constraintWidth_percent="0.20" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

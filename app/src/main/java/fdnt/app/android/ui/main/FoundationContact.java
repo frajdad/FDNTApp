@@ -12,11 +12,12 @@ import androidx.fragment.app.Fragment;
 
 import fdnt.app.android.R;
 import fdnt.app.android.databinding.FoundationContactFragmentBinding;
+import fdnt.app.android.utils.FdnContactEventHandler;
 
-public class KontaktFundacja extends Fragment {
+public class FoundationContact extends Fragment {
 
-    public static KontaktFundacja newInstance() {
-        return new KontaktFundacja();
+    public static FoundationContact newInstance() {
+        return new FoundationContact();
     }
 
     @Override

@@ -93,13 +93,13 @@ Krzysztof Babicki, stypendysta
 
 	<string name="dzienpapieski_tekst">To święto naszej Fundacji i zarazem szczególny dzień, w trakcie którego sięgamy myślą do nauczania św. Jana Pawła II. Dzień Papieski obchodzony jest każdego roku, w niedzielę poprzedzającą wybór Karola Wojtyły na Stolicę Piotrową. Obchodom towarzyszą organizowane w całej Polsce wydarzenia, takie jak miasteczka rodzinne, happeningi i koncerty. Tego dnia odbywa się także zbiórka pieniędzy na fundusz stypendialny.
 </string>
-	<string name="loc_header">Adres:</string>
+	<string name="loc_header">Lokalizacja</string>
 	<string name="loc_text">Fundacja Dzieło Nowego Tysiąclecia Skwer ks. kard. Stefana Wyszyńskiego 601-015 Warszawa</string>
 	<string name="tel">Telefon:</string>
 	<string name="tel_text">(22) 530 48 28</string>
 	<string name="email">E-mail:</string>
 	<string name="mail_text">dzielo@episkopat.pl</string>
-	<string name="nip_header">NIP:</string>
+	<string name="nip_header">Kopiuj</string>
 	<string name="nip_text">527-23-16-033</string>
 	<string name="title_activity_poczta_main">PocztaMain</string>
 	<string name="tab_text_1">Tab 1</string>
@@ -114,4 +114,6 @@ Krzysztof Babicki, stypendysta
 	<string name="header_tupomoz">TU MOŻESZ POMÓC!</string>
 	<string name="zawierzenie_text">Boże, Ojcze miłosierny, który objawiłeś swoją miłość w Twoim Synu Jezusie Chrystusie i wylałeś ją na nas w Duchu Świętym, Pocieszycielu, Tobie zawierzamy dziś losy świata i każdego człowieka. Pochyl się nad nami grzesznymi, ulecz naszą słabość, przezwycięż wszelkie zło, pozwól wszystkim mieszkańcom ziemi doświadczyć Twojego miłosierdzia, aby w Tobie, trójjedyny Boże, zawsze odnajdywali źródło nadziei. Ojcze przedwieczny, dla bolesnej męki i zmartwychwstania Twojego Syna, miej miłosierdzie dla nas i całego świata! Amen.</string>
 	<string name="header_zawierzenie">Akt zawierzenia świata Miłosierdziu Bożemu</string>
+    <string name="tel_header">Zadzwoń</string>
+    <string name="mail_header">Napisz</string>
 </resources>

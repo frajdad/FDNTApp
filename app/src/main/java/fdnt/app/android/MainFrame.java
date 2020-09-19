@@ -52,7 +52,7 @@ import fdnt.app.android.ui.main.HowToHelpTab;
 import fdnt.app.android.ui.main.JanPawelIi;
 import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
-import fdnt.app.android.ui.main.KontaktFundacja;
+import fdnt.app.android.ui.main.FoundationContact;
 import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.MailLogIn;
 import fdnt.app.android.ui.main.Modlitwy;
@@ -517,7 +517,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                     }
                     break;
                 case R.id.nav_fundacja:
-                    newInstance = KontaktFundacja.newInstance();
+                    newInstance = FoundationContact.newInstance();
                     setTitle("Kontakt");
                     openTab(newInstance, tabInfo);
                     break;
