@@ -380,6 +380,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         onOFundacjiVisibilityChange(false, menu);
         onNaszPatronVisibilityChange(false, menu);
         onKontaktVisibilityChange(false, menu);
+        onDlaDarczyncyVisibilityChange(false, menu);
     }
 
     void openTab(final Fragment newInstance, Bundle tabInfo) {
@@ -482,20 +483,20 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
                 case R.id.nav_dla_darczyncy:
                     hideTabs(menu);
-                    if (chosenTab != 2) {
+                    if (chosenTab != 3) {
                         onDlaDarczyncyVisibilityChange(true, menu);
-                        chosenTab = 2;
+                        chosenTab = 3;
                     } else {
                         chosenTab = 0;
                     }
                     break;
                 case R.id.nav_sposoby:
-                    newInstance = new HowToHelpTab();
+                    newInstance = HowToHelpTab.newInstance();
                     setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;
                 case R.id.nav_pomoz:
-                    newInstance = new HelpNowTab();
+                    newInstance = HelpNowTab.newInstance();
                     setTitle("Dla Darczyńcy");
                     openTab(newInstance, tabInfo);
                     break;
