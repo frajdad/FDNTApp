@@ -1,6 +1,5 @@
 package fdnt.app.android.post;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -78,7 +77,7 @@ public class AsyncMailLoad {
         }
     }
 
-    public static void getEmails(String box, int number, Activity context)
+    public static Message getEmails(String box, int number, Context context)
     {
         try {
             SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
@@ -108,6 +107,8 @@ public class AsyncMailLoad {
                         formatDate(message.getSentDate())));
             }
 
+            return messages[messages.length-1];
+
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
         } catch (MessagingException e) {
@@ -115,6 +116,8 @@ public class AsyncMailLoad {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
 

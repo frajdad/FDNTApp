@@ -1,5 +1,7 @@
 package fdnt.app.android;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -41,22 +43,23 @@ import java.util.concurrent.Semaphore;
 
 import javax.mail.MessagingException;
 
+import fdnt.app.android.notifications.AlarmReceiver;
 import fdnt.app.android.post.MailLogging;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
+import fdnt.app.android.ui.main.AboutPatron;
 import fdnt.app.android.ui.main.CoRobimy;
 import fdnt.app.android.ui.main.DzienPapieski;
+import fdnt.app.android.ui.main.FoundationContact;
 import fdnt.app.android.ui.main.GdzieJestesmy;
 import fdnt.app.android.ui.main.HelpNowTab;
 import fdnt.app.android.ui.main.HowToHelpTab;
 import fdnt.app.android.ui.main.JanPawelIi;
 import fdnt.app.android.ui.main.KimJestemy;
 import fdnt.app.android.ui.main.KontaktBiuro;
-import fdnt.app.android.ui.main.FoundationContact;
 import fdnt.app.android.ui.main.KontaktZarzad;
 import fdnt.app.android.ui.main.MailLogIn;
 import fdnt.app.android.ui.main.Modlitwy;
-import fdnt.app.android.ui.main.AboutPatron;
 import fdnt.app.android.ui.main.WebTab;
 import fdnt.app.android.ui.main.recview.RecViewUtil;
 import fdnt.app.android.utils.GlobalUtil;
@@ -95,18 +98,11 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         if (GlobalUtil.ifLogged()) {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(true);
 
-            //
+            openProperFragment();
+
             SharedPreferences data = getSharedPreferences("post", Context.MODE_PRIVATE);
             if (data.getString("pass", "").equals("")) {
                 nav_Menu.findItem(R.id.nav_post).setVisible(false);
-
-                if(getIntent().getExtras() != null && !getIntent().getExtras().getString("post_log", "").equals("")) {
-                    // Przenosimy do logowania do poczty
-                    navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
-                    Fragment newInstance = MailLogIn.newInstance();
-                    setTitle("Logowanie do poczty");
-                    openTab(newInstance, new Bundle());
-                }
             }
         } else {
             nav_Menu.findItem(R.id.opcje_dla_zalogowanych).setVisible(false);
@@ -142,8 +138,23 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         System.gc ();
         displayNotifications();
 
+        scheduleAlarm();
+    }
 
-
+    // Włączanie przetwarzania w tle
+    public void scheduleAlarm() {
+        // Construct an intent that will execute the AlarmReceiver
+        Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
+        // Create a PendingIntent to be triggered when the alarm goes off
+        final PendingIntent pIntent = PendingIntent.getBroadcast(this, AlarmReceiver.REQUEST_CODE,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        // Setup periodic alarm every every half hour from this point onwards
+        long firstMillis = System.currentTimeMillis(); // alarm is set right away
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        // First parameter is the type: ELAPSED_REALTIME, ELAPSED_REALTIME_WAKEUP, RTC_WAKEUP
+        // Interval can be INTERVAL_FIFTEEN_MINUTES, INTERVAL_HALF_HOUR, INTERVAL_HOUR, INTERVAL_DAY
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                5 * 60 * 1000, pIntent);
     }
 
     private void manageMailLogInButtonVisibility() {
@@ -178,6 +189,22 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         }
 
         navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+    private void openProperFragment() {
+        if (getIntent().getExtras() != null) {
+            if (!getIntent().getExtras().getString("post_log", "").equals("")) {
+                // Przenosimy do logowania do poczty
+                navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
+                Fragment newInstance = MailLogIn.newInstance();
+                setTitle("Logowanie do poczty");
+                openTab(newInstance, new Bundle());
+            }
+            else if (getIntent().getExtras().getString("fragment", "").equals("post")) {
+                openTab(new PostItemFragment(), new Bundle());
+                setTitle("Poczta");
+            }
+        }
     }
 
     public void restart() {
@@ -394,7 +421,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
                 drawer.closeDrawer(GravityCompat.START);
             }
         }, 100);
-        
     }
 
     //tutaj ustawiamy co się dzieje jak coś klikniemy w bocznym pasku
