@@ -42,38 +42,6 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
                     return true;
                 }
             });
-
-            final Preference pushPref = findPreference("powiadomienia_zezwolenie");
-            pushPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                public boolean onPreferenceClick(Preference preference) {
-
-                 /*   if (PreferenceManager
-                            .getDefaultSharedPreferences(GlobalUtil.aktywnosc_ustawienia)
-                            .getBoolean("powiadomienia_zezwolenie", true)){
-
-
-                        FirebaseInstanceId.getInstance().getToken();
-                    }
-                    else {
-
-                        new Thread() {
-                            public void run() {
-                                try {
-                                    FirebaseInstanceId.getInstance().deleteInstanceId();
-                                }
-                                catch (IOException e) {
-                                    //...
-                                }
-                            }
-                        }.run();
-
-
-                    }*/
-                    return true;
-                }
-            });
-
-
         }
 
 

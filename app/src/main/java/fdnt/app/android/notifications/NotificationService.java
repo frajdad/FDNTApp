@@ -12,6 +12,13 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+import java.util.Set;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 
@@ -20,9 +27,9 @@ import fdnt.app.android.R;
 import fdnt.app.android.post.AsyncMailLoad;
 import fdnt.app.android.utils.GlobalUtil;
 
-public class MailService extends IntentService {
-    public MailService() {
-        super("MyService");
+public class NotificationService extends IntentService {
+    public NotificationService() {
+        super("NotificationService");
     }
 
     @Override
@@ -52,21 +59,56 @@ public class MailService extends IntentService {
                 } catch (MessagingException e) {
                 }
             }
-
         }
     }
 
     private void checkNews() {
+        if (GlobalUtil.ifLogged()) {
+            SharedPreferences drawerNames = getSharedPreferences(GlobalUtil.userName() + "name", MODE_PRIVATE); //id->name
+            SharedPreferences drawerActions = getSharedPreferences(GlobalUtil.userName() + "act", MODE_PRIVATE); //name->site
 
+            SharedPreferences data = getSharedPreferences("last_news", Context.MODE_PRIVATE);
+
+            Set<String> items = drawerNames.getAll().keySet();
+            if (items.size() == 0) return;
+
+            for (String item : items) {
+                String name = drawerNames.getString(item, "!");
+                String site = drawerActions.getString(name, "");
+
+                long oldTime = data.getLong(name, 0);
+                long newTime = getLastModified(site);
+
+                if (newTime > oldTime) {
+                    SharedPreferences.Editor editor = data.edit();
+                    editor.putLong(name, newTime);
+                    editor.apply();
+
+                    if (oldTime != 0) {
+                        notification("Sprawdź zakładkę " + name, "Zawartość " + name + " została zmodyfikowana", name);
+                    }
+                }
+            }
+        }
+    }
+
+    public static long getLastModified(String site) {
+       Connection con = Jsoup.connect(site);
+        try {
+            Document doc = con.get();
+            String timeString =
+                doc.getElementsByClass("LqzjUe").attr("data-last-updated-at-time");
+            return Long.parseLong(timeString);
+        } catch (IOException e) {
+            return 0;
+        }
     }
 
     private void notification(String title, String content, String tab) {
         Intent intent = new Intent(this, MainFrame.class);
         intent.putExtra("fragment", tab);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-
-
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -75,7 +117,8 @@ public class MailService extends IntentService {
                 .setContentText(content)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setVibrate(new long[] {200, 100, 300, 700});
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify((int) (Math.random()*1000000), builder.build());

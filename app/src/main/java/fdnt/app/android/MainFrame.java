@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -93,6 +94,10 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
 
         openMain(savedInstanceState);
 
+        drawerNames = getSharedPreferences(GlobalUtil.userName() + "name", MODE_PRIVATE); //id->name
+        drawerActions = getSharedPreferences(GlobalUtil.userName() + "act", MODE_PRIVATE); //name->site
+        drawerIcons = getSharedPreferences(GlobalUtil.userName() + "icon", MODE_PRIVATE); //name->icon
+
         //Tutaj ustawiam widzialnosc poszczegolnych elementow paska bocznego
         Menu nav_Menu = navigationView.getMenu();
         if (GlobalUtil.ifLogged()) {
@@ -116,9 +121,6 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             setTheme(R.style.AppTheme_NoActionBarDark);
         }*/
 
-        drawerNames = getSharedPreferences(GlobalUtil.userName() + "name", MODE_PRIVATE); //id->name
-        drawerActions = getSharedPreferences(GlobalUtil.userName() + "act", MODE_PRIVATE); //name->site
-        drawerIcons = getSharedPreferences(GlobalUtil.userName() + "icon", MODE_PRIVATE); //name->icon
         adjustTabs();
 
         //Pobieramy treści związane z tym, jakie zakładki wyświetlić (w osobnym wątku).
@@ -138,7 +140,9 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         System.gc ();
         displayNotifications();
 
-        scheduleAlarm();
+        if (GlobalUtil.ifLogged()) {
+            scheduleAlarm();
+        }
     }
 
     // Włączanie przetwarzania w tle
@@ -154,7 +158,7 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         // First parameter is the type: ELAPSED_REALTIME, ELAPSED_REALTIME_WAKEUP, RTC_WAKEUP
         // Interval can be INTERVAL_FIFTEEN_MINUTES, INTERVAL_HALF_HOUR, INTERVAL_HOUR, INTERVAL_DAY
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
-                5 * 60 * 1000, pIntent);
+                AlarmManager.INTERVAL_FIFTEEN_MINUTES, pIntent);
     }
 
     private void manageMailLogInButtonVisibility() {
@@ -191,18 +195,34 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         navigationView.getMenu().getItem(0).setChecked(true);
     }
 
+    // Być może chcemy otworzyć inną zakładkę niż główną. Funkcja ta zbiera takie informacje i otwiera odpowiednią
     private void openProperFragment() {
-        if (getIntent().getExtras() != null) {
-            if (!getIntent().getExtras().getString("post_log", "").equals("")) {
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            Log.d("extra_fr", extras.getString("fragment", ""));
+            if (!extras.getString("post_log", "").equals("")) {
                 // Przenosimy do logowania do poczty
                 navigationView.getMenu().findItem(R.id.mail_log).setChecked(true);
                 Fragment newInstance = MailLogIn.newInstance();
                 setTitle("Logowanie do poczty");
                 openTab(newInstance, new Bundle());
             }
-            else if (getIntent().getExtras().getString("fragment", "").equals("post")) {
-                openTab(new PostItemFragment(), new Bundle());
-                setTitle("Poczta");
+            else {
+                String fragmentName = extras.getString("fragment","");
+
+                if (fragmentName.equals("post")) {
+                    openTab(new PostItemFragment(), new Bundle());
+                    setTitle("Poczta");
+                }
+                else if (!fragmentName.equals("")) {
+                    String site = drawerActions.getString(fragmentName, "");
+                    Fragment newInstance = WebTab.newInstance();
+                    setTitle(fragmentName);
+                    Bundle tabInfo = new Bundle();
+                    tabInfo.putString("adress", site);
+                    openTab(newInstance, tabInfo);
+                }
             }
         }
     }

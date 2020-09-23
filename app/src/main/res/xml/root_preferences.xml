@@ -19,12 +19,6 @@
 
     <PreferenceCategory app:title="Dostosowywanie">
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="powiadomienia_zezwolenie"
-            android:title="Powiadomienia"
-            android:summary="Zezwól na otrzymywanie powiadomień push"/>
-
      <!--   <SwitchPreference
             android:defaultValue="false"
             android:key="dark_mode"

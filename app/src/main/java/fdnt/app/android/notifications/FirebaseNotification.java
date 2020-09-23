@@ -1,13 +1,15 @@
-package fdnt.app.android;
+package fdnt.app.android.notifications;
 
 import android.content.Intent;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import fdnt.app.android.MainFrame;
+
 
 //Ta zakładka obsługuje powiadomienia push wysyłane z konsoli Firebase
-public class Powiadomienia extends FirebaseMessagingService {
+public class FirebaseNotification extends FirebaseMessagingService {
 
 
     @Override
