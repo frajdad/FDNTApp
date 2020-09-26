@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jsoup.Jsoup;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -134,21 +137,23 @@ public class AsyncMailLoad {
 
     private static String getTextFromMimeMultipart(
             MimeMultipart mimeMultipart)  throws MessagingException, IOException {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int count = mimeMultipart.getCount();
         for (int i = 0; i < count; i++) {
             BodyPart bodyPart = mimeMultipart.getBodyPart(i);
-            if (bodyPart.isMimeType("text/plain")) {
-                result = result + "\n" + bodyPart.getContent();
-                break;
-            } else if (bodyPart.isMimeType("text/html")) {
+            if (bodyPart.isMimeType("text/html")) {
                 String html = (String) bodyPart.getContent();
-                result = result + "\n" + html;
-            } else if (bodyPart.getContent() instanceof MimeMultipart){
-                result = result + getTextFromMimeMultipart((MimeMultipart)bodyPart.getContent());
+                result.append(Jsoup.parse(html));
+            }
+            else if (bodyPart.isMimeType("image/*")) {
+                InputStream is = bodyPart.getInputStream();
+                result.append(is);
+            }
+            else if (bodyPart.getContent() instanceof MimeMultipart){
+                result.append(getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent()));
             }
         }
-        return result.replaceAll("\n", "<br>");
+        return result.toString();
     }
 
     static String formatDate(Date d) {

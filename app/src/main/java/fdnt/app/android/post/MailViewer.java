@@ -8,6 +8,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import fdnt.app.android.R;
 
 public class MailViewer extends AppCompatActivity {
@@ -43,8 +48,17 @@ public class MailViewer extends AppCompatActivity {
         view_date.setText(extras.getString("date"));
         view_to.setText("do mnie");
 
+        String html = extras.getString("content");
+        System.out.println(html);
         view_content.getSettings().setJavaScriptEnabled(true);
-        view_content.loadDataWithBaseURL("", extras.getString("content"), "text/html", "UTF-8", "");
+        view_content.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+
+        Queue<String> cids = new LinkedBlockingQueue<String>();
+        Pattern p = Pattern.compile("cid:[^\"]+");
+        Matcher m = p.matcher(html);
+        while (m.find()) {
+            cids.add(m.group());
+        }
     }
 
     @Override
