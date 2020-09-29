@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.BodyPart;
@@ -31,13 +28,11 @@ import fdnt.app.android.utils.GlobalUtil;
 
 public class AsyncMailLoad {
     public static List<MailItem> ITEMS = new ArrayList<MailItem>();
-    public static Map<String, MailItem> ITEM_MAP = new HashMap<String, MailItem>();
 
     private static RecyclerView view;
 
-    private static void addItem(MailItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+    private static void addItem(String content, String subject, String sender, String date, Message message) {
+        ITEMS.add(new MailItem(String.valueOf(ITEMS.size()), content, subject, sender, date, message));
         if (view != null) {
             view.post(new Runnable()
             {
@@ -60,23 +55,21 @@ public class AsyncMailLoad {
         });
     }
 
-    private static MailItem createItem(int position, String content, String subject, String sender, String date) {
-        return new MailItem(String.valueOf(position), content, subject, sender, date);
-    }
-
     public static class MailItem {
         public final String id;
         public final String content;
         public final String subject;
         public final String sender;
         public final String date;
+        public final Message message;
 
-        public MailItem(String id, String content, String subject, String sender, String date) {
+        public MailItem(String id, String content, String subject, String sender, String date, Message message) {
             this.id = id;
             this.content = content;
             this.subject = subject;
             this.sender = sender;
             this.date = date;
+            this.message = message;
         }
     }
 
@@ -104,10 +97,11 @@ public class AsyncMailLoad {
                     personal = message.getFrom()[0].toString();
                 }
 
-                addItem(createItem(i, getTextFromMessage(message),
+                addItem(getTextFromMessage(message),
                         message.getSubject(),
                         personal,
-                        formatDate(message.getSentDate())));
+                        formatDate(message.getSentDate()),
+                        message);
             }
 
             return messages[messages.length-1];
@@ -145,10 +139,18 @@ public class AsyncMailLoad {
                 String html = (String) bodyPart.getContent();
                 result.append(Jsoup.parse(html));
             }
-            else if (bodyPart.isMimeType("image/*")) {
+         /*   else if (bodyPart.isMimeType("image/*")) {
                 InputStream is = bodyPart.getInputStream();
-                result.append(is);
-            }
+                File f = File.createTempFile(bodyPart.getFileName(), null);
+                FileOutputStream fos = new FileOutputStream(f);
+                byte[] buf = new byte[4096];
+                int bytesRead;
+                while((bytesRead = is.read(buf))!=-1) {
+                    fos.write(buf, 0, bytesRead);
+                }
+                fos.close();
+                result.append(f.getAbsolutePath());
+            }*/
             else if (bodyPart.getContent() instanceof MimeMultipart){
                 result.append(getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent()));
             }

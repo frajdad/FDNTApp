@@ -81,10 +81,7 @@ public class MyPostItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPostIt
         @Override
         public void onClick(final View view) {
             Intent intent = new Intent(context, MailViewer.class);
-            intent.putExtra("subject", mValues.get(getAdapterPosition()).subject);
-            intent.putExtra("sender", mValues.get(getAdapterPosition()).sender);
-            intent.putExtra("content", mValues.get(getAdapterPosition()).content);
-            intent.putExtra("date", mValues.get(getAdapterPosition()).date);
+            intent.putExtra("nr", mValues.get(getAdapterPosition()).id);
             context.startActivity(intent);
         }
     }

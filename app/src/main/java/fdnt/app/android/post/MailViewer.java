@@ -1,6 +1,7 @@
 package fdnt.app.android.post;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -42,23 +43,28 @@ public class MailViewer extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-        view_sender.setText(extras.getString("sender"));
-        view_circle.setText(extras.getString("sender").substring(0,1).toUpperCase());
-        view_subject.setText(extras.getString("subject"));
-        view_date.setText(extras.getString("date"));
+        int nr = Integer.parseInt(extras.getString("nr"));
+
+        view_sender.setText(AsyncMailLoad.ITEMS.get(nr).sender);
+        view_circle.setText(AsyncMailLoad.ITEMS.get(nr).sender.substring(0,1).toUpperCase());
+        view_subject.setText(AsyncMailLoad.ITEMS.get(nr).subject);
+        view_date.setText(AsyncMailLoad.ITEMS.get(nr).date);
         view_to.setText("do mnie");
 
-        String html = extras.getString("content");
+        String html = AsyncMailLoad.ITEMS.get(nr).content;
         System.out.println(html);
         view_content.getSettings().setJavaScriptEnabled(true);
-        view_content.loadDataWithBaseURL("", html, "text/html", "UTF-8", "");
+        view_content.loadData(html, "text/html", "UTF-8");
+    }
 
+    private String loadImages(String html, Message message) {
         Queue<String> cids = new LinkedBlockingQueue<String>();
         Pattern p = Pattern.compile("cid:[^\"]+");
         Matcher m = p.matcher(html);
         while (m.find()) {
             cids.add(m.group());
         }
+        return "";
     }
 
     @Override
