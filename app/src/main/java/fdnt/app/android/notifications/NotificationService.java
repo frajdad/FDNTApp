@@ -1,6 +1,7 @@
 package fdnt.app.android.notifications;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -117,11 +118,14 @@ public class NotificationService extends IntentService {
                 .setContentText(content)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true)
                 .setVibrate(new long[] {200, 100, 300, 700});
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify((int) (Math.random()*1000000), builder.build());
+        Notification notification = builder.build();
+
+       NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+       notificationManager.notify((int) (Math.random()*1000000), notification);
     }
 
     private final String CHANNEL_ID = "FDNT_NEWS_CHANNEL";
@@ -134,10 +138,11 @@ public class NotificationService extends IntentService {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
+           NotificationManager notificationManager = getSystemService(NotificationManager.class);
+           notificationManager.createNotificationChannel(channel);
         }
     }
 }

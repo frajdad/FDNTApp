@@ -139,18 +139,6 @@ public class AsyncMailLoad {
                 String html = (String) bodyPart.getContent();
                 result.append(Jsoup.parse(html));
             }
-         /*   else if (bodyPart.isMimeType("image/*")) {
-                InputStream is = bodyPart.getInputStream();
-                File f = File.createTempFile(bodyPart.getFileName(), null);
-                FileOutputStream fos = new FileOutputStream(f);
-                byte[] buf = new byte[4096];
-                int bytesRead;
-                while((bytesRead = is.read(buf))!=-1) {
-                    fos.write(buf, 0, bytesRead);
-                }
-                fos.close();
-                result.append(f.getAbsolutePath());
-            }*/
             else if (bodyPart.getContent() instanceof MimeMultipart){
                 result.append(getTextFromMimeMultipart((MimeMultipart) bodyPart.getContent()));
             }
