@@ -42,7 +42,7 @@ import java.util.concurrent.Semaphore;
 
 import javax.mail.MessagingException;
 
-import fdnt.app.android.notifications.BootReceiver;
+import fdnt.app.android.notifications.Util;
 import fdnt.app.android.post.MailLogging;
 import fdnt.app.android.post.MailSender;
 import fdnt.app.android.post.PostItemFragment;
@@ -139,13 +139,13 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
         displayNotifications();
 
         if (GlobalUtil.ifLogged()) {
-            BootReceiver.scheduleAlarm(this);
+            Util.scheduleJob(this);
         }
     }
 
     private void manageMailLogInButtonVisibility() {
         Menu nav_Menu = navigationView.getMenu();
-        if(!GlobalUtil.ifLoggedToPost () && GlobalUtil.ifLogged ())
+        if(!GlobalUtil.ifLoggedToPost(this) && GlobalUtil.ifLogged ())
             nav_Menu.findItem (R.id.mail_log).setVisible (true);
         else {
             nav_Menu.findItem (R.id.mail_log).setVisible (false);

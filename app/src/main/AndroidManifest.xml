@@ -6,6 +6,7 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
@@ -70,26 +71,25 @@
             </intent-filter>
         </service>
 
-        <receiver
-            android:name=".notifications.AlarmReceiver"
-            android:process=":remote" >
-        </receiver>
-
-        <receiver android:name=".notifications.BootReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-            </intent-filter>
-        </receiver>
+        <service
+            android:name=".notifications.NotificationStartService"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+        </service>
 
         <service
-            android:name=".notifications.NotificationService"
-            android:enabled="true"
-            android:exported="false" />
+        android:name=".notifications.NotificationService"
+        android:enabled="true"
+        android:exported="false" />
+
+
+        <receiver android:name=".notifications.ScheduledJobReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

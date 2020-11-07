@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
-import fdnt.app.android.utils.GlobalUtil;
 import fdnt.app.android.post.MailSender;
 
 public class FdnContactEventHandler {
@@ -25,7 +24,7 @@ public class FdnContactEventHandler {
         GlobalUtil.createUriIntent(view.getContext(), tel);
     }
     public void mailToFdn(View view) {
-        if (GlobalUtil.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost(view.getContext())) {
             Intent intent = new Intent(view.getContext(), MailSender.class);
             intent.putExtra("to", "dzielo@episkopat.pl");
             view.getContext().startActivity(intent);

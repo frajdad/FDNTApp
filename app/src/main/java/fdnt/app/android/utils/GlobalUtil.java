@@ -23,8 +23,8 @@ public class GlobalUtil {
         return FirebaseAuth.getInstance().getCurrentUser() != null;
     }
 
-    public static boolean ifLoggedToPost() {
-        SharedPreferences data = this_activity.getSharedPreferences("post", Context.MODE_PRIVATE);
+    public static boolean ifLoggedToPost(Context context) {
+        SharedPreferences data = context.getSharedPreferences("post", Context.MODE_PRIVATE);
         return !data.getString("pass", "").equals("");
     }
 
@@ -88,7 +88,7 @@ public class GlobalUtil {
      * @param context Required for some magic :(
      */
     public static void sendMail(String mail, Context context) {
-        if (GlobalUtil.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost(context)) {
             Intent intent = new Intent(GlobalUtil.this_activity, MailSender.class);
             intent.putExtra("to", mail);
             GlobalUtil.this_activity.startActivity(intent);

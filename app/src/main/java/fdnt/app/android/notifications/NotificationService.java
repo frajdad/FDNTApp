@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -40,7 +41,7 @@ public class NotificationService extends IntentService {
     }
 
     private void checkPost() {
-        if (GlobalUtil.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost(this)) {
             SharedPreferences data = getSharedPreferences("last_mails", Context.MODE_PRIVATE);
             long oldTime = data.getLong("time", 0);
 
@@ -120,12 +121,14 @@ public class NotificationService extends IntentService {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true)
-                .setVibrate(new long[] {200, 100, 300, 700});
+                .setVibrate(new long[] {200, 100, 300, 700})
+                .setLights(Color.YELLOW, 500, 500);
 
         Notification notification = builder.build();
 
        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
        notificationManager.notify((int) (Math.random()*1000000), notification);
+       // startForeground((int) (Math.random()*1000000), notification);
     }
 
     private final String CHANNEL_ID = "FDNT_NEWS_CHANNEL";

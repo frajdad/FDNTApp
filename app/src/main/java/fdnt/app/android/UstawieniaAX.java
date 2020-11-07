@@ -60,7 +60,7 @@ public class UstawieniaAX extends PreferenceFragmentCompat {
     }
 
     public void sendComment() {
-        if (GlobalUtil.ifLoggedToPost()) {
+        if (GlobalUtil.ifLoggedToPost(getContext())) {
             Intent intent = new Intent(getActivity(), MailSender.class);
             intent.putExtra("to", "aplikacja@dzielo.pl");
             startActivity(intent);
