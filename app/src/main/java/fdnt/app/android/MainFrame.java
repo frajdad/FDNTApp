@@ -365,7 +365,8 @@ public class MainFrame extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onDataChange(@NonNull DataSnapshot data) {
                 SharedPreferences.Editor iconEdit = drawerIcons.edit();
-                iconEdit.putInt(name, data.getValue(Integer.class));
+                int value = Integer.parseInt(data.getValue().toString());
+                iconEdit.putInt(name, value);
                 iconEdit.commit();
 
                 adjustTab(id, name);
